@@ -33,6 +33,47 @@ export default function AdminUserPage() {
         <div  className={styles.username}>
         <span >{username.toUpperCase()}</span>
         </div>
+
+        <div className={styles.selectDropdown}>
+        <div className={styles.dataEditTxt}>
+          <select name="" id=""  className={styles.dataEditView}>
+            
+              
+              <ul><li><option >Insert Data </option></li></ul>
+              <option value="" >Insert Plain Question</option>
+              <option value="" >Insert Grouped Question</option>
+              <option value="" >Insert Direction</option>
+
+              
+            
+          </select>
+        </div>
+        <div className={styles.dataEditVi}>
+          <select name="" id="" className={styles.dataEditView}>
+            
+              
+              <option value="">View Direction</option>
+              <option value="">View Grouped Question</option>
+              <option value="">View Plain Question</option>
+              
+            
+            
+          </select>
+        </div>
+        </div>
+        {/* <div className={styles.selectMenu}>
+          <div className={styles.selectBtn}>
+            <span className={styles.selectText}>Insert Data</span>
+         <ul className={styles.option}>
+         <li>
+              <Link to={""}>
+                <span className={styles.spanText}>Insert Plain Question</span>
+              </Link>
+            </li>
+        
+         </ul>
+          </div>
+        </div> */}
         
        
         <span className={styles.topBalance}>
@@ -42,10 +83,10 @@ export default function AdminUserPage() {
         </span>
         <span><button onClick={()=>logout()} className={styles.logoutBtn}>Log out <i className="fas fa-sign-out-alt"></i></button></span>
       </div>
-      <div className={styles.content}>
-        <div className={styles.leftBar}>
-          <ul className={styles.ulLeftBar}>
-            <li className={styles.leftBarText}>
+      
+        
+          
+            {/* <li className={styles.leftBarText}>
               <b>Data Insertion</b>{" "}
             </li>
             <li>
@@ -64,38 +105,39 @@ export default function AdminUserPage() {
               <Link to={"grouped-question"}>
                 <button className={styles.btnList}>
                   Insert Grouped Question
-                </button>
-              </Link>
-            </li>
-            <li className={styles.leftBarText}>
-              <b>Data Editing</b>{" "}
-            </li>
-            <li>
-              <Link to={"view-plain-questions"}>
-                <button className={styles.btnList}>
-                  View Plain Questions{" "}
-                </button>
-              </Link>
-            </li>
-            <li>
-              <Link to={"view-directions"}>
-                <button className={styles.btnList}>View Directions </button>
-              </Link>
-            </li>
+               </button>
+    //           </Link>
+    //         </li>
+    //         <li className={styles.leftBarText}>
+    //           <b>Data Editing</b>{" "}
+    //         </li>
+    //         <li>
+    //           <Link to={"view-plain-questions"}>
+    //             <button className={styles.btnList}>
+    //               View Plain Questions{" "}
+    //             </button>
+    //           </Link>
+    //         </li>
+    //         <li>
+    //           <Link to={"view-directions"}>
+    //             <button className={styles.btnList}>View Directions </button>
+    //           </Link>
+    //         </li>
 
-            <li>
-              <Link to={"view-grouped-questions"}>
-                <button className={styles.btnList}>
-                  View Grouped Question{" "}
-                </button>
-              </Link>
-            </li>
-          </ul>
-        </div>
+    //         <li>
+    //           <Link to={"view-grouped-questions"}>
+    //             <button className={styles.btnList}>
+    //               View Grouped Question{" "}
+    //             </button>
+    //           </Link>
+    //         </li>
+    //       </ul> */}
+    
+    //    
         <div className={styles.rightBar}>
           <Outlet />
         </div>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   );
 }

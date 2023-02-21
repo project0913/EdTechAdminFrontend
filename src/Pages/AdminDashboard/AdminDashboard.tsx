@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./adminDashboard.module.css";
 import { Clerk } from "../../models/clerks.model";
-import { format, formatISO } from "date-fns";
+import { format, formatDistance, formatISO, parseISO } from "date-fns";
 import { getClerksAndDataInfoFromServer } from "../../DataService/clerkData.service";
 export function AdminDashboard() {
   const [clerks, setClerks] = useState<Clerk[]>([]);
@@ -32,7 +32,7 @@ export function AdminDashboard() {
               <tr className={styles.tr}>
                 <td className={styles.td}>{index + 1}</td>
                 <td className={styles.td}>
-                  {formatISO(new Date(clerk.createdAt))}
+                  {format(parseISO(clerk.createdAt),'dd, MMM yyyy')}
                 </td>
                 <td className={styles.td}>{clerk.username}</td>
                 <td className={styles.td}>{clerk.questionsEntered}</td>

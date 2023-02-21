@@ -1,6 +1,6 @@
 .top {
   background-color: #092258;
-  height: 6vh;
+  height: 7vh;
   width: 100%;
   position: fixed;
   display: flex;
@@ -20,9 +20,9 @@
   
 }
 .spanLabel{
-  height: 26px;
-  padding: 5px;
-  width: 100px;
+  height:  25px;
+  padding: 2px;
+  width: 15%;
   background-color: #b2d8d9;
   color: #092258;
   border-radius: 10px;
@@ -33,59 +33,21 @@
   
 }
 
-.content {
-  display: flex;
-  
-}
-.leftBar {
-  height: 100%;
-  width: 15%;
-  background-color: #b2d8d9;
-  position: fixed;
-  bottom: 0;
-}
-.leftBarText {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 18px;
-  font-weight: 900;
-  color: #092258;
-  margin-top: 50px;
-}
 .rightBar {
   
   width: 100%;
-  margin-left: 15%;
-  margin-top: 8vh;
+  margin-top: 5vh;
 
   
   
 }
-.ulLeftBar {
-  list-style: none;
-  margin-top: 10px;
-  margin-left: 2px;
-}
-.btnList {
-  background-color: #088081;
-  width: 130px;
-  margin-top: 30px;
-  height: 35px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  color: white;
-  font-family: 'Times New Roman', Times, serif;
 
-}
-.selectData {
-  margin-left: 1050px;
-  margin-top: 20px;
-}
+
 .logoutBtn{
   font-size: 18px;
   margin: 5px;
-  padding: 7px;
-  width: 100px;
+  padding: 2px;
+  width: 95px;
   font-weight: 500;
   font-family: 'Times New Roman', Times, serif;
   cursor: pointer;
@@ -93,7 +55,7 @@
   border-radius: 10px;
   color: #092258;
   background-color: #b2d8d9;
-  margin-right: 60px;
+  margin-right: 40px;
 
 }
 .username{
@@ -102,7 +64,7 @@
   color: #fff;
   margin-right: auto;
   margin-left: 20px;
-  margin-top: 18px;
+  margin-top: 20px;
   
 }
 .userIcon {
@@ -121,4 +83,23 @@
 
 .iconContainer{
   margin-left: 20px;
+}
+.selectDropdown {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b2d8d9;
+  border-radius: 30px;
+  margin-right: 300px;
+  gap: 2rem;
+}
+.dataEditView {
+background-color: #b2d8d9;
+color: #092258;
+font-family: 'Times New Roman', Times, serif;
+font-size: 14px;
+padding: 4px;
+border-radius: 30px;
+margin: 10px;
 }
