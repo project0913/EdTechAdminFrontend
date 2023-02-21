@@ -17,9 +17,11 @@ import AdminPublicLogin from "./Pages/publicLogin/AdminPublicLogin";
 import ClerkAuthPage from "./Pages/ClerkAuthPage/ClerkAuthPage";
 import { ClerkRouteGuard } from "./components/ClerkGuard";
 import { AdminUserRouteGuard } from "./components/AdminUserPageGuard";
+import { AdminDashboard } from "./Pages/AdminDashboard/AdminDashboard";
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
+    { path: "admin-dashboard", element: <AdminDashboard /> },
     {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
