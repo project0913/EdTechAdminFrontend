@@ -33,6 +33,8 @@ export default function ClerkAuthPage() {
         "coydoeClerkUser",
         JSON.stringify({ token: result?.token, username: result?.username })
       );
+      console.log( result?.token);
+      
       window.location.href = "/admin-user";
     }
   }
@@ -65,7 +67,7 @@ export default function ClerkAuthPage() {
       return;
     }
     setToken(token);
-    alert(token);
+  
   }, []);
   return (
     <div className="bg1">
@@ -73,9 +75,9 @@ export default function ClerkAuthPage() {
         {message && <p style={{ color: "red" }}>{message}</p>}
         <div className="title-text">
           <div className="title login" style={{ marginLeft: marginLeft }}>
-            Login Form
+            Login
           </div>
-          <div className={`title signup `}>Signup Form</div>
+          <div className={`title signup `}>Signup</div>
         </div>
         <div className="form-container">
           <div className="slide-controls">

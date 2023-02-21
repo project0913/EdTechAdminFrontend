@@ -1,32 +1,35 @@
 .top {
   background-color: #092258;
-  height: 10vh;
-  width: 80%;
-  margin-left: 20%;
+  height: 6vh;
+  width: 100%;
   position: fixed;
   display: flex;
   justify-content: flex-end;
   align-items: center;  
+  top: 0;
+  z-index: 9999;
 }
 .topBalance {
   margin-right: 20px;
-  width: 400px;
+  width: 480px;
   display: inline-flex;
 }
 .balanceLabel  {
   color: white;
-  margin: 20px;
+  margin: 15px;
   
 }
 .spanLabel{
-  height: 45px;
-  width: 45px;
+  height: 26px;
+  padding: 5px;
+  width: 100px;
   background-color: #b2d8d9;
   color: #092258;
-  border-radius: 50px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 6px;
   
 }
 
@@ -36,9 +39,10 @@
 }
 .leftBar {
   height: 100%;
-  width: 20%;
+  width: 15%;
   background-color: #b2d8d9;
   position: fixed;
+  bottom: 0;
 }
 .leftBarText {
   font-family: 'Times New Roman', Times, serif;
@@ -48,8 +52,9 @@
   margin-top: 50px;
 }
 .rightBar {
-  margin-left: 20%;
-  width: 80%;
+  
+  width: 100%;
+  margin-left: 15%;
   margin-top: 8vh;
 
   
@@ -57,14 +62,15 @@
 }
 .ulLeftBar {
   list-style: none;
-  margin-top: 50px;
+  margin-top: 10px;
+  margin-left: 2px;
 }
 .btnList {
   background-color: #088081;
-  width: 160px;
+  width: 130px;
   margin-top: 30px;
-  height: 40px;
-  border-radius: 20px;
+  height: 35px;
+  border-radius: 10px;
   cursor: pointer;
   border: none;
   color: white;
@@ -74,4 +80,45 @@
 .selectData {
   margin-left: 1050px;
   margin-top: 20px;
+}
+.logoutBtn{
+  font-size: 18px;
+  margin: 5px;
+  padding: 7px;
+  width: 100px;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  color: #092258;
+  background-color: #b2d8d9;
+  margin-right: 60px;
+
+}
+.username{
+  font-size: 18px;
+  align-self: flex-start;
+  color: #fff;
+  margin-right: auto;
+  margin-left: 20px;
+  margin-top: 18px;
+  
+}
+.userIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  width:45px;
+  border-radius: 50%;
+  background-color: #b2d8d9;
+  align-self: flex-start;
+  color: #fff;
+
+
+}
+
+.iconContainer{
+  margin-left: 20px;
 }

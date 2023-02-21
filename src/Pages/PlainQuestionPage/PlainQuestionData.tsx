@@ -1,6 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react";
 import placeholderImage from "../../assets/place_holder.jpg";
-import "./plainquestiondata.css";
+import styles from './plainquestiondata.module.css'
 import "react-quill/dist/quill.snow.css";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
@@ -188,33 +188,41 @@ export default function PlainQuestionData() {
         />
       }
     >
-      <div className="plain-question-bg-kulli">
+      <div>
         {errorMessage.length > 0 && (
           <p style={{ color: "red" }}>{errorMessage}</p>
         )}
-        <div className="plain-question">
-          <div className="exam-category">
+        <div className={styles.adminBodyQuestion}>
+
+        <div className= {styles.adminTop}> 
+        <div >
+          <b className={styles.adminTopText}>Exam Category</b>
             <SelectDropdown
-              title="Exam Category"
+              title=""
               items={examCatagories}
               handleSelect={handleExamCategoryChange}
             />
           </div>
           <div className="course-selection">
+            <b className={styles.adminTopText}>Courses</b>
             <SelectDropdown
-              title="Courses"
+              title=""
               items={courses}
               handleSelect={handleCourseChange}
             />
           </div>
           <div className="subCategory">
+            <b className={styles.adminTopText}>Sub Category</b>
             <SelectDropdown
-              title="Sub Category"
+              title=""
               items={subExamCategory}
               handleSelect={handleSubExamCategoryChange}
             />
           </div>
-          <div className="editor-container">
+        </div>
+      </div>
+<div className={styles.plainQuestionInsert}>
+          <div className="">
             <h6>Question Number</h6>
             <input
               type="number"
@@ -222,8 +230,9 @@ export default function PlainQuestionData() {
               onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
             />
           </div>
-          <div className="kulli">
-            <div className="editor-container">
+          
+          <div className="">
+            <div className="">
               <p>Paste your question here</p>
               <Editor
                 setValue={setQuestionTextValue}
@@ -231,14 +240,14 @@ export default function PlainQuestionData() {
                 value={questionText}
               />
             </div>
-            <div className="editor-container">
+            <div className="">
               <p>
-                <strong>select Image if the Question has Image</strong>
+                Select Image if the Question has Image
               </p>
               <img
                 src={tempQuestionImagePath || placeholderImage}
                 id="photo"
-                className="img"
+                className={styles.img}
               />
               <input
                 type="file"
@@ -246,7 +255,7 @@ export default function PlainQuestionData() {
                 onChange={handleQuestionImageChange}
               />
             </div>
-            <div className="editor-container">
+            <div className="">
               <p>
                 Paste your option{"  "}
                 <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
@@ -258,7 +267,7 @@ export default function PlainQuestionData() {
                 value={option_a}
               />
             </div>
-            <div className="editor-container">
+            <div className="">
               <p>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
@@ -270,7 +279,7 @@ export default function PlainQuestionData() {
                 value={option_b}
               />
             </div>
-            <div className="editor-container">
+            <div className="">
               <p>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
@@ -282,7 +291,7 @@ export default function PlainQuestionData() {
                 value={option_c}
               />
             </div>
-            <div className="editor-container">
+            <div className="">
               <p>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
@@ -294,25 +303,32 @@ export default function PlainQuestionData() {
                 value={option_d}
               />
             </div>
-            <div className="editor-container">
-              <p>choose Answer here</p>
+            {/* <div className={styles.dropDownItem}>
+              <p>Choose Answer here</p>
               <SelectDropdown
                 title=""
                 items={answerOptions}
                 handleSelect={setOption_answer_Text}
               />
-            </div>
+            </div>*/}
 
-            <div className="exam-category">
-              <b>select Year</b>
+            <div className="">
+              <b>Select Year</b>
               <SelectDropdown
                 title=""
                 items={yearsOptions}
                 handleSelect={handleYearsChange}
               />
+            </div> 
+            <div>
+              <select name="" id="" className= {styles.dropDownItem}>
+                <option value="">2012</option>
+                <option value="">2013</option>
+                <option value="">2014</option>
+              </select>
             </div>
 
-            <div className="editor-container">
+            <div className="">
               <p>Paste your option Description here</p>
               <Editor
                 setValue={setDescription_Text}
@@ -320,15 +336,14 @@ export default function PlainQuestionData() {
                 value={description}
               />
             </div>
-            <div className="editor-container">
+            <div className="">
               <p>
                 {" "}
-                <strong>select Image if the description has Image</strong>
+                Select Image if the description has Image
               </p>
               <img
                 src={tempDescriptionImagePath || placeholderImage}
-                id="photo"
-                className="img"
+                className={styles.img}
               />
               <input
                 type="file"
@@ -337,18 +352,19 @@ export default function PlainQuestionData() {
               />
             </div>
           </div>
-          <div className="toast-container"></div>
+        
 
-          <div className="submit-butt mb-3 mt-3">
+          <div className="">
             <button
-              className="btn btn-primary btn-lg"
+              className={styles.submitBtn}
               onClick={submitGroupedQuestionToBackend}
             >
-              submit
+              Submit
             </button>
           </div>
+          </div>
         </div>
-      </div>
+      
     </LoadingOverlayWrapper>
   );
 }

@@ -15,6 +15,9 @@ import {
   fetchGroupedCourses,
   fetchGroupedCoursesDirectionYears,
 } from "../../DataService/fetchCourse.service";
+import { deleteDirections } from "../../DataService/editDirections.service";
+import { AxiosError } from "axios";
+import { showErrorToast, showSuccessToast } from "../../utils/helper";
 
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
@@ -27,6 +30,8 @@ const options: HTMLReactParserOptions = {
 export default function ViewDirectionsPage() {
   const [directions, setDirections] = useState<Direction[]>([]);
   const [progressMessage, setProgressMessage] = useState("Loading ...");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [selectedYear, setSelectedYear] = useState<number | string>("2015");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [yearOptions, setYearOptions] = useState<SelectOption[]>([]);
@@ -58,6 +63,28 @@ export default function ViewDirectionsPage() {
     );
     setDirections(directionsFromServer);
   };
+  const deleteDirectionFromServer = async (directionId: string) => {
+    let result = await deleteDirections(directionId);
+    if (result instanceof AxiosError) {
+      let msgTxt = "";
+      const messages =
+        result.response?.data?.message ||
+        (["something is wrong try again Later"] as Array<string>);
+      for (const msg of messages) {
+        msgTxt += msg + " "; //concatenate array of error messages
+      }
+      setErrorMessage(msgTxt);
+      showErrorToast();
+    } else {
+      setDirections((prev) => {
+        let newDir = prev.filter((dir) => dir._id !== directionId);
+        return [...newDir];
+      });
+
+      showSuccessToast("Request Success");
+    }
+  };
+
   useEffect(() => {
     LoadInit();
   }, []);
@@ -78,6 +105,9 @@ export default function ViewDirectionsPage() {
   return (
     <div>
       <div className={styles.adminBody}>
+        <span>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        </span>
         <span>
           <b style={{ color: "white" }}>select Course</b>
           <SelectDropdown
@@ -125,7 +155,12 @@ export default function ViewDirectionsPage() {
                 <Link to={"/admin-user/edit-direction"} state={{ direction }}>
                   <button className={styles.label}>Edit</button>
                 </Link>
-                <button className={styles.label1}>Delete</button>
+                <button
+                  className={styles.label1}
+                  onClick={() => deleteDirectionFromServer(direction._id || "")}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))

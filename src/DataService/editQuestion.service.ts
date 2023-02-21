@@ -78,3 +78,23 @@ export async function updateGroupedQuestionToServer(
     return error;
   }
 }
+
+export async function deletePlainQuestion(questionId: string) {
+  try {
+    let raw = await axios.delete(`/questions/${questionId}`);
+    let data = raw.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function deleteGroupedQuestion(questionId: string) {
+  try {
+    let raw = await axios.delete(`/grouped-questions/${questionId}`);
+    let data = raw.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
+}

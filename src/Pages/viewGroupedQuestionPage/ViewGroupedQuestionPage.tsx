@@ -10,13 +10,19 @@ import parse, {
   domToReact,
 } from "html-react-parser";
 import { Link } from "react-router-dom";
-import { resolveImageURL } from "../../utils/helper";
+import {
+  resolveImageURL,
+  showErrorToast,
+  showSuccessToast,
+} from "../../utils/helper";
 import {
   fetchDirectionOfCourseByYear,
   fetchGroupedCourses,
   fetchGroupedCoursesDirectionYears,
 } from "../../DataService/fetchCourse.service";
 import { fetchGroupedQuestions } from "../../DataService/viewGroupedQuestion.service";
+import { deletePlainQuestion } from "../../DataService/editQuestion.service";
+import { AxiosError } from "axios";
 
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
@@ -29,6 +35,7 @@ const options: HTMLReactParserOptions = {
 export function ViewGroupedQuestionsPage() {
   const [selectedDirection, setSelectedDirection] = useState("");
   const [progressMessage, setProgressMessage] = useState("Loading...");
+  const [errorMessage, setErrorMessage] = useState("");
   const [questions, setQuestions] = useState<PlainQuestion[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | string>("2015");
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -103,6 +110,28 @@ export function ViewGroupedQuestionsPage() {
     }
   }, [selectedCourse, selectedYear]);
 
+  const deleteGroupedQuestionFromServer = async (questionId: string) => {
+    let result = await deletePlainQuestion(questionId);
+    if (result instanceof AxiosError) {
+      let msgTxt = "";
+      const messages =
+        result.response?.data?.message ||
+        (["something is wrong try again Later"] as Array<string>);
+      for (const msg of messages) {
+        msgTxt += msg + " "; //concatenate array of error messages
+      }
+      setErrorMessage(msgTxt);
+      showErrorToast();
+    } else {
+      setQuestions((prev) => {
+        let newQues = prev.filter((q) => q._id !== questionId);
+        return [...newQues];
+      });
+
+      showSuccessToast("Request Success");
+    }
+  };
+
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -119,6 +148,9 @@ export function ViewGroupedQuestionsPage() {
   return (
     <div>
       <div className={styles.adminBody}>
+        <span>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        </span>
         <span className="list-course mt-3">
           <b style={{ color: "white" }}>Courses</b>
           <SelectDropdown
@@ -203,10 +235,20 @@ export function ViewGroupedQuestionsPage() {
                 />
               </td>
               <td className={styles.td}>
-                <Link to={"/admin-user/edit-plain-question"} state={{ question }}>
+                <Link
+                  to={"/admin-user/edit-plain-question"}
+                  state={{ question }}
+                >
                   <button className={styles.label}>Edit</button>
                 </Link>
-                <button className={styles.label1}>Delete</button>
+                <button
+                  className={styles.label1}
+                  onClick={() =>
+                    deleteGroupedQuestionFromServer(question._id || "")
+                  }
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))

@@ -13,8 +13,16 @@ import parse, {
   domToReact,
 } from "html-react-parser";
 import { Link } from "react-router-dom";
-import { resolveImageURL } from "../../utils/helper";
+import {
+  resolveImageURL,
+  showErrorToast,
+  showSuccessToast,
+} from "../../utils/helper";
 import ReactPaginate from "react-paginate";
+import { deleteGroupedQuestion } from "../../DataService/editQuestion.service";
+import { AxiosError } from "axios";
+import { Pagination } from "react-bootstrap";
+import CustomPagination from "../../components/pagination";
 
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
@@ -28,9 +36,10 @@ export default function ViewPlainQuestionsPage() {
   const [questions, setQuestions] = useState<PlainQuestion[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | string>("2015");
   const [selectedCourse, setSelectedCourse] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [yearOptions, setYearOptions] = useState<SelectOption[]>([]);
   const [courseOptions, setCourseOptions] = useState<SelectOption[]>([]);
-  const [totalCount, setTotalCount] = useState<number | string>(0);
+  const [totalCount, setTotalCount] = useState<number>(0);
   const isInitialMount = useRef(true);
   const getCourses = async () => {
     let examCats = await fetchExamCategories();
@@ -52,6 +61,28 @@ export default function ViewPlainQuestionsPage() {
     if (yearsFromServer.length > 0)
       setSelectedYear((p) => yearsFromServer[0].value || 2010);
   }
+  const deletePlainQuestionFromServer = async (questionId: string) => {
+    let result = await deleteGroupedQuestion(questionId);
+    if (result instanceof AxiosError) {
+      let msgTxt = "";
+      const messages =
+        result.response?.data?.message ||
+        (["something is wrong try again Later"] as Array<string>);
+      for (const msg of messages) {
+        msgTxt += msg + " "; //concatenate array of error messages
+      }
+      setErrorMessage(msgTxt);
+      showErrorToast();
+    } else {
+      setQuestions((prev) => {
+        let newQues = prev.filter((q) => q._id !== questionId);
+        return [...newQues];
+      });
+
+      showSuccessToast("Request Success");
+    }
+  };
+
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -98,11 +129,24 @@ export default function ViewPlainQuestionsPage() {
     setQuestions(questions);
     setTotalCount(count);
   };
+  const onPageChange = async (page:number)=>{
+    const { count, questions } = await fetchPlainQuestions({
+      course: selectedCourse,
+      year: selectedYear,
+      page: page,
+    });
+    setQuestions(questions);
+    setTotalCount(count);
+  }
+
   return (
     <div>
       <div className={styles.adminBody}>
+        <span>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        </span>
         <span className={styles.adminSelect}>
-          <b style={{ color: "white", fontSize:"14px" }}>Select Course</b>
+          <b style={{ color: "white", fontSize: "14px" }}>Select Course</b>
           <SelectDropdown
             title=""
             items={courseOptions}
@@ -122,6 +166,7 @@ export default function ViewPlainQuestionsPage() {
       </div>
 
       <table className={styles.table}>
+        <thead>
         <tr>
           <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
           <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
@@ -140,10 +185,14 @@ export default function ViewPlainQuestionsPage() {
           </th>
           <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
         </tr>
+        </thead>
+        <tbody>
         {questions.length > 0
           ? questions.map((question, index) => (
               <tr className={styles.tr} key={index}>
-                <td className={`${styles.td} ${styles.tdNo}` }>{question.questionNumber}</td>
+                <td className={`${styles.td} ${styles.tdNo}`}>
+                  {question.questionNumber}
+                </td>
                 <td className={styles.td}>{question.year}</td>
                 <td className={styles.td}>
                   {parse(question.questionText, options)}
@@ -184,23 +233,27 @@ export default function ViewPlainQuestionsPage() {
                   />
                 </td>
                 <td className={styles.td}>
-                  <Link to={"/admin-user/edit-plain-question"} state={{ question }}>
+                  <Link
+                    to={"/admin-user/edit-plain-question"}
+                    state={{ question }}
+                  >
                     <button className={styles.label}>Edit</button>
                   </Link>
-                  <button className={styles.label1}>Delete</button>
+                  <button
+                    className={styles.label1}
+                    onClick={() =>
+                      deletePlainQuestionFromServer(question._id || "")
+                    }
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))
           : "Loading..."}
+          </tbody>
       </table>
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={() => {}}
-        pageRangeDisplayed={5}
-        pageCount={7}
-        previousLabel="< previous"
-      />
+      <CustomPagination totalItems={totalCount} pageSize={10}  onPageChange={onPageChange}/>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function AdminPublicLogin() {
 
   const loginClerk = async (e: any) => {
     e.preventDefault();
-    alert(username + " " + password);
+
     let result = await publicLogin(username, password);
     if (result instanceof AxiosError) {
       let msgTxt = "";
@@ -24,18 +24,20 @@ export default function AdminPublicLogin() {
       setMessage(msgTxt);
     } else {
       localStorage.setItem("coydoePublicUser", JSON.stringify({ token: true }));
+     ///console.log(result?.token);
+      
       navigate("/clerk-auth", { state: { token: result?.token } });
     }
   };
   return (
     <div className="public-login-container">
-      <div className="wrapper">
+      <div className="public-wrapper">
         {message && <p style={{ color: "red" }}>{message}</p>}
         <div className="title-text">
-          <div className="title login">COYDOE Login</div>
+          <div className="title login">Login</div>
         </div>
-        <div className="form-container">
-          <div className="form-inner">
+        <div className="public-form-container">
+          <div className="public-form-inner">
             <form onSubmit={loginClerk}>
               <div className="field">
                 <input

@@ -1,0 +1,53 @@
+.adminBodyQuestion {
+    margin-top: 10px;
+    background-color: #088081;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .adminTop{
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    top: 0px;
+    gap: 1rem;
+  }
+  .adminTopText {
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .plainQuestionInsert {
+    margin-left: 20px;
+    margin-top: 10px;
+    position: absolute;
+    font-size: 24px;
+  }
+  .img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  .submitBtn{
+    background-color: #088081;
+    width: 200px;
+    height: 40px;
+    left: 600px;
+    align-items: center;
+    margin: 20px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+
+  }
+  .dropDownItem {
+    width: 60px;
+    height: 10px;
+    padding: 5px;
+    margin: 5px;
+    background-color: red;
+  }

@@ -171,7 +171,8 @@ export default function PlainQuestionEditor() {
         />
       }
     >
-      <div style={{backgroundColor:"red"}} className={styles.bodyPlainQuestion}>
+
+      <div style={{backgroundColor:"red"}} className={styles.bodyPlainQuestion}> 
       <div className={styles.plainQuestionContainer}>
         {errorMessage.length > 0 && (
           <p style={{ color: "red" }}>{errorMessage}</p>

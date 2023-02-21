@@ -54,6 +54,9 @@
   border-radius: 15px;
   cursor: pointer;
 }
+.label:hover {
+  background-color: #0c5e5e;
+}
 .label1 {
   background-color: rgb(160, 36, 36);
   width: 70px;
@@ -66,4 +69,7 @@
   padding: 5px;
   border: none;
   border-radius: 15px;
+}
+.label1:hover{
+  background-color: rgb(180, 51, 51);
 }
