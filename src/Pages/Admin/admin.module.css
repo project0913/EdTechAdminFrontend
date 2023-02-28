@@ -33,7 +33,7 @@
   border-radius: 10px;
   border: none;
   margin-top: 14px;
-  margin-left: 760px;
+  margin-left: 1020px;
 }
 .selectDropdown {
   border: none;
@@ -52,5 +52,5 @@
   font-size: 14px;
   padding: 4px;
   border-radius: 30px;
-  margin: 10px;
+  gap: 3rem;
 }

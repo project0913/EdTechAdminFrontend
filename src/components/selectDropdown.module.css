@@ -1,8 +1,8 @@
 .selectDropdown {
-    color:    #092258;;
-    border-radius: 10px;
-    width: 150px;
-    padding: 4px;
-    background-color: #b2d8d9;
-  
-} 
+  color: #092258;
+  border-radius: 10px;
+  width: 108px;
+  padding: 4px;
+  background-color: #b2d8d9;
+  margin-top: 10px;
+}

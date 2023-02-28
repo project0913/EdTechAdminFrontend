@@ -21,9 +21,7 @@ export default function AdminUserDataView() {
               Clerks
             </Link>
           </li>
-          <li>
-            <AdminNotification />
-          </li>
+
           <li>
             <span className={styles.dataEditTxt}>
               <select
@@ -43,6 +41,8 @@ export default function AdminUserDataView() {
                 <option value="direction">Insert Directions</option>
               </select>
             </span>
+          </li>
+          <li>
             <span className={styles.dataEditVi}>
               <select
                 name=""
@@ -61,6 +61,9 @@ export default function AdminUserDataView() {
                 </option>
               </select>
             </span>
+          </li>
+          <li>
+            <AdminNotification />
           </li>
         </ul>
         <div>

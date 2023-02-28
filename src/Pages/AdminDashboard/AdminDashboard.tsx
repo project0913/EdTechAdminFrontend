@@ -44,7 +44,7 @@ export function AdminDashboard() {
                     to={"/view-clerk-detail"}
                     state={{ clerkId: clerk._id, username: clerk.username }}
                   >
-                    <button>View</button>
+                    <button className={styles.viewBtn}>View</button>
                   </Link>
                 </td>
               </tr>

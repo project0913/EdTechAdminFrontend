@@ -1,18 +1,15 @@
-
 .table {
   border-collapse: collapse;
   width: 100%;
   border: 2px solid #ddd;
 }
 .th,
-.td{
-  
-    border-collapse: collapse;
-    border: 2px solid #ddd;
-  
+.td {
+  border-collapse: collapse;
+  border: 2px solid #ddd;
 }
 .tableHeaderTitle {
-  background-color:#092258 ;
+  background-color: #092258;
   font-weight: 500;
   font-size: 24px;
   color: white;
@@ -23,10 +20,17 @@
   font-weight: 400;
   margin: 5px;
 }
-.tfoot{
+.tfoot {
   color: #092258;
   font-size: 24px;
-  background-color: #088081 ;
-  
+  background-color: #088081;
 }
- /* #088081 */
+.viewBtn {
+  background-color: #092258;
+  width: 100px;
+  height: 30px;
+  border-radius: 15px;
+  color: white;
+  margin: 5px;
+}
+/* #088081 */

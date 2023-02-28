@@ -71,9 +71,10 @@ export default function ViewClerkDetailPage() {
     setSelectedDuration(parseInt(duration));
   };
   return (
-    <div className={styles.textHeader}>
-      <div className={styles.viewClerkTitle}>
-        view clerk detail
+    <div>
+      <div className={styles.textHeader}>
+        <span className={styles.viewSpan}>view clerk detail</span>
+
         <SelectDropdown
           handleSelect={handleSelectChange}
           items={[
@@ -83,7 +84,7 @@ export default function ViewClerkDetailPage() {
           title=""
         />
       </div>
-      <div>{username}</div>
+
       <div className="container">
         <div className="row">
           {durationalData.length > 0 ? (
@@ -130,8 +131,9 @@ export default function ViewClerkDetailPage() {
         </div>
         {allTimeData.length > 0 && <BarChartComponent data={allTimeData} />}
       </div>
+
       {allTimeData.length > 0 && (
-        <div className={styles.userTotal}>
+        <div className={styles.spanTotalData}>
           <span>
             Total Data Inserted by {username} is{" "}
             {allTimeData.reduce((sum, value) => sum + value.count, 0)}
