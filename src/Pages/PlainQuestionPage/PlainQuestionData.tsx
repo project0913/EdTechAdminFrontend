@@ -223,25 +223,27 @@ export default function PlainQuestionData() {
       </div>
 <div className={styles.plainQuestionInsert}>
           <div className="">
-            <h6>Question Number</h6>
+            <h6 className={styles.plainTxt}>Question Number</h6>
             <input
               type="number"
               value={questionNumber}
               onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
+              className={styles.plainTxt}
             />
           </div>
           
           <div className="">
-            <div className="">
-              <p>Paste your question here</p>
+            <div className={styles.plainTxt}>
+              <p >Paste your question here</p>
               <Editor
                 setValue={setQuestionTextValue}
                 editorId="editor1"
                 value={questionText}
+                
               />
             </div>
-            <div className="">
-              <p>
+            <div className={styles.plainTxt}>
+              <p className={styles.plainTxt}>
                 Select Image if the Question has Image
               </p>
               <img
@@ -255,7 +257,7 @@ export default function PlainQuestionData() {
                 onChange={handleQuestionImageChange}
               />
             </div>
-            <div className="">
+            <div className={styles.plainTxt}>
               <p>
                 Paste your option{"  "}
                 <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
@@ -267,7 +269,7 @@ export default function PlainQuestionData() {
                 value={option_a}
               />
             </div>
-            <div className="">
+            <div className={styles.plainTxt}>
               <p>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
@@ -279,7 +281,7 @@ export default function PlainQuestionData() {
                 value={option_b}
               />
             </div>
-            <div className="">
+            <div className={styles.plainTxt}>
               <p>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
@@ -291,7 +293,7 @@ export default function PlainQuestionData() {
                 value={option_c}
               />
             </div>
-            <div className="">
+            <div className={styles.plainTxt}>
               <p>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
@@ -303,16 +305,18 @@ export default function PlainQuestionData() {
                 value={option_d}
               />
             </div>
-            {/* <div className={styles.dropDownItem}>
-              <p>Choose Answer here</p>
+            <div className={styles.answerYear}>
+          
+           <div>
+              <b>Choose Answer here</b>
               <SelectDropdown
                 title=""
                 items={answerOptions}
                 handleSelect={setOption_answer_Text}
               />
-            </div>*/}
+            </div>
 
-            <div className="">
+            <div className={styles.dropdownItem}>
               <b>Select Year</b>
               <SelectDropdown
                 title=""
@@ -320,15 +324,10 @@ export default function PlainQuestionData() {
                 handleSelect={handleYearsChange}
               />
             </div> 
-            <div>
-              <select name="" id="" className= {styles.dropDownItem}>
-                <option value="">2012</option>
-                <option value="">2013</option>
-                <option value="">2014</option>
-              </select>
             </div>
+           
 
-            <div className="">
+            <div className={styles.plainTxt}>
               <p>Paste your option Description here</p>
               <Editor
                 setValue={setDescription_Text}
@@ -336,7 +335,7 @@ export default function PlainQuestionData() {
                 value={description}
               />
             </div>
-            <div className="">
+            <div className={styles.plainTxt}>
               <p>
                 {" "}
                 Select Image if the description has Image
@@ -349,6 +348,7 @@ export default function PlainQuestionData() {
                 type="file"
                 id="file"
                 onChange={handleDescriptionImageChange}
+                className={styles.plainTxt}
               />
             </div>
           </div>

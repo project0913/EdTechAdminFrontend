@@ -1,0 +1,48 @@
+.table {
+  width: 80%;
+  margin-left: 5%;
+  padding: 10px;
+}
+
+.tr1 {
+  background-color: #092258;
+  padding: 10px;
+}
+.tr1 .th {
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+}
+.tr {
+  background-color: #b2d8d9;
+  padding: 10px;
+}
+.td {
+  background-color: #008081;
+  padding: 10px;
+}
+.td1 {
+  color: #092258;
+  font-size: 18px;
+  padding: 10px;
+}
+.td2 {
+  color: #092258;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.viewClerkTitle {
+  color: #092258;
+  font-size: 24px;
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px;
+  margin-right: 60px;
+}
+.userNameTxt {
+  margin-left: 80px;
+}
+.userName {
+  margin-left: 40px;
+}

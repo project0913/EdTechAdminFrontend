@@ -24,6 +24,12 @@ export default function AdminUserPage() {
     localStorage.removeItem('coydoeClerkUser');
     navigate('/',{replace:true});
   }
+  const routeChange =(e: React.FormEvent<HTMLSelectElement>)=>{
+    console.log((e.target as HTMLSelectElement).value);
+    const path =(e.target as HTMLSelectElement).value;
+    navigate(path);
+    
+ }
   return (
     <div>
       <div className={styles.top}>
@@ -36,46 +42,54 @@ export default function AdminUserPage() {
 
         <div className={styles.selectDropdown}>
         <div className={styles.dataEditTxt}>
-          <select name="" id=""  className={styles.dataEditView}>
+         
+          <select name="" id=""  className={styles.dataEditView} onChange={routeChange}>
             
               
-              <ul><li><option >Insert Data </option></li></ul>
-              <option value="" >Insert Plain Question</option>
-              <option value="" >Insert Grouped Question</option>
-              <option value="" >Insert Direction</option>
+              
+              <option value="" >  
+               
+                  <span className={styles.spanText}>Insert Plain Question</span>
+                
+              </option>
 
+              <option value="grouped-question">
+               
+               <span>Insert Group Question</span> 
+             
+             </option>
+
+              <option value="direction">
+              
+                Insert Directions
               
             
+              </option>    
           </select>
         </div>
         <div className={styles.dataEditVi}>
-          <select name="" id="" className={styles.dataEditView}>
+          <select name="" id="" className={styles.dataEditView} onChange={routeChange}>
+
+          <option value="view-plain-questions"> 
+             
+                View Plain Question
+             
+          </option>
             
+          <option value="view-directions"> 
+             
+                View Directions
               
-              <option value="">View Direction</option>
-              <option value="">View Grouped Question</option>
-              <option value="">View Plain Question</option>
+          </option>
+
+            <option value="view-grouped-questions"> 
               
-            
-            
+                View Grouped Question
+           
+            </option>
           </select>
         </div>
         </div>
-        {/* <div className={styles.selectMenu}>
-          <div className={styles.selectBtn}>
-            <span className={styles.selectText}>Insert Data</span>
-         <ul className={styles.option}>
-         <li>
-              <Link to={""}>
-                <span className={styles.spanText}>Insert Plain Question</span>
-              </Link>
-            </li>
-        
-         </ul>
-          </div>
-        </div> */}
-        
-       
         <span className={styles.topBalance}>
        
         <label className={styles.balanceLabel}>Your Total Data </label><span className={styles.spanLabel}>{totalData}</span>
@@ -83,10 +97,15 @@ export default function AdminUserPage() {
         </span>
         <span><button onClick={()=>logout()} className={styles.logoutBtn}>Log out <i className="fas fa-sign-out-alt"></i></button></span>
       </div>
-      
-        
-          
-            {/* <li className={styles.leftBarText}>
+         
+        <div className={styles.rightBar}>
+          <Outlet />
+        </div>
+     </div>
+  
+  );
+}
+{/* <li className={styles.leftBarText}>
               <b>Data Insertion</b>{" "}
             </li>
             <li>
@@ -133,11 +152,3 @@ export default function AdminUserPage() {
     //         </li>
     //       </ul> */}
     
-    //    
-        <div className={styles.rightBar}>
-          <Outlet />
-        </div>
-    //   </div>
-    // </div>
-  );
-}

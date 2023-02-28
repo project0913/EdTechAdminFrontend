@@ -172,7 +172,7 @@ export default function PlainQuestionEditor() {
       }
     >
 
-      <div style={{backgroundColor:"red"}} className={styles.bodyPlainQuestion}> 
+      <div className={styles.bodyPlainQuestion}> 
       <div className={styles.plainQuestionContainer}>
         {errorMessage.length > 0 && (
           <p style={{ color: "red" }}>{errorMessage}</p>
@@ -180,16 +180,17 @@ export default function PlainQuestionEditor() {
 
         <div className="">
           <div className={styles.editorContainer}>
-            <h6>Question Number</h6>
+            <h6 className={styles.plainTxt}>Question Number</h6>
             <input
               type="number"
               value={questionNumber}
               onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
+              className={styles.inputText}
             />
           </div>
           <div className="">
             <div className="">
-              <p>Paste your question here</p>
+              <p className={styles.plainTxt} >Paste your question here</p>
               <Editor
                 setValue={setQuestionTextValue}
                 editorId="editor1"
@@ -198,7 +199,7 @@ export default function PlainQuestionEditor() {
             </div>
             <div className="">
               <p>
-                <strong>select Image if the Question has Image</strong>
+                <strong className={styles.plainTxt}>select Image if the Question has Image</strong>
               </p>
               <img
                 src={
@@ -216,7 +217,7 @@ export default function PlainQuestionEditor() {
               />
             </div>
             <div className="">
-              <p>
+              <p className={styles.plainTxt}>
                 Paste your option{"  "}
                 <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
                 here
@@ -228,7 +229,7 @@ export default function PlainQuestionEditor() {
               />
             </div>
             <div className="">
-              <p>
+              <p className={styles.plainTxt}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                 here
@@ -240,7 +241,7 @@ export default function PlainQuestionEditor() {
               />
             </div>
             <div className="">
-              <p>
+              <p className={styles.plainTxt}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                 here
@@ -252,7 +253,7 @@ export default function PlainQuestionEditor() {
               />
             </div>
             <div className="">
-              <p>
+              <p className={styles.plainTxt}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                 here
@@ -264,7 +265,7 @@ export default function PlainQuestionEditor() {
               />
             </div>
             <div className="">
-              <p>choose Answer here</p>
+              <p className={styles.plainTxt}>choose Answer here</p>
               <SelectDropdown
                 title=""
                 items={answerOptions}
@@ -273,16 +274,17 @@ export default function PlainQuestionEditor() {
             </div>
 
             <div className="">
-              <b>Edit Year</b>
+              <b className={styles.plainTxt}>Edit Year</b>
               <input
                 type="number"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
+                className={styles.inputText}
               />
             </div>
 
             <div className="">
-              <p>Paste your option Description here</p>
+              <p className={styles.plainTxt}>Paste your option Description here</p>
               <Editor
                 setValue={setDescription_Text}
                 editorId="editor6"
@@ -292,7 +294,7 @@ export default function PlainQuestionEditor() {
             <div className="">
               <p>
                 {" "}
-                <strong>select Image if the description has Image</strong>
+                <strong className={styles.plainTxt}>select Image if the description has Image</strong>
               </p>
               <img
                 src={

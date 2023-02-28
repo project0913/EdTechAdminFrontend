@@ -18,6 +18,10 @@ import ClerkAuthPage from "./Pages/ClerkAuthPage/ClerkAuthPage";
 import { ClerkRouteGuard } from "./components/ClerkGuard";
 import { AdminUserRouteGuard } from "./components/AdminUserPageGuard";
 import { AdminDashboard } from "./Pages/AdminDashboard/AdminDashboard";
+import AdminLogin from "./Pages/AdminLogin/AdminLogin";
+import AdminUserDataView from "./Pages/Admin/AdminUserDataView";
+import ViewClerkDetailPage from "./Pages/viewClerkDetailPage/ViewClerkDetailPage";
+import AdminNotification from "./components/AdminNotification";
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
@@ -26,6 +30,56 @@ function App() {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
+    { path: "admin-login", element: <AdminLogin /> },
+    {
+      path: "admin",
+      element: <AdminUserDataView />,
+      children: [
+        {
+          path: "",
+          element: <AdminDashboard />,
+        },
+        {
+          path: "plain-question",
+          element: <PlainQuestionData />,
+        },
+        {
+          path: "grouped-question",
+          element: <GroupedQuestionPage />,
+        },
+
+        {
+          path: "direction",
+          element: <DirectionPage />,
+        },
+
+        {
+          path: "view-plain-questions",
+          element: <ViewPlainQuestionsPage />,
+        },
+        {
+          path: "view-grouped-questions",
+          element: <ViewGroupedQuestionsPage />,
+        },
+
+        {
+          path: "edit-plain-question",
+          element: <PlainQuestionEditor />,
+        },
+
+        {
+          path: "edit-direction",
+          element: <DirectionEditorPage />,
+        },
+
+        {
+          path: "view-directions",
+          element: <ViewDirectionsPage />,
+        },
+      ],
+    },
+    { path: "view-clerk-detail", element: <ViewClerkDetailPage /> },
+    { path: "admin-notification", element: <AdminNotification /> },
     {
       path: "admin-user",
       element: <AdminUserRouteGuard children={<AdminUserPage />} />,

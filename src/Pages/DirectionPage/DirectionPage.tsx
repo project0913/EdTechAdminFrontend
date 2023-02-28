@@ -1,4 +1,5 @@
 import React, { CSSProperties, useEffect, useState } from "react";
+import styles from './directionpage.module.css'
 import { fetchGroupedCourses } from "../../DataService/fetchCourse.service";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import Editor from "../../quill/Editor";
@@ -91,8 +92,9 @@ export default function DirectionPage() {
       {errorMessage.length > 0 && (
         <p style={{ color: "red" }}>{errorMessage}</p>
       )}
-      <div className="direction-question-bg">
+      <div className={styles.directionQuestionBg}>
         <div className="direction-question">
+          <div className={styles.directionHeader}>
           <div className="course-selection mt-3">
             <SelectDropdown
               title="courses"
@@ -109,17 +111,19 @@ export default function DirectionPage() {
               handleSelect={handleYearsChange}
             />
           </div>
+          </div>
 
           <div className="editor-container mt-3">
-            <p>fill Direction Number here</p>
+            <p className={styles.directionQuestionTxt}>fill Direction Number here</p>
             <input
               type="number"
               onChange={(e) => setDirectionNumber(parseInt(e.target.value))}
+              className={styles.directionQuestionTxt}
             />
           </div>
 
           <div className="editor-discrption mt-3">
-            <p>Paste your Direction Text here</p>
+            <p className={styles.directionQuestionTxt} >Paste your Direction Text here</p>
             <Editor
               setValue={setDirection_text}
               editorId="editor1"
@@ -128,15 +132,16 @@ export default function DirectionPage() {
           </div>
 
           <div className="section-name">
-            <p>paste Direction section Name here</p>
+            <p className={styles.directionQuestionTxt}>paste Direction section Name here</p>
             <input
               onChange={(e) => setSectionName(e.target.value)}
               value={sectionName}
+              className={styles.directionQuestionTxt}
             />
           </div>
 
           <div className="passage-text mt-3 mb-3">
-            <p>paste your passage here if any</p>
+            <p className={styles.directionQuestionTxt}>paste your passage here if any</p>
             <Editor
               setValue={setPassage_Text}
               editorId="editor2"
@@ -145,7 +150,7 @@ export default function DirectionPage() {
           </div>
         </div>
         <div className="submit-butt mb-3">
-          <button className="btn btn-primary" onClick={submitQuestionToBackend}>
+          <button className={styles.btnDirection} onClick={submitQuestionToBackend}>
             submit
           </button>
         </div>

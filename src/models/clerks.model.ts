@@ -1,4 +1,5 @@
 export type Clerk = {
+  _id?: string;
   username: string;
   questionsEntered: number;
   balance: number;

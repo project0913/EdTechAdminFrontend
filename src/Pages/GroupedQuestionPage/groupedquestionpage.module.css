@@ -1,0 +1,47 @@
+.groupedQuestionBody {
+    height: 100%;
+    width: 100%;
+   
+
+}
+.groupedHeader {
+    
+    background-color: #088081;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+   
+    
+  }
+  .groupedTop{
+   
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    gap: 1rem;
+  }
+  .dropdownItem {
+    display: flex;
+    width: 200px;
+    gap: 2rem;
+  }
+  .btnQuestionSubmit {
+    width: 200px;
+    height: 40px;
+    background-color: #088081;
+    margin-left: 400px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  .questionNumber {
+    margin-left: 80px;
+    font-size: 28px;
+  }
+  .answerContainer {
+    margin-left: 80px;
+  }

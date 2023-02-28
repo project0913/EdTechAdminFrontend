@@ -1,0 +1,56 @@
+.adminBg {
+  height: 6%;
+  width: 100%;
+  background-color: #b2d8d9;
+  display: flex;
+}
+.orderList {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+
+  color: #092258;
+  font-size: 18px;
+}
+.bodyAdmin {
+  height: 94%;
+  width: 100%;
+}
+.selectItem {
+  background-color: #008081;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-right: 20px;
+  height: 26px;
+  margin-left: 50px;
+}
+.logoutBtn {
+  background-color: #092258;
+  color: white;
+  font-size: 18px;
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 14px;
+  margin-left: 760px;
+}
+.selectDropdown {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b2d8d9;
+  border-radius: 30px;
+  margin-right: 300px;
+  gap: 2rem;
+}
+.dataEditView {
+  background-color: #b2d8d9;
+  color: #092258;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 30px;
+  margin: 10px;
+}

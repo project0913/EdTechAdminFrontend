@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from "./directionEditor.module.css";
 import Editor from "../../quill/Editor";
 import { Direction } from "../../models/direction.model";
 import { useLocation } from "react-router-dom";
@@ -58,7 +59,7 @@ export default function DirectionEditorPage() {
   };
 
   return (
-    <div className="direction-question-bg">
+    <div className={styles.editorPage}>
       <div className="direction-question">
         <div className="editor-container mt-3">
           <p>fill Direction Number here</p>

@@ -51,3 +51,18 @@ export const clerkSignup = async (
     return error;
   }
 };
+export const adminLogin = async (
+  username: string,
+  password: string
+): Promise<any> => {
+  try {
+    let raw = await axios.post(`/admin/login`, {
+      username,
+      password,
+    });
+    let data = raw.data;
+    return data as { token: string };
+  } catch (error) {
+    return error;
+  }
+};

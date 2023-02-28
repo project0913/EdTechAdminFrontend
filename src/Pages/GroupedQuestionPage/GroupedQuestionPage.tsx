@@ -1,4 +1,4 @@
-import "./groupedquestionpage.css";
+import styles from "./groupedquestionpage.module.css";
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import placeholderImage from "../../assets/place_holder.jpg";
 
@@ -209,34 +209,47 @@ export default function GroupedQuestionPage() {
         />
       }
     >
-      <div className="grouped-question-bg-kulli">
+      
+        <div className={styles.groupedQuestionBody}>
+      <div className="">
         {errorMessage.length > 0 && (
           <p style={{ color: "red" }}>{errorMessage}</p>
         )}
 
-        <div className="grouped-question">
-          <div className="list-course mt-3">
+        <div className={styles.heading} >
+          <div className={styles.groupedTop}>
+          <div className={styles.groupedHeader}>
+         
+            <div className={styles.dropdownItem}>
+          <div className="">
             <SelectDropdown
               title="Courses"
               items={courses}
               handleSelect={handleCourseChange}
             />
           </div>
-          <div className="year-selection mt-3">
+          <div className="">
             <SelectDropdown
               title="Years"
               items={years}
               handleSelect={handleYearChange}
             />
           </div>
-          <div className="direction mt-3">
+          <div className="">
             <SelectDropdown
               title="Directions"
               items={directions}
               handleSelect={handleDirectionChange}
             />
           </div>
-          <div className="editor-container">
+          </div>
+          </div>
+
+        </div>
+        
+          </div>
+          <div className={styles.editorContainer}>
+          <div className={styles.questionNumber}>
             <h6>Question Number</h6>
             <input
               type="number"
@@ -245,7 +258,7 @@ export default function GroupedQuestionPage() {
           </div>
           <div className="kulli">
             <div className="editor-container">
-              <p>Paste your question here</p>
+              <p className={styles.questionNumber}>Paste your question here</p>
               <Editor
                 setValue={setQuestionTextValue}
                 editorId="editor1"
@@ -254,7 +267,7 @@ export default function GroupedQuestionPage() {
             </div>
             <div className="editor-container">
               <p>
-                <strong>select Image if the Question has Image</strong>
+                <strong className={styles.questionNumber}>select Image if the Question has Image</strong>
               </p>
               <img
                 src={tempQuestionImagePath || placeholderImage}
@@ -268,7 +281,7 @@ export default function GroupedQuestionPage() {
               />
             </div>
             <div className="editor-container">
-              <p>
+              <p className={styles.questionNumber}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>A</span>{" "}
                 here
@@ -280,7 +293,7 @@ export default function GroupedQuestionPage() {
               />
             </div>
             <div className="editor-container">
-              <p>
+              <p className={styles.questionNumber}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                 here
@@ -292,7 +305,7 @@ export default function GroupedQuestionPage() {
               />
             </div>
             <div className="editor-container">
-              <p>
+              <p className={styles.questionNumber}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                 here
@@ -304,7 +317,7 @@ export default function GroupedQuestionPage() {
               />
             </div>
             <div className="editor-container">
-              <p>
+              <p className={styles.questionNumber}>
                 Paste your option
                 <span style={{ color: "red", fontWeight: "bolder" }}>
                   D
@@ -317,8 +330,8 @@ export default function GroupedQuestionPage() {
                 value={option_d}
               />
             </div>
-            <div className="editor-container">
-              <p>choose Answer here</p>
+            <div className={styles.answerContainer}>
+              <p className={styles.questionAnswer}>choose Answer here</p>
               <SelectDropdown
                 title=""
                 items={answerOptions}
@@ -327,7 +340,7 @@ export default function GroupedQuestionPage() {
             </div>
 
             <div className="editor-container">
-              <p>Paste your option Description here</p>
+              <p className={styles.questionNumber}>Paste your option Description here</p>
               <Editor
                 setValue={setDescription_Text}
                 editorId="editor6"
@@ -337,7 +350,7 @@ export default function GroupedQuestionPage() {
             <div className="editor-container">
               <p>
                 {" "}
-                <strong>select Image if the description has Image</strong>
+                <strong className={styles.questionNumber}>select Image if the description has Image</strong>
               </p>
               <img
                 src={tempDescriptionImagePath || placeholderImage}
@@ -354,14 +367,17 @@ export default function GroupedQuestionPage() {
           <div className="submit-butt">
             <button
               onClick={submitQuestionToBackend}
-              className="btn btn-primary btn-lg"
+              className={styles.btnQuestionSubmit}
             >
-              submit
+              Submit
             </button>
           </div>
           {questionText}
         </div>
-      </div>
+        </div>
+        </div>
+        
+    
     </LoadingOverlayWrapper>
   );
 }

@@ -13,7 +13,7 @@ type DropdownProps = {
 
 function SelectDropdown({ title, items, handleSelect, styles }: DropdownProps) {
   return (
-    <span className="select-container" style={styles || { width: "7rem" }}>
+    <span className="select-container" >
       <label htmlFor="select">{title}</label> {}
       <select onChange={handleSelect} id="select" className={style.selectDropdown}>
         {items.map((option, index) => (
@@ -27,3 +27,4 @@ function SelectDropdown({ title, items, handleSelect, styles }: DropdownProps) {
 }
 
 export default SelectDropdown;
+//style={styles || { width: "7rem" }}
