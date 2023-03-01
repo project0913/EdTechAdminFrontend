@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./adminNotification.module.css";
 import {
   AdminNotificationDto,
@@ -15,6 +15,9 @@ export default function AdminNotification() {
   const [notifications, setNotifications] = useState<AdminNotificationDto[]>(
     []
   );
+  useEffect(() => {
+    getAdminNotifications();
+  }, []);
   const getAdminNotifications = async () => {
     const data = await fetchAdminNotifications();
     if (data.length == 0) {
@@ -41,6 +44,7 @@ export default function AdminNotification() {
       setHeight("25%");
       setDown(true);
       setOpacity(1);
+      if (notifications.length > 0) resetNotificationsFromServer();
     }
   }
 
@@ -50,24 +54,33 @@ export default function AdminNotification() {
         <span className={styles.iconNotification}>
           <i className="far fa-bell "></i>
         </span>
-        <span className={styles.notificationNumber}>2</span>
+        {notifications.length > 0 && (
+          <span className={styles.notificationNumber}>
+            {notificationCounter}
+          </span>
+        )}
       </div>
 
       <div
         className={`${styles.notificationBox}`}
         style={{ height: height, opacity: opacity }}
       >
-        <h2>
-          Notifications <span>6</span>
-        </h2>
+        <h2>New Notifications</h2>
+
         <div className={styles.notificationItem}>
-          <div className={styles.text}>
-            <h4>Lesi Belay</h4>
-            <p>
-              Hi Keno (username), Throughout this course, I aim to push you
-              (course ID). I'm going to put forward a
-            </p>
-          </div>
+          {notifications.length > 0 ? (
+            notifications.map((notification, index) => (
+              <div className={styles.text} key={index}>
+                <h4>{notification?.clerkId?.username || "System Admin"}</h4>
+                <p>
+                  {notification?.clerkId?.username || "System Admin"} inserted{" "}
+                  {notification.count} questions
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>{message}</p>
+          )}
         </div>
       </div>
     </div>
