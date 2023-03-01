@@ -30,6 +30,7 @@ export default function AdminUserDataView() {
                 className={styles.dataEditView}
                 onChange={routeChange}
               >
+                <option value="">Data Insertion Please choose an option</option>
                 <option value="plain-question">
                   <span className={styles.spanText}>Insert Plain Question</span>
                 </option>
@@ -50,6 +51,7 @@ export default function AdminUserDataView() {
                 className={styles.dataEditView}
                 onChange={routeChange}
               >
+                <option value="">Data Viewing Please choose an option</option>
                 <option value="view-plain-questions">
                   View Plain Question
                 </option>

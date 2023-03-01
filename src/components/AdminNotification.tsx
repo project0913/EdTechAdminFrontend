@@ -45,6 +45,8 @@ export default function AdminNotification() {
       setDown(true);
       setOpacity(1);
       if (notifications.length > 0) resetNotificationsFromServer();
+      //destroy seen notifications
+      setNotificationCounter(0);
     }
   }
 
@@ -54,7 +56,7 @@ export default function AdminNotification() {
         <span className={styles.iconNotification}>
           <i className="far fa-bell "></i>
         </span>
-        {notifications.length > 0 && (
+        {notifications.length > 0 && notificationCounter > 0 && (
           <span className={styles.notificationNumber}>
             {notificationCounter}
           </span>

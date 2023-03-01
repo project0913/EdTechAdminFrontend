@@ -42,7 +42,10 @@ export function AdminDashboard() {
                 <td>
                   <Link
                     to={"/view-clerk-detail"}
-                    state={{ clerkId: clerk._id, username: clerk.username }}
+                    state={{
+                      clerkId: clerk.adminId ? clerk.adminId : clerk._id,
+                      username: clerk.username,
+                    }}
                   >
                     <button className={styles.viewBtn}>View</button>
                   </Link>

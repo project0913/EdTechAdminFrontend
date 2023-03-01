@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import axios from "../api/axios";
 
 export const publicLogin = async (
@@ -51,17 +52,19 @@ export const clerkSignup = async (
     return error;
   }
 };
+
 export const adminLogin = async (
   username: string,
   password: string
-): Promise<any> => {
+): Promise<{ username: string; token: string } | any> => {
   try {
     let raw = await axios.post(`/admin/login`, {
       username,
       password,
     });
-    let data = raw.data;
-    return data as { token: string };
+    let data = raw.data as { body: { username: string; token: string } };
+    const response = { username: data.body.username, token: data.body.token };
+    return response;
   } catch (error) {
     return error;
   }

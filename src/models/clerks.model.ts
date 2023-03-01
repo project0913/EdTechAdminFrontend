@@ -5,4 +5,5 @@ export type Clerk = {
   balance: number;
   createdAt: string;
   updatedAt: string;
+  adminId?: string;
 };

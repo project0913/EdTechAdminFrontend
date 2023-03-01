@@ -22,7 +22,10 @@ export default function AdminLogin() {
       for (const msg of messages) msgTxt += msg + " ";
       setMessage(msgTxt);
     } else {
-      localStorage.setItem("coydoePublicUser", JSON.stringify({ token: true }));
+      localStorage.setItem(
+        "coydoeAdminUser",
+        JSON.stringify({ token: result.token, username: result.username })
+      );
       ///console.log(result?.token);
 
       window.location.href = "/admin";

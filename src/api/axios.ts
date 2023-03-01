@@ -2,8 +2,12 @@ import axios from "axios";
 
 console.log("axios token loaded");
 const getClerkToken = () => {
-  let clerk = localStorage.getItem("coydoeClerkUser");
-  const parsedClerk = JSON.parse(clerk || "{}") as {
+  let clerkOrAdmin: string | null = null;
+  clerkOrAdmin = localStorage.getItem("coydoeClerkUser");
+  if (!clerkOrAdmin) {
+    clerkOrAdmin = localStorage.getItem("coydoeAdminUser");
+  }
+  const parsedClerk = JSON.parse(clerkOrAdmin || "{}") as {
     token: string;
     username: string;
   };

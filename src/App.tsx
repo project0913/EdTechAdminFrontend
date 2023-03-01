@@ -22,6 +22,7 @@ import AdminLogin from "./Pages/AdminLogin/AdminLogin";
 import AdminUserDataView from "./Pages/Admin/AdminUserDataView";
 import ViewClerkDetailPage from "./Pages/viewClerkDetailPage/ViewClerkDetailPage";
 import AdminNotification from "./components/AdminNotification";
+import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
@@ -33,7 +34,11 @@ function App() {
     { path: "admin-login", element: <AdminLogin /> },
     {
       path: "admin",
-      element: <AdminUserDataView />,
+      element: (
+        <SystemAdminRouteGuard
+          children={<AdminUserDataView />}
+        ></SystemAdminRouteGuard>
+      ),
       children: [
         {
           path: "",
@@ -128,7 +133,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <RouterProvider router={router} />
     </div>
   );
