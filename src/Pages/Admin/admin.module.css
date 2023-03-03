@@ -1,20 +1,38 @@
 .adminBg {
-  height: 6%;
-  width: 100%;
+  height: 50px;
   background-color: #b2d8d9;
   display: flex;
+  margin-left: 30px;
+  margin-right: 30px;
 }
-.orderList {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
 
-  color: #092258;
-  font-size: 18px;
-}
-.bodyAdmin {
-  height: 94%;
+.headerList {
+  gap: 2rem;
   width: 100%;
+}
+.clerkNotification {
+  float: left;
+  display: inline-flex;
+  gap: 2rem;
+  margin: 15px;
+}
+.logBtn {
+  float: right;
+  margin: 10px;
+}
+.logoutBtn {
+  background-color: #083e4e;
+  color: white;
+  font-size: 18px;
+  float: right;
+  height: 26px;
+  border-radius: 10px;
+  border: none;
+}
+.dropdown {
+}
+/* 
+.bodyAdmin {
 }
 .selectItem {
   background-color: #008081;
@@ -24,16 +42,22 @@
   height: 26px;
   margin-left: 50px;
 }
+.orderList {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  color: #092258;
+  font-size: 18px;
+  width: 100%;
+}
 .logoutBtn {
-  background-color: #092258;
+  background-color: #083e4e;
   color: white;
   font-size: 18px;
-  width: 80px;
+  float: right;
   height: 30px;
   border-radius: 10px;
   border: none;
-  margin-top: 14px;
-  margin-left: 1020px;
 }
 .selectDropdown {
   border: none;
@@ -51,6 +75,55 @@
   font-family: "Times New Roman", Times, serif;
   font-size: 14px;
   padding: 4px;
+
   border-radius: 30px;
-  gap: 3rem;
+}
+
+.bindingClass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.notify {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 400px) {
+  .adminBg {
+    height: 130px;
+    margin: 0;
+  }
+  .orderList {
+    width: 100%;
+    display: flex;
+  }
+  .dataEditView {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  .notifyBtn {
+    list-style: none;
+    display: flex;
+  }
+  .bindingClass {
+    display: flex;
+    width: 100%;
+  }
+  .dropdownItem1 {
+    width: 50%;
+  }
+  .dropdownItem2 {
+    width: 50%;
+  }
+} */
+@media screen and (max-width: 400px) {
+  .adminBg {
+    margin: 0;
+  }
+  .logoutBtn {
+    font-size: 14px;
+  }
 }
