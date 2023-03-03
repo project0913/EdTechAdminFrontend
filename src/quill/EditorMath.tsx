@@ -74,6 +74,7 @@ export function MathEditor() {
           ["\\ell", "\\ell"],
           ["\\bar{x}", "\\bar{x}"],
           ["\\lVert", "\\lVert"],
+          ["\\vec{x}", "\\vec{x}"],
           [
             "\\left.\\frac{a^3}{3}\\right|_0^1",
             "\\left.\\frac{}{}\\right|_0^1",
