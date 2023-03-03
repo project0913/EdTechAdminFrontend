@@ -14,6 +14,7 @@
     "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "html-react-parser": "^3.0.9",
+    "quill-editor-math": "^0.1.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",

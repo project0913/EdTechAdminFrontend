@@ -22,10 +22,15 @@ import AdminLogin from "./Pages/AdminLogin/AdminLogin";
 import AdminUserDataView from "./Pages/Admin/AdminUserDataView";
 import ViewClerkDetailPage from "./Pages/viewClerkDetailPage/ViewClerkDetailPage";
 import AdminNotification from "./components/AdminNotification";
+<<<<<<< HEAD
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
+=======
+import { MathEditor } from "./quill/EditorMath";
+>>>>>>> 98450ba (Add Math Editor)
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
+    { path: "math", element: <MathEditor /> },
     { path: "admin-dashboard", element: <AdminDashboard /> },
     {
       path: "clerk-auth",
