@@ -1,5 +1,5 @@
 .adminBg {
-  height: 50px;
+  height: 30px;
   background-color: #b2d8d9;
   display: flex;
   margin-left: 30px;
@@ -29,11 +29,39 @@
   border-radius: 10px;
   border: none;
 }
-.dropdown {
+.dropdownBg {
+  background-color: #b2d8d9;
+  height: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
 }
-/* 
+.dropdownItem {
+  background-color: #b2d8d9;
+  color: #092258;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 30px;
+  margin-left: 30%;
+}
+.dataEditView {
+  background-color: #b2d8d9;
+  color: #092258;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  padding: 4px;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
 .bodyAdmin {
+  margin-left: 30px;
+  margin-right: 30px;
 }
+
+/* 
 .selectItem {
   background-color: #008081;
   border-radius: 15px;
@@ -125,5 +153,21 @@
   }
   .logoutBtn {
     font-size: 14px;
+  }
+  .dropdownItem {
+    font-size: 16px;
+    padding: 4px;
+    margin-top: 10px;
+
+    margin-left: 6%;
+  }
+  .dropdownBg {
+    margin: 0;
+
+    height: 45px;
+  }
+  .bodyAdmin {
+    margin: 0;
+    display: flex;
   }
 }

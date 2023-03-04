@@ -129,7 +129,7 @@ export default function ViewPlainQuestionsPage() {
     setQuestions(questions);
     setTotalCount(count);
   };
-  const onPageChange = async (page:number)=>{
+  const onPageChange = async (page: number) => {
     const { count, questions } = await fetchPlainQuestions({
       course: selectedCourse,
       year: selectedYear,
@@ -137,123 +137,142 @@ export default function ViewPlainQuestionsPage() {
     });
     setQuestions(questions);
     setTotalCount(count);
-  }
+  };
 
   return (
-    <div>
-      <div className={styles.adminBody}>
+    <div className={styles.all}>
+      <div className={styles.directionHeader}>
         <span>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </span>
-        <span className={styles.adminSelect}>
-          <b style={{ color: "white", fontSize: "14px" }}>Select Course</b>
+        <span>
+          <b>Select Course</b>
           <SelectDropdown
             title=""
             items={courseOptions}
             handleSelect={handleSelectCourse}
-            styles={{ display: "inline", width: "4rem" }}
+            // styles={{ display: "inline", width: "4rem" }}
           />
         </span>
         <span>
-          <b style={{ color: "white" }}>Select Year</b>
+          <b>Select Year</b>
           <SelectDropdown
             title=""
             items={yearOptions}
             handleSelect={handleSelectYear}
-            styles={{ display: "inline", width: "3rem" }}
           />
         </span>
       </div>
-
-      <table className={styles.table}>
-        <thead>
-        <tr>
-          <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Questions</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'A'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'B'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'C'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'D'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Description</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>
-            question Image
-          </th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>
-            DescriptionImage Image
-          </th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
-        </tr>
-        </thead>
-        <tbody>
-        {questions.length > 0
-          ? questions.map((question, index) => (
-              <tr className={styles.tr} key={index}>
-                <td className={`${styles.td} ${styles.tdNo}`}>
-                  {question.questionNumber}
-                </td>
-                <td className={styles.td}>{question.year}</td>
-                <td className={styles.td}>
-                  {parse(question.questionText, options)}
-                </td>
-                <td className={styles.td}>
-                  {parse(question.option_a, options)}
-                </td>
-                <td className={styles.td}>
-                  {parse(question.option_b, options)}
-                </td>
-                <td className={styles.td}>
-                  {parse(question.option_c, options)}
-                </td>
-                <td className={styles.td}>
-                  {parse(question.option_d, options)}
-                </td>
-                <td className={styles.td}>{question.answer}</td>
-                <td className={styles.td}>
-                  {parse(question.description, options)}
-                </td>
-                <td className={styles.td}>
-                  <img
-                    style={{ maxWidth: "150px", maxHeight: "150px" }}
-                    src={
-                      resolveImageURL(question.questionImage || "") ||
-                      placeholderImage
-                    }
-                  />
-                </td>
-                <td className={styles.td}>
-                  {" "}
-                  <img
-                    style={{ maxWidth: "150px", maxHeight: "150px" }}
-                    src={
-                      resolveImageURL(question.descriptionImage || "") ||
-                      placeholderImage
-                    }
-                  />
-                </td>
-                <td className={styles.td}>
-                  <Link
-                    to={"/admin-user/edit-plain-question"}
-                    state={{ question }}
-                  >
-                    <button className={styles.label}>Edit</button>
-                  </Link>
-                  <button
-                    className={styles.label1}
-                    onClick={() =>
-                      deletePlainQuestionFromServer(question._id || "")
-                    }
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          : "Loading..."}
+      <div className={styles.allTable}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                Questions
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                Option 'A'
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                Option 'B'
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                Option 'C'
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                Option 'D'
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                Description
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                question Image
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                DescriptionImage Image
+              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {questions.length > 0
+              ? questions.map((question, index) => (
+                  <tr className={styles.tr} key={index}>
+                    <td className={`${styles.td} ${styles.tdNo}`}>
+                      {question.questionNumber}
+                    </td>
+                    <td className={styles.td}>{question.year}</td>
+                    <td className={styles.td}>
+                      {parse(question.questionText, options)}
+                    </td>
+                    <td className={styles.td}>
+                      {parse(question.option_a, options)}
+                    </td>
+                    <td className={styles.td}>
+                      {parse(question.option_b, options)}
+                    </td>
+                    <td className={styles.td}>
+                      {parse(question.option_c, options)}
+                    </td>
+                    <td className={styles.td}>
+                      {parse(question.option_d, options)}
+                    </td>
+                    <td className={styles.td}>{question.answer}</td>
+                    <td className={styles.td}>
+                      {parse(question.description, options)}
+                    </td>
+                    <td className={styles.td}>
+                      <img
+                        style={{ maxWidth: "150px", maxHeight: "150px" }}
+                        src={
+                          resolveImageURL(question.questionImage || "") ||
+                          placeholderImage
+                        }
+                      />
+                    </td>
+                    <td className={styles.td}>
+                      {" "}
+                      <img
+                        style={{ maxWidth: "150px", maxHeight: "150px" }}
+                        src={
+                          resolveImageURL(question.descriptionImage || "") ||
+                          placeholderImage
+                        }
+                      />
+                    </td>
+                    <td className={styles.td}>
+                      <Link
+                        to={"/admin-user/edit-plain-question"}
+                        state={{ question }}
+                      >
+                        <button className={styles.label}>Edit</button>
+                      </Link>
+                      <button
+                        className={styles.label1}
+                        onClick={() =>
+                          deletePlainQuestionFromServer(question._id || "")
+                        }
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              : "Loading..."}
           </tbody>
-      </table>
-      <CustomPagination totalItems={totalCount} pageSize={10}  onPageChange={onPageChange}/>
+        </table>
+      </div>
+
+      <div className={styles.pagination}>
+        <CustomPagination
+          totalItems={totalCount}
+          pageSize={10}
+          onPageChange={onPageChange}
+        />
+      </div>
     </div>
   );
 }

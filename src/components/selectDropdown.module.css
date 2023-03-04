@@ -1,6 +1,6 @@
 .selectDropdown {
   color: #092258;
-  border-radius: 10px;
+  border-radius: 30px;
   width: 108px;
   padding: 4px;
   background-color: #b2d8d9;
@@ -8,10 +8,12 @@
 }
 @media screen and (max-width: 400px) {
   .selectDropdown {
-    border-radius: 2px;
-    width: 120px;
+    border-radius: 32px;
+    width: 100px;
     margin-top: 0px;
-    padding: 2px;
-    margin: 0;
+
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
   }
 }

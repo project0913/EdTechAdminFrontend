@@ -1,5 +1,5 @@
 import React, { CSSProperties, useEffect, useState } from "react";
-import styles from './directionpage.module.css'
+import styles from "./directionpage.module.css";
 import { fetchGroupedCourses } from "../../DataService/fetchCourse.service";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import Editor from "../../quill/Editor";
@@ -10,6 +10,7 @@ import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
+import { MathEditor } from "../../quill/EditorMath";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -95,64 +96,58 @@ export default function DirectionPage() {
       <div className={styles.directionQuestionBg}>
         <div className="direction-question">
           <div className={styles.directionHeader}>
-          <div className="course-selection mt-3">
-            <SelectDropdown
-              title="courses"
-              items={courses}
-              handleSelect={handleCourseChange}
-            />
-          </div>
+            <div>
+              <SelectDropdown
+                title="courses"
+                items={courses}
+                handleSelect={handleCourseChange}
+              />
+            </div>
 
-          <div className="exam-category">
-            <b>select Year</b>
-            <SelectDropdown
-              title=""
-              items={yearsOptions}
-              handleSelect={handleYearsChange}
-            />
+            <div>
+              <b>select Year</b>
+              <SelectDropdown
+                title=""
+                items={yearsOptions}
+                handleSelect={handleYearsChange}
+              />
+            </div>
           </div>
-          </div>
+          <div className={styles.editor}>
+            <div>
+              <p>fill Direction Number here</p>
+              <input
+                type="number"
+                onChange={(e) => setDirectionNumber(parseInt(e.target.value))}
+              />
+            </div>
 
-          <div className="editor-container mt-3">
-            <p className={styles.directionQuestionTxt}>fill Direction Number here</p>
-            <input
-              type="number"
-              onChange={(e) => setDirectionNumber(parseInt(e.target.value))}
-              className={styles.directionQuestionTxt}
-            />
-          </div>
+            <div>
+              <p>Paste your Direction Text here</p>
+              <MathEditor setValue={setDirection_text} value={directionText} />
+            </div>
 
-          <div className="editor-discrption mt-3">
-            <p className={styles.directionQuestionTxt} >Paste your Direction Text here</p>
-            <Editor
-              setValue={setDirection_text}
-              editorId="editor1"
-              value={directionText}
-            />
-          </div>
+            <div>
+              <p>paste Direction section Name here</p>
+              <input
+                onChange={(e) => setSectionName(e.target.value)}
+                value={sectionName}
+              />
+            </div>
 
-          <div className="section-name">
-            <p className={styles.directionQuestionTxt}>paste Direction section Name here</p>
-            <input
-              onChange={(e) => setSectionName(e.target.value)}
-              value={sectionName}
-              className={styles.directionQuestionTxt}
-            />
+            <div>
+              <p>paste your passage here if any</p>
+              <MathEditor setValue={setPassage_Text} value={passage || ""} />
+            </div>
+            <div>
+              <button
+                onClick={submitQuestionToBackend}
+                className={styles.submitBtn}
+              >
+                submit
+              </button>
+            </div>
           </div>
-
-          <div className="passage-text mt-3 mb-3">
-            <p className={styles.directionQuestionTxt}>paste your passage here if any</p>
-            <Editor
-              setValue={setPassage_Text}
-              editorId="editor2"
-              value={passage || ""}
-            />
-          </div>
-        </div>
-        <div className="submit-butt mb-3">
-          <button className={styles.btnDirection} onClick={submitQuestionToBackend}>
-            submit
-          </button>
         </div>
       </div>
     </LoadingOverlayWrapper>

@@ -16,6 +16,7 @@ import { submitGroupedQuestionToServer } from "../../DataService/submit-question
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
+import { MathEditor } from "../../quill/EditorMath";
 const override: CSSProperties = {
   margin: "10 auto",
   borderColor: "red",
@@ -209,175 +210,152 @@ export default function GroupedQuestionPage() {
         />
       }
     >
-      
-        <div className={styles.groupedQuestionBody}>
-      <div className="">
-        {errorMessage.length > 0 && (
-          <p style={{ color: "red" }}>{errorMessage}</p>
-        )}
+      <div className={styles.groupedQuestionBody}>
+        <div>
+          {errorMessage.length > 0 && (
+            <p style={{ color: "red" }}>{errorMessage}</p>
+          )}
 
-        <div className={styles.heading} >
-          <div className={styles.groupedTop}>
-          <div className={styles.groupedHeader}>
-         
-            <div className={styles.dropdownItem}>
-          <div className="">
-            <SelectDropdown
-              title="Courses"
-              items={courses}
-              handleSelect={handleCourseChange}
-            />
-          </div>
-          <div className="">
-            <SelectDropdown
-              title="Years"
-              items={years}
-              handleSelect={handleYearChange}
-            />
-          </div>
-          <div className="">
-            <SelectDropdown
-              title="Directions"
-              items={directions}
-              handleSelect={handleDirectionChange}
-            />
-          </div>
-          </div>
-          </div>
-
-        </div>
-        
-          </div>
-          <div className={styles.editorContainer}>
-          <div className={styles.questionNumber}>
-            <h6>Question Number</h6>
-            <input
-              type="number"
-              onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
-            />
-          </div>
-          <div className="kulli">
-            <div className="editor-container">
-              <p className={styles.questionNumber}>Paste your question here</p>
-              <Editor
-                setValue={setQuestionTextValue}
-                editorId="editor1"
-                value={questionText}
-              />
+          <div className={styles.gropedBg}>
+            <div className={styles.groupedTop}>
+              <div className={styles.groupedHeader}>
+                <div className={styles.dropdownItem}>
+                  <div className="">
+                    <SelectDropdown
+                      title="Courses"
+                      items={courses}
+                      handleSelect={handleCourseChange}
+                    />
+                  </div>
+                  <div className="">
+                    <SelectDropdown
+                      title="Years"
+                      items={years}
+                      handleSelect={handleYearChange}
+                    />
+                  </div>
+                  <div className="">
+                    <SelectDropdown
+                      title="Directions"
+                      items={directions}
+                      handleSelect={handleDirectionChange}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="editor-container">
-              <p>
-                <strong className={styles.questionNumber}>select Image if the Question has Image</strong>
-              </p>
-              <img
-                src={tempQuestionImagePath || placeholderImage}
-                id="photo"
-                className="img"
-              />
+          </div>
+          <div className={styles.groupMargin}>
+            <div className={styles.editorContainer}>
+              <h6>Question Number</h6>
               <input
-                type="file"
-                id="file"
-                onChange={handleQuestionImageChange}
+                type="number"
+                onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
               />
             </div>
-            <div className="editor-container">
-              <p className={styles.questionNumber}>
-                Paste your option{" "}
-                <span style={{ color: "red", fontWeight: "bolder" }}>A</span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_a_Text}
-                editorId="editor2"
-                value={option_a}
-              />
-            </div>
-            <div className="editor-container">
-              <p className={styles.questionNumber}>
-                Paste your option{" "}
-                <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_b_Text}
-                editorId="editor3"
-                value={option_b}
-              />
-            </div>
-            <div className="editor-container">
-              <p className={styles.questionNumber}>
-                Paste your option{" "}
-                <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_c_Text}
-                editorId="editor4"
-                value={option_c}
-              />
-            </div>
-            <div className="editor-container">
-              <p className={styles.questionNumber}>
-                Paste your option
-                <span style={{ color: "red", fontWeight: "bolder" }}>
-                  D
-                </span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_d_Text}
-                editorId="editor5"
-                value={option_d}
-              />
-            </div>
-            <div className={styles.answerContainer}>
-              <p className={styles.questionAnswer}>choose Answer here</p>
-              <SelectDropdown
-                title=""
-                items={answerOptions}
-                handleSelect={set_answer_Text}
-              />
-            </div>
+            <div className={styles.editorContaine}>
+              <div className="editor-container">
+                <p className={styles.questionNumb}>Paste your question here</p>
+                <MathEditor
+                  setValue={setQuestionTextValue}
+                  value={questionText}
+                />
+              </div>
+              <div className="editor-container">
+                <p>
+                  <strong className={styles.questionNur}>
+                    select Image if the Question has Image
+                  </strong>
+                </p>
 
-            <div className="editor-container">
-              <p className={styles.questionNumber}>Paste your option Description here</p>
-              <Editor
-                setValue={setDescription_Text}
-                editorId="editor6"
-                value={description}
-              />
-            </div>
-            <div className="editor-container">
-              <p>
-                {" "}
-                <strong className={styles.questionNumber}>select Image if the description has Image</strong>
-              </p>
-              <img
-                src={tempDescriptionImagePath || placeholderImage}
-                id="photo"
-                className="img"
-              />
-              <input
-                type="file"
-                id="file"
-                onChange={handleDescriptionImageChange}
-              />
+                <img
+                  src={tempQuestionImagePath || placeholderImage}
+                  id="photo"
+                  className={styles.img}
+                />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={handleQuestionImageChange}
+                />
+              </div>
+              <div>
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>A</span>{" "}
+                  here
+                </p>
+                <MathEditor setValue={setOption_a_Text} value={option_a} />
+              </div>
+              <div>
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
+                  here
+                </p>
+                <MathEditor setValue={setOption_b_Text} value={option_b} />
+              </div>
+              <div>
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
+                  here
+                </p>
+                <MathEditor setValue={setOption_c_Text} value={option_c} />
+              </div>
+              <div>
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
+                  here
+                </p>
+                <MathEditor setValue={setOption_d_Text} value={option_d} />
+              </div>
+              <div className={styles.answerContainer}>
+                <p className={styles.questionAnswer}>choose Answer here</p>
+                <SelectDropdown
+                  title=""
+                  items={answerOptions}
+                  handleSelect={set_answer_Text}
+                />
+              </div>
+
+              <div>
+                <p>Paste your option Description here</p>
+                <MathEditor
+                  setValue={setDescription_Text}
+                  value={description}
+                />
+              </div>
+              <div>
+                <p>
+                  {" "}
+                  <strong>select Image if the description has Image</strong>
+                </p>
+                <img
+                  src={tempDescriptionImagePath || placeholderImage}
+                  id="photo"
+                  className={styles.img}
+                />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={handleDescriptionImageChange}
+                />
+              </div>
+              <div>
+                <button
+                  className={styles.submitBtn1}
+                  onClick={submitQuestionToBackend}
+                >
+                  Submit
+                </button>
+              </div>
+              {questionText}
             </div>
           </div>
-          <div className="submit-butt">
-            <button
-              onClick={submitQuestionToBackend}
-              className={styles.btnQuestionSubmit}
-            >
-              Submit
-            </button>
-          </div>
-          {questionText}
         </div>
-        </div>
-        </div>
-        
-    
+      </div>
     </LoadingOverlayWrapper>
   );
 }

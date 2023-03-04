@@ -32,13 +32,13 @@ export default function AdminUserDataView() {
         </div>
       </div>
 
-      <div className={styles.dropdown}>
-        <div>
+      <div className={styles.dropdownBg}>
+        <div className={styles.dropdownItem}>
           <select
             name=""
             id=""
-            className={styles.dataEditView}
             onChange={routeChange}
+            className={styles.dataEditView}
           >
             <option value="">Data Insertion</option>
             <option value="plain-question">
@@ -51,20 +51,24 @@ export default function AdminUserDataView() {
 
             <option value="direction">Insert Directions</option>
           </select>
+
+          <select
+            name=""
+            id=""
+            onChange={routeChange}
+            className={styles.dataEditView}
+          >
+            <option value="">Data Viewing </option>
+            <option value="view-plain-questions">Plain Question</option>
+
+            <option value="view-directions">View Directions</option>
+
+            <option value="view-grouped-questions">Grouped Question</option>
+          </select>
         </div>
-        <select
-          name=""
-          id=""
-          className={styles.dataEditView}
-          onChange={routeChange}
-        >
-          <option value="">Data Viewing </option>
-          <option value="view-plain-questions">Plain Question</option>
-
-          <option value="view-directions">View Directions</option>
-
-          <option value="view-grouped-questions">Grouped Question</option>
-        </select>
+      </div>
+      <div className={styles.bodyAdmin}>
+        <Outlet />
       </div>
     </div>
   );
