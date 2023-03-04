@@ -1,3 +1,5 @@
+.clerckTable {
+}
 .table {
   border-collapse: collapse;
   width: 100%;
@@ -21,7 +23,7 @@
   margin: 5px;
 }
 .tfoot {
-  color: #092258;
+  color: #ffffff;
   font-size: 24px;
   background-color: #088081;
 }

@@ -30,7 +30,17 @@ import { MathEditor } from "./quill/EditorMath";
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
-    { path: "math", element: <MathEditor /> },
+    {
+      path: "math",
+      element: (
+        <MathEditor
+          value="abc"
+          setValue={(a: string) => {
+            console.log(a);
+          }}
+        />
+      ),
+    },
     { path: "admin-dashboard", element: <AdminDashboard /> },
     {
       path: "clerk-auth",

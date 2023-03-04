@@ -15,14 +15,66 @@ export default function AdminUserDataView() {
   return (
     <div>
       <div className={styles.adminBg}>
-        <ul className={styles.orderList}>
-          <li>
-            <Link to={""} state={{}}>
-              Clerks
-            </Link>
-          </li>
+        <div className={styles.headerList}>
+          <div className={styles.clerkNotification}>
+            <div>
+              <Link to={""} state={{}}>
+                Clerks
+              </Link>
+            </div>
+            <div>
+              <AdminNotification />
+            </div>
+          </div>
+          <div className={styles.logBtn}>
+            <button className={styles.logoutBtn}>Log out</button>
+          </div>
+        </div>
+      </div>
 
-          <li>
+      <div className={styles.dropdown}>
+        <div>
+          <select
+            name=""
+            id=""
+            className={styles.dataEditView}
+            onChange={routeChange}
+          >
+            <option value="">Data Insertion</option>
+            <option value="plain-question">
+              <span className={styles.spanText}>Plain Question</span>
+            </option>
+
+            <option value="grouped-question">
+              <span>Group Question</span>
+            </option>
+
+            <option value="direction">Insert Directions</option>
+          </select>
+        </div>
+        <select
+          name=""
+          id=""
+          className={styles.dataEditView}
+          onChange={routeChange}
+        >
+          <option value="">Data Viewing </option>
+          <option value="view-plain-questions">Plain Question</option>
+
+          <option value="view-directions">View Directions</option>
+
+          <option value="view-grouped-questions">Grouped Question</option>
+        </select>
+      </div>
+    </div>
+  );
+}
+
+{
+  /*
+   </div>
+        <div className={styles.bindingClass}>
+          <div className={styles.dropdownItem1}>
             <span className={styles.dataEditTxt}>
               <select
                 name=""
@@ -30,51 +82,40 @@ export default function AdminUserDataView() {
                 className={styles.dataEditView}
                 onChange={routeChange}
               >
-                <option value="">Data Insertion Please choose an option</option>
+                <option value="">Data Insertion</option>
                 <option value="plain-question">
-                  <span className={styles.spanText}>Insert Plain Question</span>
+                  <span className={styles.spanText}>Plain Question</span>
                 </option>
 
                 <option value="grouped-question">
-                  <span>Insert Group Question</span>
+                  <span>Group Question</span>
                 </option>
 
                 <option value="direction">Insert Directions</option>
               </select>
             </span>
-          </li>
-          <li>
-            <span className={styles.dataEditVi}>
+          </div>
+          <div className={styles.dropdownItem2}>
+            <span>
               <select
                 name=""
                 id=""
                 className={styles.dataEditView}
                 onChange={routeChange}
               >
-                <option value="">Data Viewing Please choose an option</option>
-                <option value="view-plain-questions">
-                  View Plain Question
-                </option>
+                <option value="">Data Viewing </option>
+                <option value="view-plain-questions">Plain Question</option>
 
                 <option value="view-directions">View Directions</option>
 
-                <option value="view-grouped-questions">
-                  View Grouped Question
-                </option>
+                <option value="view-grouped-questions">Grouped Question</option>
               </select>
             </span>
-          </li>
-          <li>
-            <AdminNotification />
-          </li>
-        </ul>
-        <div>
-          <button className={styles.logoutBtn}>Log out</button>
+          </div>
         </div>
       </div>
       <div className={styles.bodyAdmin}>
         <Outlet />
       </div>
-    </div>
-  );
+    </div> */
 }

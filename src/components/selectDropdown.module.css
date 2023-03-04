@@ -6,3 +6,12 @@
   background-color: #b2d8d9;
   margin-top: 10px;
 }
+@media screen and (max-width: 400px) {
+  .selectDropdown {
+    border-radius: 2px;
+    width: 120px;
+    margin-top: 0px;
+    padding: 2px;
+    margin: 0;
+  }
+}

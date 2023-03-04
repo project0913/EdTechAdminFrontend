@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Editor from "quill-editor-math";
 import "quill-editor-math/dist/index.css";
@@ -15,17 +15,19 @@ const options: HTMLReactParserOptions = {
     }
   },
 };
-
-export function MathEditor() {
-  const [latex, setLatex] = useState("");
-  const onLatexChange = (latex: string) => {
-    //console.log(latex);
-    setLatex(latex);
-  };
+type MathEditorProp = {
+  value: string;
+  setValue: (value: string) => void;
+};
+export function MathEditor({ value, setValue }: MathEditorProp) {
+  const [internalValue, setInternalValue] = useState(value);
+  useEffect(() => {
+    setInternalValue(value);
+  }, [value]);
   return (
     <div>
       <Editor
-        initialValue="Hello World!"
+        initialValue={internalValue}
         customOperator={[
           ["\\pm", "\\pm"],
           ["\\pi", "\\pi"],
@@ -107,9 +109,9 @@ export function MathEditor() {
             "\\frac{-{}\\pm\\sqrt{{b}^{2}-4{ac}}}{}",
           ],
         ]}
-        onChange={onLatexChange}
+        onChange={setValue}
       />
-      <p> {parse(latex, options)}</p>
+      {/* <p> {parse(latex, options)}</p> */}
     </div>
   );
 }

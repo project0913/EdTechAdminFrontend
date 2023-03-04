@@ -1,6 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react";
 import placeholderImage from "../../assets/place_holder.jpg";
-import styles from './plainquestiondata.module.css'
+import styles from "./plainquestiondata.module.css";
 import "react-quill/dist/quill.snow.css";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 
 import { yearsOptions } from "../../constants";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
+import { MathEditor } from "../../quill/EditorMath";
 
 //import { showErrorToast, showSuccessToast } from "../../utils/helper";
 const override: CSSProperties = {
@@ -188,62 +189,69 @@ export default function PlainQuestionData() {
         />
       }
     >
-      <div>
+      <div className={styles.plainQuestion}>
         {errorMessage.length > 0 && (
           <p style={{ color: "red" }}>{errorMessage}</p>
         )}
         <div className={styles.adminBodyQuestion}>
-
-        <div className= {styles.adminTop}> 
-        <div >
-          <b className={styles.adminTopText}>Exam Category</b>
-            <SelectDropdown
-              title=""
-              items={examCatagories}
-              handleSelect={handleExamCategoryChange}
-            />
-          </div>
-          <div className="course-selection">
-            <b className={styles.adminTopText}>Courses</b>
-            <SelectDropdown
-              title=""
-              items={courses}
-              handleSelect={handleCourseChange}
-            />
-          </div>
-          <div className="subCategory">
-            <b className={styles.adminTopText}>Sub Category</b>
-            <SelectDropdown
-              title=""
-              items={subExamCategory}
-              handleSelect={handleSubExamCategoryChange}
-            />
-          </div>
-        </div>
-      </div>
-<div className={styles.plainQuestionInsert}>
-          <div className="">
-            <h6 className={styles.plainTxt}>Question Number</h6>
-            <input
-              type="number"
-              value={questionNumber}
-              onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
-              className={styles.plainTxt}
-            />
-          </div>
-          
-          <div className="">
-            <div className={styles.plainTxt}>
-              <p >Paste your question here</p>
-              <Editor
-                setValue={setQuestionTextValue}
-                editorId="editor1"
-                value={questionText}
-                
+          <div className={styles.adminTop}>
+            <div>
+              <b className={styles.adminTopText}>Exam Category</b>
+              <SelectDropdown
+                title=""
+                items={examCatagories}
+                handleSelect={handleExamCategoryChange}
               />
             </div>
+            <div className="course-selection">
+              <b className={styles.adminTopText}>Courses</b>
+              <SelectDropdown
+                title=""
+                items={courses}
+                handleSelect={handleCourseChange}
+              />
+            </div>
+            <div className="subCategory">
+              <b className={styles.adminTopText}>Sub Category</b>
+              <SelectDropdown
+                title=""
+                items={subExamCategory}
+                handleSelect={handleSubExamCategoryChange}
+              />
+            </div>
+          </div>
+        </div>
+        <div className={styles.plainQuestionInsert1}>
+          <div className={styles.inp}></div>
+
+          <div className={styles.txtEditor}>
+            <div className={styles.dropdownItem}>
+              <b>Select Year</b>
+              <SelectDropdown
+                title=""
+                items={yearsOptions}
+                handleSelect={handleYearsChange}
+              />
+            </div>
+            <div>
+              <p className={styles.txt}>Question Number</p>
+
+              <input
+                type="number"
+                value={questionNumber}
+                onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
+              />
+            </div>
+            <div className={styles.q}>
+              <p className={styles.txt}>Paste your question here</p>
+              <MathEditor
+                setValue={setQuestionTextValue}
+                value={questionText}
+              />
+            </div>
+
             <div className={styles.plainTxt}>
-              <p className={styles.plainTxt}>
+              <p className={styles.txt}>
                 Select Image if the Question has Image
               </p>
               <img
@@ -258,85 +266,54 @@ export default function PlainQuestionData() {
               />
             </div>
             <div className={styles.plainTxt}>
-              <p>
+              <p className={styles.txt}>
                 Paste your option{"  "}
                 <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
                 here
               </p>
-              <Editor
-                setValue={setOption_a_Text}
-                editorId="editor2"
-                value={option_a}
-              />
+              <MathEditor setValue={setOption_a_Text} value={option_a} />
             </div>
             <div className={styles.plainTxt}>
-              <p>
+              <p className={styles.txt}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                 here
               </p>
-              <Editor
-                setValue={setOption_b_Text}
-                editorId="editor3"
-                value={option_b}
-              />
+              <MathEditor setValue={setOption_b_Text} value={option_b} />
             </div>
             <div className={styles.plainTxt}>
-              <p>
+              <p className={styles.txt}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                 here
               </p>
-              <Editor
-                setValue={setOption_c_Text}
-                editorId="editor4"
-                value={option_c}
-              />
+              <MathEditor setValue={setOption_c_Text} value={option_c} />
             </div>
             <div className={styles.plainTxt}>
-              <p>
+              <p className={styles.txt}>
                 Paste your option{" "}
                 <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                 here
               </p>
-              <Editor
-                setValue={setOption_d_Text}
-                editorId="editor5"
-                value={option_d}
-              />
+              <MathEditor setValue={setOption_d_Text} value={option_d} />
             </div>
             <div className={styles.answerYear}>
-          
-           <div>
-              <b>Choose Answer here</b>
-              <SelectDropdown
-                title=""
-                items={answerOptions}
-                handleSelect={setOption_answer_Text}
-              />
+              <div>
+                <b className={styles.txt}>Choose Answer here</b>
+                <SelectDropdown
+                  title=""
+                  items={answerOptions}
+                  handleSelect={setOption_answer_Text}
+                />
+              </div>
             </div>
 
-            <div className={styles.dropdownItem}>
-              <b>Select Year</b>
-              <SelectDropdown
-                title=""
-                items={yearsOptions}
-                handleSelect={handleYearsChange}
-              />
-            </div> 
-            </div>
-           
-
             <div className={styles.plainTxt}>
-              <p>Paste your option Description here</p>
-              <Editor
-                setValue={setDescription_Text}
-                editorId="editor6"
-                value={description}
-              />
+              <p className={styles.txt}>Paste your option Description here</p>
+              <MathEditor setValue={setDescription_Text} value={description} />
             </div>
             <div className={styles.plainTxt}>
-              <p>
+              <p className={styles.txt}>
                 {" "}
                 Select Image if the description has Image
               </p>
@@ -352,19 +329,26 @@ export default function PlainQuestionData() {
               />
             </div>
           </div>
-        
-
-          <div className="">
-            <button
-              className={styles.submitBtn}
-              onClick={submitGroupedQuestionToBackend}
-            >
-              Submit
-            </button>
-          </div>
-          </div>
         </div>
-      
+        <div className={styles.questionBtn}>
+          <button
+            className={styles.submitBtn}
+            onClick={submitGroupedQuestionToBackend}
+          >
+            Submit
+          </button>
+          <button
+            className={styles.clearBtn}
+            onClick={() => {
+              console.log("before clear" + questionText);
+              setQuestionText((prev) => "");
+              console.log("after clear" + questionText);
+            }}
+          >
+            Clear
+          </button>
+        </div>
+      </div>
     </LoadingOverlayWrapper>
   );
 }

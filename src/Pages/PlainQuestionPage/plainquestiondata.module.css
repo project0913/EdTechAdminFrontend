@@ -1,60 +1,81 @@
+.plainBg {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .adminBodyQuestion {
-    margin-top: 10px;
-    background-color: #088081;
-    display: flex;
-    height: 60px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    
-  }
-  .adminTop{
-    margin: 5px;
-    padding: 10px;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    top: 0px;
-    gap: 1rem;
-  }
-  .adminTopText {
-    color: #fff;
-    font-size: 15px;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  .plainQuestionInsert {
-    margin-left: 20px;
-    margin-top: 10px;
-    position: absolute;
-    font-size: 24px;
-  }
-  .img {
-    max-width: 150px;
-    max-height: 150px;
-  }
-  .submitBtn{
-    background-color: #088081;
-    width: 200px;
-    height: 40px;
-    margin-left: 400px;
-    align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    border: none;
+  background-color: #088081;
+  margin-left: 30px;
+  margin-right: 30px;
+  height: 60px;
+}
+.adminTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.adminTopText {
+  color: #fff;
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+}
+.plainQuestionInsert1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 24px;
+}
+.img {
+  max-width: 150px;
+  max-height: 150px;
+}
+.questionBtn {
+  display: flex;
+  margin: 10px;
 
-  }
-  .answerYear{
-    
-    margin-top: 5px;
-    margin-left: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.submitBtn {
+  width: 200px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin: 10px;
+  background-color: #088081;
+}
+.clearBtn {
+  border: none;
+  width: 200px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  margin: 10px;
+  background-color: rgb(97, 26, 26);
+}
 
-  } 
-  .plainTxt {
-    margin-left: 40px;
-    font-size: 24px;
-  } 
-  .dropdownItem{
-    width: 120px;
-    color: #088081;
+.answerYear {
+  margin-top: 5px;
+  margin-left: 40px;
+}
+.plainTxt {
+  font-size: 24px;
+}
+.dropdownItem {
+  width: 120px;
+  color: #088081;
+}
+.txt {
+  color: #088081;
+}
+
+@media screen and (max-width: 400px) {
+  .adminBodyQuestion {
+    margin-top: 30px;
   }
+}

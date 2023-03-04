@@ -16,15 +16,15 @@ export function AdminDashboard() {
     getClerksAndDataInfo();
   }, []);
   return (
-    <div>
+    <div className={styles.clerkTable}>
       <table className={styles.table}>
         <thead className={styles.tableHeaderTitle}>
           <tr className={styles.tr}>
             <th className={styles.th}>No.</th>
             <th className={styles.th}>Registration Date</th>
-            <th className={styles.th}>username</th>
-            <th className={styles.th}>Total data inserted</th>
-            <th className={styles.th}>ToTal balance</th>
+            <th className={styles.th}>User Name</th>
+            <th className={styles.th}>Total Data Inserted</th>
+            <th className={styles.th}>Total Balance</th>
             <th className={styles.th}>View Details</th>
           </tr>
         </thead>
@@ -38,8 +38,8 @@ export function AdminDashboard() {
                 </td>
                 <td className={styles.td}>{clerk.username}</td>
                 <td className={styles.td}>{clerk.questionsEntered}</td>
-                <td className={styles.td}>{clerk.questionsEntered * 3}</td>
-                <td>
+                <td className={styles.td}>{clerk.questionsEntered * 3.5}</td>
+                <td className={styles.td}>
                   <Link
                     to={"/view-clerk-detail"}
                     state={{
@@ -62,6 +62,7 @@ export function AdminDashboard() {
           <tr className={styles.tfoot}>
             <td colSpan={2}>Total Data</td>
             <td>{totalData}</td>
+            <td></td>
             <td></td>
             <td></td>
           </tr>
