@@ -31,6 +31,7 @@ function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
     {
+      //this route is only for testing
       path: "math",
       element: (
         <MathEditor
