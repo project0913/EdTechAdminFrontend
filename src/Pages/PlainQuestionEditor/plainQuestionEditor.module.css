@@ -1,9 +1,43 @@
-.plainTxt {
-    font-size: 24px;
-    margin-left: 40px;
-    color: red;
+.editorContainer {
+  margin-left: 30px;
+  margin-right: 30px;
 }
-.inputText {
-    margin-left: 50px;
-    padding: 5px;
+.img {
+  width: 100px;
+  height: 100px;
+  margin-left: 400px;
+}
+.updateBackMain {
+  display: flex;
+  align-items: center;
+}
+.updateBtn {
+  height: 40px;
+  width: 180px;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 600px;
+  border-radius: 10px;
+  color: white;
+  background-color: #088081;
+}
+.backToMain {
+  border: none;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(97, 26, 26);
+}
+@media screen and (max-width: 400) {
+  .updateBackMain {
+    margin: 0;
+  }
+  .updateBtn {
+    margin: 0;
+  }
 }

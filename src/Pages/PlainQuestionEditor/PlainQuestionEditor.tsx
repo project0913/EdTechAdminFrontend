@@ -1,7 +1,7 @@
 import { CSSProperties, useEffect, useState } from "react";
 import placeholderImage from "../../assets/place_holder.jpg";
 import styles from "./plainQuestionEditor.module.css";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import Editor from "../../quill/Editor";
 import { PlainQuestion } from "../../models/question.model";
@@ -14,10 +14,11 @@ import {
   updateGroupedQuestionToServer,
   updatePlainQuestionToServer,
 } from "../../DataService/editQuestion.service";
+import { MathEditor } from "../../quill/EditorMath";
 
 const override: CSSProperties = {
   margin: "10 auto",
-  borderColor: "red",                                                                             
+  borderColor: "red",
 };
 
 export default function PlainQuestionEditor() {
@@ -49,7 +50,7 @@ export default function PlainQuestionEditor() {
   const answerOptions: SelectOption[] = [
     { label: "A", value: "option_a" },
     { label: "B", value: "option_b" },
-    { label: "C", value: "option_c" },                             
+    { label: "C", value: "option_c" },
     { label: "D", value: "option_d" },
   ];
 
@@ -138,7 +139,7 @@ export default function PlainQuestionEditor() {
       setErrorMessage(msgTxt);
       setShowErrorToast(true);
     } else {
-      showSuccessToast('updated success');
+      showSuccessToast("updated success");
       // clearForm();
     }
   };
@@ -171,158 +172,136 @@ export default function PlainQuestionEditor() {
         />
       }
     >
+      <div className={styles.bodyPlainQuestion}>
+        <div className={styles.plainQuestionContainer}>
+          {errorMessage.length > 0 && (
+            <p style={{ color: "red" }}>{errorMessage}</p>
+          )}
 
-      <div className={styles.bodyPlainQuestion}> 
-      <div className={styles.plainQuestionContainer}>
-        {errorMessage.length > 0 && (
-          <p style={{ color: "red" }}>{errorMessage}</p>
-        )}
-
-        <div className="">
           <div className={styles.editorContainer}>
-            <h6 className={styles.plainTxt}>Question Number</h6>
-            <input
-              type="number"
-              value={questionNumber}
-              onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
-              className={styles.inputText}
-            />
-          </div>
-          <div className="">
-            <div className="">
-              <p className={styles.plainTxt} >Paste your question here</p>
-              <Editor
-                setValue={setQuestionTextValue}
-                editorId="editor1"
-                value={questionText}
-              />
-            </div>
-            <div className="">
-              <p>
-                <strong className={styles.plainTxt}>select Image if the Question has Image</strong>
-              </p>
-              <img
-                src={
-                  resolveImageURL(question?.questionImage || "") ||
-                  tempQuestionImagePath ||
-                  placeholderImage
-                }
-                id="photo"
-                className="img"
-              />
-              <input
-                type="file"
-                id="file"
-                onChange={handleQuestionImageChange}
-              />
-            </div>
-            <div className="">
-              <p className={styles.plainTxt}>
-                Paste your option{"  "}
-                <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
-                here
-              </p>
-              <Editor
-                setValue={setOption_a_Text}
-                editorId="editor2"
-                value={option_a}
-              />
-            </div>
-            <div className="">
-              <p className={styles.plainTxt}>
-                Paste your option{" "}
-                <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_b_Text}
-                editorId="editor3"
-                value={option_b}
-              />
-            </div>
-            <div className="">
-              <p className={styles.plainTxt}>
-                Paste your option{" "}
-                <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_c_Text}
-                editorId="editor4"
-                value={option_c}
-              />
-            </div>
-            <div className="">
-              <p className={styles.plainTxt}>
-                Paste your option{" "}
-                <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
-                here
-              </p>
-              <Editor
-                setValue={setOption_d_Text}
-                editorId="editor5"
-                value={option_d}
-              />
-            </div>
-            <div className="">
-              <p className={styles.plainTxt}>choose Answer here</p>
-              <SelectDropdown
-                title=""
-                items={answerOptions}
-                handleSelect={setOption_answer_Text}
-              />
-            </div>
-
-            <div className="">
-              <b className={styles.plainTxt}>Edit Year</b>
+            <div>
+              <h6>Question Number</h6>
               <input
                 type="number"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                className={styles.inputText}
+                value={questionNumber}
+                onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
               />
             </div>
+            <div className="">
+              <div className="">
+                <p>Paste your question here</p>
+                <MathEditor
+                  setValue={setQuestionTextValue}
+                  value={questionText}
+                />
+              </div>
+              <div className="">
+                <p>
+                  <strong>Select Image if the Question has Image</strong>
+                </p>
+                <img
+                  src={
+                    resolveImageURL(question?.questionImage || "") ||
+                    tempQuestionImagePath ||
+                    placeholderImage
+                  }
+                  id="photo"
+                  className={styles.img}
+                />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={handleQuestionImageChange}
+                />
+              </div>
+              <div className="">
+                <p>
+                  Paste your option{"  "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>
+                    {" "}
+                    A{" "}
+                  </span>
+                  Here
+                </p>
+                <MathEditor setValue={setOption_a_Text} value={option_a} />
+              </div>
+              <div className="">
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
+                  Here
+                </p>
+                <MathEditor setValue={setOption_b_Text} value={option_b} />
+              </div>
+              <div className="">
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
+                  Here
+                </p>
+                <MathEditor setValue={setOption_c_Text} value={option_c} />
+              </div>
+              <div className="">
+                <p>
+                  Paste your option{" "}
+                  <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
+                  Here
+                </p>
+                <MathEditor setValue={setOption_d_Text} value={option_d} />
+              </div>
+              <div className="">
+                <p>Choose Answer here</p>
+                <SelectDropdown
+                  title=""
+                  items={answerOptions}
+                  handleSelect={setOption_answer_Text}
+                />
+              </div>
 
-            <div className="">
-              <p className={styles.plainTxt}>Paste your option Description here</p>
-              <Editor
-                setValue={setDescription_Text}
-                editorId="editor6"
-                value={description}
-              />
-            </div>
-            <div className="">
-              <p>
-                {" "}
-                <strong className={styles.plainTxt}>select Image if the description has Image</strong>
-              </p>
-              <img
-                src={
-                  resolveImageURL(question?.descriptionImage || "") ||
-                  tempDescriptionImagePath ||
-                  placeholderImage
-                }
-                id="photo"
-                className="img"
-              />
-              <input
-                type="file"
-                id="file"
-                onChange={handleDescriptionImageChange}
-              />
+              <div className="">
+                <b>Edit Year</b>
+                <input
+                  type="number"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                />
+              </div>
+
+              <div className="">
+                <p>Paste your option Description here</p>
+                <MathEditor
+                  setValue={setDescription_Text}
+                  value={description}
+                />
+              </div>
+              <div className="">
+                <p>Select Image if the description has Image</p>
+                <img
+                  src={
+                    resolveImageURL(question?.descriptionImage || "") ||
+                    tempDescriptionImagePath ||
+                    placeholderImage
+                  }
+                  className={styles.img}
+                />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={handleDescriptionImageChange}
+                />
+              </div>
             </div>
           </div>
-          
-          <div className="submit-butt mb-3 mt-3">
+          <div className={styles.updateBackMain}>
             <button
-              className="btn btn-primary btn-lg"
+              className={styles.updateBtn}
               onClick={updatePlainQuestionToBackend}
             >
-              update
+              Update
             </button>
             <button
               style={{ marginLeft: "200px" }}
-              className="btn btn-warning btn-lg ml-3"
+              className={styles.backToMain}
               onClick={() => {
                 navigate(-1);
               }}
@@ -331,7 +310,6 @@ export default function PlainQuestionEditor() {
             </button>
           </div>
         </div>
-      </div>
       </div>
     </LoadingOverlayWrapper>
   );

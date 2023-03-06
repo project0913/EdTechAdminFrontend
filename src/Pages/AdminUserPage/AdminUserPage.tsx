@@ -31,40 +31,49 @@ export default function AdminUserPage() {
   };
   return (
     <div>
-      <div className={styles.top}>
-        <div className={styles.iconContainer}>
-          <i className={`fas fa-user  ${styles.userIcon}`}></i>
-        </div>
-        <div className={styles.username}>
-          <span>{username.toUpperCase()}</span>
-        </div>
-
-        <div className={styles.selectDropdown}>
-          <div className={styles.dataEditTxt}>
+      <div className={styles.header}>
+        <div className={styles.rightHeader}>
+          <div className={styles.userProfileName}>
+            <div className={styles.iconContainer}>
+              <i className={`fas fa-user  ${styles.userIcon}`}></i>
+              <div>
+                <span className={styles.userNameTxt}>
+                  {username.toUpperCase()}
+                </span>
+              </div>
+            </div>
+            <div className={styles.username}></div>
+          </div>
+          <div className={styles.selectionOption}>
             <select
               name=""
               id=""
-              className={styles.dataEditView}
               onChange={routeChange}
+              className={styles.selectDropdown}
             >
               <option value="">
-                <span className={styles.spanText}>Insert Plain Question</span>
+                <span className={styles.spanText}>
+                  Select Insert Plain Question
+                </span>
               </option>
 
+              <option value="grouped-question">
+                <span>Insert Group Question</span>
+              </option>
               <option value="grouped-question">
                 <span>Insert Group Question</span>
               </option>
 
               <option value="direction">Insert Directions</option>
             </select>
-          </div>
-          <div className={styles.dataEditVi}>
+
             <select
               name=""
               id=""
-              className={styles.dataEditView}
+              className={styles.selectDropdown}
               onChange={routeChange}
             >
+              <option value="">Select View Plain Question</option>
               <option value="view-plain-questions">View Plain Question</option>
 
               <option value="view-directions">View Directions</option>
@@ -74,20 +83,21 @@ export default function AdminUserPage() {
               </option>
             </select>
           </div>
+          <div className={styles.topBalance2}>
+            <label className={styles.balanceLabel}>Your Total Data </label>
+            <span className={styles.spanLabel}>{totalData}</span>
+            <label className={styles.balanceLabel}>Your Balance </label>
+            <span className={styles.spanLabel}>{balance}</span>
+          </div>
         </div>
-        <span className={styles.topBalance}>
-          <label className={styles.balanceLabel}>Your Total Data </label>
-          <span className={styles.spanLabel}>{totalData}</span>
-          <label className={styles.balanceLabel}>Your Balance </label>
-          <span className={styles.spanLabel}>{balance}</span>
-        </span>
-        <span>
-          <button onClick={() => logout()} className={styles.logoutBtn}>
-            Log out <i className="fas fa-sign-out-alt"></i>
-          </button>
-        </span>
+        <div className={styles.logBtn}>
+          <span>
+            <button onClick={() => logout()} className={styles.logoutBtn}>
+              Log out <i className="fas fa-sign-out-alt"></i>
+            </button>
+          </span>
+        </div>
       </div>
-
       <div className={styles.rightBar}>
         <Outlet />
       </div>

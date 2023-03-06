@@ -265,6 +265,7 @@ export default function PlainQuestionData() {
                   type="file"
                   id="file"
                   onChange={handleQuestionImageChange}
+                  className={styles.plainTxt}
                 />
               </div>
               <div className={styles.plainTxt}>

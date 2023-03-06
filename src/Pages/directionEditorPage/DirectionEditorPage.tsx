@@ -5,6 +5,7 @@ import { Direction } from "../../models/direction.model";
 import { useLocation } from "react-router-dom";
 import { updateDirections } from "../../DataService/editDirections.service";
 import { AxiosError } from "axios";
+import { MathEditor } from "../../quill/EditorMath";
 
 export default function DirectionEditorPage() {
   const [direction, setDirection] = useState<Direction>();
@@ -80,11 +81,7 @@ export default function DirectionEditorPage() {
 
         <div className="editor-discrption mt-3">
           <p>Edit your Direction Text here</p>
-          <Editor
-            setValue={setDirection_text}
-            editorId="editor1"
-            value={directionText}
-          />
+          <MathEditor setValue={setDirection_text} value={directionText} />
         </div>
 
         <div className="section-name">
@@ -97,11 +94,7 @@ export default function DirectionEditorPage() {
 
         <div className="passage-text mt-3 mb-3">
           <p>Edit your passage here if any</p>
-          <Editor
-            setValue={setPassage_Text}
-            editorId="editor2"
-            value={passage || ""}
-          />
+          <MathEditor setValue={setPassage_Text} value={passage || ""} />
         </div>
       </div>
       <div className="submit-butt mb-3">
