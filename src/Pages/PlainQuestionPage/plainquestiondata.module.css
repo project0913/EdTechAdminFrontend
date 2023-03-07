@@ -23,10 +23,8 @@
 }
 .bgDrop {
   height: 60px;
-  width: 100%;
   display: flex;
   background-color: #088081;
-
   gap: 3rem;
 }
 .img {
@@ -101,9 +99,10 @@
   .dropdownItem1 {
     margin-left: 0px;
   }
-  .textEditor {
-    margin: 10px;
+  .bgDrop {
+    gap: 1rem;
   }
+
   .img {
     max-width: 100px;
     max-height: 100px;
@@ -116,6 +115,9 @@
     padding: 5px;
 
     margin: 5px;
+  }
+  .selectDropdown {
+    margin: 0;
   }
   .clearBtn {
     width: 100px;

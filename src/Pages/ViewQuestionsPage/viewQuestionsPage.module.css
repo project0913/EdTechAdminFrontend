@@ -5,8 +5,6 @@
   border-collapse: collapse;
 }
 .allTable {
-  margin-left: 30px;
-  margin-right: 30px;
 }
 .td {
   width: 50px;
@@ -82,14 +80,11 @@
   color: #ffffff;
   padding: 5px;
   height: 60px;
-  margin-left: 30px;
-  margin-right: 30px;
 }
 .tableHeader {
   background-color: #b2d8d9;
   color: #092258;
 }
-
 
 .pagination {
   width: 100%;
@@ -104,25 +99,21 @@
     border-collapse: collapse;
   }
   .all {
-    
   }
-  .allTable  {
+  .allTable {
     width: 95%;
     margin-left: 2px;
     margin-right: 2px;
     background-color: #fffb;
     overflow: auto;
-    
-
   }
   .table {
     border-radius: 0.6rem;
   }
-  .directionHeader{
+  .directionHeader {
     margin: 0;
     display: inline-flex;
     padding: 10px;
-
   }
   .pagination {
     width: 100%;

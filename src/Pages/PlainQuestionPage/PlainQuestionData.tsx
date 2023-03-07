@@ -189,10 +189,12 @@ export default function PlainQuestionData() {
         />
       }
     >
-      <div className={styles.plainQuestion}>
-        {errorMessage.length > 0 && (
-          <p style={{ color: "red" }}>{errorMessage}</p>
-        )}
+      <div>
+        <div className={styles.plainQuestion}>
+          {errorMessage.length > 0 && (
+            <p style={{ color: "red" }}>{errorMessage}</p>
+          )}{" "}
+        </div>
 
         <div className={styles.bgDrop}>
           <div className={styles.dropdownItem1}>
@@ -222,142 +224,153 @@ export default function PlainQuestionData() {
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles.adminBodyQuestion}>
-        <div className={styles.overAllBody}>
-          <div className={styles.plainQuestionInsert1}>
-            <div className={styles.inp}></div>
 
-            <div className={styles.txtEditor}>
-              <div className={styles.dropdownItem}>
-                <b>Select Year</b>
-                <SelectDropdown
-                  title=""
-                  items={yearsOptions}
-                  handleSelect={handleYearsChange}
-                />
-              </div>
+        <div className={styles.adminBodyQuestion}>
+          <div className={styles.overAllBody}>
+            <div className={styles.plainQuestionInsert1}>
+              <div className={styles.inp}></div>
 
-              <div>
-                <p className={styles.txt}>Question Number</p>
-
-                <input
-                  type="number"
-                  value={questionNumber}
-                  onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
-                />
-              </div>
-              <div className={styles.q}>
-                <p className={styles.txt}>Paste your question here</p>
-                <MathEditor
-                  setValue={setQuestionTextValue}
-                  value={questionText}
-                />
-              </div>
-
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>
-                  Select Image if the Question has Image
-                </p>
-                <img
-                  src={tempQuestionImagePath || placeholderImage}
-                  id="photo"
-                  className={styles.img}
-                />
-                <input
-                  type="file"
-                  id="file"
-                  onChange={handleQuestionImageChange}
-                  className={styles.plainTxt}
-                />
-              </div>
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>
-                  Paste your option{"  "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>
-                    {" "}
-                    A{" "}
-                  </span>
-                  here
-                </p>
-                <MathEditor setValue={setOption_a_Text} value={option_a} />
-              </div>
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
-                  here
-                </p>
-                <MathEditor setValue={setOption_b_Text} value={option_b} />
-              </div>
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
-                  here
-                </p>
-                <MathEditor setValue={setOption_c_Text} value={option_c} />
-              </div>
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
-                  here
-                </p>
-                <MathEditor setValue={setOption_d_Text} value={option_d} />
-              </div>
-              <div className={styles.answerYear}>
-                <div>
-                  <b className={styles.txt}>Choose Answer here</b>
+              <div className={styles.txtEditor}>
+                <div className={styles.dropdownItem}>
+                  <b>Select Year</b>
                   <SelectDropdown
                     title=""
-                    items={answerOptions}
-                    handleSelect={setOption_answer_Text}
+                    items={yearsOptions}
+                    handleSelect={handleYearsChange}
+                  />
+                </div>
+
+                <div>
+                  <p className={styles.txt}>Question Number</p>
+
+                  <input
+                    type="number"
+                    value={questionNumber}
+                    onChange={(e) =>
+                      setQuestionNumber(parseInt(e.target.value))
+                    }
+                  />
+                </div>
+                <div className={styles.q}>
+                  <p className={styles.txt}>Paste your question here</p>
+                  <MathEditor
+                    setValue={setQuestionTextValue}
+                    value={questionText}
+                  />
+                </div>
+
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Select Image if the Question has Image
+                  </p>
+                  <img
+                    src={tempQuestionImagePath || placeholderImage}
+                    id="photo"
+                    className={styles.img}
+                  />
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={handleQuestionImageChange}
+                    className={styles.plainTxt}
+                  />
+                </div>
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Paste your option{"  "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      {" "}
+                      A{" "}
+                    </span>
+                    here
+                  </p>
+                  <MathEditor setValue={setOption_a_Text} value={option_a} />
+                </div>
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      B
+                    </span>{" "}
+                    here
+                  </p>
+                  <MathEditor setValue={setOption_b_Text} value={option_b} />
+                </div>
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      C
+                    </span>{" "}
+                    here
+                  </p>
+                  <MathEditor setValue={setOption_c_Text} value={option_c} />
+                </div>
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      D
+                    </span>{" "}
+                    here
+                  </p>
+                  <MathEditor setValue={setOption_d_Text} value={option_d} />
+                </div>
+                <div className={styles.answerYear}>
+                  <div>
+                    <b className={styles.txt}>Choose Answer here</b>
+                    <SelectDropdown
+                      title=""
+                      items={answerOptions}
+                      handleSelect={setOption_answer_Text}
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Paste your option Description here
+                  </p>
+                  <MathEditor
+                    setValue={setDescription_Text}
+                    value={description}
+                  />
+                </div>
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    {" "}
+                    Select Image if the description has Image
+                  </p>
+                  <img
+                    src={tempDescriptionImagePath || placeholderImage}
+                    className={styles.img}
+                  />
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={handleDescriptionImageChange}
+                    className={styles.plainTxt}
                   />
                 </div>
               </div>
-
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>Paste your option Description here</p>
-                <MathEditor
-                  setValue={setDescription_Text}
-                  value={description}
-                />
+              <div className={styles.questionBtn}>
+                <button
+                  className={styles.submitBtn}
+                  onClick={submitGroupedQuestionToBackend}
+                >
+                  Submit
+                </button>
+                <button
+                  className={styles.clearBtn}
+                  onClick={() => {
+                    console.log("before clear" + questionText);
+                    setQuestionText((prev) => "");
+                    console.log("after clear" + questionText);
+                  }}
+                >
+                  Clear
+                </button>
               </div>
-              <div className={styles.plainTxt}>
-                <p className={styles.txt}>
-                  {" "}
-                  Select Image if the description has Image
-                </p>
-                <img
-                  src={tempDescriptionImagePath || placeholderImage}
-                  className={styles.img}
-                />
-                <input
-                  type="file"
-                  id="file"
-                  onChange={handleDescriptionImageChange}
-                  className={styles.plainTxt}
-                />
-              </div>
-            </div>
-            <div className={styles.questionBtn}>
-              <button
-                className={styles.submitBtn}
-                onClick={submitGroupedQuestionToBackend}
-              >
-                Submit
-              </button>
-              <button
-                className={styles.clearBtn}
-                onClick={() => {
-                  console.log("before clear" + questionText);
-                  setQuestionText((prev) => "");
-                  console.log("after clear" + questionText);
-                }}
-              >
-                Clear
-              </button>
             </div>
           </div>
         </div>
