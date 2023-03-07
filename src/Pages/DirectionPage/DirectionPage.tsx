@@ -98,14 +98,14 @@ export default function DirectionPage() {
           <div className={styles.directionHeader}>
             <div>
               <SelectDropdown
-                title="courses"
+                title="Courses"
                 items={courses}
                 handleSelect={handleCourseChange}
               />
             </div>
 
             <div>
-              <b>select Year</b>
+              <b>Select Year</b>
               <SelectDropdown
                 title=""
                 items={yearsOptions}
@@ -115,7 +115,7 @@ export default function DirectionPage() {
           </div>
           <div className={styles.editor}>
             <div>
-              <p>fill Direction Number here</p>
+              <p>Fill Direction Number Here</p>
               <input
                 type="number"
                 onChange={(e) => setDirectionNumber(parseInt(e.target.value))}
@@ -123,12 +123,12 @@ export default function DirectionPage() {
             </div>
 
             <div>
-              <p>Paste your Direction Text here</p>
+              <p>Paste your Direction Text Here</p>
               <MathEditor setValue={setDirection_text} value={directionText} />
             </div>
 
             <div>
-              <p>paste Direction section Name here</p>
+              <p>Paste Direction Section Name Here</p>
               <input
                 onChange={(e) => setSectionName(e.target.value)}
                 value={sectionName}
@@ -136,7 +136,7 @@ export default function DirectionPage() {
             </div>
 
             <div>
-              <p>paste your passage here if any</p>
+              <p>Paste your passage here if any</p>
               <MathEditor setValue={setPassage_Text} value={passage || ""} />
             </div>
             <div>
@@ -144,7 +144,7 @@ export default function DirectionPage() {
                 onClick={submitQuestionToBackend}
                 className={styles.submitBtn}
               >
-                submit
+                Submit
               </button>
             </div>
           </div>

@@ -63,7 +63,7 @@ export default function DirectionEditorPage() {
     <div className={styles.editorPage}>
       <div className="direction-question">
         <div className="editor-container mt-3">
-          <p>fill Direction Number here</p>
+          <p>Fill Direction Number here</p>
           <input
             type="number"
             onChange={(e) => setDirectionNumber(parseInt(e.target.value))}

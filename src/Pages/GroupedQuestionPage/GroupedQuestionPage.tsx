@@ -216,8 +216,8 @@ export default function GroupedQuestionPage() {
             <p style={{ color: "red" }}>{errorMessage}</p>
           )}
 
-          <div className={styles.gropedBg}>
-            <div className={styles.groupedTop}>
+          <div className={styles.groupedBg}>
+        
               <div className={styles.groupedHeader}>
                 <div className={styles.dropdownItem}>
                   <div className="">
@@ -241,13 +241,15 @@ export default function GroupedQuestionPage() {
                       handleSelect={handleDirectionChange}
                     />
                   </div>
+
+
                 </div>
               </div>
-            </div>
+           
           </div>
           <div className={styles.groupMargin}>
             <div className={styles.editorContainer}>
-              <h6>Question Number</h6>
+              <p>Question Number</p>
               <input
                 type="number"
                 onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
@@ -264,7 +266,7 @@ export default function GroupedQuestionPage() {
               <div className="editor-container">
                 <p>
                   <strong className={styles.questionNur}>
-                    select Image if the Question has Image
+                    Select Image if the Question has Image
                   </strong>
                 </p>
 
@@ -312,7 +314,7 @@ export default function GroupedQuestionPage() {
                 <MathEditor setValue={setOption_d_Text} value={option_d} />
               </div>
               <div className={styles.answerContainer}>
-                <p className={styles.questionAnswer}>choose Answer here</p>
+                <p className={styles.questionAnswer}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
                   items={answerOptions}
@@ -330,7 +332,7 @@ export default function GroupedQuestionPage() {
               <div>
                 <p>
                   {" "}
-                  <strong>select Image if the description has Image</strong>
+                  <strong>Select Image if the description has Image</strong>
                 </p>
                 <img
                   src={tempDescriptionImagePath || placeholderImage}
