@@ -9,8 +9,8 @@
 @media screen and (max-width: 400px) {
   .selectDropdown {
     border-radius: 32px;
-    width: 100px;
-    margin-top: 0px;
+    width: 80px;
+    margin-left: 20px;
 
     margin-top: 5px;
   }

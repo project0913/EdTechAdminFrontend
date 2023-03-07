@@ -15,14 +15,14 @@
   font-size: 15px;
   font-family: "Times New Roman", Times, serif;
 }
-.dropdownItem1 {
+.dropdownItemPlain {
   gap: 3rem;
   display: flex;
   margin-left: 280px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .bgDrop {
-  height: 60px;
+  height: 6vh;
   display: flex;
   background-color: #088081;
   gap: 3rem;
@@ -78,10 +78,16 @@
 @media screen and (max-width: 400px) {
   .bgDrop {
     margin: 0;
-    height: 100%;
+    height: 7vh;
   }
   .adminBodyQuestion {
     margin-left: 10px;
+  }
+  .dropdownItemPlain {
+    gap: 0rem;
+    display: flex;
+    margin-left: 0px;
+    margin-top: 0px;
   }
   .adminTop {
   }
@@ -90,9 +96,7 @@
     padding: 5px;
     margin: 5px;
   }
-  .selectDropdown {
-    margin: 0;
-  }
+
   .adminTop {
     margin: 0;
   }

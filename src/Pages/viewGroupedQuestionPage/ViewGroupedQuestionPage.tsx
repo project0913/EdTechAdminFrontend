@@ -146,118 +146,133 @@ export function ViewGroupedQuestionsPage() {
     }
   }, [selectedDirection]);
   return (
-    <div className={styles.adminBody}>
+    <div>
       <span>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </span>
-      <div>
-        <span className="list-course mt-3">
-          <b style={{ color: "white" }}>Courses</b>
-          <SelectDropdown
-            title=""
-            items={courseOptions}
-            handleSelect={handleSelectCourse}
-            styles={{ display: "inline", width: "3rem" }}
-          />
-        </span>
-        <span className="year-selection mt-3">
-          <b style={{ color: "white" }}>select Year</b>
-          <SelectDropdown
-            title=""
-            items={yearOptions}
-            handleSelect={handleSelectYear}
-            styles={{ display: "inline", width: "3rem" }}
-          />
-        </span>
-        <span className="direction mt-3">
-          <b style={{ color: "white" }}>Directions</b>
-          <SelectDropdown
-            title=""
-            items={directionsOption}
-            handleSelect={handleDirectionChange}
-            styles={{ display: "inline", width: "3rem" }}
-          />
-        </span>
-      </div>
 
-      <table className={styles.table}>
-        <tr>
-          <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Questions</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'A'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'B'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'C'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Option 'D'</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Description</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>
-            question Image
-          </th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>
-            DescriptionImage Image
-          </th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
-        </tr>
-        {questions.length > 0 ? (
-          questions.map((question, index) => (
-            <tr className={styles.tr} key={index}>
-              <td className={styles.td}>{question.questionNumber}</td>
-              <td className={styles.td}>{question.year}</td>
-              <td className={styles.td}>
-                {parse(question.questionText, options)}
-              </td>
-              <td className={styles.td}>{parse(question.option_a, options)}</td>
-              <td className={styles.td}>{parse(question.option_b, options)}</td>
-              <td className={styles.td}>{parse(question.option_c, options)}</td>
-              <td className={styles.td}>{parse(question.option_d, options)}</td>
-              <td className={styles.td}>{question.answer}</td>
-              <td className={styles.td}>
-                {parse(question.description, options)}
-              </td>
-              <td className={styles.td}>
-                <img
-                  style={{ maxWidth: "150px", maxHeight: "150px" }}
-                  src={
-                    resolveImageURL(question.questionImage || "") ||
-                    placeholderImage
-                  }
-                />
-              </td>
-              <td className={styles.td}>
-                {" "}
-                <img
-                  style={{ maxWidth: "150px", maxHeight: "150px" }}
-                  src={
-                    resolveImageURL(question.descriptionImage || "") ||
-                    placeholderImage
-                  }
-                />
-              </td>
-              <td className={styles.td}>
-                <Link
-                  to={"/admin-user/edit-plain-question"}
-                  state={{ question }}
-                >
-                  <button className={styles.label}>Edit</button>
-                </Link>
-                <button
-                  className={styles.label1}
-                  onClick={() =>
-                    deleteGroupedQuestionFromServer(question._id || "")
-                  }
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))
-        ) : (
+      <div className={styles.adminBody}>
+        {" "}
+        <div>
+          <span className="list-course mt-3">
+            <b style={{ color: "white" }}>Courses</b>
+            <SelectDropdown
+              title=""
+              items={courseOptions}
+              handleSelect={handleSelectCourse}
+              styles={{ display: "inline", width: "3rem" }}
+            />
+          </span>
+          <span className="year-selection mt-3">
+            <b style={{ color: "white" }}>select Year</b>
+            <SelectDropdown
+              title=""
+              items={yearOptions}
+              handleSelect={handleSelectYear}
+              styles={{ display: "inline", width: "3rem" }}
+            />
+          </span>
+          <span className="direction mt-3">
+            <b style={{ color: "white" }}>Directions</b>
+            <SelectDropdown
+              title=""
+              items={directionsOption}
+              handleSelect={handleDirectionChange}
+              styles={{ display: "inline", width: "3rem" }}
+            />
+          </span>
+        </div>
+      </div>
+      <div>
+        <table className={styles.table}>
           <tr>
-            <td colSpan={8}>{progressMessage}</td>
+            <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Questions</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'A'</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'B'</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'C'</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'D'</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>
+              Description
+            </th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>
+              question Image
+            </th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>
+              DescriptionImage Image
+            </th>
+            <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
           </tr>
-        )}
-      </table>
+          {questions.length > 0 ? (
+            questions.map((question, index) => (
+              <tr className={styles.tr} key={index}>
+                <td className={styles.td}>{question.questionNumber}</td>
+                <td className={styles.td}>{question.year}</td>
+                <td className={styles.td}>
+                  {parse(question.questionText, options)}
+                </td>
+                <td className={styles.td}>
+                  {parse(question.option_a, options)}
+                </td>
+                <td className={styles.td}>
+                  {parse(question.option_b, options)}
+                </td>
+                <td className={styles.td}>
+                  {parse(question.option_c, options)}
+                </td>
+                <td className={styles.td}>
+                  {parse(question.option_d, options)}
+                </td>
+                <td className={styles.td}>{question.answer}</td>
+                <td className={styles.td}>
+                  {parse(question.description, options)}
+                </td>
+                <td className={styles.td}>
+                  <img
+                    style={{ maxWidth: "150px", maxHeight: "150px" }}
+                    src={
+                      resolveImageURL(question.questionImage || "") ||
+                      placeholderImage
+                    }
+                  />
+                </td>
+                <td className={styles.td}>
+                  {" "}
+                  <img
+                    style={{ maxWidth: "150px", maxHeight: "150px" }}
+                    src={
+                      resolveImageURL(question.descriptionImage || "") ||
+                      placeholderImage
+                    }
+                  />
+                </td>
+                <td className={styles.td}>
+                  <Link
+                    to={"/admin-user/edit-plain-question"}
+                    state={{ question }}
+                  >
+                    <button className={styles.label}>Edit</button>
+                  </Link>
+                  <button
+                    className={styles.label1}
+                    onClick={() =>
+                      deleteGroupedQuestionFromServer(question._id || "")
+                    }
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={8}>{progressMessage}</td>
+            </tr>
+          )}
+        </table>
+      </div>
     </div>
   );
 }
