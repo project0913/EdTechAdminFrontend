@@ -169,31 +169,15 @@ export default function ViewPlainQuestionsPage() {
             <tr>
               <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
               <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Questions
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'A'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'B'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'C'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'D'
-              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}> Questions</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Option 'A'</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Option 'B'</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Option 'C'</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Option 'D'</th>
               <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Description
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                question Image
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                DescriptionImage Image
-              </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Description</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Question Image </th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>Description Image </th>
               <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
             </tr>
           </thead>
