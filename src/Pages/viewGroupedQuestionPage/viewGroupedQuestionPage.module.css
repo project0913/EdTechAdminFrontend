@@ -4,6 +4,9 @@
   border: 1px solid rgb(51, 65, 65);
   border-collapse: collapse;
 }
+.tableContent {
+  width: 100%;
+}
 .td {
   width: 50px;
 }
@@ -20,18 +23,12 @@
   background-color: #d1d5d9;
 }
 .adminBody {
-  margin-top: 10px;
   background-color: #088081;
   display: flex;
   height: 60px;
   width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-}
-.adminSelect {
-  text-align: center;
-  margin: 10px;
 }
 
 .tableHeader {
@@ -63,4 +60,25 @@
   padding: 5px;
   border: none;
   border-radius: 15px;
+}
+.dropdownView {
+  display: flex;
+  width: 200px;
+  gap: 4rem;
+}
+@media screen and (max-width: 400px) {
+  .dropdownView {
+    width: 0px;
+  }
+  .table {
+    width: fit-content;
+  }
+  .table,
+  .th,
+  .td {
+    width: fit-content;
+  }
+  .tableContent {
+    width: 50%;
+  }
 }

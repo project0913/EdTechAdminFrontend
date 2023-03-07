@@ -6,19 +6,17 @@
 }
 .td {
   width: 50px;
-  
 }
-.tdNo{
+.tdNo {
   padding: 10px;
-  
 }
 .tr {
   width: auto;
 }
-.tr:nth-of-type(odd){
+.tr:nth-of-type(odd) {
   background-color: #ffffff;
 }
-.tr:nth-of-type(even){
+.tr:nth-of-type(even) {
   background-color: #d1d5d9;
 }
 .adminBody {
@@ -30,11 +28,10 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  
 }
 .adminSelect {
- text-align: center;
- margin: 10px;
+  text-align: center;
+  margin: 10px;
 }
 
 .tableHeader {

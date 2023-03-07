@@ -101,9 +101,6 @@
   .all {
   }
   .allTable {
-    width: 95%;
-    margin-left: 2px;
-    margin-right: 2px;
     background-color: #fffb;
     overflow: auto;
   }
@@ -116,7 +113,6 @@
     padding: 10px;
   }
   .pagination {
-    width: 100%;
     margin: 0;
   }
 }

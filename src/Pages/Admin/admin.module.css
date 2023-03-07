@@ -54,94 +54,10 @@
   border-radius: 30px;
 }
 .bodyAdmin {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
-/* 
-.selectItem {
-  background-color: #008081;
-  border-radius: 15px;
-  margin-top: 15px;
-  margin-right: 20px;
-  height: 26px;
-  margin-left: 50px;
-}
-.orderList {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  color: #092258;
-  font-size: 18px;
-  width: 100%;
-}
-.logoutBtn {
-  background-color: #083e4e;
-  color: white;
-  font-size: 18px;
-  float: right;
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-}
-.selectDropdown {
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #b2d8d9;
-  border-radius: 30px;
-  margin-right: 300px;
-  gap: 2rem;
-}
-.dataEditView {
-  background-color: #b2d8d9;
-  color: #092258;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 14px;
-  padding: 4px;
-
-  border-radius: 30px;
-}
-
-.bindingClass {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.notify {
-  margin-left: 20px;
-  margin-top: 20px;
-}
-@media screen and (max-width: 400px) {
-  .adminBg {
-    height: 130px;
-    margin: 0;
-  }
-  .orderList {
-    width: 100%;
-    display: flex;
-  }
-  .dataEditView {
-    margin-top: 10px;
-    margin-left: 0px;
-  }
-
-  .notifyBtn {
-    list-style: none;
-    display: flex;
-  }
-  .bindingClass {
-    display: flex;
-    width: 100%;
-  }
-  .dropdownItem1 {
-    width: 50%;
-  }
-  .dropdownItem2 {
-    width: 50%;
-  }
-} */
 @media screen and (max-width: 400px) {
   .adminBg {
     margin: 0;

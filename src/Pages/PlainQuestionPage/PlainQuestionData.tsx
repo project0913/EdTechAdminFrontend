@@ -197,7 +197,7 @@ export default function PlainQuestionData() {
         </div>
 
         <div className={styles.bgDrop}>
-          <div className={styles.dropdownItem1}>
+          <div className={styles.dropdownItemPlain}>
             <div>
               <b className={styles.adminTopText}>Exam Category</b>
               <SelectDropdown

@@ -79,7 +79,7 @@
   margin: 15px;
 }
 .logBtn {
-  margin-left: 360px;
+  margin-left: 340px;
 }
 .logoutBtn {
   font-size: 18px;
@@ -111,7 +111,9 @@
 
 @media screen and (max-width: 400px) {
   .rightBar {
-    margin: 10px;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .header {
     margin: 0;
