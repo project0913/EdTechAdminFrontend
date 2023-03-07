@@ -146,11 +146,11 @@ export function ViewGroupedQuestionsPage() {
     }
   }, [selectedDirection]);
   return (
-    <div>
-      <div className={styles.adminBody}>
-        <span>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        </span>
+    <div className={styles.adminBody}>
+      <span>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      </span>
+      <div>
         <span className="list-course mt-3">
           <b style={{ color: "white" }}>Courses</b>
           <SelectDropdown

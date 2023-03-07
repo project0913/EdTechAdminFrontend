@@ -193,8 +193,9 @@ export default function PlainQuestionData() {
         {errorMessage.length > 0 && (
           <p style={{ color: "red" }}>{errorMessage}</p>
         )}
-        <div className={styles.adminBodyQuestion}>
-          <div className={styles.adminTop}>
+
+        <div className={styles.bgDrop}>
+          <div className={styles.dropdownItem1}>
             <div>
               <b className={styles.adminTopText}>Exam Category</b>
               <SelectDropdown
@@ -221,6 +222,8 @@ export default function PlainQuestionData() {
             </div>
           </div>
         </div>
+      </div>
+      <div className={styles.adminBodyQuestion}>
         <div className={styles.overAllBody}>
           <div className={styles.plainQuestionInsert1}>
             <div className={styles.inp}></div>

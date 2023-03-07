@@ -42,60 +42,65 @@ export default function AdminUserPage() {
                 </span>
               </div>
             </div>
-            <div className={styles.username}></div>
+
+            <div className={styles.selectionOption}>
+              <select
+                name=""
+                id=""
+                onChange={routeChange}
+                className={styles.selectDropdown}
+              >
+                <option value="">
+                  <span className={styles.spanText}>
+                    Select Insert Plain Question
+                  </span>
+                </option>
+
+                <option value="grouped-question">
+                  <span>Insert Group Question</span>
+                </option>
+                <option value="grouped-question">
+                  <span>Insert Group Question</span>
+                </option>
+
+                <option value="direction">Insert Directions</option>
+              </select>
+
+              <select
+                name=""
+                id=""
+                className={styles.selectDropdown}
+                onChange={routeChange}
+              >
+                <option value="">Select View Plain Question</option>
+                <option value="view-plain-questions">
+                  View Plain Question
+                </option>
+
+                <option value="view-directions">View Directions</option>
+
+                <option value="view-grouped-questions">
+                  View Grouped Question
+                </option>
+              </select>
+            </div>
+            <div className={styles.topBalance2}>
+              <label className={styles.balanceLabel}>Your Total Data </label>
+              <span className={styles.spanLabel}>{totalData}</span>
+
+              <label className={styles.balanceLabel}>Your Balance </label>
+
+              <span className={styles.spanLabel}>{balance}</span>
+            </div>
+
+            <div className={styles.logBtn}>
+              <span>
+                <button onClick={() => logout()} className={styles.logoutBtn}>
+                  Log out <i className="fas fa-sign-out-alt"></i>
+                </button>
+              </span>
+            </div>
           </div>
-          <div className={styles.selectionOption}>
-            <select
-              name=""
-              id=""
-              onChange={routeChange}
-              className={styles.selectDropdown}
-            >
-              <option value="">
-                <span className={styles.spanText}>
-                  Select Insert Plain Question
-                </span>
-              </option>
-
-              <option value="grouped-question">
-                <span>Insert Group Question</span>
-              </option>
-              <option value="grouped-question">
-                <span>Insert Group Question</span>
-              </option>
-
-              <option value="direction">Insert Directions</option>
-            </select>
-
-            <select
-              name=""
-              id=""
-              className={styles.selectDropdown}
-              onChange={routeChange}
-            >
-              <option value="">Select View Plain Question</option>
-              <option value="view-plain-questions">View Plain Question</option>
-
-              <option value="view-directions">View Directions</option>
-
-              <option value="view-grouped-questions">
-                View Grouped Question
-              </option>
-            </select>
-          </div>
-          <div className={styles.topBalance2}>
-            <label className={styles.balanceLabel}>Your Total Data </label>
-            <span className={styles.spanLabel}>{totalData}</span>
-            <label className={styles.balanceLabel}>Your Balance </label>
-            <span className={styles.spanLabel}>{balance}</span>
-          </div>
-        </div>
-        <div className={styles.logBtn}>
-          <span>
-            <button onClick={() => logout()} className={styles.logoutBtn}>
-              Log out <i className="fas fa-sign-out-alt"></i>
-            </button>
-          </span>
         </div>
       </div>
       <div className={styles.rightBar}>
