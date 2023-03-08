@@ -51,7 +51,7 @@ export default function ViewClerkDetailPage() {
     );
     if (data.length == 0) {
       setIntervalMessage(
-        "it looks like This Clerk didn't Entered any Data on this Interval"
+        "No Data Entered in This Interval"
       );
       return;
     }
@@ -60,7 +60,7 @@ export default function ViewClerkDetailPage() {
   const getAllTimeData = async (cId: string) => {
     const data = await fetchAllTimeDataInsertionReport(cId);
     if (data.length == 0) {
-      setAllTimeMessage("it looks like This Clerk didn't Entered any Data Yet");
+      setAllTimeMessage("No Data Entered");
       return;
     }
     setAllTimeData(data);
@@ -73,16 +73,17 @@ export default function ViewClerkDetailPage() {
   return (
     <div>
       <div className={styles.textHeader}>
-        <span className={styles.viewSpan}>view clerk detail</span>
-
+        <p>View Clerk Details</p>
+        <div className={styles.dropdownList}>
         <SelectDropdown
           handleSelect={handleSelectChange}
           items={[
             { label: "Weekly", value: "7" },
-            { label: "monthly", value: "30" },
+            { label: "Monthly", value: "30" },
           ]}
           title=""
         />
+        </div>
       </div>
 
       <div className="container">
@@ -100,8 +101,8 @@ export default function ViewClerkDetailPage() {
                   </thead>
                   <tbody>
                     <tr className={styles.tr}>
-                      <td className={styles.td1}>Date</td>
-                      <td className={styles.td1}>amount</td>
+                      <td className={styles.td1}><strong>Date</strong></td>
+                      <td className={styles.td1}><strong>Amount</strong></td>
                     </tr>
                     {data.insertions.map((insertion, i) => (
                       <tr className={styles.td} key={index + i}>
@@ -126,7 +127,7 @@ export default function ViewClerkDetailPage() {
       </div>
       <div className="container">
         <div className={styles.userNameTxt}>
-          <h4>All Time Data Insertion Of {username}</h4>
+          <h4>All Time Data Insertion of {username}</h4>
           {allTimeMessage.length > 0 && <p>{allTimeMessage}</p>}
         </div>
         {allTimeData.length > 0 && <BarChartComponent data={allTimeData} />}

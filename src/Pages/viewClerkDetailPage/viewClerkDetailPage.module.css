@@ -1,61 +1,54 @@
+body {
+  background-color: aliceblue;
+}
 .table {
-  width: 80%;
+  width: 50%;
   margin-left: 5%;
   padding: 10px;
+  text-align: center;
+} 
+.th {
+  background-color: #008081;
+  color: #fff;
 }
 
-.tr1 {
-  background-color: #092258;
-  padding: 10px;
-}
-.tr1 .th {
-  color: white;
-  font-size: 18px;
-  padding: 10px;
-}
-.tr {
-  background-color: #b2d8d9;
-  padding: 10px;
-}
-.td {
-  background-color: #008081;
-  padding: 10px;
-}
-.td1 {
-  color: #092258;
-  font-size: 18px;
-  padding: 10px;
+  .td1, .td2{
+  border: 1px solid #092258;
 }
 .td2 {
   color: #092258;
-  font-size: 18px;
-  padding: 10px;
-}
-
-.viewSpan {
-  color: #ffffff;
-  font-size: 24px;
-  margin-left: 20px;
-}
-.userNameTxt {
-  margin-left: 35%;
-  width: 30%;
-  font-size: 22px;
-  color: white;
-  background-color: rgb(51, 90, 90);
-}
-.userName {
-  margin-left: 40px;
-}
+  font-size: 14px;
+  padding: 6px;
+} 
 .textHeader {
   height: 60px;
   width: 100%;
+  margin-left: 10px;
   background-color: #092258;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.spanTotalData {
-  background-color: darkgoldenrod;
+.textHeader p {
+  font-family: 'Times New Roman', Times, serif;
+  color: #ffffff;
   font-size: 24px;
-  width: 20%;
-  padding: 20px;
-  margin-left: 40%;
+  text-align: center;
+  margin: 10px;
 }
+
+.userNameTxt, .spanTotalData{
+
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  font-size: 22px;
+  background-color: #008081;
+  color: #fff;
+  border-radius: 10px;
+}
+
+
+

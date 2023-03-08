@@ -10,6 +10,7 @@
   background-color: #092258;
   height: 60px;
   z-index: 9999;
+  
 }
 
 .userProfileName {
@@ -84,7 +85,7 @@
 }
 .logBtn {
 margin-left: 50px;
-  margin-left: 340px;
+
 }
 .logoutBtn {
   font-size: 18px;

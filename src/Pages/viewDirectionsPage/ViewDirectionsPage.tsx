@@ -131,12 +131,11 @@ export default function ViewDirectionsPage() {
       <table className={styles.table}>
         <tr>
           <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>
-            Direction Text
-          </th>
+          <th className={`${styles.tableHeader} ${styles.th}`}> Direction Text</th>
           <th className={`${styles.tableHeader} ${styles.th}`}>Section Name</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>passage</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
+          <th className={`${styles.tableHeader} ${styles.th}`}>Passage</th>
+          <th className={`${styles.tableHeader} ${styles.th}`}>Passage</th>
+
         </tr>
         {directions.length > 0 ? (
           directions.map((direction, index) => (
@@ -151,6 +150,7 @@ export default function ViewDirectionsPage() {
               <td className={styles.td} colSpan={4}>
                 {parse(direction.passage || "", options)}
               </td>
+       
               <td className={styles.td}>
                 <Link to={"/admin-user/edit-direction"} state={{ direction }}>
                   <button className={styles.label}>Edit</button>
@@ -158,8 +158,7 @@ export default function ViewDirectionsPage() {
                 <button
                   className={styles.label1}
                   onClick={() => deleteDirectionFromServer(direction._id || "")}
-                >
-                  Delete
+                  >Delete
                 </button>
               </td>
             </tr>
