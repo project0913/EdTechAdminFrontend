@@ -1,5 +1,9 @@
 .editorContainer {
 }
+.bodyPlainQuestion {
+  margin-left: 5%;
+  margin-right: 5%;
+}
 .img {
   width: 100px;
   height: 100px;
@@ -10,14 +14,14 @@
   align-items: center;
 }
 .updateBtn {
+  width: 150px;
   height: 40px;
-  width: 180px;
+  align-items: center;
+  justify-content: center;
   border: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 600px;
   border-radius: 10px;
   color: white;
+  margin: 10px;
   background-color: #088081;
 }
 .backToMain {

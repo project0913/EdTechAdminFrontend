@@ -1,7 +1,6 @@
 .rightBar {
   margin-left: 15%;
   margin-right: 15%;
-  
 }
 .header {
   display: flex;
@@ -10,11 +9,9 @@
   background-color: #092258;
   height: 60px;
   z-index: 9999;
-  
 }
 
 .userProfileName {
-
   display: inline-flex;
   align-items: center;
 }
@@ -47,13 +44,11 @@
   display: flex;
 }
 .selectDropdown {
-  
   color: #092258;
   border-radius: 30px;
   padding: 3px;
   background-color: #b2d8d9;
   margin-left: 30px;
-
 }
 
 .topBalance2 {
@@ -84,8 +79,7 @@
   margin: 15px;
 }
 .logBtn {
-margin-left: 50px;
-
+  margin-left: 50px;
 }
 .logoutBtn {
   font-size: 18px;

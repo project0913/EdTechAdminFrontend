@@ -1,15 +1,7 @@
-/* .plainBg {
+.all {
+  margin-left: 5%;
+  margin-right: 5%;
 }
-
-.adminTop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}*/
-/* .adminBodyQuestion {
-  height: 60px;
-} */
 .adminTopText {
   color: #fff;
   font-size: 15px;

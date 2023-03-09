@@ -50,9 +50,7 @@ export default function ViewClerkDetailPage() {
       parseInt(duration.toString())
     );
     if (data.length == 0) {
-      setIntervalMessage(
-        "No Data Entered in This Interval"
-      );
+      setIntervalMessage("No Data Entered in This Interval");
       return;
     }
     setDurationalData(data);
@@ -71,18 +69,18 @@ export default function ViewClerkDetailPage() {
     setSelectedDuration(parseInt(duration));
   };
   return (
-    <div>
+    <div className={styles.body}>
       <div className={styles.textHeader}>
         <p>View Clerk Details</p>
         <div className={styles.dropdownList}>
-        <SelectDropdown
-          handleSelect={handleSelectChange}
-          items={[
-            { label: "Weekly", value: "7" },
-            { label: "Monthly", value: "30" },
-          ]}
-          title=""
-        />
+          <SelectDropdown
+            handleSelect={handleSelectChange}
+            items={[
+              { label: "Weekly", value: "7" },
+              { label: "Monthly", value: "30" },
+            ]}
+            title=""
+          />
         </div>
       </div>
 
@@ -101,8 +99,12 @@ export default function ViewClerkDetailPage() {
                   </thead>
                   <tbody>
                     <tr className={styles.tr}>
-                      <td className={styles.td1}><strong>Date</strong></td>
-                      <td className={styles.td1}><strong>Amount</strong></td>
+                      <td className={styles.td1}>
+                        <strong>Date</strong>
+                      </td>
+                      <td className={styles.td1}>
+                        <strong>Amount</strong>
+                      </td>
                     </tr>
                     {data.insertions.map((insertion, i) => (
                       <tr className={styles.td} key={index + i}>
@@ -121,15 +123,17 @@ export default function ViewClerkDetailPage() {
               </div>
             ))
           ) : (
-            <p>{intervalMessage}</p>
+            <div className="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+              <span className={styles.spanTxt}>{intervalMessage}</span>
+            </div>
           )}
         </div>
       </div>
+      <div className={styles.userNameTxt}>
+        <h4>All Time Data Insertion of {username}</h4>
+        {allTimeMessage.length > 0 && <p>{allTimeMessage}</p>}
+      </div>
       <div className="container">
-        <div className={styles.userNameTxt}>
-          <h4>All Time Data Insertion of {username}</h4>
-          {allTimeMessage.length > 0 && <p>{allTimeMessage}</p>}
-        </div>
         {allTimeData.length > 0 && <BarChartComponent data={allTimeData} />}
       </div>
 

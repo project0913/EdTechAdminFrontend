@@ -99,6 +99,7 @@ function App() {
         },
       ],
     },
+
     { path: "view-clerk-detail", element: <ViewClerkDetailPage /> },
     { path: "admin-notification", element: <AdminNotification /> },
     {

@@ -109,7 +109,7 @@ export default function ViewDirectionsPage() {
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </span>
         <span>
-          <b style={{ color: "white" }}>select Course</b>
+          <b style={{ color: "white" }}>Select Course</b>
           <SelectDropdown
             title=""
             items={courseOptions}
@@ -118,7 +118,7 @@ export default function ViewDirectionsPage() {
           />
         </span>
         <span>
-          <b style={{ color: "white" }}>select Year</b>
+          <b style={{ color: "white" }}>Select Year</b>
           <SelectDropdown
             title=""
             items={yearOptions}
@@ -127,45 +127,45 @@ export default function ViewDirectionsPage() {
           />
         </span>
       </div>
-
       <table className={styles.table}>
         <tr>
-          <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}> Direction Text</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Section Name</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Passage</th>
-          <th className={`${styles.tableHeader} ${styles.th}`}>Passage</th>
-
+          <th className={`${styles.th} ${styles.thData}`}>No</th>
+          <th className={styles.th}>Direction Text</th>
+          <th className={styles.th}>Section Name</th>
+          <th className={styles.th}>Passage</th>
+          <th className={styles.t}>Manage</th>
         </tr>
         {directions.length > 0 ? (
           directions.map((direction, index) => (
             <tr className={styles.tr} key={index}>
-              <td className={styles.td}>{direction.directionNumber}</td>
+              <td className={`${styles.td} ${styles.tdNumber}`}>
+                {direction.directionNumber}
+              </td>
               <td className={styles.td}>
                 {parse(direction.directionText, options)}
               </td>
               <td className={styles.td}>
                 {parse(direction.sectionName, options)}
               </td>
-              <td className={styles.td} colSpan={4}>
+              <td className={styles.td}>
                 {parse(direction.passage || "", options)}
               </td>
-       
-              <td className={styles.td}>
+              <td className={`${styles.td} ${styles.tdManage}`}>
                 <Link to={"/admin-user/edit-direction"} state={{ direction }}>
                   <button className={styles.label}>Edit</button>
                 </Link>
                 <button
                   className={styles.label1}
                   onClick={() => deleteDirectionFromServer(direction._id || "")}
-                  >Delete
+                >
+                  Delete
                 </button>
               </td>
             </tr>
           ))
         ) : (
           <tr>
-            <td colSpan={8}>{progressMessage}</td>
+            <td>{progressMessage}</td>
           </tr>
         )}
       </table>

@@ -16,9 +16,10 @@ export function AdminDashboard() {
     getClerksAndDataInfo();
   }, []);
   return (
-    <div className={styles.table}>
-      <h1>Data Encoders</h1>
-      <div className={styles.clerkTableHeader}>
+    <div className={styles.body}>
+      <div className={styles.table}>
+        <h1>Data Encoders</h1>
+        <div className={styles.clerkTableHeader}>
           <thead className={styles.tableHeaderTitle}>
             <tr className={styles.tr}>
               <th className={styles.th}>No.</th>
@@ -39,7 +40,9 @@ export function AdminDashboard() {
                   </td>
                   <td className={styles.td}>{clerk.username}</td>
                   <td className={styles.td}>{clerk.questionsEntered}</td>
-                  <td className={styles.td}><strong>{clerk.questionsEntered * 3.5}</strong></td>
+                  <td className={styles.td}>
+                    <strong>{clerk.questionsEntered * 3.5}</strong>
+                  </td>
                   <td className={styles.td}>
                     <Link
                       to={"/view-clerk-detail"}
@@ -61,14 +64,14 @@ export function AdminDashboard() {
           </tbody>
           <tfoot>
             <tr className={styles.tfoot}>
-            <td></td>
+              <td></td>
               <td colSpan={2}>Total Data In Database</td>
-              <td>{totalData}</td>            
+              <td>{totalData}</td>
               <td></td>
               <td></td>
             </tr>
           </tfoot>
-       
+        </div>
       </div>
     </div>
   );

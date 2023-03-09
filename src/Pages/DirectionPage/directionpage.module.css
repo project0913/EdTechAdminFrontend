@@ -1,6 +1,6 @@
 .directionQuestionBg {
-  height: 100%;
-  width: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
   background-color: #ffffff4b;
 }
 .directionHeader {
@@ -15,14 +15,16 @@
 }
 /*  */
 .submitBtn {
-  background-color: #088081;
-  border-radius: 15px;
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 500px;
   border: none;
-  height: 30px;
-  margin: 20px;
-  width: 200px;
-  margin-left: 40%;
-  color: #ffffff;
+  border-radius: 10px;
+  color: white;
+  margin-top: 10px;
+  background-color: #088081;
 }
 
 @media screen and (max-width: 400px) {

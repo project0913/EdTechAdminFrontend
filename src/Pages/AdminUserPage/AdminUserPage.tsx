@@ -59,9 +59,6 @@ export default function AdminUserPage() {
                 <option value="grouped-question">
                   <span>Insert Group Question</span>
                 </option>
-                <option value="grouped-question">
-                  <span>Insert Group Question</span>
-                </option>
 
                 <option value="direction">Insert Directions</option>
               </select>
@@ -72,7 +69,6 @@ export default function AdminUserPage() {
                 className={styles.selectDropdown}
                 onChange={routeChange}
               >
-                <option value="">Select View Plain Question</option>
                 <option value="view-plain-questions">
                   View Plain Question
                 </option>
@@ -103,8 +99,13 @@ export default function AdminUserPage() {
           </div>
         </div>
       </div>
-      <div className={styles.rightBar}>
-        <Outlet />
+      <div>
+        <div>
+          <Outlet />
+        </div>
+        {/* <div className={styles.rightBar}>
+          <Outlet />
+        </div> */}
       </div>
     </div>
   );

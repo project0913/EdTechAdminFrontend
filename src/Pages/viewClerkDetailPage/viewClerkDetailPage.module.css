@@ -3,27 +3,29 @@ body {
 }
 .table {
   width: 50%;
-  margin-left: 5%;
+  margin-left: 25%;
   padding: 10px;
   text-align: center;
-} 
+}
 .th {
   background-color: #008081;
   color: #fff;
 }
 
-  .td1, .td2{
+.td1,
+.td2 {
   border: 1px solid #092258;
 }
 .td2 {
   color: #092258;
   font-size: 14px;
   padding: 6px;
-} 
+}
 .textHeader {
   height: 60px;
-  width: 100%;
-  margin-left: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
   background-color: #092258;
   border-radius: 10px;
   display: flex;
@@ -31,24 +33,43 @@ body {
   justify-content: center;
 }
 .textHeader p {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   color: #ffffff;
   font-size: 24px;
   text-align: center;
   margin: 10px;
 }
+.userNameTxt {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #008081;
+  text-align: center;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+}
 
-.userNameTxt, .spanTotalData{
-
-  width: 100%;
+.spanTotalData {
   padding: 10px;
-  margin: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
   text-align: center;
   font-size: 22px;
   background-color: #008081;
   color: #fff;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
-
-
+.spanTxt {
+  text-align: center;
+  margin-left: 200px;
+  color: #092258;
+  font-size: 24px;
+}
