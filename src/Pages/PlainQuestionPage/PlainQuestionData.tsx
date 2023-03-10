@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import { yearsOptions } from "../../constants";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { MathEditor } from "../../quill/EditorMath";
+import ErrorComponent from "../../components/ErrorComponent";
 
 //import { showErrorToast, showSuccessToast } from "../../utils/helper";
 const override: CSSProperties = {
@@ -45,7 +46,7 @@ export default function PlainQuestionData() {
   const [descriptionImage, setDescriptionImage] = useState("");
   const [tempQuestionImagePath, setTempQuestionImagePath] = useState("");
   const [tempDescriptionImagePath, setTempDescriptionImagePath] = useState("");
-  const [questionNumber, setQuestionNumber] = useState<number | any>();
+  const [questionNumber, setQuestionNumber] = useState<string | any>();
 
   const [show, setShow] = useState(false);
   const answerOptions: SelectOption[] = [
@@ -54,6 +55,10 @@ export default function PlainQuestionData() {
     { label: "C", value: "option_c" },
     { label: "D", value: "option_d" },
   ];
+  useEffect(() => {
+    console.log("plain question text " + questionText);
+    console.log("plain question text " + questionNumber);
+  }, []);
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
     let examCatsOption = [];
@@ -137,7 +142,7 @@ export default function PlainQuestionData() {
       course: selectedCourse,
       year: year,
 
-      questionNumber,
+      questionNumber: parseInt(questionNumber),
     };
     console.log("question image 00");
     console.log(questionImage);
@@ -190,11 +195,7 @@ export default function PlainQuestionData() {
       }
     >
       <div>
-        <div className={styles.plainQuestion}>
-          {errorMessage.length > 0 && (
-            <p style={{ color: "red" }}>{errorMessage}</p>
-          )}{" "}
-        </div>
+        <div className={styles.plainQuestion}></div>
         <div className={styles.all}>
           <div className={styles.bgDrop}>
             <div className={styles.dropdownItemPlain}>
@@ -242,14 +243,15 @@ export default function PlainQuestionData() {
 
                   <div>
                     <p className={styles.txt}>Question Number</p>
-
                     <input
                       type="number"
                       value={questionNumber}
                       onChange={(e) =>
                         setQuestionNumber(parseInt(e.target.value))
                       }
-                    />
+                    />{" "}
+                    <br />
+                    <ErrorComponent value={questionNumber} />
                   </div>
                   <div className={styles.q}>
                     <p className={styles.txt}>Paste your question here</p>
@@ -257,6 +259,7 @@ export default function PlainQuestionData() {
                       setValue={setQuestionTextValue}
                       value={questionText}
                     />
+                    <ErrorComponent value={questionText} />
                   </div>
 
                   <div className={styles.plainTxt}>
@@ -279,12 +282,12 @@ export default function PlainQuestionData() {
                     <p className={styles.txt}>
                       Paste your option{"  "}
                       <span style={{ color: "red", fontWeight: "bolder" }}>
-                        {" "}
                         A{" "}
                       </span>
                       here
                     </p>
                     <MathEditor setValue={setOption_a_Text} value={option_a} />
+                    <ErrorComponent value={option_a} />
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
@@ -295,6 +298,7 @@ export default function PlainQuestionData() {
                       here
                     </p>
                     <MathEditor setValue={setOption_b_Text} value={option_b} />
+                    <ErrorComponent value={option_b} />
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
@@ -305,6 +309,7 @@ export default function PlainQuestionData() {
                       here
                     </p>
                     <MathEditor setValue={setOption_c_Text} value={option_c} />
+                    <ErrorComponent value={option_c} />
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
@@ -315,6 +320,7 @@ export default function PlainQuestionData() {
                       here
                     </p>
                     <MathEditor setValue={setOption_d_Text} value={option_d} />
+                    <ErrorComponent value={option_d} />
                   </div>
                   <div className={styles.answerYear}>
                     <div>

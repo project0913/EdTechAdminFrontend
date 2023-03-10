@@ -12,6 +12,8 @@
 }
 
 .userProfileName {
+  /* display: inline-flex;
+  align-items: center; */
   display: inline-flex;
   align-items: center;
 }
@@ -34,10 +36,10 @@
 .username {
   font-size: 12px;
   margin-left: 15px;
-  margin-top: 20px;
 }
 .userNameTxt {
   margin: 20px;
+  margin-top: 40px;
 }
 .selectionOption {
   margin: 20px;
@@ -49,6 +51,8 @@
   padding: 3px;
   background-color: #b2d8d9;
   margin-left: 30px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
 }
 
 .topBalance2 {
@@ -89,6 +93,7 @@
   font-family: "Times New Roman", Times, serif;
   cursor: pointer;
   border: none;
+  margin-left: 340px;
   border-radius: 10px;
   color: #092258;
   background-color: #b2d8d9;

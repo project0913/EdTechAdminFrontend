@@ -21,6 +21,7 @@ export const showSuccessToast = (message: string) => {
     theme: "colored",
   });
 };
+
 export const showErrorToast = () => {
   toast.error("Something is wrong!", {
     position: "bottom-right",
@@ -35,9 +36,25 @@ export const showErrorToast = () => {
 };
 
 export const hasEmpty = function (obj: any) {
+  console.log(JSON.stringify(obj));
+
   for (var key in obj) {
-    if (obj[key] == null || obj[key] == "" || obj[key] == undefined)
+    if (
+      obj[key] == null ||
+      obj[key] == "" ||
+      obj[key] == undefined ||
+      obj[key].length < 1
+    )
       return true;
+  }
+  return false;
+};
+
+export const isEmptyForRichText = function (obj: any, field: string) {
+  if (!obj[field]) {
+    return true;
+  } else if (obj[field] === "<p><br></p>") {
+    return true;
   }
   return false;
 };

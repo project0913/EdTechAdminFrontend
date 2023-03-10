@@ -11,6 +11,7 @@ import { FadeLoader } from "react-spinners";
 import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { MathEditor } from "../../quill/EditorMath";
+import ErrorComponent from "../../components/ErrorComponent";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -90,9 +91,6 @@ export default function DirectionPage() {
         />
       }
     >
-      {errorMessage.length > 0 && (
-        <p style={{ color: "red" }}>{errorMessage}</p>
-      )}
       <div className={styles.directionQuestionBg}>
         <div className="direction-question">
           <div className={styles.directionHeader}>
@@ -115,24 +113,24 @@ export default function DirectionPage() {
           </div>
           <div className={styles.editor}>
             <div>
-              <p>Fill Direction Number Here</p>
+              <p>Fill Section Number Here</p>
               <input
                 type="number"
                 onChange={(e) => setDirectionNumber(parseInt(e.target.value))}
+              />
+            </div>
+            <div>
+              <p>Paste Section Name</p>
+              <input
+                onChange={(e) => setSectionName(e.target.value)}
+                value={sectionName}
               />
             </div>
 
             <div>
               <p>Paste your Direction Text Here</p>
               <MathEditor setValue={setDirection_text} value={directionText} />
-            </div>
-
-            <div>
-              <p>Paste Direction Section Name Here</p>
-              <input
-                onChange={(e) => setSectionName(e.target.value)}
-                value={sectionName}
-              />
+              <ErrorComponent value={directionText} />
             </div>
 
             <div>

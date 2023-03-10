@@ -23,7 +23,6 @@ export async function updatePlainQuestionToServer(
     formData.append("course", question?.course || "");
     formData.append("description", question.description);
     formData.append("questionImage", questionImage);
-    console.log("image set to form data--------");
 
     formData.append("descriptionImage", descriptionImage);
 
@@ -32,6 +31,8 @@ export async function updatePlainQuestionToServer(
 
     let raw = await axios.post(`/questions/update/${questionId}`, formData);
     let data = raw.data as PlainQuestion;
+    console.log("coming from a server");
+
     console.log(data);
     return data;
   } catch (error) {

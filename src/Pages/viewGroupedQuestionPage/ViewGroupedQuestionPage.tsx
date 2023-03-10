@@ -147,10 +147,6 @@ export function ViewGroupedQuestionsPage() {
   }, [selectedDirection]);
   return (
     <div>
-      <span>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </span>
-
       <div className={styles.adminBody}>
         {" "}
         <div>
@@ -164,7 +160,7 @@ export function ViewGroupedQuestionsPage() {
             />
           </span>
           <span className="year-selection mt-3">
-            <b style={{ color: "white" }}>select Year</b>
+            <b style={{ color: "white" }}>Select Year</b>
             <SelectDropdown
               title=""
               items={yearOptions}
@@ -198,7 +194,7 @@ export function ViewGroupedQuestionsPage() {
               Description
             </th>
             <th className={`${styles.tableHeader} ${styles.th}`}>
-              question Image
+              Question Image
             </th>
             <th className={`${styles.tableHeader} ${styles.th}`}>
               DescriptionImage Image

@@ -15,6 +15,7 @@ import {
   updatePlainQuestionToServer,
 } from "../../DataService/editQuestion.service";
 import { MathEditor } from "../../quill/EditorMath";
+import ErrorComponent from "../../components/ErrorComponent";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -111,7 +112,7 @@ export default function PlainQuestionEditor() {
       year: year,
       questionNumber,
     };
-    console.log("question image 000001");
+    console.log("question image ========================");
     console.log(editedQuestion);
     let result = null;
     if (!isGroupedQuestion) {
@@ -174,10 +175,6 @@ export default function PlainQuestionEditor() {
     >
       <div className={styles.bodyPlainQuestion}>
         <div className={styles.plainQuestionContainer}>
-          {errorMessage.length > 0 && (
-            <p style={{ color: "red" }}>{errorMessage}</p>
-          )}
-
           <div className={styles.editorContainer}>
             <div>
               <h6>Question Number</h6>
@@ -194,6 +191,7 @@ export default function PlainQuestionEditor() {
                   setValue={setQuestionTextValue}
                   value={questionText}
                 />
+                <ErrorComponent value={questionText} />
               </div>
               <div className="">
                 <p>
@@ -224,6 +222,7 @@ export default function PlainQuestionEditor() {
                   Here
                 </p>
                 <MathEditor setValue={setOption_a_Text} value={option_a} />
+                <ErrorComponent value={option_a} />
               </div>
               <div className="">
                 <p>
@@ -232,6 +231,7 @@ export default function PlainQuestionEditor() {
                   Here
                 </p>
                 <MathEditor setValue={setOption_b_Text} value={option_b} />
+                <ErrorComponent value={option_b} />
               </div>
               <div className="">
                 <p>
@@ -240,6 +240,7 @@ export default function PlainQuestionEditor() {
                   Here
                 </p>
                 <MathEditor setValue={setOption_c_Text} value={option_c} />
+                <ErrorComponent value={option_c} />
               </div>
               <div className="">
                 <p>
@@ -248,6 +249,7 @@ export default function PlainQuestionEditor() {
                   Here
                 </p>
                 <MathEditor setValue={setOption_d_Text} value={option_d} />
+                <ErrorComponent value={option_d} />
               </div>
               <div className="">
                 <p>Choose Answer here</p>

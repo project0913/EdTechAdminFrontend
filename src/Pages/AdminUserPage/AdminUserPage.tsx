@@ -13,7 +13,7 @@ export default function AdminUserPage() {
   const getClerkData = async () => {
     const user = await getClerkInfoFromServer();
     setTotalData(user.questionsEntered);
-    setBalance(user.questionsEntered * 3);
+    setBalance(user.questionsEntered * 3.5);
     setUsername(user.username);
   };
   useEffect(() => {
@@ -50,15 +50,12 @@ export default function AdminUserPage() {
                 onChange={routeChange}
                 className={styles.selectDropdown}
               >
-                <option value="">
-                  <span className={styles.spanText}>
-                    Select Insert Plain Question
-                  </span>
+                <option selected disabled>
+                  Select Plain Question
                 </option>
+                <option value="">Insert Plain Question</option>
 
-                <option value="grouped-question">
-                  <span>Insert Group Question</span>
-                </option>
+                <option value="grouped-question">Insert Group Question</option>
 
                 <option value="direction">Insert Directions</option>
               </select>
@@ -69,12 +66,14 @@ export default function AdminUserPage() {
                 className={styles.selectDropdown}
                 onChange={routeChange}
               >
+                {" "}
+                <option selected disabled>
+                  Select View Plain Question
+                </option>
                 <option value="view-plain-questions">
                   View Plain Question
                 </option>
-
                 <option value="view-directions">View Directions</option>
-
                 <option value="view-grouped-questions">
                   View Grouped Question
                 </option>

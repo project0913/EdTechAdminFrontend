@@ -17,6 +17,7 @@ import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { MathEditor } from "../../quill/EditorMath";
+import ErrorComponent from "../../components/ErrorComponent";
 const override: CSSProperties = {
   margin: "10 auto",
   borderColor: "red",
@@ -32,7 +33,7 @@ export default function GroupedQuestionPage() {
   const [selectedYear, setSelectedYear] = useState("2015");
   const [selectedDirection, setSelectedDirection] = useState("");
   const [questionText, setQuestionText] = useState("");
-  const [questionNumber, setQuestionNumber] = useState<number | any>();
+  const [questionNumber, setQuestionNumber] = useState<string | any>();
   const [option_a, setOption_a] = useState("");
   const [option_b, setOption_b] = useState("");
   const [option_c, setOption_c] = useState("");
@@ -157,7 +158,7 @@ export default function GroupedQuestionPage() {
       courseId: selectedCourse,
       year: parseInt(selectedYear),
       direction: selectedDirection,
-      questionNumber,
+      questionNumber: parseInt(questionNumber),
     };
 
     const result = await submitGroupedQuestionToServer(
@@ -212,40 +213,32 @@ export default function GroupedQuestionPage() {
     >
       <div className={styles.groupedQuestionBody}>
         <div>
-          {errorMessage.length > 0 && (
-            <p style={{ color: "red" }}>{errorMessage}</p>
-          )}
-
           <div className={styles.groupedBg}>
-        
-              <div className={styles.groupedHeader}>
-                <div className={styles.dropdownItem}>
-                  <div className="">
-                    <SelectDropdown
-                      title="Courses"
-                      items={courses}
-                      handleSelect={handleCourseChange}
-                    />
-                  </div>
-                  <div className="">
-                    <SelectDropdown
-                      title="Years"
-                      items={years}
-                      handleSelect={handleYearChange}
-                    />
-                  </div>
-                  <div className="">
-                    <SelectDropdown
-                      title="Directions"
-                      items={directions}
-                      handleSelect={handleDirectionChange}
-                    />
-                  </div>
-
-
+            <div className={styles.groupedHeader}>
+              <div className={styles.dropdownItem}>
+                <div className="">
+                  <SelectDropdown
+                    title="Courses"
+                    items={courses}
+                    handleSelect={handleCourseChange}
+                  />
+                </div>
+                <div className="">
+                  <SelectDropdown
+                    title="Years"
+                    items={years}
+                    handleSelect={handleYearChange}
+                  />
+                </div>
+                <div className="">
+                  <SelectDropdown
+                    title="Directions"
+                    items={directions}
+                    handleSelect={handleDirectionChange}
+                  />
                 </div>
               </div>
-           
+            </div>
           </div>
           <div className={styles.groupMargin}>
             <div className={styles.editorContainer}>
@@ -254,6 +247,8 @@ export default function GroupedQuestionPage() {
                 type="number"
                 onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
               />
+              <br />
+              <ErrorComponent value={questionNumber} />
             </div>
             <div className={styles.editorContaine}>
               <div className="editor-container">
@@ -262,6 +257,7 @@ export default function GroupedQuestionPage() {
                   setValue={setQuestionTextValue}
                   value={questionText}
                 />
+                <ErrorComponent value={questionText} />
               </div>
               <div className="editor-container">
                 <p>
@@ -288,6 +284,7 @@ export default function GroupedQuestionPage() {
                   here
                 </p>
                 <MathEditor setValue={setOption_a_Text} value={option_a} />
+                <ErrorComponent value={option_a} />
               </div>
               <div>
                 <p>
@@ -296,6 +293,7 @@ export default function GroupedQuestionPage() {
                   here
                 </p>
                 <MathEditor setValue={setOption_b_Text} value={option_b} />
+                <ErrorComponent value={option_b} />
               </div>
               <div>
                 <p>
@@ -304,6 +302,7 @@ export default function GroupedQuestionPage() {
                   here
                 </p>
                 <MathEditor setValue={setOption_c_Text} value={option_c} />
+                <ErrorComponent value={option_c} />
               </div>
               <div>
                 <p>
@@ -312,6 +311,7 @@ export default function GroupedQuestionPage() {
                   here
                 </p>
                 <MathEditor setValue={setOption_d_Text} value={option_d} />
+                <ErrorComponent value={option_d} />
               </div>
               <div className={styles.answerContainer}>
                 <p className={styles.questionAnswer}>Choose Answer here</p>

@@ -106,9 +106,6 @@ export default function ViewDirectionsPage() {
     <div>
       <div className={styles.adminBody}>
         <span>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        </span>
-        <span>
           <b style={{ color: "white" }}>Select Course</b>
           <SelectDropdown
             title=""
