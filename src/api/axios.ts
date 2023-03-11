@@ -14,7 +14,7 @@ const getClerkToken = () => {
   return parsedClerk?.token ? parsedClerk?.token : "";
 };
 export default axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://coydoe.onrender.com/api",
   headers: {
     Authorization: `Bearer ${getClerkToken()}`,
   },

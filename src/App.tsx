@@ -1,6 +1,5 @@
 import "./App.css";
 import PlainQuestionData from "./Pages/PlainQuestionPage/PlainQuestionData";
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GroupedQuestionPage from "./Pages/GroupedQuestionPage/GroupedQuestionPage";
 import DirectionPage from "./Pages/DirectionPage/DirectionPage";
@@ -26,20 +25,32 @@ import AdminNotification from "./components/AdminNotification";
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 
 import { MathEditor } from "./quill/EditorMath";
+import { useState } from "react";
 
 function App() {
+  const [v, setV] = useState("");
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
     {
       //this route is only for testing
       path: "math",
       element: (
-        <MathEditor
-          value="abc"
-          setValue={(a: string) => {
-            console.log(a);
-          }}
-        />
+        <div>
+          <MathEditor
+            value={v}
+            setValue={(a: string) => {
+              console.log(a);
+              setV(a);
+            }}
+          />
+          <button
+            onClick={() => {
+              setV("");
+            }}
+          >
+            Clear
+          </button>
+        </div>
       ),
     },
     { path: "admin-dashboard", element: <AdminDashboard /> },
