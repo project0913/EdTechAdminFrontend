@@ -21,7 +21,6 @@ import AdminLogin from "./Pages/AdminLogin/AdminLogin";
 import AdminUserDataView from "./Pages/Admin/AdminUserDataView";
 import ViewClerkDetailPage from "./Pages/viewClerkDetailPage/ViewClerkDetailPage";
 import AdminNotification from "./components/AdminNotification";
-
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 
 import { useState } from "react";
