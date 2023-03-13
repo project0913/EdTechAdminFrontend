@@ -5,13 +5,12 @@ import "react-quill/dist/quill.snow.css";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import { fetchExamSubCategories } from "../../DataService/fetchSubExamCategory";
-import Editor from "../../quill/Editor";
+
 import { PlainQuestion } from "../../models/question.model";
 import { submitPlainQuestionToServer } from "../../DataService/submit-questions.service";
 import { AxiosError } from "axios";
 import { FadeLoader } from "react-spinners";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
-import { toast } from "react-toastify";
 
 import { yearsOptions } from "../../constants";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";

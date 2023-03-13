@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import styles from "./adminuserpage.module.css";
-import PlainQuestionData from "../PlainQuestionPage/PlainQuestionData";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+
+import { Outlet, useNavigate } from "react-router-dom";
 import { getClerkInfoFromServer } from "../../DataService/clerkData.service";
 
 export default function AdminUserPage() {
@@ -24,7 +24,7 @@ export default function AdminUserPage() {
     localStorage.removeItem("coydoeClerkUser");
     navigate("/", { replace: true });
   };
-  const routeChange = (e: React.FormEvent<HTMLSelectElement>) => {
+  const routeChange = (e: FormEvent<HTMLSelectElement>) => {
     console.log((e.target as HTMLSelectElement).value);
     const path = (e.target as HTMLSelectElement).value;
     navigate(path);

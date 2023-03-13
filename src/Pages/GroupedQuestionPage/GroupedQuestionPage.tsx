@@ -6,7 +6,7 @@ import { AxiosError } from "axios";
 import { SelectOption } from "../../DataService/service.types";
 import { PlainQuestion as GroupedQuestion } from "../../models/question.model";
 import SelectDropdown from "../../components/SelectDropdown";
-import Editor from "../../quill/Editor";
+
 import {
   fetchGroupedCourses,
   fetchGroupedCoursesDirectionYears,

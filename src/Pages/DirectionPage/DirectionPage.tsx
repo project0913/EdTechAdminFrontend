@@ -1,8 +1,8 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import styles from "./directionpage.module.css";
 import { fetchGroupedCourses } from "../../DataService/fetchCourse.service";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
-import Editor from "../../quill/Editor";
+
 import { Direction } from "../../models/direction.model";
 import { submitDirectionToServer } from "../../DataService/submit-questions.service";
 import { yearsOptions } from "../../constants";

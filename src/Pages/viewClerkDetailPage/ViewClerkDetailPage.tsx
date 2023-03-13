@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import SelectDropdown from "../../components/SelectDropdown";
 import styles from "./viewClerkDetailPage.module.css";
 import { BarChartComponent } from "../../components/BarChartComponent";
@@ -63,7 +63,7 @@ export default function ViewClerkDetailPage() {
     }
     setAllTimeData(data);
   };
-  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: FormEvent<HTMLSelectElement>) => {
     console.log((e.target as HTMLSelectElement).value);
     const duration = (e.target as HTMLSelectElement).value;
     setSelectedDuration(parseInt(duration));

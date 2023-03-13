@@ -3,7 +3,7 @@ import placeholderImage from "../../assets/place_holder.jpg";
 import styles from "./plainQuestionEditor.module.css";
 import "react-quill/dist/quill.snow.css";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
-import Editor from "../../quill/Editor";
+
 import { PlainQuestion } from "../../models/question.model";
 import { AxiosError } from "axios";
 import { FadeLoader } from "react-spinners";

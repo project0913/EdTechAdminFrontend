@@ -1,16 +1,12 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import styles from "./directionEditor.module.css";
-import Editor from "../../quill/Editor";
+
 import { Direction } from "../../models/direction.model";
 import { useLocation } from "react-router-dom";
 import { updateDirections } from "../../DataService/editDirections.service";
 import { AxiosError } from "axios";
 import { MathEditor } from "../../quill/EditorMath";
-import {
-  hasEmpty,
-  isEmptyForRichText,
-  showSuccessToast,
-} from "../../utils/helper";
+import { isEmptyForRichText, showSuccessToast } from "../../utils/helper";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import ErrorComponent from "../../components/ErrorComponent";

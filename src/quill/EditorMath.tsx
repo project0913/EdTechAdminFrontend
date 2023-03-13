@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Editor from "quill-editor-math";
 import "quill-editor-math/dist/index.css";

@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
-import { useFormik } from "formik";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import "./adminlogin.css";
 import { useNavigate } from "react-router-dom";
 import { publicLogin } from "../../DataService/auth.service";
@@ -24,8 +24,8 @@ export default function AdminPublicLogin() {
       setMessage(msgTxt);
     } else {
       localStorage.setItem("coydoePublicUser", JSON.stringify({ token: true }));
-     ///console.log(result?.token);
-      
+      ///console.log(result?.token);
+
       navigate("/clerk-auth", { state: { token: result?.token } });
     }
   };

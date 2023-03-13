@@ -1,4 +1,4 @@
-import React from "react";
+import { FormEvent } from "react";
 import styles from "./admin.module.css";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import AdminNotification from "../../components/AdminNotification";
 
 export default function AdminUserDataView() {
   const navigate = useNavigate();
-  const routeChange = (e: React.FormEvent<HTMLSelectElement>) => {
+  const routeChange = (e: FormEvent<HTMLSelectElement>) => {
     console.log((e.target as HTMLSelectElement).value);
     const path = (e.target as HTMLSelectElement).value;
     navigate(path);

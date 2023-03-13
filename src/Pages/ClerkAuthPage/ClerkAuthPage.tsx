@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./adminsignup.css";
 import { clerkLogin, clerkSignup } from "../../DataService/auth.service";
@@ -33,8 +33,8 @@ export default function ClerkAuthPage() {
         "coydoeClerkUser",
         JSON.stringify({ token: result?.token, username: result?.username })
       );
-      console.log( result?.token);
-      
+      console.log(result?.token);
+
       window.location.href = "/admin-user";
     }
   }
@@ -67,7 +67,6 @@ export default function ClerkAuthPage() {
       return;
     }
     setToken(token);
-  
   }, []);
   return (
     <div className="bg1">
