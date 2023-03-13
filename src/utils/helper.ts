@@ -5,7 +5,7 @@ export const resolveImageURL = (path: string) => {
 
   if (path.startsWith("http")) return path;
   else if (path.length > 0)
-    return `http://localhost:3000/images/questions/${path}`;
+    return `https://coydoe.onrender.com/images/questions/${path}`;
   else return "";
 };
 
