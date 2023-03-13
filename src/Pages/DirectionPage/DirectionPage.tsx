@@ -10,7 +10,7 @@ import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
-import { MathEditor } from "../../quill/EditorMath";
+import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
 
 const override: CSSProperties = {
@@ -129,13 +129,21 @@ export default function DirectionPage() {
 
             <div>
               <p>Paste your Direction Text Here</p>
-              <MathEditor setValue={setDirection_text} value={directionText} />
+              <Editor
+                setValue={setDirection_text}
+                value={directionText}
+                editorId="editor1"
+              />
               <ErrorComponent value={directionText} />
             </div>
 
             <div>
               <p>Paste your passage here if any</p>
-              <MathEditor setValue={setPassage_Text} value={passage || ""} />
+              <Editor
+                setValue={setPassage_Text}
+                value={passage || ""}
+                editorId="editor2"
+              />
             </div>
             <div>
               <button

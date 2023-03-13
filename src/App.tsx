@@ -24,35 +24,13 @@ import AdminNotification from "./components/AdminNotification";
 
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 
-import { MathEditor } from "./quill/EditorMath";
 import { useState } from "react";
 
 function App() {
   const [v, setV] = useState("");
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
-    {
-      //this route is only for testing
-      path: "math",
-      element: (
-        <div>
-          <MathEditor
-            value={v}
-            setValue={(a: string) => {
-              console.log(a);
-              setV(a);
-            }}
-          />
-          <button
-            onClick={() => {
-              setV("");
-            }}
-          >
-            Clear
-          </button>
-        </div>
-      ),
-    },
+
     { path: "admin-dashboard", element: <AdminDashboard /> },
     {
       path: "clerk-auth",

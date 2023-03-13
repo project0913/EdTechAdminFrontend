@@ -14,7 +14,7 @@ import {
   updateGroupedQuestionToServer,
   updatePlainQuestionToServer,
 } from "../../DataService/editQuestion.service";
-import { MathEditor } from "../../quill/EditorMath";
+import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
 
 const override: CSSProperties = {
@@ -187,8 +187,9 @@ export default function PlainQuestionEditor() {
             <div className="">
               <div className="">
                 <p>Paste your question here</p>
-                <MathEditor
+                <Editor
                   setValue={setQuestionTextValue}
+                  editorId="editor1"
                   value={questionText}
                 />
                 <ErrorComponent value={questionText} />
@@ -221,7 +222,11 @@ export default function PlainQuestionEditor() {
                   </span>
                   Here
                 </p>
-                <MathEditor setValue={setOption_a_Text} value={option_a} />
+                <Editor
+                  setValue={setOption_a_Text}
+                  value={option_a}
+                  editorId="editor2"
+                />
                 <ErrorComponent value={option_a} />
               </div>
               <div className="">
@@ -230,7 +235,11 @@ export default function PlainQuestionEditor() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                   Here
                 </p>
-                <MathEditor setValue={setOption_b_Text} value={option_b} />
+                <Editor
+                  setValue={setOption_b_Text}
+                  value={option_b}
+                  editorId="editor3"
+                />
                 <ErrorComponent value={option_b} />
               </div>
               <div className="">
@@ -239,7 +248,11 @@ export default function PlainQuestionEditor() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                   Here
                 </p>
-                <MathEditor setValue={setOption_c_Text} value={option_c} />
+                <Editor
+                  setValue={setOption_c_Text}
+                  value={option_c}
+                  editorId="editor4"
+                />
                 <ErrorComponent value={option_c} />
               </div>
               <div className="">
@@ -248,7 +261,11 @@ export default function PlainQuestionEditor() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                   Here
                 </p>
-                <MathEditor setValue={setOption_d_Text} value={option_d} />
+                <Editor
+                  setValue={setOption_d_Text}
+                  value={option_d}
+                  editorId="editor5"
+                />
                 <ErrorComponent value={option_d} />
               </div>
               <div className="">
@@ -271,8 +288,9 @@ export default function PlainQuestionEditor() {
 
               <div className="">
                 <p>Paste your option Description here</p>
-                <MathEditor
+                <Editor
                   setValue={setDescription_Text}
+                  editorId="editor7"
                   value={description}
                 />
               </div>

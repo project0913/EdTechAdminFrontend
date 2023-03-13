@@ -5,7 +5,7 @@ import { Direction } from "../../models/direction.model";
 import { useLocation } from "react-router-dom";
 import { updateDirections } from "../../DataService/editDirections.service";
 import { AxiosError } from "axios";
-import { MathEditor } from "../../quill/EditorMath";
+import { Editor } from "../../quill/Editor";
 import { isEmptyForRichText, showSuccessToast } from "../../utils/helper";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
@@ -120,13 +120,21 @@ export default function DirectionEditorPage() {
 
           <div className="editor-discrption mt-3">
             <p>Edit your Direction Text here</p>
-            <MathEditor setValue={setDirection_text} value={directionText} />
+            <Editor
+              setValue={setDirection_text}
+              value={directionText}
+              editorId="editor1"
+            />
             <ErrorComponent value={directionText} />
           </div>
 
           <div className="passage-text mt-3 mb-3">
             <p>Edit your passage here if any</p>
-            <MathEditor setValue={setPassage_Text} value={passage || ""} />
+            <Editor
+              setValue={setPassage_Text}
+              value={passage || ""}
+              editorId="editor2"
+            />
           </div>
         </div>
         <div className="submit-butt mb-3">

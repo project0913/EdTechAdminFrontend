@@ -16,7 +16,7 @@ import { submitGroupedQuestionToServer } from "../../DataService/submit-question
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
-import { MathEditor } from "../../quill/EditorMath";
+import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
 const override: CSSProperties = {
   margin: "10 auto",
@@ -253,8 +253,9 @@ export default function GroupedQuestionPage() {
             <div className={styles.editorContaine}>
               <div className="editor-container">
                 <p className={styles.questionNumb}>Paste your question here</p>
-                <MathEditor
+                <Editor
                   setValue={setQuestionTextValue}
+                  editorId="editor1"
                   value={questionText}
                 />
                 <ErrorComponent value={questionText} />
@@ -283,7 +284,11 @@ export default function GroupedQuestionPage() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>A</span>{" "}
                   here
                 </p>
-                <MathEditor setValue={setOption_a_Text} value={option_a} />
+                <Editor
+                  setValue={setOption_a_Text}
+                  value={option_a}
+                  editorId="editor2"
+                />
                 <ErrorComponent value={option_a} />
               </div>
               <div>
@@ -292,7 +297,11 @@ export default function GroupedQuestionPage() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                   here
                 </p>
-                <MathEditor setValue={setOption_b_Text} value={option_b} />
+                <Editor
+                  setValue={setOption_b_Text}
+                  value={option_b}
+                  editorId="editor3"
+                />
                 <ErrorComponent value={option_b} />
               </div>
               <div>
@@ -301,7 +310,11 @@ export default function GroupedQuestionPage() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                   here
                 </p>
-                <MathEditor setValue={setOption_c_Text} value={option_c} />
+                <Editor
+                  setValue={setOption_c_Text}
+                  value={option_c}
+                  editorId="editor4"
+                />
                 <ErrorComponent value={option_c} />
               </div>
               <div>
@@ -310,7 +323,11 @@ export default function GroupedQuestionPage() {
                   <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                   here
                 </p>
-                <MathEditor setValue={setOption_d_Text} value={option_d} />
+                <Editor
+                  setValue={setOption_d_Text}
+                  value={option_d}
+                  editorId="editor5"
+                />
                 <ErrorComponent value={option_d} />
               </div>
               <div className={styles.answerContainer}>
@@ -324,7 +341,8 @@ export default function GroupedQuestionPage() {
 
               <div>
                 <p>Paste your option Description here</p>
-                <MathEditor
+                <Editor
+                  editorId="editor6"
                   setValue={setDescription_Text}
                   value={description}
                 />

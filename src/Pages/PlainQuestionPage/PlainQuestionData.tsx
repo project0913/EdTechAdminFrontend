@@ -14,7 +14,7 @@ import LoadingOverlayWrapper from "react-loading-overlay-ts";
 
 import { yearsOptions } from "../../constants";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
-import { MathEditor } from "../../quill/EditorMath";
+import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
 
 //import { showErrorToast, showSuccessToast } from "../../utils/helper";
@@ -254,9 +254,10 @@ export default function PlainQuestionData() {
                   </div>
                   <div className={styles.q}>
                     <p className={styles.txt}>Paste your question here</p>
-                    <MathEditor
+                    <Editor
                       setValue={setQuestionTextValue}
                       value={questionText}
+                      editorId="editor1"
                     />
                     <ErrorComponent value={questionText} />
                   </div>
@@ -285,7 +286,11 @@ export default function PlainQuestionData() {
                       </span>
                       here
                     </p>
-                    <MathEditor setValue={setOption_a_Text} value={option_a} />
+                    <Editor
+                      setValue={setOption_a_Text}
+                      value={option_a}
+                      editorId="editor2"
+                    />
                     <ErrorComponent value={option_a} />
                   </div>
                   <div className={styles.plainTxt}>
@@ -296,7 +301,11 @@ export default function PlainQuestionData() {
                       </span>{" "}
                       here
                     </p>
-                    <MathEditor setValue={setOption_b_Text} value={option_b} />
+                    <Editor
+                      setValue={setOption_b_Text}
+                      value={option_b}
+                      editorId="editor3"
+                    />
                     <ErrorComponent value={option_b} />
                   </div>
                   <div className={styles.plainTxt}>
@@ -307,7 +316,11 @@ export default function PlainQuestionData() {
                       </span>{" "}
                       here
                     </p>
-                    <MathEditor setValue={setOption_c_Text} value={option_c} />
+                    <Editor
+                      setValue={setOption_c_Text}
+                      value={option_c}
+                      editorId="editor4"
+                    />
                     <ErrorComponent value={option_c} />
                   </div>
                   <div className={styles.plainTxt}>
@@ -318,7 +331,11 @@ export default function PlainQuestionData() {
                       </span>{" "}
                       here
                     </p>
-                    <MathEditor setValue={setOption_d_Text} value={option_d} />
+                    <Editor
+                      setValue={setOption_d_Text}
+                      value={option_d}
+                      editorId="editor5"
+                    />
                     <ErrorComponent value={option_d} />
                   </div>
                   <div className={styles.answerYear}>
@@ -336,8 +353,9 @@ export default function PlainQuestionData() {
                     <p className={styles.txt}>
                       Paste your option Description here
                     </p>
-                    <MathEditor
+                    <Editor
                       setValue={setDescription_Text}
+                      editorId="editor6"
                       value={description}
                     />
                   </div>
