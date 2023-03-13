@@ -2,7 +2,7 @@ import { FormEvent } from "react";
 import styles from "./admin.module.css";
 
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
+
 import AdminNotification from "../../components/AdminNotification";
 
 export default function AdminUserDataView() {
@@ -11,6 +11,10 @@ export default function AdminUserDataView() {
     console.log((e.target as HTMLSelectElement).value);
     const path = (e.target as HTMLSelectElement).value;
     navigate(path);
+  };
+  const logout = () => {
+    localStorage.removeItem("coydoeAdminUser");
+    navigate("/");
   };
   return (
     <div>
@@ -27,7 +31,9 @@ export default function AdminUserDataView() {
             </div>
           </div>
           <div className={styles.logBtn}>
-            <button className={styles.logoutBtn}>Log out</button>
+            <button className={styles.logoutBtn} onClick={() => logout()}>
+              Log out
+            </button>
           </div>
         </div>
       </div>

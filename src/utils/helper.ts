@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { toast } from "react-toastify";
 
 export const resolveImageURL = (path: string) => {
@@ -57,4 +58,9 @@ export const isEmptyForRichText = function (obj: any, field: string) {
     return true;
   }
   return false;
+};
+
+export const override: CSSProperties = {
+  margin: "10 auto",
+  borderColor: "red",
 };
