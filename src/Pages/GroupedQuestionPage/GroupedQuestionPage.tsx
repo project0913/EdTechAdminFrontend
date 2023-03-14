@@ -242,7 +242,7 @@ export default function GroupedQuestionPage() {
           </div>
           <div className={styles.groupMargin}>
             <div className={styles.editorContainer}>
-              <p>Question Number</p>
+              <p className={styles.txt}>Question Number</p>
               <input
                 type="number"
                 onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
@@ -262,7 +262,7 @@ export default function GroupedQuestionPage() {
               </div>
               <div className="editor-container">
                 <p>
-                  <strong className={styles.questionNur}>
+                  <strong className={styles.txt}>
                     Select Image if the Question has Image
                   </strong>
                 </p>
@@ -279,7 +279,7 @@ export default function GroupedQuestionPage() {
                 />
               </div>
               <div>
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>A</span>{" "}
                   here
@@ -292,7 +292,7 @@ export default function GroupedQuestionPage() {
                 <ErrorComponent value={option_a} />
               </div>
               <div>
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                   here
@@ -305,7 +305,7 @@ export default function GroupedQuestionPage() {
                 <ErrorComponent value={option_b} />
               </div>
               <div>
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                   here
@@ -318,7 +318,7 @@ export default function GroupedQuestionPage() {
                 <ErrorComponent value={option_c} />
               </div>
               <div>
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                   here
@@ -331,7 +331,7 @@ export default function GroupedQuestionPage() {
                 <ErrorComponent value={option_d} />
               </div>
               <div className={styles.answerContainer}>
-                <p className={styles.questionAnswer}>Choose Answer here</p>
+                <p className={styles.txt}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
                   items={answerOptions}
@@ -340,7 +340,7 @@ export default function GroupedQuestionPage() {
               </div>
 
               <div>
-                <p>Paste your option Description here</p>
+                <p className={styles.txt}>Paste your option Description here</p>
                 <Editor
                   editorId="editor6"
                   setValue={setDescription_Text}
@@ -348,9 +348,8 @@ export default function GroupedQuestionPage() {
                 />
               </div>
               <div>
-                <p>
-                  {" "}
-                  <strong>Select Image if the description has Image</strong>
+                <p className={styles.txt}>
+                  Select Image if the description has Image
                 </p>
                 <img
                   src={tempDescriptionImagePath || placeholderImage}

@@ -19,6 +19,9 @@
   justify-content: center;
   align-items: center;
 }
+.txt {
+  color: #088081;
+}
 .groupedTop {
   display: flex;
 

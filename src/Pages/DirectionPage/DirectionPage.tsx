@@ -113,14 +113,14 @@ export default function DirectionPage() {
           </div>
           <div className={styles.editor}>
             <div>
-              <p>Fill Section Number Here</p>
+              <p className={styles.txt}>Fill Section Number Here</p>
               <input
                 type="number"
                 onChange={(e) => setDirectionNumber(parseInt(e.target.value))}
               />
             </div>
             <div>
-              <p>Paste Section Name</p>
+              <p className={styles.txt}>Paste Section Name</p>
               <input
                 onChange={(e) => setSectionName(e.target.value)}
                 value={sectionName}
@@ -128,7 +128,7 @@ export default function DirectionPage() {
             </div>
 
             <div>
-              <p>Paste your Direction Text Here</p>
+              <p className={styles.txt}>Paste your Direction Text Here</p>
               <Editor
                 setValue={setDirection_text}
                 value={directionText}
@@ -138,7 +138,7 @@ export default function DirectionPage() {
             </div>
 
             <div>
-              <p>Paste your passage here if any</p>
+              <p className={styles.txt}>Paste your passage here if any</p>
               <Editor
                 setValue={setPassage_Text}
                 value={passage || ""}

@@ -13,6 +13,9 @@
   gap: 2rem;
   color: #ffffff;
 }
+.txt {
+  color: #088081;
+}
 /*  */
 .submitBtn {
   width: 150px;
