@@ -385,11 +385,12 @@ export default function PlainQuestionData() {
                   </button>
                   <button
                     className={styles.clearBtn}
-                    onClick={() => {
-                      console.log("before clear" + questionText);
-                      setQuestionText((prev) => "");
-                      console.log("after clear" + questionText);
-                    }}
+                    onClick={clearForm}
+                    // onClick={() => {
+                    //   // console.log("before clear" + questionText);
+                    //   // setQuestionText((prev) => "");
+                    //   // console.log("after clear" + questionText);
+                    // }}
                   >
                     Clear
                   </button>
