@@ -12,9 +12,10 @@
   display: flex;
   margin-left: 280px;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 .bgDrop {
-  height: 10vh;
+  height: 100%;
   display: flex;
   background-color: #088081;
   gap: 3rem;
