@@ -26,6 +26,7 @@ import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 import { useState } from "react";
 import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
 import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
+import ViewExerciseQuestionPage from "./Pages/ViewExercisePage/ViewExerciseQuestionPage";
 
 function App() {
   const [v, setV] = useState("");
@@ -45,6 +46,11 @@ function App() {
     {
       path: "general",
       element: <GeneralQuestion />,
+    },
+
+    {
+      path: "view-exercise",
+      element: <ViewExerciseQuestionPage />,
     },
     {
       path: "admin",

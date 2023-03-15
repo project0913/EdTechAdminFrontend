@@ -90,6 +90,24 @@ export async function deletePlainQuestion(questionId: string) {
   }
 }
 
+export async function deleteGeneralQuestion(questionId: string) {
+  try {
+    let raw = await axios.delete(`/general-questions/${questionId}`);
+    let data = raw.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+export async function deleteExerciseQuestion(questionId: string) {
+  try {
+    let raw = await axios.delete(`/exercise-questions/${questionId}`);
+    let data = raw.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
 export async function deleteGroupedQuestion(questionId: string) {
   try {
     let raw = await axios.delete(`/grouped-questions/${questionId}`);
