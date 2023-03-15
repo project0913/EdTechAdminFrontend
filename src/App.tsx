@@ -24,6 +24,8 @@ import AdminNotification from "./components/AdminNotification";
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 
 import { useState } from "react";
+import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
+import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
 
 function App() {
   const [v, setV] = useState("");
@@ -36,6 +38,14 @@ function App() {
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
     { path: "admin-login", element: <AdminLogin /> },
+    {
+      path: "exercise",
+      element: <ExerciseQuestionPage />,
+    },
+    {
+      path: "general",
+      element: <GeneralQuestion />,
+    },
     {
       path: "admin",
       element: (

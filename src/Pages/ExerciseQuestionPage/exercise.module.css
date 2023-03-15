@@ -1,0 +1,60 @@
+.exerciseHeader {
+  background-color: #088081;
+  height: 60px;
+  width: 100%;
+}
+.exerciseBackground {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.dropDown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SelectItem {
+  margin: 20px;
+}
+.img {
+  max-width: 150px;
+  max-height: 150px;
+}
+.questionBtn {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.submitBtn {
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  background-color: #088081;
+}
+.clearBtn {
+  border: none;
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+  background-color: rgb(97, 26, 26);
+}
+
+.answerYear {
+  margin-top: 5px;
+  margin-left: 40px;
+}
+
+.txt {
+  color: #088081;
+}

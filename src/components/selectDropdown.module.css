@@ -5,6 +5,7 @@
   padding: 4px;
   background-color: #b2d8d9;
   margin-top: 10px;
+  margin-left: 20px;
 }
 @media screen and (max-width: 400px) {
   .selectDropdown {
