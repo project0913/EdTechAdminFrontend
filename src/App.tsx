@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GroupedQuestionPage from "./Pages/GroupedQuestionPage/GroupedQuestionPage";
 import DirectionPage from "./Pages/DirectionPage/DirectionPage";
 import LayoutComponent from "./components/LayoutComponent";
-import ViewPlainQuestionsPage from "./Pages/viewQuestionsPage/ViewPlainQuestionsPage";
 import PlainQuestionEditor from "./Pages/PlainQuestionEditor/PlainQuestionEditor";
 import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
 import DirectionEditorPage from "./Pages/directionEditorPage/DirectionEditorPage";
@@ -29,6 +28,7 @@ import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
 import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 import GeneralQuestionPage from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
 import ViewGeneralQuestionPage from "./Pages/viewGeneralQuestionPage/ViewGeneralQuestionPage";
+import ViewPlainQuestionsPage from "./Pages/viewQuestionsPage/ViewPlainQuestionsPage";
 
 function App() {
   const [v, setV] = useState("");
