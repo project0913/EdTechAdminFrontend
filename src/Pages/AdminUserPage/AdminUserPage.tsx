@@ -56,14 +56,13 @@ export default function AdminUserPage() {
                 <option value="">Insert Plain Question</option>
 
                 <option value="grouped-question">Insert Group Question</option>
+                <option value="direction">Insert Directions</option>
                 <option value="general-question">
                   Insert General Question
                 </option>
                 <option value="exercise-question">
                   Insert Exercise Question
                 </option>
-
-                <option value="direction">Insert Directions</option>
               </select>
 
               <select
@@ -80,11 +79,11 @@ export default function AdminUserPage() {
                   View Plain Question
                 </option>
                 <option value="view-directions">View Directions</option>
-                <option value="view-general">View General Question</option>
-                <option value="view-exercise">View Exercise Question</option>
                 <option value="view-grouped-questions">
                   View Grouped Question
                 </option>
+                <option value="view-general">View General Question</option>
+                <option value="view-exercise">View Exercise Question</option>
               </select>
             </div>
             <div className={styles.topBalance2}>
