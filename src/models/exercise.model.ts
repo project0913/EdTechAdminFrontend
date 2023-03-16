@@ -16,4 +16,6 @@ export type ExerciseQuestion = {
   direction?: string;
   questionImage?: string;
   descriptionImage?: string;
+  chapter: string;
+  exerciseNumber: string;
 };

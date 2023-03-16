@@ -139,6 +139,14 @@ export default function GeneralQuestionPage() {
     <div className={styles.generalBackground}>
       <div className={styles.generalHeader}></div>
       <div className="">
+        <div>
+          <p className={styles.txt}>Question Number</p>
+          <input
+            type="number"
+            value={questionNumber}
+            onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
+          />
+        </div>
         <p className={styles.txt}>Paste your question here</p>
         <Editor
           setValue={setQuestionTextValue}

@@ -39,19 +39,7 @@ function App() {
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
     { path: "admin-login", element: <AdminLogin /> },
-    {
-      path: "exercise",
-      element: <ExerciseQuestionPage />,
-    },
-    {
-      path: "general",
-      element: <GeneralQuestion />,
-    },
 
-    {
-      path: "view-exercise",
-      element: <ViewExerciseQuestionPage />,
-    },
     {
       path: "admin",
       element: (
@@ -77,6 +65,14 @@ function App() {
           path: "direction",
           element: <DirectionPage />,
         },
+        {
+          path: "general-question",
+          element: <GeneralQuestion />,
+        },
+        {
+          path: "exercise-question",
+          element: <ExerciseQuestionPage />,
+        },
 
         {
           path: "view-plain-questions",
@@ -100,6 +96,10 @@ function App() {
         {
           path: "view-directions",
           element: <ViewDirectionsPage />,
+        },
+        {
+          path: "view-exercise-question",
+          element: <ViewExerciseQuestionPage />,
         },
       ],
     },

@@ -70,6 +70,12 @@ export default function AdminUserDataView() {
             <option value="view-directions">View Directions</option>
 
             <option value="view-grouped-questions">Grouped Question</option>
+            <option value="view-general-questions">
+              View General Question
+            </option>
+            <option value="view-exercise-questions">
+              View Exercise Question
+            </option>
           </select>
         </div>
       </div>

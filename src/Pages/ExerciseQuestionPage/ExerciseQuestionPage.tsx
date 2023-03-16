@@ -35,6 +35,8 @@ export default function ExerciseQuestionPage() {
   const [option_b, setOption_b] = useState("");
   const [option_c, setOption_c] = useState("");
   const [option_d, setOption_d] = useState("");
+  const [chapter, setChapter] = useState("");
+  const [exerciseNumber, setExerciseNumber] = useState("");
   const [description, setDescription] = useState("");
   const [answerText, setAnswerText] = useState("option_a");
 
@@ -100,6 +102,12 @@ export default function ExerciseQuestionPage() {
   const setDescription_Text = (val: string) => {
     setDescription(val);
   };
+  const setChapter_Text = (val: string) => {
+    setChapter(val);
+  };
+  const setExerciseNumber_Text = (val: string) => {
+    setExerciseNumber(val);
+  };
 
   const submitQuestionToBackend = async () => {
     let exercise: ExerciseQuestion = {
@@ -112,6 +120,8 @@ export default function ExerciseQuestionPage() {
       option_d: "",
       answer: "",
       description: "",
+      exerciseNumber: "",
+      chapter: "",
       year: "",
     };
   };
@@ -130,6 +140,8 @@ export default function ExerciseQuestionPage() {
       description: description,
       course: selectedCourse,
       year: year,
+      exerciseNumber: exerciseNumber,
+      chapter: chapter,
 
       questionNumber: parseInt(questionNumber),
       grade: "",
@@ -170,6 +182,8 @@ export default function ExerciseQuestionPage() {
     setDescriptionImage("");
     setTempQuestionImagePath("");
     setTempDescriptionImagePath("");
+    setExerciseNumber("");
+    setChapter("");
   };
   const handleCourseChange = (e: any) => {
     setSelectedCourse(e.target.value);
@@ -198,6 +212,24 @@ export default function ExerciseQuestionPage() {
         <div className={styles.generalBackground}>
           <div className={styles.generalHeader}></div>
           <div className="">
+            <div>
+              <p className={styles.txt}>Paste Your Chapter Number</p>{" "}
+            </div>
+            <input
+              type="number"
+              value={chapter}
+              onChange={(e) => setChapter(e.target.value)}
+            />
+
+            <div>
+              <p className={styles.txt}>Paste Your Exercise Number</p>{" "}
+            </div>
+            <input
+              type="number"
+              value={exerciseNumber}
+              onChange={(e) => setExerciseNumber(e.target.value)}
+            />
+
             <p className={styles.txt}>Paste your question here</p>
             <Editor
               setValue={setQuestionTextValue}
