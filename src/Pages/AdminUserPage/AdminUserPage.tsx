@@ -57,12 +57,8 @@ export default function AdminUserPage() {
 
                 <option value="grouped-question">Insert Group Question</option>
                 <option value="direction">Insert Directions</option>
-                <option value="general-question">
-                  Insert General Question
-                </option>
-                <option value="exercise-question">
-                  Insert Exercise Question
-                </option>
+                <option value="general">Insert General Question</option>
+                <option value="exercise">Insert Exercise Question</option>
               </select>
 
               <select
@@ -82,8 +78,12 @@ export default function AdminUserPage() {
                 <option value="view-grouped-questions">
                   View Grouped Question
                 </option>
-                <option value="view-general">View General Question</option>
-                <option value="view-exercise">View Exercise Question</option>
+                <option value="view-general-question">
+                  View General Question
+                </option>
+                <option value="view-exercise-question">
+                  View Exercise Question
+                </option>
               </select>
             </div>
             <div className={styles.topBalance2}>

@@ -72,9 +72,7 @@ export default function ViewExerciseQuestionPage() {
           <thead>
             <tr>
               <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
               <th className={`${styles.tableHeader} ${styles.th}`}>
-                {" "}
                 Questions
               </th>
               <th className={`${styles.tableHeader} ${styles.th}`}>
@@ -109,7 +107,7 @@ export default function ViewExerciseQuestionPage() {
                     <td className={`${styles.td} ${styles.tdNo}`}>
                       {question.questionNumber}
                     </td>
-                    <td className={styles.td}>{question.year}</td>
+
                     <td className={styles.td}>
                       {parse(question.questionText, options)}
                     </td>

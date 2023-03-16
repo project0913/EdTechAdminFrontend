@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GroupedQuestionPage from "./Pages/GroupedQuestionPage/GroupedQuestionPage";
 import DirectionPage from "./Pages/DirectionPage/DirectionPage";
 import LayoutComponent from "./components/LayoutComponent";
-import ViewPlainQuestionsPage from "./Pages/ViewQuestionsPage/ViewPlainQuestionsPage";
+import ViewPlainQuestionsPage from "./Pages/viewQuestionsPage/ViewPlainQuestionsPage";
 import PlainQuestionEditor from "./Pages/PlainQuestionEditor/PlainQuestionEditor";
 import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
 import DirectionEditorPage from "./Pages/directionEditorPage/DirectionEditorPage";
@@ -26,7 +26,9 @@ import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 import { useState } from "react";
 import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
 import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
-import ViewExerciseQuestionPage from "./Pages/ViewExercisePage/ViewExerciseQuestionPage";
+import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
+import GeneralQuestionPage from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
+import ViewGeneralQuestionPage from "./Pages/viewGeneralQuestionPage/ViewGeneralQuestionPage";
 
 function App() {
   const [v, setV] = useState("");
@@ -39,6 +41,10 @@ function App() {
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
     { path: "admin-login", element: <AdminLogin /> },
+    {
+      path: "view-exercise-question",
+      element: <ViewExerciseQuestionPage />,
+    },
 
     {
       path: "admin",
@@ -66,11 +72,11 @@ function App() {
           element: <DirectionPage />,
         },
         {
-          path: "general-question",
-          element: <GeneralQuestion />,
+          path: "general",
+          element: <GeneralQuestionPage />,
         },
         {
-          path: "exercise-question",
+          path: "exercise",
           element: <ExerciseQuestionPage />,
         },
 
@@ -101,6 +107,10 @@ function App() {
           path: "view-exercise-question",
           element: <ViewExerciseQuestionPage />,
         },
+        {
+          path: "view-general-question",
+          element: <ViewGeneralQuestionPage />,
+        },
       ],
     },
 
@@ -123,6 +133,14 @@ function App() {
         {
           path: "direction",
           element: <DirectionPage />,
+        },
+        {
+          path: "general",
+          element: <GeneralQuestion />,
+        },
+        {
+          path: "exercise",
+          element: <ExerciseQuestionPage />,
         },
 
         {
@@ -147,6 +165,14 @@ function App() {
         {
           path: "view-directions",
           element: <ViewDirectionsPage />,
+        },
+        {
+          path: "view-exercise-question",
+          element: <ViewExerciseQuestionPage />,
+        },
+        {
+          path: "view-general-question",
+          element: <ViewGeneralQuestionPage />,
         },
       ],
     },
