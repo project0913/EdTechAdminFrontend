@@ -41,10 +41,6 @@ function App() {
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
     { path: "admin-login", element: <AdminLogin /> },
-    {
-      path: "view-exercise-question",
-      element: <ViewExerciseQuestionPage />,
-    },
 
     {
       path: "admin",
@@ -135,11 +131,11 @@ function App() {
           element: <DirectionPage />,
         },
         {
-          path: "general",
+          path: "general-question",
           element: <GeneralQuestion />,
         },
         {
-          path: "exercise",
+          path: "exercise-question",
           element: <ExerciseQuestionPage />,
         },
 
