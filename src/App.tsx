@@ -5,7 +5,7 @@ import GroupedQuestionPage from "./Pages/GroupedQuestionPage/GroupedQuestionPage
 import DirectionPage from "./Pages/DirectionPage/DirectionPage";
 import LayoutComponent from "./components/LayoutComponent";
 import PlainQuestionEditor from "./Pages/PlainQuestionEditor/PlainQuestionEditor";
-import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
+
 import DirectionEditorPage from "./Pages/directionEditorPage/DirectionEditorPage";
 import ViewDirectionsPage from "./Pages/viewDirectionsPage/ViewDirectionsPage";
 import AdminUserPage from "./Pages/AdminUserPage/AdminUserPage";
@@ -82,7 +82,7 @@ function App() {
         },
         {
           path: "view-grouped-questions",
-          element: <ViewGroupedQuestionsPage />,
+          element: <GroupedQuestionPage />,
         },
 
         {
@@ -145,7 +145,7 @@ function App() {
         },
         {
           path: "view-grouped-questions",
-          element: <ViewGroupedQuestionsPage />,
+          element: <GroupedQuestionPage />,
         },
 
         {
