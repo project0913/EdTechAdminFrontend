@@ -57,8 +57,12 @@ export default function AdminUserPage() {
 
                 <option value="grouped-question">Insert Group Question</option>
                 <option value="direction">Insert Directions</option>
-                <option value="general">Insert General Question</option>
-                <option value="exercise">Insert Exercise Question</option>
+                <option value="general-question">
+                  Insert General Question
+                </option>
+                <option value="exercise-question">
+                  Insert Exercise Question
+                </option>
               </select>
 
               <select

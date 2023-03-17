@@ -27,8 +27,8 @@ import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionP
 import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
 import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 import GeneralQuestionPage from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
-import ViewGeneralQuestionPage from "./Pages/viewGeneralQuestionPage/ViewGeneralQuestionPage";
-import ViewPlainQuestionsPage from "./Pages/viewQuestionsPage/ViewPlainQuestionsPage";
+import ViewPlainQuestionsPage from "./Pages/ViewQuestionsPage/ViewPlainQuestionsPage";
+import ViewGeneralQuestionPage from "./Pages/ViewGeneralQuestionPage/viewGeneralQuestionPage";
 
 function App() {
   const [v, setV] = useState("");
@@ -68,11 +68,11 @@ function App() {
           element: <DirectionPage />,
         },
         {
-          path: "general",
+          path: "general-question",
           element: <GeneralQuestionPage />,
         },
         {
-          path: "exercise",
+          path: "exercise-question",
           element: <ExerciseQuestionPage />,
         },
 
