@@ -11,12 +11,22 @@ import {
   showErrorToast,
   showSuccessToast,
 } from "../../utils/helper";
+<<<<<<< Updated upstream
 import styles from "./general.module.css";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import CustomPagination from "../../components/pagination";
 import { GeneralQuestion } from "../../models/general.model";
 import { fetchGeneralQuestions } from "../../DataService/viewGeneralQuestion.service";
+=======
+import { deleteGeneralQuestion } from "../../DataService/editQuestion.service";
+import { AxiosError } from "axios";
+import { useEffect, useState } from "react";
+import { GeneralQuestion } from "../../models/general.model";
+import CustomPagination from "../../components/pagination";
+import styles from "./viewExercise.module.css";
+import { fetchExerciseQuestions } from "../../DataService/viewExerciseQuestion.service";
+>>>>>>> Stashed changes
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
     if (domNode instanceof Element && domNode.attribs) {
@@ -24,7 +34,11 @@ const options: HTMLReactParserOptions = {
     }
   },
 };
+<<<<<<< Updated upstream
 export default function ViewGeneralQuestionPage() {
+=======
+export default function ViewExerciseQuestionPage() {
+>>>>>>> Stashed changes
   const [errorMessage, setErrorMessage] = useState("");
   const [questions, setQuestions] = useState<GeneralQuestion[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
@@ -32,19 +46,32 @@ export default function ViewGeneralQuestionPage() {
   useEffect(() => {}, []);
 
   const getQuestion = async ({ page }: { page: number }) => {
+<<<<<<< Updated upstream
     const { count } = await fetchGeneralQuestions({ page: 1 });
+=======
+    const { count, questions } = await fetchExerciseQuestions({ page: 1 });
+>>>>>>> Stashed changes
     setQuestions(questions);
     setTotalCount(count);
   };
   const onPageChange = async (page: number) => {
+<<<<<<< Updated upstream
     const { count } = await fetchGeneralQuestions({
+=======
+    const { count, questions } = await fetchExerciseQuestions({
+>>>>>>> Stashed changes
       page: page,
     });
     setQuestions(questions);
     setTotalCount(count);
   };
+<<<<<<< Updated upstream
   const deleteGeneralQuestionFromServer = async (questionId: string) => {
     let result: any = await deleteGeneralQuestionFromServer(questionId);
+=======
+  const deleteExerciseQuestionFromServer = async (questionId: string) => {
+    let result: any = await deleteExerciseQuestionFromServer(questionId);
+>>>>>>> Stashed changes
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
@@ -71,8 +98,14 @@ export default function ViewGeneralQuestionPage() {
           <thead>
             <tr>
               <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
+<<<<<<< Updated upstream
 
               <th className={`${styles.tableHeader} ${styles.th}`}>
+=======
+              <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
+              <th className={`${styles.tableHeader} ${styles.th}`}>
+                {" "}
+>>>>>>> Stashed changes
                 Questions
               </th>
               <th className={`${styles.tableHeader} ${styles.th}`}>
@@ -107,7 +140,11 @@ export default function ViewGeneralQuestionPage() {
                     <td className={`${styles.td} ${styles.tdNo}`}>
                       {question.questionNumber}
                     </td>
+<<<<<<< Updated upstream
 
+=======
+                    <td className={styles.td}>{question.year}</td>
+>>>>>>> Stashed changes
                     <td className={styles.td}>
                       {parse(question.questionText, options)}
                     </td>
@@ -147,16 +184,28 @@ export default function ViewGeneralQuestionPage() {
                       />
                     </td>
                     <td className={styles.td}>
+<<<<<<< Updated upstream
                       <Link
+=======
+                      {/* <Link
+>>>>>>> Stashed changes
                         to={"/admin-user/edit-plain-question"}
                         state={{ question }}
                       >
                         <button className={styles.label}>Edit</button>
+<<<<<<< Updated upstream
                       </Link>
                       <button
                         className={styles.label1}
                         onClick={() =>
                           deleteGeneralQuestionFromServer(question._id || "")
+=======
+                      </Link> */}
+                      <button
+                        className={styles.label1}
+                        onClick={() =>
+                          deleteExerciseQuestionFromServer(question._id || "")
+>>>>>>> Stashed changes
                         }
                       >
                         Delete
