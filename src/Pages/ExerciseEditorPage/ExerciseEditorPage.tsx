@@ -309,3 +309,8 @@
 //     </LoadingOverlayWrapper>
 //   );
 // }
+import React from "react";
+
+export default function ExerciseEditorPage() {
+  return <div>ExerciseEditorPage</div>;
+}
