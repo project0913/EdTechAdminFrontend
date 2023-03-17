@@ -9,7 +9,7 @@ export type ExerciseQuestion = {
   option_d: string;
   answer: string;
   description: string;
-  year: string | number;
+
   image?: string;
   questionNumber?: number;
   courseId?: string;
