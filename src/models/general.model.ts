@@ -1,5 +1,6 @@
 export type GeneralQuestion = {
   _id?: string;
+  course: string;
   questionText: string;
   option_a: string;
   option_b: string;
