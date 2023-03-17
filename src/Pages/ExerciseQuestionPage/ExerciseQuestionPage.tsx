@@ -9,6 +9,8 @@ import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { submitPlainQuestionToServer } from "../../DataService/submit-questions.service";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 import ErrorComponent from "../../components/ErrorComponent";
+import LoadingOverlayWrapper from "react-loading-overlay-ts";
+import { FadeLoader } from "react-spinners";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -193,158 +195,179 @@ export default function ExerciseQuestionPage() {
   };
 
   return (
-    <div className={styles.exerciseBackground}>
-      <div className={styles.exerciseHeader}>
-        <div className={styles.dropDown}>
-          <SelectDropdown
-            title=""
-            items={courses}
-            handleSelect={handleCourseChange}
-          />
-          <SelectDropdown
-            title=""
-            items={gradeOptions}
-            handleSelect={handleGradeChange}
-          />
+    <LoadingOverlayWrapper
+      active={loading}
+      spinner={
+        <FadeLoader
+          loading={loading}
+          cssOverride={override}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      }
+    >
+      <div className={styles.exerciseBackground}>
+        <div className={styles.exerciseHeader}>
+          <div className={styles.dropDown}>
+            <SelectDropdown
+              title=""
+              items={courses}
+              handleSelect={handleCourseChange}
+            />
+            <SelectDropdown
+              title=""
+              items={gradeOptions}
+              handleSelect={handleGradeChange}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <div className={styles.generalBackground}>
-          <div className={styles.generalHeader}></div>
-          <div className="">
-            <div>
-              <p className={styles.txt}>Paste Your Chapter Number</p>{" "}
-            </div>
-            <input
-              type="number"
-              value={chapter}
-              onChange={(e) => setChapter(e.target.value)}
-            />
-
-            <div>
-              <p className={styles.txt}>Paste Your Exercise Number</p>{" "}
-            </div>
-            <input
-              type="number"
-              value={exerciseNumber}
-              onChange={(e) => setExerciseNumber(e.target.value)}
-            />
-
-            <p className={styles.txt}>Paste your question here</p>
-            <Editor
-              setValue={setQuestionTextValue}
-              editorId="editor1"
-              value={questionText}
-            />
-            <ErrorComponent value={questionText} />
-          </div>
-          <div className="">
-            <p className={styles.txt}>
-              <strong>Select Image if the Question has Image</strong>
-            </p>
-            <img
-              src={tempQuestionImagePath || "place holder"}
-              id="photo"
-              className={styles.img}
-            />
-            <input type="file" id="file" onChange={handleQuestionImageChange} />
-          </div>
-          <div className="">
-            <p className={styles.txt}>
-              Paste your option
-              <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
-              Here
-            </p>
-            <Editor
-              setValue={setOption_a_Text}
-              value={option_a}
-              editorId="editor2"
-            />
-            <ErrorComponent value={option_a} />
-          </div>
-          <div className="">
-            <p className={styles.txt}>
-              Paste your option
-              <span style={{ color: "red", fontWeight: "bolder" }}>B</span> Here
-            </p>
-            <Editor
-              setValue={setOption_b_Text}
-              value={option_b}
-              editorId="editor3"
-            />
-            <ErrorComponent value={option_b} />
-          </div>
-          <div className="">
-            <p className={styles.txt}>
-              Paste your option{" "}
-              <span style={{ color: "red", fontWeight: "bolder" }}>C</span> Here
-            </p>
-            <Editor
-              setValue={setOption_c_Text}
-              value={option_c}
-              editorId="editor4"
-            />
-            <ErrorComponent value={option_c} />
-          </div>
-          <div className="">
-            <p className={styles.txt}>
-              Paste your option{" "}
-              <span style={{ color: "red", fontWeight: "bolder" }}>D</span> Here
-            </p>
-            <Editor
-              setValue={setOption_d_Text}
-              value={option_d}
-              editorId="editor5"
-            />
-            <ErrorComponent value={option_d} />
-            <div className={styles.answerYear}>
+        <div>
+          <div className={styles.generalBackground}>
+            <div className={styles.generalHeader}></div>
+            <div className="">
               <div>
-                <b className={styles.txt}>Choose Answer here</b>
-                <SelectDropdown
-                  title=""
-                  items={answerOptions}
-                  handleSelect={setOption_answer_Text}
-                />
+                <p className={styles.txt}>Paste Your Chapter Number</p>{" "}
               </div>
-            </div>
-
-            <div className={styles.plainTxt}>
-              <p className={styles.txt}>Paste your option Description here</p>
-              <Editor
-                setValue={setDescription_Text}
-                editorId="editor6"
-                value={description}
+              <input
+                type="number"
+                value={chapter}
+                onChange={(e) => setChapter(e.target.value)}
               />
+
+              <div>
+                <p className={styles.txt}>Paste Your Exercise Number</p>{" "}
+              </div>
+              <input
+                type="number"
+                value={exerciseNumber}
+                onChange={(e) => setExerciseNumber(e.target.value)}
+              />
+
+              <p className={styles.txt}>Paste your question here</p>
+              <Editor
+                setValue={setQuestionTextValue}
+                editorId="editor1"
+                value={questionText}
+              />
+              <ErrorComponent value={questionText} />
             </div>
-            <div className={styles.plainTxt}>
+            <div className="">
               <p className={styles.txt}>
-                <strong>Select Image if the description has Image</strong>
+                <strong>Select Image if the Question has Image</strong>
               </p>
               <img
-                src={tempDescriptionImagePath || ""}
+                src={tempQuestionImagePath || "place holder"}
+                id="photo"
                 className={styles.img}
               />
               <input
                 type="file"
                 id="file"
-                onChange={handleDescriptionImageChange}
-                className={styles.plainTxt}
+                onChange={handleQuestionImageChange}
               />
             </div>
-          </div>
-          <div className={styles.questionBtn}>
-            <button
-              className={styles.submitBtn}
-              onClick={submitExerciseQuestionPageToBackend}
-            >
-              Submit
-            </button>
-            <button className={styles.clearBtn} onClick={clearForm}>
-              Clear
-            </button>
+            <div className="">
+              <p className={styles.txt}>
+                Paste your option
+                <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
+                Here
+              </p>
+              <Editor
+                setValue={setOption_a_Text}
+                value={option_a}
+                editorId="editor2"
+              />
+              <ErrorComponent value={option_a} />
+            </div>
+            <div className="">
+              <p className={styles.txt}>
+                Paste your option
+                <span style={{ color: "red", fontWeight: "bolder" }}>
+                  B
+                </span>{" "}
+                Here
+              </p>
+              <Editor
+                setValue={setOption_b_Text}
+                value={option_b}
+                editorId="editor3"
+              />
+              <ErrorComponent value={option_b} />
+            </div>
+            <div className="">
+              <p className={styles.txt}>
+                Paste your option{" "}
+                <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
+                Here
+              </p>
+              <Editor
+                setValue={setOption_c_Text}
+                value={option_c}
+                editorId="editor4"
+              />
+              <ErrorComponent value={option_c} />
+            </div>
+            <div className="">
+              <p className={styles.txt}>
+                Paste your option{" "}
+                <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
+                Here
+              </p>
+              <Editor
+                setValue={setOption_d_Text}
+                value={option_d}
+                editorId="editor5"
+              />
+              <ErrorComponent value={option_d} />
+              <div className={styles.answerYear}>
+                <div>
+                  <b className={styles.txt}>Choose Answer here</b>
+                  <SelectDropdown
+                    title=""
+                    items={answerOptions}
+                    handleSelect={setOption_answer_Text}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.plainTxt}>
+                <p className={styles.txt}>Paste your option Description here</p>
+                <Editor
+                  setValue={setDescription_Text}
+                  editorId="editor6"
+                  value={description}
+                />
+              </div>
+              <div className={styles.plainTxt}>
+                <p className={styles.txt}>
+                  <strong>Select Image if the description has Image</strong>
+                </p>
+                <img
+                  src={tempDescriptionImagePath || ""}
+                  className={styles.img}
+                />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={handleDescriptionImageChange}
+                  className={styles.plainTxt}
+                />
+              </div>
+            </div>
+            <div className={styles.questionBtn}>
+              <button
+                className={styles.submitBtn}
+                onClick={submitExerciseQuestionPageToBackend}
+              >
+                Submit
+              </button>
+              <button className={styles.clearBtn} onClick={clearForm}>
+                Clear
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </LoadingOverlayWrapper>
   );
 }
