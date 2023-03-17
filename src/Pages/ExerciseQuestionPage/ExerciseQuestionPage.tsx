@@ -6,7 +6,10 @@ import { PlainQuestion } from "../../models/question.model";
 import { AxiosError } from "axios";
 import { ExerciseQuestion } from "../../models/exercise.model";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
-import { submitPlainQuestionToServer } from "../../DataService/submit-questions.service";
+import {
+  submitExerciseQuestionToServer,
+  submitPlainQuestionToServer,
+} from "../../DataService/submit-questions.service";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 import ErrorComponent from "../../components/ErrorComponent";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
@@ -124,7 +127,6 @@ export default function ExerciseQuestionPage() {
       description: "",
       exerciseNumber: "",
       chapter: "",
-      year: "",
     };
   };
   const submitExerciseQuestionPageToBackend = async (e: any) => {
@@ -141,7 +143,6 @@ export default function ExerciseQuestionPage() {
       answer: answerText,
       description: description,
       course: selectedCourse,
-      year: year,
       exerciseNumber: exerciseNumber,
       chapter: chapter,
 
@@ -151,7 +152,7 @@ export default function ExerciseQuestionPage() {
     console.log("question image 00");
     console.log(questionImage);
 
-    let result = await submitPlainQuestionToServer(
+    let result = await submitExerciseQuestionToServer(
       exercise,
       questionImage,
       descriptionImage
