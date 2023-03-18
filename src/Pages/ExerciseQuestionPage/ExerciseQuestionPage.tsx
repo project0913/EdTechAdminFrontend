@@ -2,18 +2,18 @@ import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import styles from "./exercise.module.css";
 import { CSSProperties, useEffect, useState } from "react";
 import { Editor } from "../../quill/Editor";
-import { PlainQuestion } from "../../models/question.model";
+
 import { AxiosError } from "axios";
-import { ExerciseQuestion } from "../../models/exercise.model";
+
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
-import {
-  submitExerciseQuestionToServer,
-  submitPlainQuestionToServer,
-} from "../../DataService/submit-questions.service";
-import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
+
 import ErrorComponent from "../../components/ErrorComponent";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
+import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
+import { ExerciseQuestion } from "../../models/exerciseQuestion.model";
+import { answerOptions, gradeOptions } from "../../constants";
+import { submitExerciseQuestionToServer } from "../../DataService/exercise.service";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -32,16 +32,15 @@ export default function ExerciseQuestionPage() {
   const [selectedExamCategory, setSelectedExamCategory] = useState("");
 
   const [selectedSubExamCategory, setSelectedSubExamCategory] = useState("");
-  const [year, setYear] = useState("2015");
 
-  const [subExamCategory, setSubExamCategory] = useState<SelectOption[]>([]);
   const [questionText, setQuestionText] = useState("");
   const [option_a, setOption_a] = useState("");
   const [option_b, setOption_b] = useState("");
   const [option_c, setOption_c] = useState("");
   const [option_d, setOption_d] = useState("");
   const [chapter, setChapter] = useState("");
-  const [exerciseNumber, setExerciseNumber] = useState("");
+  const [exerciseId, setExerciseId] = useState("");
+
   const [description, setDescription] = useState("");
   const [answerText, setAnswerText] = useState("option_a");
 
@@ -50,20 +49,10 @@ export default function ExerciseQuestionPage() {
   const [tempQuestionImagePath, setTempQuestionImagePath] = useState("");
   const [tempDescriptionImagePath, setTempDescriptionImagePath] = useState("");
   const [questionNumber, setQuestionNumber] = useState<string | any>();
+  const [exerciseOptions, setExerciseOptions] = useState<SelectOption[]>([]);
 
   const [show, setShow] = useState(false);
-  const gradeOptions: SelectOption[] = [
-    { label: "9 th", value: "grade_9" },
-    { label: "10 th", value: "grade_10" },
-    { label: "11 th", value: "grade_11" },
-    { label: "12 th", value: "grade_12" },
-  ];
-  const answerOptions: SelectOption[] = [
-    { label: "A", value: "option_a" },
-    { label: "B", value: "option_b" },
-    { label: "C", value: "option_c" },
-    { label: "D", value: "option_d" },
-  ];
+
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
     let coursesOption = [];
@@ -81,6 +70,8 @@ export default function ExerciseQuestionPage() {
     setTempQuestionImagePath(URL.createObjectURL(e.target.files[0]));
     setQuestionImage(e.target.files[0]);
   }
+
+  useEffect(() => {}, []);
   function handleDescriptionImageChange(e: any) {
     console.log(e.target.files);
     setTempDescriptionImagePath(URL.createObjectURL(e.target.files[0]));
@@ -111,24 +102,9 @@ export default function ExerciseQuestionPage() {
     setChapter(val);
   };
   const setExerciseNumber_Text = (val: string) => {
-    setExerciseNumber(val);
+    setExerciseId(val);
   };
 
-  const submitQuestionToBackend = async () => {
-    let exercise: ExerciseQuestion = {
-      course: selectedCourse,
-      grade: selectedGrade,
-      questionText: "",
-      option_a: "",
-      option_b: "",
-      option_c: "",
-      option_d: "",
-      answer: "",
-      description: "",
-      exerciseNumber: "",
-      chapter: "",
-    };
-  };
   const submitExerciseQuestionPageToBackend = async (e: any) => {
     e.preventDefault();
     setLoading((prev) => true);
@@ -142,21 +118,13 @@ export default function ExerciseQuestionPage() {
       option_d: option_d,
       answer: answerText,
       description: description,
-      course: selectedCourse,
-      exerciseNumber: exerciseNumber,
-      chapter: chapter,
-
+      exerciseId: "",
       questionNumber: parseInt(questionNumber),
-      grade: "",
     };
     console.log("question image 00");
     console.log(questionImage);
 
-    let result = await submitExerciseQuestionToServer(
-      exercise,
-      questionImage,
-      descriptionImage
-    );
+    let result = await submitExerciseQuestionToServer(exercise);
     setLoading((prev) => false);
     if (result instanceof AxiosError) {
       let msgTxt = "";
@@ -185,7 +153,7 @@ export default function ExerciseQuestionPage() {
     setDescriptionImage("");
     setTempQuestionImagePath("");
     setTempDescriptionImagePath("");
-    setExerciseNumber("");
+    setExerciseId("");
     setChapter("");
   };
   const handleCourseChange = (e: any) => {
@@ -193,6 +161,9 @@ export default function ExerciseQuestionPage() {
   };
   const handleGradeChange = (e: any) => {
     setSelectedGrade(e.target.value);
+  };
+  const handleExerciseChange = (e: any) => {
+    setExerciseOptions(e.target.value);
   };
 
   return (
@@ -220,6 +191,11 @@ export default function ExerciseQuestionPage() {
               items={gradeOptions}
               handleSelect={handleGradeChange}
             />
+            <SelectDropdown
+              title=""
+              items={exerciseOptions}
+              handleSelect={handleExerciseChange}
+            />
           </div>
         </div>
         <div>
@@ -240,8 +216,8 @@ export default function ExerciseQuestionPage() {
               </div>
               <input
                 type="number"
-                value={exerciseNumber}
-                onChange={(e) => setExerciseNumber(e.target.value)}
+                value={questionNumber}
+                onChange={(e) => setExerciseId(e.target.value)}
               />
 
               <p className={styles.txt}>Paste your question here</p>

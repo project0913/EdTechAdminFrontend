@@ -3,7 +3,7 @@ import PlainQuestionData from "./Pages/PlainQuestionPage/PlainQuestionData";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GroupedQuestionPage from "./Pages/GroupedQuestionPage/GroupedQuestionPage";
 import DirectionPage from "./Pages/DirectionPage/DirectionPage";
-import LayoutComponent from "./components/LayoutComponent";
+
 import PlainQuestionEditor from "./Pages/PlainQuestionEditor/PlainQuestionEditor";
 
 import DirectionEditorPage from "./Pages/directionEditorPage/DirectionEditorPage";
@@ -22,20 +22,21 @@ import ViewClerkDetailPage from "./Pages/viewClerkDetailPage/ViewClerkDetailPage
 import AdminNotification from "./components/AdminNotification";
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 
-import { useState } from "react";
-import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
+//import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
 import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
-import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
+//import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 import GeneralQuestionPage from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
 import ViewPlainQuestionsPage from "./Pages/ViewQuestionsPage/ViewPlainQuestionsPage";
 import ViewGeneralQuestionPage from "./Pages/ViewGeneralQuestionPage/viewGeneralQuestionPage";
+import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
+import ExercisePage from "./Pages/Exercise/ExercisePage";
 
 function App() {
-  const [v, setV] = useState("");
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
+    { path: "exercise", element: <ExercisePage /> },
     {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
@@ -71,10 +72,11 @@ function App() {
           path: "general-question",
           element: <GeneralQuestionPage />,
         },
-        {
-          path: "exercise-question",
-          element: <ExerciseQuestionPage />,
-        },
+
+        // {
+        //   path: "exercise-question",
+        //   element: <ExerciseQuestionPage />,
+        // },
 
         {
           path: "view-plain-questions",
@@ -99,14 +101,14 @@ function App() {
           path: "view-directions",
           element: <ViewDirectionsPage />,
         },
-        {
-          path: "view-exercise-question",
-          element: <ViewExerciseQuestionPage />,
-        },
-        {
-          path: "view-general-question",
-          element: <ViewGeneralQuestionPage />,
-        },
+        // {
+        //   path: "view-exercise-question",
+        //   element: <ViewExerciseQuestionPage />,
+        // },
+        // {
+        //   path: "view-general-question",
+        //   element: <ViewGeneralQuestionPage />,
+        // },
       ],
     },
 
@@ -134,10 +136,10 @@ function App() {
           path: "general-question",
           element: <GeneralQuestion />,
         },
-        {
-          path: "exercise-question",
-          element: <ExerciseQuestionPage />,
-        },
+        // {
+        //   path: "exercise-question",
+        //   element: <ExerciseQuestionPage />,
+        // },
 
         {
           path: "view-plain-questions",
@@ -145,7 +147,7 @@ function App() {
         },
         {
           path: "view-grouped-questions",
-          element: <GroupedQuestionPage />,
+          element: <ViewGroupedQuestionsPage />,
         },
 
         {
@@ -162,10 +164,10 @@ function App() {
           path: "view-directions",
           element: <ViewDirectionsPage />,
         },
-        {
-          path: "view-exercise-question",
-          element: <ViewExerciseQuestionPage />,
-        },
+        // {
+        //   path: "view-exercise-question",
+        //   element: <ViewExerciseQuestionPage />,
+        // },
         {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,

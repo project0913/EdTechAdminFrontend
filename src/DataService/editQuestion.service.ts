@@ -1,4 +1,3 @@
-import { ExerciseQuestion } from "../models/exercise.model";
 import axios from "../api/axios";
 import { PlainQuestion } from "../models/question.model";
 import { GeneralQuestion } from "../models/general.model";
@@ -82,50 +81,50 @@ export async function updateGroupedQuestionToServer(
   }
 }
 
-export async function updateExerciseQuestionToServer(
-  questionId: string,
-  question: ExerciseQuestion,
-  questionImage: string,
-  descriptionImage: string
-) {
-  try {
-    let formData = new FormData();
-    formData.append("questionText", question.questionText);
-    formData.append("exerciseNumber", question.exerciseNumber);
-    formData.append("grade", question.grade);
-    formData.append("chapter", question.chapter);
-    formData.append("answer", question.answer);
-    formData.append("option_a", question.option_a);
-    formData.append("option_b", question.option_b);
-    formData.append("option_c", question.option_c);
-    formData.append("option_d", question.option_d);
-    formData.append(
-      "questionNumber",
-      question?.questionNumber?.toString() || "0"
-    );
-    formData.append("course", question?.course || "");
-    formData.append("description", question.description);
-    formData.append("questionImage", questionImage);
+// export async function updateExerciseQuestionToServer(
+//   questionId: string,
+//   question: ExerciseQuestion,
+//   questionImage: string,
+//   descriptionImage: string
+// ) {
+//   try {
+//     let formData = new FormData();
+//     formData.append("questionText", question.questionText);
+//     formData.append("exerciseNumber", question.exerciseNumber);
+//     formData.append("grade", question.grade);
+//     formData.append("chapter", question.chapter);
+//     formData.append("answer", question.answer);
+//     formData.append("option_a", question.option_a);
+//     formData.append("option_b", question.option_b);
+//     formData.append("option_c", question.option_c);
+//     formData.append("option_d", question.option_d);
+//     formData.append(
+//       "questionNumber",
+//       question?.questionNumber?.toString() || "0"
+//     );
+//     formData.append("course", question?.course || "");
+//     formData.append("description", question.description);
+//     formData.append("questionImage", questionImage);
 
-    formData.append("descriptionImage", descriptionImage);
+//     formData.append("descriptionImage", descriptionImage);
 
-    console.log(questionImage);
-    console.log(formData.get("questionText"));
+//     console.log(questionImage);
+//     console.log(formData.get("questionText"));
 
-    let raw = await axios.post(
-      `/exercise-question/update/${questionId}`,
-      formData
-    );
-    let data = raw.data as ExerciseQuestion;
-    console.log("coming from a server");
+//     let raw = await axios.post(
+//       `/exercise-question/update/${questionId}`,
+//       formData
+//     );
+//     let data = raw.data as ExerciseQuestion;
+//     console.log("coming from a server");
 
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-}
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//     return error;
+//   }
+// }
 
 export async function updateGeneralQuestionToServer(
   questionId: string,
@@ -145,7 +144,7 @@ export async function updateGeneralQuestionToServer(
       "questionNumber",
       question?.questionNumber?.toString() || "0"
     );
-    formData.append("course", question?.course || "");
+
     formData.append("description", question.description);
     formData.append("questionImage", questionImage);
 

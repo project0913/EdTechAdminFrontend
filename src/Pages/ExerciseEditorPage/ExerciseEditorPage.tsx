@@ -1,19 +1,16 @@
-// import { CSSProperties, useEffect, useState } from "react";
-// import placeholderImage from "../../assets/place_holder.jpg";
-// import styles from "./plainQuestionEditor.module.css";
-// import "react-quill/dist/quill.snow.css";
-// import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
-
-// import { ExerciseQuestion } from "../../models/exercise.model";
 // import { AxiosError } from "axios";
-// import { FadeLoader } from "react-spinners";
+// import { CSSProperties, useState, useEffect } from "react";
 // import LoadingOverlayWrapper from "react-loading-overlay-ts";
+// import styles from "react-loading-overlay-ts/dist/styles";
 // import { useLocation, useNavigate } from "react-router-dom";
-// import { resolveImageURL, showSuccessToast } from "../../utils/helper";
-
-// import { Editor } from "../../quill/Editor";
-// import ErrorComponent from "../../components/ErrorComponent";
+// import { FadeLoader } from "react-spinners";
 // import { updateExerciseQuestionToServer } from "../../DataService/editQuestion.service";
+// import ErrorComponent from "../../components/ErrorComponent";
+// import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
+// import { ExerciseQuestion } from "../../models/exercise.model";
+// import Editor from "../../quill/Editor";
+// import Styles from "./exerciseEditor.module.css";
+// import { showSuccessToast, resolveImageURL } from "src/utils/helper";
 
 // const override: CSSProperties = {
 //   margin: "10 auto",
@@ -111,7 +108,14 @@
 //     };
 //     console.log("question image ========================");
 //     console.log(editedQuestion);
-//     let result = await updateExerciseQuestionToServer({
+//     // let result = await updateExerciseQuestionToServer({
+//     //   questionId,
+//     //   question,
+//     //   questionImage,
+//     //   descriptionImage,
+//     // });
+
+//     let result = await updateExerciseQuestionToServer<any>({
 //       questionId,
 //       question,
 //       questionImage,
@@ -157,9 +161,9 @@
 //         />
 //       }
 //     >
-//       <div className={styles.bodyPlainQuestion}>
-//         <div className={styles.plainQuestionContainer}>
-//           <div className={styles.editorContainer}>
+//       <div className={Styles.bodyPlainQuestion}>
+//         <div className={Styles.plainQuestionContainer}>
+//           <div className={Styles.editorContainer}>
 //             <div>
 //               <h6>Question Number</h6>
 //               <input
@@ -185,11 +189,10 @@
 //                 <img
 //                   src={
 //                     resolveImageURL(question?.questionImage || "") ||
-//                     tempQuestionImagePath ||
-//                     placeholderImage
+//                     tempQuestionImagePath
 //                   }
 //                   id="photo"
-//                   className={styles.img}
+//                   className={Styles.img}
 //                 />
 //                 <input
 //                   type="file"
@@ -274,10 +277,9 @@
 //                 <img
 //                   src={
 //                     resolveImageURL(question?.descriptionImage || "") ||
-//                     tempDescriptionImagePath ||
-//                     placeholderImage
+//                     tempDescriptionImagePath
 //                   }
-//                   className={styles.img}
+//                   className={Styles.img}
 //                 />
 //                 <input
 //                   type="file"
@@ -287,16 +289,16 @@
 //               </div>
 //             </div>
 //           </div>
-//           <div className={styles.updateBackMain}>
+//           <div className={Styles.updateBackMain}>
 //             <button
-//               className={styles.updateBtn}
+//               className={Styles.updateBtn}
 //               onClick={updateExerciseQuestionToBackend}
 //             >
 //               Update
 //             </button>
 //             <button
 //               style={{ marginLeft: "200px" }}
-//               className={styles.backToMain}
+//               className={Styles.backToMain}
 //               onClick={() => {
 //                 navigate(-1);
 //               }}
@@ -309,8 +311,3 @@
 //     </LoadingOverlayWrapper>
 //   );
 // }
-import React from "react";
-
-export default function ExerciseEditorPage() {
-  return <div>ExerciseEditorPage</div>;
-}

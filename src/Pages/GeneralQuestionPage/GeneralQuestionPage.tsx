@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Editor } from "../../quill/Editor";
 import { GeneralQuestion } from "../../models/general.model";
-import {
-  override,
-  resolveImageURL,
-  showErrorToast,
-  showSuccessToast,
-} from "../../utils/helper";
+import { override, showErrorToast, showSuccessToast } from "../../utils/helper";
 import { submitGeneralQuestionToServer } from "../../DataService/submit-questions.service";
 import { AxiosError } from "axios";
 //import styles from "react-loading-overlay-ts/dist/styles";
@@ -52,6 +47,8 @@ export default function GeneralQuestionPage() {
     setQuestionText(val);
   };
   const setOption_a_Text = (val: string) => {
+    console.log(val);
+
     setOption_a(val);
   };
   const setOption_b_Text = (val: string) => {
@@ -69,21 +66,6 @@ export default function GeneralQuestionPage() {
   const setDescription_Text = (val: string) => {
     setDescription(val);
   };
-  const submitQuestionToBackend = async () => {
-    let general: GeneralQuestion = {
-      questionText: "",
-      option_a: "",
-      option_b: "",
-      option_c: "",
-      option_d: "",
-      course: "",
-      answer: "",
-      questionImage: "",
-      descriptionImage: "",
-      description: "",
-      questionNumber: undefined,
-    };
-  };
 
   const submitGeneralQuestionPageToBackend = async (e: any) => {
     e.preventDefault();
@@ -95,7 +77,6 @@ export default function GeneralQuestionPage() {
       option_a: option_a,
       option_b: option_b,
       option_c: option_c,
-      course: "",
       option_d: option_d,
       answer: answerText,
       description: description,
@@ -103,8 +84,9 @@ export default function GeneralQuestionPage() {
       descriptionImage,
       questionNumber: parseInt(questionNumber),
     };
-    console.log("question image 00");
-    console.log(questionImage);
+    console.log("before subm");
+
+    console.log(JSON.stringify(general));
 
     let result = await submitGeneralQuestionToServer(
       general,

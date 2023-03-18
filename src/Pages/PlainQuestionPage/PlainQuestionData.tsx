@@ -45,7 +45,7 @@ export default function PlainQuestionData() {
   const [descriptionImage, setDescriptionImage] = useState("");
   const [tempQuestionImagePath, setTempQuestionImagePath] = useState("");
   const [tempDescriptionImagePath, setTempDescriptionImagePath] = useState("");
-  const [questionNumber, setQuestionNumber] = useState<string | any>();
+  const [questionNumber, setQuestionNumber] = useState<string | any>(1);
 
   const [show, setShow] = useState(false);
   const answerOptions: SelectOption[] = [
@@ -55,8 +55,8 @@ export default function PlainQuestionData() {
     { label: "D", value: "option_d" },
   ];
   useEffect(() => {
-    console.log("plain question text " + questionText);
-    console.log("plain question text " + questionNumber);
+    console.log("plain question text  onInit" + questionText);
+    console.log("plain questionNumber on init " + questionNumber);
   }, []);
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
@@ -105,6 +105,10 @@ export default function PlainQuestionData() {
     setDescriptionImage(e.target.files[0]);
   }
   const setQuestionTextValue = (val: string) => {
+    console.log("value of Question Text after change " + val);
+    console.log(
+      "value of Question Number Is NAn  " + Number.isNaN(questionNumber)
+    );
     setQuestionText(val);
   };
   const setOption_a_Text = (val: string) => {

@@ -1,6 +1,6 @@
-export type GeneralQuestion = {
+export type ExerciseQuestion = {
   _id?: string;
-
+  exerciseId?: string;
   questionText: string;
   option_a: string;
   option_b: string;
@@ -8,9 +8,8 @@ export type GeneralQuestion = {
   option_d: string;
   answer: string;
   description: string;
-
   questionNumber?: number;
-
+  direction?: string;
   questionImage?: string;
   descriptionImage?: string;
 };

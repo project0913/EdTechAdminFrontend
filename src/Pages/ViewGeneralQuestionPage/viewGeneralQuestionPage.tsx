@@ -17,7 +17,8 @@ import { useEffect, useState } from "react";
 import { GeneralQuestion } from "../../models/general.model";
 import CustomPagination from "../../components/pagination";
 import styles from "./general.module.css";
-import { fetchExerciseQuestions } from "../../DataService/viewExerciseQuestion.service";
+
+import { fetchGeneralQuestions } from "../../DataService/viewGeneralQuestion.service";
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
     if (domNode instanceof Element && domNode.attribs) {
@@ -30,17 +31,18 @@ export default function ViewExerciseQuestionPage() {
   const [questions, setQuestions] = useState<GeneralQuestion[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getQuestion(1);
+  }, []);
 
-  const getQuestion = async ({ page }: { page: number }) => {
-    const { count, questions } = await fetchExerciseQuestions({ page: 1 });
+  const getQuestion = async (page: number) => {
+    const { count, questions } = await fetchGeneralQuestions(page);
     setQuestions(questions);
     setTotalCount(count);
   };
   const onPageChange = async (page: number) => {
-    const { count, questions } = await fetchExerciseQuestions({
-      page: page,
-    });
+    const { count, questions } = await fetchGeneralQuestions(page);
+
     setQuestions(questions);
     setTotalCount(count);
   };
@@ -125,7 +127,7 @@ export default function ViewExerciseQuestionPage() {
                     </td>
                     <td className={styles.td}>{question.answer}</td>
                     <td className={styles.td}>
-                      {parse(question.description, options)}
+                      {parse(question?.description || " ", options)}
                     </td>
                     <td className={styles.td}>
                       <img
