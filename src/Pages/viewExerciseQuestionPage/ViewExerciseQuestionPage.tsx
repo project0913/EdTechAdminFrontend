@@ -178,3 +178,9 @@
 //     </div>
 //   );
 // }
+
+import React from "react";
+
+export default function ViewExerciseQuestionPage() {
+  return <div></div>;
+}
