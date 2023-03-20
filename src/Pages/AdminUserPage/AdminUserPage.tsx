@@ -59,7 +59,6 @@ export default function AdminUserPage() {
                 <option value="general-question">
                   Insert General Question
                 </option>
-                <option value="exercise">Insert Exercise Question Info</option>
                 <option value="exercise-question">
                   Insert Exercise Question
                 </option>
