@@ -48,8 +48,7 @@ export default function AdminUserPage() {
                 name=""
                 id=""
                 onChange={routeChange}
-                className={styles.selectDropdown}
-              >
+                className={styles.selectDropdown}>
                 <option selected disabled>
                   Select Plain Question
                 </option>
@@ -60,6 +59,7 @@ export default function AdminUserPage() {
                 <option value="general-question">
                   Insert General Question
                 </option>
+                <option value="exercise">Insert Exercise Question Info</option>
                 <option value="exercise-question">
                   Insert Exercise Question
                 </option>
@@ -69,8 +69,7 @@ export default function AdminUserPage() {
                 name=""
                 id=""
                 className={styles.selectDropdown}
-                onChange={routeChange}
-              >
+                onChange={routeChange}>
                 {" "}
                 <option selected disabled>
                   Select View Plain Question
@@ -84,6 +83,9 @@ export default function AdminUserPage() {
                 </option>
                 <option value="view-general-question">
                   View General Question
+                </option>
+                <option value="view-exercise">
+                  View Exercise Question Info
                 </option>
                 <option value="view-exercise-question">
                   View Exercise Question

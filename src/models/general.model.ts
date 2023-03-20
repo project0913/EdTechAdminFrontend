@@ -1,6 +1,5 @@
 export type GeneralQuestion = {
   _id?: string;
-
   questionText: string;
   option_a: string;
   option_b: string;
@@ -8,9 +7,7 @@ export type GeneralQuestion = {
   option_d: string;
   answer: string;
   description: string;
-
   questionNumber?: number;
-
   questionImage?: string;
   descriptionImage?: string;
 };

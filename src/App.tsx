@@ -30,6 +30,10 @@ import ViewPlainQuestionsPage from "./Pages/ViewQuestionsPage/ViewPlainQuestions
 import ViewGeneralQuestionPage from "./Pages/ViewGeneralQuestionPage/viewGeneralQuestionPage";
 import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
 import ExercisePage from "./Pages/Exercise/ExercisePage";
+import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
+import ExerciseQuestionEditorPage from "./Pages/ExerciseEditorPage/ExerciseEditorPage";
+import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
+import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -37,6 +41,12 @@ function App() {
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
     { path: "exercise", element: <ExercisePage /> },
+    { path: "exercise-question", element: <ExerciseQuestionPage /> },
+    {
+      path: "edit-exercise-question",
+      element: <ExerciseQuestionEditorPage />,
+    },
+
     {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
@@ -47,8 +57,7 @@ function App() {
       path: "admin",
       element: (
         <SystemAdminRouteGuard
-          children={<AdminUserDataView />}
-        ></SystemAdminRouteGuard>
+          children={<AdminUserDataView />}></SystemAdminRouteGuard>
       ),
       children: [
         {
@@ -73,10 +82,12 @@ function App() {
           element: <GeneralQuestionPage />,
         },
 
-        // {
-        //   path: "exercise-question",
-        //   element: <ExerciseQuestionPage />,
-        // },
+        { path: "exercise", element: <ExercisePage /> },
+        { path: "exercise-question", element: <ExerciseQuestionPage /> },
+        {
+          path: "edit-exercise-question",
+          element: <ExerciseQuestionEditorPage />,
+        },
 
         {
           path: "view-plain-questions",
@@ -101,14 +112,6 @@ function App() {
           path: "view-directions",
           element: <ViewDirectionsPage />,
         },
-        // {
-        //   path: "view-exercise-question",
-        //   element: <ViewExerciseQuestionPage />,
-        // },
-        // {
-        //   path: "view-general-question",
-        //   element: <ViewGeneralQuestionPage />,
-        // },
       ],
     },
 
@@ -136,10 +139,18 @@ function App() {
           path: "general-question",
           element: <GeneralQuestion />,
         },
-        // {
-        //   path: "exercise-question",
-        //   element: <ExerciseQuestionPage />,
-        // },
+
+        { path: "exercise", element: <ExercisePage /> },
+        { path: "exercise-question", element: <ExerciseQuestionPage /> },
+        {
+          path: "edit-exercise-question",
+          element: <ExerciseQuestionEditorPage />,
+        },
+
+        {
+          path: "view-exercise-question",
+          element: <ViewExerciseQuestionPage />,
+        },
 
         {
           path: "view-plain-questions",
@@ -148,6 +159,11 @@ function App() {
         {
           path: "view-grouped-questions",
           element: <ViewGroupedQuestionsPage />,
+        },
+
+        {
+          path: "view-exercise",
+          element: <ViewExercisePage />,
         },
 
         {
@@ -164,10 +180,7 @@ function App() {
           path: "view-directions",
           element: <ViewDirectionsPage />,
         },
-        // {
-        //   path: "view-exercise-question",
-        //   element: <ViewExerciseQuestionPage />,
-        // },
+
         {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
