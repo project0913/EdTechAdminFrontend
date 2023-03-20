@@ -36,7 +36,7 @@ function App() {
     { path: "", element: <AdminPublicLogin /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
-    { path: "exercise", element: <ExercisePage /> },
+
     {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
@@ -127,6 +127,7 @@ function App() {
           path: "grouped-question",
           element: <GroupedQuestionPage />,
         },
+        { path: "exercise-info", element: <ExercisePage /> },
 
         {
           path: "direction",
@@ -136,10 +137,6 @@ function App() {
           path: "general-question",
           element: <GeneralQuestion />,
         },
-        // {
-        //   path: "exercise-question",
-        //   element: <ExerciseQuestionPage />,
-        // },
 
         {
           path: "view-plain-questions",
