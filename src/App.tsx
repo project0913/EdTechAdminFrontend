@@ -22,9 +22,8 @@ import ViewClerkDetailPage from "./Pages/viewClerkDetailPage/ViewClerkDetailPage
 import AdminNotification from "./components/AdminNotification";
 import { SystemAdminRouteGuard } from "./components/SystemAdminGuard";
 
-//import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
 import GeneralQuestion from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
-//import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
+
 import GeneralQuestionPage from "./Pages/GeneralQuestionPage/GeneralQuestionPage";
 import ViewPlainQuestionsPage from "./Pages/ViewQuestionsPage/ViewPlainQuestionsPage";
 import ViewGeneralQuestionPage from "./Pages/ViewGeneralQuestionPage/viewGeneralQuestionPage";

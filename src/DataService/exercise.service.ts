@@ -23,40 +23,37 @@ export async function submitExerciseQuestionToServer(
     return error;
   }
 }
-export async function getExerciseQuestionFromServer(
+export async function updateExerciseQuestionToServer(
+  id: string,
+  question: ExerciseQuestion | any
+) {
+  try {
+    let raw = await axios.put(`/exercise-questions/${id}`, question);
+    let data = raw.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+export async function getAvailableExerciseFromServer(
   grade: number,
   courseId: string
 ) {
   try {
     let raw = await axios.post("/exercises/get-all", { grade, courseId });
     let data = raw.data as Exercise[];
+    if (data.length == 0) return [];
     return data.map((exercise) => ({
       label: `Exercise ${exercise.exerciseNumber}`,
-      value: exercise.exerciseNumber.toString(),
+      value: exercise._id,
     })) as SelectOption[];
   } catch (error) {
     return error;
   }
 }
-
-export async function fetchExerciseCourses() {
-  let raw = await axios.get(`/`);
-  let data = raw.data as { _id: string; name: string }[];
-  return data.map((c) => ({ label: c.name, value: c._id })) as SelectOption[];
-}
-export async function fetchExerciseCoursesGrade(courseId: string) {
-  let raw = await axios.get(`/`);
-  let data = raw.data as { grade: number }[];
-  return data.map((g) => ({
-    label: g.grade.toString(),
-    value: g.grade.toString(),
-  })) as SelectOption[];
-}
-export async function fetchExerciseCoursesGradeChapter(courseId: string) {
-  let raw = await axios.get(`/`);
-  let data = raw.data as { chapter: string }[];
-  return data.map((ch) => ({
-    label: ch.chapter.toString(),
-    value: ch.chapter.toString(),
-  })) as SelectOption[];
+export async function getAvailableExercise(grade: number, courseId: string) {
+  let raw = await axios.post("/exercises/get-all", { grade, courseId });
+  let data = raw.data as Exercise[];
+  if (data.length == 0) return [];
+  return data;
 }

@@ -14,8 +14,8 @@ export default function ExercisePage() {
   const [courses, setCourses] = useState<SelectOption[]>([]);
   const [selectedCourse, setSelectedCourse] = useState("");
   const [exerciseNumber, setExerciseNumber] = useState(1);
-  const [gradeSelected, setGradeSelected] = useState("");
-  const [chapterSelected, setChapterSelected] = useState("");
+  const [gradeSelected, setGradeSelected] = useState("9");
+  const [chapterSelected, setChapterSelected] = useState("1");
   const [errorMessage, setErrorMessage] = useState("");
   const [show, setShow] = useState(false);
 
@@ -36,6 +36,7 @@ export default function ExercisePage() {
   const handleGradeChange = (e: any) => {
     setGradeSelected(e.target.value);
   };
+
   const handleSelectedCourse = (e: any) => {
     setSelectedCourse(e.target.value);
   };
@@ -50,6 +51,8 @@ export default function ExercisePage() {
       courseId: selectedCourse,
       exerciseNumber: exerciseNumber,
     };
+    console.log(exercise);
+
     let result = await submitExerciseToServer(exercise);
     setLoading((prev) => false);
     if (result instanceof AxiosError) {

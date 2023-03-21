@@ -151,7 +151,7 @@ export default function ViewDirectionsPage() {
                 <td className={styles.td}>
                   {parse(direction.passage || "", options)}
                 </td>
-                <td>2018</td>
+                <td>{direction.courseYear}</td>
                 <td className={`${styles.td} ${styles.tdManage}`}>
                   <Link to={"/admin-user/edit-direction"} state={{ direction }}>
                     <button className={styles.label}>Edit</button>
