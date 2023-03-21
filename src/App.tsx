@@ -102,6 +102,7 @@ function App() {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
         },
+        { path: "edit-general", element: <GeneralQuestionPageEditor /> },
         {
           path: "exercise-question",
           element: <ExerciseQuestionPage />,
@@ -164,7 +165,10 @@ function App() {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
         },
-
+        {
+          path: "edit-general",
+          element: <GeneralQuestionPageEditor />,
+        },
         { path: "exercise", element: <ExercisePage /> },
         { path: "exercise-question", element: <ExerciseQuestionPage /> },
 
