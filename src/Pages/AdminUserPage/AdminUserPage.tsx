@@ -60,9 +60,7 @@ export default function AdminUserPage() {
                 <option value="general-question">
                   Insert General Question
                 </option>
-                <option value="exercise-Info">
-                  Insert Exercise Question Info
-                </option>
+                <option value="exercise">Insert Exercise Question Info</option>
 
                 <option value="exercise-question">
                   Insert Exercise Question
@@ -89,8 +87,9 @@ export default function AdminUserPage() {
                 <option value="view-general-question">
                   View General Question
                 </option>
+                <option value="view-exercise">View Exercise Question</option>
                 <option value="view-exercise-question">
-                  View Exercise Question
+                  View Exercise Info
                 </option>
               </select>
             </div>

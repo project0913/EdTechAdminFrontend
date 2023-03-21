@@ -33,11 +33,11 @@ import ExercisePage from "./Pages/Exercise/ExercisePage";
 import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
 import ViewExercise from "./Pages/ViewExercise/ViewExerise";
 import GeneralQuestionPageEditor from "./Pages/GeneralQuestionEditor/GeneralQuestionPageEditor";
+import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
-    { path: "view-exercise", element: <ViewExercise /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
 
@@ -65,27 +65,16 @@ function App() {
           element: <PlainQuestionData />,
         },
         {
-          path: "grouped-question",
-          element: <GroupedQuestionPage />,
+          path: "edit-plain-question",
+          element: <PlainQuestionEditor />,
         },
-
-        {
-          path: "direction",
-          element: <DirectionPage />,
-        },
-        {
-          path: "general-question",
-          element: <GeneralQuestionPage />,
-        },
-
-        // {
-        //   path: "exercise-question",
-        //   element: <ExerciseQuestionPage />,
-        // },
-
         {
           path: "view-plain-questions",
           element: <ViewPlainQuestionsPage />,
+        },
+        {
+          path: "grouped-question",
+          element: <GroupedQuestionPage />,
         },
         {
           path: "view-grouped-questions",
@@ -93,26 +82,35 @@ function App() {
         },
 
         {
-          path: "edit-plain-question",
-          element: <PlainQuestionEditor />,
-        },
-
-        {
           path: "edit-direction",
           element: <DirectionEditorPage />,
         },
-
+        {
+          path: "direction",
+          element: <DirectionPage />,
+        },
         {
           path: "view-directions",
           element: <ViewDirectionsPage />,
         },
-        // {
-        //   path: "view-exercise-question",
-        //   element: <ViewExerciseQuestionPage />,
-        // },
+        {
+          path: "general-question",
+          element: <GeneralQuestionPage />,
+        },
+
         {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
+        },
+        {
+          path: "exercise-question",
+          element: <ExerciseQuestionPage />,
+        },
+        { path: "exercise", element: <ExercisePage /> },
+        { path: "view-exercise", element: <ViewExercise /> },
+        {
+          path: "view-exercise-question",
+          element: <ViewExerciseQuestionPage />,
         },
       ],
     },
@@ -127,37 +125,19 @@ function App() {
           path: "",
           element: <PlainQuestionData />,
         },
-
-        {
-          path: "grouped-question",
-          element: <GroupedQuestionPage />,
-        },
-        { path: "exercise-info", element: <ExercisePage /> },
-        { path: "exercise-question", element: <ExerciseQuestionPage /> },
-
-        {
-          path: "direction",
-          element: <DirectionPage />,
-        },
-        {
-          path: "general-question",
-          element: <GeneralQuestion />,
-        },
-
         {
           path: "view-plain-questions",
           element: <ViewPlainQuestionsPage />,
         },
         {
-          path: "view-grouped-questions",
-          element: <ViewGroupedQuestionsPage />,
-        },
-
-        {
           path: "edit-plain-question",
           element: <PlainQuestionEditor />,
         },
 
+        {
+          path: "direction",
+          element: <DirectionPage />,
+        },
         {
           path: "edit-direction",
           element: <DirectionEditorPage />,
@@ -167,13 +147,31 @@ function App() {
           path: "view-directions",
           element: <ViewDirectionsPage />,
         },
-        // {
-        //   path: "view-exercise-question",
-        //   element: <ViewExerciseQuestionPage />,
-        // },
+        {
+          path: "grouped-question",
+          element: <GroupedQuestionPage />,
+        },
+
+        {
+          path: "view-grouped-questions",
+          element: <ViewGroupedQuestionsPage />,
+        },
+        {
+          path: "general-question",
+          element: <GeneralQuestion />,
+        },
         {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
+        },
+
+        { path: "exercise", element: <ExercisePage /> },
+        { path: "exercise-question", element: <ExerciseQuestionPage /> },
+
+        { path: "view-exercise", element: <ViewExercise /> },
+        {
+          path: "view-exercise-question",
+          element: <ViewExerciseQuestionPage />,
         },
       ],
     },
