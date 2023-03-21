@@ -62,7 +62,7 @@ export function ViewExercisePage() {
 
   return (
     <div>
-      <div>
+      <div className={styles.headerBg}>
         <SelectDropdown
           title=""
           items={gradeOptions}
