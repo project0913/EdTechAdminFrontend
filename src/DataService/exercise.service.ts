@@ -38,3 +38,25 @@ export async function getExerciseQuestionFromServer(
     return error;
   }
 }
+
+export async function fetchExerciseCourses() {
+  let raw = await axios.get(`/`);
+  let data = raw.data as { _id: string; name: string }[];
+  return data.map((c) => ({ label: c.name, value: c._id })) as SelectOption[];
+}
+export async function fetchExerciseCoursesGrade(courseId: string) {
+  let raw = await axios.get(`/`);
+  let data = raw.data as { grade: number }[];
+  return data.map((g) => ({
+    label: g.grade.toString(),
+    value: g.grade.toString(),
+  })) as SelectOption[];
+}
+export async function fetchExerciseCoursesGradeChapter(courseId: string) {
+  let raw = await axios.get(`/`);
+  let data = raw.data as { chapter: string }[];
+  return data.map((ch) => ({
+    label: ch.chapter.toString(),
+    value: ch.chapter.toString(),
+  })) as SelectOption[];
+}

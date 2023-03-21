@@ -68,7 +68,7 @@ export default function ViewExerciseQuestionPage() {
     }
   };
   return (
-    <div>
+    <div className={styles.bg}>
       <div className={styles.allTable}>
         <table className={styles.table}>
           <thead>

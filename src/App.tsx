@@ -30,10 +30,14 @@ import ViewPlainQuestionsPage from "./Pages/ViewQuestionsPage/ViewPlainQuestions
 import ViewGeneralQuestionPage from "./Pages/ViewGeneralQuestionPage/viewGeneralQuestionPage";
 import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
 import ExercisePage from "./Pages/Exercise/ExercisePage";
+import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
+import ViewExercise from "./Pages/ViewExercise/ViewExerise";
+import GeneralQuestionPageEditor from "./Pages/GeneralQuestionEditor/GeneralQuestionPageEditor";
 
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
+    { path: "view-exercise", element: <ViewExercise /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
 
@@ -42,6 +46,7 @@ function App() {
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
     { path: "admin-login", element: <AdminLogin /> },
+    { path: "general-editor", element: <GeneralQuestionPageEditor /> },
 
     {
       path: "admin",
@@ -105,10 +110,10 @@ function App() {
         //   path: "view-exercise-question",
         //   element: <ViewExerciseQuestionPage />,
         // },
-        // {
-        //   path: "view-general-question",
-        //   element: <ViewGeneralQuestionPage />,
-        // },
+        {
+          path: "view-general-question",
+          element: <ViewGeneralQuestionPage />,
+        },
       ],
     },
 
@@ -128,6 +133,7 @@ function App() {
           element: <GroupedQuestionPage />,
         },
         { path: "exercise-info", element: <ExercisePage /> },
+        { path: "exercise-question", element: <ExerciseQuestionPage /> },
 
         {
           path: "direction",
