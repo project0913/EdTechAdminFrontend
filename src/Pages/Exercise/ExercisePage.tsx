@@ -8,6 +8,7 @@ import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { submitExerciseToServer } from "../../DataService/exercise.service";
 import { chapterOptions, gradeOptions } from "../../constants";
+import styles from "./exercisePage.module.css";
 
 export default function ExercisePage() {
   const [loading, setLoading] = useState(false);
@@ -71,7 +72,7 @@ export default function ExercisePage() {
 
   return (
     <div>
-      <div>
+      <div className={styles.headerBg}>
         <SelectDropdown
           title=""
           items={gradeOptions}
@@ -91,8 +92,8 @@ export default function ExercisePage() {
         />
       </div>
 
-      <div>
-        <p className="">Exercise Number</p>
+      <div className={styles.editor}>
+        <p className={styles.txt}>Exercise Number</p>
         <input
           type="number"
           value={exerciseNumber}
@@ -106,6 +107,7 @@ export default function ExercisePage() {
           onClick={() => {
             submitExercise();
           }}
+          className={styles.submitBtn}
         >
           Submit{" "}
         </button>

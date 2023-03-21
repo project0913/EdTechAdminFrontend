@@ -30,7 +30,7 @@ import ViewGeneralQuestionPage from "./Pages/ViewGeneralQuestionPage/viewGeneral
 import { ViewGroupedQuestionsPage } from "./Pages/viewGroupedQuestionPage/ViewGroupedQuestionPage";
 import ExercisePage from "./Pages/Exercise/ExercisePage";
 import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionPage";
-import ViewExercise from "./Pages/ViewExercise/ViewExerise";
+
 import GeneralQuestionPageEditor from "./Pages/GeneralQuestionEditor/GeneralQuestionPageEditor";
 import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 import ExerciseQuestionEditorPage from "./Pages/ExerciseEditorPage/ExerciseEditorPage";
@@ -113,7 +113,7 @@ function App() {
           element: <ExerciseQuestionPage />,
         },
         { path: "exercise", element: <ExercisePage /> },
-        { path: "view-exercise", element: <ViewExercise /> },
+
         {
           path: "edit-exercise-question",
           element: <ExerciseQuestionEditorPage />,
