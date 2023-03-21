@@ -88,9 +88,6 @@ export default function AdminUserPage() {
                   View General Question
                 </option>
                 <option value="view-exercise">View Exercise Question</option>
-                <option value="view-exercise-question">
-                  View Exercise Info
-                </option>
               </select>
             </div>
             <div className={styles.topBalance2}>

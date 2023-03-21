@@ -33,12 +33,18 @@ import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionP
 import ViewExercise from "./Pages/ViewExercise/ViewExerise";
 import GeneralQuestionPageEditor from "./Pages/GeneralQuestionEditor/GeneralQuestionPageEditor";
 import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
+import ExerciseQuestionEditorPage from "./Pages/ExerciseEditorPage/ExerciseEditorPage";
+import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
 
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
+    {
+      path: "view-exercise-question",
+      element: <ViewExerciseQuestionPage />,
+    },
 
     {
       path: "clerk-auth",
@@ -109,6 +115,10 @@ function App() {
         { path: "exercise", element: <ExercisePage /> },
         { path: "view-exercise", element: <ViewExercise /> },
         {
+          path: "edit-exercise-question",
+          element: <ExerciseQuestionEditorPage />,
+        },
+        {
           path: "view-exercise-question",
           element: <ViewExerciseQuestionPage />,
         },
@@ -170,11 +180,17 @@ function App() {
         },
         { path: "exercise", element: <ExercisePage /> },
         { path: "exercise-question", element: <ExerciseQuestionPage /> },
-
-        { path: "view-exercise", element: <ViewExercise /> },
+        {
+          path: "edit-exercise-question",
+          element: <ExerciseQuestionEditorPage />,
+        },
         {
           path: "view-exercise-question",
           element: <ViewExerciseQuestionPage />,
+        },
+        {
+          path: "view-exercise",
+          element: <ViewExercisePage />,
         },
       ],
     },
