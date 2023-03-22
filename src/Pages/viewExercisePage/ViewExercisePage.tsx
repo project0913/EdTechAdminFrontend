@@ -108,7 +108,10 @@ export function ViewExercisePage() {
                     </Link>
                   </td>
                   <td className={styles.td}>
-                    <Link to={"/"} state={{ exerciseId: exercise._id }}>
+                    <Link
+                      to={"/edit-exercise-question"}
+                      state={{ exerciseId: exercise._id }}
+                    >
                       <button>Edit</button>
                     </Link>
                     <button>Delete</button>

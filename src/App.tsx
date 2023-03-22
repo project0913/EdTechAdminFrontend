@@ -52,7 +52,10 @@ function App() {
     },
     { path: "admin-login", element: <AdminLogin /> },
     { path: "general-editor", element: <GeneralQuestionPageEditor /> },
-
+    {
+      path: "edit-exercise-question",
+      element: <ExerciseQuestionEditorPage />,
+    },
     {
       path: "admin",
       element: (
