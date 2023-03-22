@@ -142,16 +142,16 @@ export default function ExerciseEditorPage() {
           <div className={Styles.plainQuestionContainer}>
             <div className={Styles.editorContainer}>
               <div>
-                <h6>Question Number</h6>
+                <p className={Styles.txt}>Question Number</p>
                 <input
                   type="number"
                   value={questionNumber}
                   onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
                 />
               </div>
-              <div className="">
-                <div className="">
-                  <p>Paste your question here</p>
+              <div>
+                <div>
+                  <p className={Styles.txt}>Paste your question here</p>
                   <Editor
                     setValue={setQuestionTextValue}
                     editorId="editor1"
@@ -159,9 +159,9 @@ export default function ExerciseEditorPage() {
                   />
                   <ErrorComponent value={questionText} />
                 </div>
-                <div className="">
-                  <p>
-                    <strong>Select Image if the Question has Image</strong>
+                <div>
+                  <p className={Styles.txt}>
+                    Select Image if the Question has Image
                   </p>
                   <img
                     src={
@@ -177,8 +177,8 @@ export default function ExerciseEditorPage() {
                     onChange={handleQuestionImageChange}
                   />
                 </div>
-                <div className="">
-                  <p>
+                <div>
+                  <p className={Styles.txt}>
                     Paste your option{"  "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       {" "}
@@ -193,12 +193,12 @@ export default function ExerciseEditorPage() {
                   />
                   <ErrorComponent value={option_a} />
                 </div>
-                <div className="">
-                  <p>
+                <div>
+                  <p className={Styles.txt}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       B
-                    </span>{" "}
+                    </span>
                     Here
                   </p>
                   <Editor
@@ -208,8 +208,8 @@ export default function ExerciseEditorPage() {
                   />
                   <ErrorComponent value={option_b} />
                 </div>
-                <div className="">
-                  <p>
+                <div>
+                  <p className={Styles.txt}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       C
@@ -223,8 +223,8 @@ export default function ExerciseEditorPage() {
                   />
                   <ErrorComponent value={option_c} />
                 </div>
-                <div className="">
-                  <p>
+                <div>
+                  <p className={Styles.txt}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       D
@@ -238,8 +238,8 @@ export default function ExerciseEditorPage() {
                   />
                   <ErrorComponent value={option_d} />
                 </div>
-                <div className="">
-                  <p>Choose Answer here</p>
+                <div>
+                  <p className={Styles.txt}>Choose Answer here</p>
                   <SelectDropdown
                     title=""
                     items={answerOptions}
@@ -247,16 +247,20 @@ export default function ExerciseEditorPage() {
                   />
                 </div>
 
-                <div className="">
-                  <p>Paste your option Description here</p>
+                <div>
+                  <p className={Styles.txt}>
+                    Paste your option Description here
+                  </p>
                   <Editor
                     setValue={setDescription_Text}
                     editorId="editor7"
                     value={description}
                   />
                 </div>
-                <div className="">
-                  <p>Select Image if the description has Image</p>
+                <div>
+                  <p className={Styles.txt}>
+                    Select Image if the description has Image
+                  </p>
                   <img
                     src={
                       resolveImageURL(
