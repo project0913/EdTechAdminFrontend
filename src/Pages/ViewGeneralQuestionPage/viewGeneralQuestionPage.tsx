@@ -68,95 +68,84 @@ export default function ViewExerciseQuestionPage() {
     }
   };
   return (
-    <div className={styles.bg}>
-      <div className={styles.allTable}>
+    <div className="">
+      <div className="">
         <table className={styles.table}>
           <thead>
-            <tr>
-              <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Questions
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'A'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'B'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'C'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'D'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Description
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Question Image{" "}
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Description Image{" "}
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
+            <tr className={styles.row}>
+              <th className={styles["col-xs-1"]}>No</th>
+              <th className={styles["col-xs-2"]}>Questions</th>
+              <th className={styles["ol-xs-9"]}>Option 'A'</th>
+              <th className={styles["ol-xs-8"]}>Option 'B'</th>
+              <th className={styles["l-xs-7"]}>Option 'C'</th>
+              <th className={styles["co\\l-xs-6"]}>Option 'D'</th>
+              <th className={styles["coxs-5"]}>Answer</th>
+              <th className={styles["cl-xs-4"]}>Description</th>
+              <th className={styles["cl-xs-3"]}>Question Image </th>
+              <th className={styles["ol-xs-2"]}>Description Image </th>
+              <th className={styles["ol-xs-1"]}>Manage</th>
             </tr>
           </thead>
           <tbody>
             {questions.length > 0
               ? questions.map((question, index) => (
-                  <tr className={styles.tr} key={index}>
-                    <td className={`${styles.td} ${styles.tdNo}`}>
-                      {question.questionNumber}
+                  <tr className={styles.row} key={index}>
+                    {/* <td>
+                      <p>{question.questionNumber}</p>
                     </td>
+                    <td>
+                      <p>{parse(question.questionText, options)}</p>
+                    </td>
+                    <td>
+                      <p> {parse(question.option_a, options)}</p>
+                    </td> */}
+                    <td className={styles.ow}>{question.questionNumber}</td>
 
-                    <td className={styles.td}>
+                    <td className={styles["col-xs-1"]}>
                       {parse(question.questionText, options)}
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["col-xs-2"]}>
                       {parse(question.option_a, options)}
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["col-x-8"]}>
                       {parse(question.option_b, options)}
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["cols-7"]}>
                       {parse(question.option_c, options)}
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["co-xs-6"]}>
                       {parse(question.option_d, options)}
                     </td>
-                    <td className={styles.td}>{question.answer}</td>
-                    <td className={styles.td}>
+                    <td className={styles["cl-xs-5"]}>{question.answer}</td>
+                    <td className={styles["ol-xs-4"]}>
                       {parse(question?.description || " ", options)}
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["ol-xs-3"]}>
                       <img
-                        style={{ maxWidth: "150px", maxHeight: "150px" }}
                         src={
                           resolveImageURL(question.questionImage || "") ||
                           placeholderImage
                         }
                       />
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["col-s-2"]}>
                       {" "}
                       <img
-                        style={{ maxWidth: "150px", maxHeight: "150px" }}
                         src={
                           resolveImageURL(question.descriptionImage || "") ||
                           placeholderImage
                         }
                       />
                     </td>
-                    <td className={styles.td}>
+                    <td className={styles["col-xs-1"]}>
                       <Link
-                        to={"/admin-user/edit-plain-question"}
+                        to={"/admin-user/edit-general-question"}
                         state={{ question }}
                       >
-                        <button className={styles.label}>Edit</button>
+                        <button className="">Edit</button>
                       </Link>
                       <button
-                        className={styles.label1}
+                        className=""
                         onClick={() =>
                           deleteGeneralQuestionFromServer(question._id || "")
                         }
@@ -170,7 +159,7 @@ export default function ViewExerciseQuestionPage() {
           </tbody>
         </table>
       </div>
-      <div className={styles.pagination}>
+      <div className="">
         <CustomPagination
           totalItems={totalCount}
           pageSize={10}
