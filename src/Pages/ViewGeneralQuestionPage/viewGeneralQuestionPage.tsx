@@ -72,84 +72,78 @@ export default function ViewExerciseQuestionPage() {
       <div className="">
         <table className={styles.table}>
           <thead>
-            <tr className={styles.row}>
-              <th className={styles["col-xs-1"]}>No</th>
-              <th className={styles["col-xs-2"]}>Questions</th>
-              <th className={styles["ol-xs-9"]}>Option 'A'</th>
-              <th className={styles["ol-xs-8"]}>Option 'B'</th>
-              <th className={styles["l-xs-7"]}>Option 'C'</th>
-              <th className={styles["co\\l-xs-6"]}>Option 'D'</th>
-              <th className={styles["coxs-5"]}>Answer</th>
-              <th className={styles["cl-xs-4"]}>Description</th>
-              <th className={styles["cl-xs-3"]}>Question Image </th>
-              <th className={styles["ol-xs-2"]}>Description Image </th>
-              <th className={styles["ol-xs-1"]}>Manage</th>
+            <tr>
+              <th className={styles.th}>No</th>
+              <th className={styles.th}>Questions</th>
+              <th className={styles.th}>Option 'A'</th>
+              <th className={styles.th}>Option 'B'</th>
+              <th className={styles.th}>Option 'C'</th>
+              <th className={styles.th}>Option 'D'</th>
+              <th className={styles.th}>Answer</th>
+              <th className={styles.th}>Description</th>
+              <th className={styles.th}>Question Image </th>
+              <th className={styles.th}>Description Image </th>
+              <th className={styles.th}>Manage</th>
             </tr>
           </thead>
           <tbody>
             {questions.length > 0
               ? questions.map((question, index) => (
                   <tr className={styles.row} key={index}>
-                    {/* <td>
-                      <p>{question.questionNumber}</p>
+                    <td
+                      className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}>
+                      {question.questionNumber}
                     </td>
-                    <td>
-                      <p>{parse(question.questionText, options)}</p>
-                    </td>
-                    <td>
-                      <p> {parse(question.option_a, options)}</p>
-                    </td> */}
-                    <td className={styles.ow}>{question.questionNumber}</td>
 
-                    <td className={styles["col-xs-1"]}>
+                    <td className={styles.td}>
                       {parse(question.questionText, options)}
                     </td>
-                    <td className={styles["col-xs-2"]}>
+                    <td className={styles.td}>
                       {parse(question.option_a, options)}
                     </td>
-                    <td className={styles["col-x-8"]}>
+                    <td className={styles.td}>
                       {parse(question.option_b, options)}
                     </td>
-                    <td className={styles["cols-7"]}>
+                    <td className={styles.td}>
                       {parse(question.option_c, options)}
                     </td>
-                    <td className={styles["co-xs-6"]}>
+                    <td className={styles.td}>
                       {parse(question.option_d, options)}
                     </td>
-                    <td className={styles["cl-xs-5"]}>{question.answer}</td>
-                    <td className={styles["ol-xs-4"]}>
+                    <td className={styles.td}>{question.answer}</td>
+                    <td className={styles.td}>
                       {parse(question?.description || " ", options)}
                     </td>
-                    <td className={styles["ol-xs-3"]}>
+                    <td className={styles.td}>
                       <img
                         src={
                           resolveImageURL(question.questionImage || "") ||
                           placeholderImage
                         }
+                        style={{ maxWidth: "150px", maxHeight: "80px" }}
                       />
                     </td>
-                    <td className={styles["col-s-2"]}>
+                    <td className={styles.td}>
                       {" "}
                       <img
                         src={
                           resolveImageURL(question.descriptionImage || "") ||
                           placeholderImage
                         }
+                        style={{ maxWidth: "150px", maxHeight: "80px" }}
                       />
                     </td>
-                    <td className={styles["col-xs-1"]}>
+                    <td className={styles.td}>
                       <Link
                         to={"/admin-user/edit-general-question"}
-                        state={{ question }}
-                      >
-                        <button className="">Edit</button>
+                        state={{ question }}>
+                        <button className={styles.label}>Edit</button>
                       </Link>
                       <button
-                        className=""
+                        className={styles.label1}
                         onClick={() =>
                           deleteGeneralQuestionFromServer(question._id || "")
-                        }
-                      >
+                        }>
                         Delete
                       </button>
                     </td>

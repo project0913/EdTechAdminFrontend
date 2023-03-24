@@ -1,9 +1,9 @@
-.body {
+/* .body {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-}
+} 
 .table {
   border-radius: 0.8rem;
 }
@@ -23,7 +23,7 @@
 }
 
 .clerkTableHeader {
-  background-color: #fffb;
+ background-color: #fffb;
   text-align: center;
   overflow: auto;
   overflow: overlay;
@@ -49,7 +49,7 @@ tbody tr:nth-child(even) {
 }
 tbody tr:hover {
   background-color: rgba(129, 24, 24, 0.4);
-}
+} 
 
 .tfoot {
   width: 100%;
@@ -70,4 +70,13 @@ tbody tr:hover {
   border-radius: 15px;
   color: white;
   margin: 5px;
+} */
+
+.table,
+.th,
+.td {
+  padding: 10px;
+  border-collapse: collapse;
+  align-items: center;
+  background-color: #fffb;
 }

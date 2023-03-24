@@ -1,39 +1,21 @@
-/* .table,
-.th,
-.td {
-  border: 1px solid rgb(51, 65, 65);
+.table {
   border-collapse: collapse;
+  table-layout: fixed;
 }
-.tableContent {
+.table,
+.td,
+.th {
+  border: solid 1px #666;
   width: 100%;
+  word-wrap: break-word;
 }
-.td {
-  width: 50px;
-}
-.tdNo {
-  padding: 10px;
-}
-.tr {
-  width: auto;
-}
-.tr:nth-of-type(odd) {
-  background-color: #ffffff;
-}
-.tr:nth-of-type(even) {
-  background-color: #d1d5d9;
-}
-.adminBody {
-  background-color: #088081;
-  display: flex;
+.groupedHeader {
+  width: 100%;
   height: 60px;
-  width: 100%;
-  align-items: center;
+  display: flex;
   justify-content: center;
-}
-
-.tableHeader {
-  gap: 3rem;
-  width: 280px;
+  align-items: center;
+  background-color: #088081;
 }
 .label {
   background-color: #088081;
@@ -48,6 +30,9 @@
   border-radius: 15px;
   cursor: pointer;
 }
+.tdNo {
+  padding: 50px;
+}
 .label1 {
   background-color: rgb(160, 36, 36);
   width: 70px;
@@ -61,24 +46,3 @@
   border: none;
   border-radius: 15px;
 }
-.dropdownView {
-  display: flex;
-  width: 200px;
-  gap: 4rem;
-}
-@media screen and (max-width: 400px) {
-  .dropdownView {
-    width: 0px;
-  }
-  .table {
-    width: fit-content;
-  }
-  .table,
-  .th,
-  .td {
-    width: fit-content;
-  }
-  .tableContent {
-    width: 50%;
-  }
-} */

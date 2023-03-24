@@ -148,8 +148,7 @@ export function ViewGroupedQuestionsPage() {
   return (
     <div>
       <div className={styles.adminBody}>
-        {" "}
-        <div>
+        <div className={styles.groupedHeader}>
           <span className="list-course mt-3">
             <b style={{ color: "white" }}>Courses</b>
             <SelectDropdown
@@ -247,16 +246,14 @@ export function ViewGroupedQuestionsPage() {
                 <td className={styles.td}>
                   <Link
                     to={"/admin-user/edit-plain-question"}
-                    state={{ question }}
-                  >
+                    state={{ question }}>
                     <button className={styles.label}>Edit</button>
                   </Link>
                   <button
                     className={styles.label1}
                     onClick={() =>
                       deleteGroupedQuestionFromServer(question._id || "")
-                    }
-                  >
+                    }>
                     Delete
                   </button>
                 </td>

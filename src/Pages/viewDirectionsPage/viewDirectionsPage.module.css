@@ -1,46 +1,22 @@
-/* .table,
-.th,
-.td {
-  border: 1px solid rgb(51, 65, 65);
-  border-collapse: collapse;
-}
 .table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.table,
+.td,
+.th {
+  border: solid 1px #666;
   width: 100%;
-}
-.thData {
-  width: 30px;
-}
-.tdNumber {
-  margin-left: 100px;
-}
-.tdManage {
-  width: 250px;
-  text-align: center;
-}
-.tdNo {
-  padding: 10px;
-}
-
-.tr:nth-of-type(odd) {
-  background-color: #ffffff;
-}
-.tr:nth-of-type(even) {
-  background-color: #d1d5d9;
+  word-wrap: break-word;
 }
 .adminBody {
-  background-color: #088081;
-  display: flex;
-  height: 60px;
   width: 100%;
-  align-items: center;
+  height: 60px;
+  display: flex;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
+  background-color: #088081;
 }
-.adminSelect {
-  text-align: center;
-  margin: 10px;
-}
-
 .label {
   background-color: #088081;
   width: 70px;
@@ -54,6 +30,12 @@
   border-radius: 15px;
   cursor: pointer;
 }
+.tdNo {
+  padding: 50px;
+}
+.tdY {
+  padding: 30px;
+}
 .label1 {
   background-color: rgb(160, 36, 36);
   width: 70px;
@@ -66,4 +48,4 @@
   padding: 5px;
   border: none;
   border-radius: 15px;
-} */
+}

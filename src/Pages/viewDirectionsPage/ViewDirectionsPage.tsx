@@ -127,19 +127,19 @@ export default function ViewDirectionsPage() {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th className={`${styles.th} ${styles.thData}`}>No</th>
+            <th className={`${styles.th}`}>No</th>
             <th className={styles.th}>Direction Text</th>
             <th className={styles.th}>Section Name</th>
             <th className={styles.th}>Passage</th>
-            <th className={styles.t}>Year</th>
-            <th className={styles.t}>Manage</th>
+            <th className={styles.th}>Year</th>
+            <th className={styles.th}>Manage</th>
           </tr>
         </thead>
         <tbody>
           {directions.length > 0 ? (
             directions.map((direction, index) => (
               <tr className={styles.tr} key={index}>
-                <td className={`${styles.td} ${styles.tdNumber}`}>
+                <td className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}>
                   {direction.directionNumber}
                 </td>
                 <td className={styles.td}>
@@ -151,7 +151,9 @@ export default function ViewDirectionsPage() {
                 <td className={styles.td}>
                   {parse(direction.passage || "", options)}
                 </td>
-                <td>{direction.courseYear}</td>
+                <td className={`&{styles.td} &{styles.tdY}`}>
+                  {direction.courseYear}
+                </td>
                 <td className={`${styles.td} ${styles.tdManage}`}>
                   <Link to={"/admin-user/edit-direction"} state={{ direction }}>
                     <button className={styles.label}>Edit</button>
@@ -160,8 +162,7 @@ export default function ViewDirectionsPage() {
                     className={styles.label1}
                     onClick={() =>
                       deleteDirectionFromServer(direction._id || "")
-                    }
-                  >
+                    }>
                     Delete
                   </button>
                 </td>
