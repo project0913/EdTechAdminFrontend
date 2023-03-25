@@ -35,6 +35,7 @@ import GeneralQuestionPageEditor from "./Pages/GeneralQuestionEditor/GeneralQues
 import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 import ExerciseQuestionEditorPage from "./Pages/ExerciseEditorPage/ExerciseEditorPage";
 import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
+import ExerciseInfoEdit from "./Pages/ExerciseInfoEdit/ExerciseInfoEdit";
 
 function App() {
   const router = createBrowserRouter([
@@ -182,13 +183,18 @@ function App() {
           path: "edit-exercise-question",
           element: <ExerciseQuestionEditorPage />,
         },
+
+        {
+          path: "view-exercise",
+          element: <ViewExercisePage />,
+        },
         {
           path: "view-exercise-question",
           element: <ViewExerciseQuestionPage />,
         },
         {
-          path: "view-exercise",
-          element: <ViewExercisePage />,
+          path: "exercise-info-edit",
+          element: <ExerciseInfoEdit />,
         },
       ],
     },

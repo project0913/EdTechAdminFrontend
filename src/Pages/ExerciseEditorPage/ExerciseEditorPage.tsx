@@ -38,6 +38,7 @@ export default function ExerciseEditorPage() {
   const [tempQuestionImagePath, setTempQuestionImagePath] = useState("");
   const [tempDescriptionImagePath, setTempDescriptionImagePath] = useState("");
   const [questionNumber, setQuestionNumber] = useState<number | any>();
+
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 

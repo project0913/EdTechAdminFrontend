@@ -3,6 +3,7 @@ import axios from "../api/axios";
 import { Direction } from "../models/direction.model";
 import { PlainQuestion } from "../models/question.model";
 import { GeneralQuestion } from "../models/general.model";
+import { Exercise } from "src/models/exercise.model";
 //import { ExerciseQuestion } from "src/models/exercise.model";
 
 export async function submitPlainQuestionToServer(

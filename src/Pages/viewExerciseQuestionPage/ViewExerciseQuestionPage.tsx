@@ -148,7 +148,10 @@ export default function ViewExerciseQuestionPage() {
                       />
                     </td>
                     <td className={styles.td}>
-                      <Link to={"/edit-exercise-question"} state={{ question }}>
+                      <Link
+                        to={"/admin-user/edit-exercise-question"}
+                        state={{ question }}
+                      >
                         <button className={styles.label}>Edit</button>
                       </Link>
                       <button
