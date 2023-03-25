@@ -104,7 +104,7 @@ export function ViewExercisePage() {
                       to={"/view-exercise-question"}
                       state={{ exerciseId: exercise._id }}
                     >
-                      <button>View Questions</button>
+                      <button className={styles.viewBtn}>View Questions</button>
                     </Link>
                   </td>
                   <td className={styles.td}>
@@ -112,9 +112,9 @@ export function ViewExercisePage() {
                       to={"/edit-exercise-question"}
                       state={{ exerciseId: exercise._id }}
                     >
-                      <button>Edit</button>
+                      <button className={styles.editBtn}>Edit</button>
                     </Link>
-                    <button>Delete</button>
+                    <button className={styles.deleteBtn}>Delete</button>
                   </td>
                 </tr>
               ))

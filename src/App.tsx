@@ -38,10 +38,6 @@ import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
 
 function App() {
   const router = createBrowserRouter([
-    {
-      path: "edit-general-question",
-      element: <GeneralQuestionPageEditor />,
-    },
     { path: "", element: <AdminPublicLogin /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
@@ -107,7 +103,7 @@ function App() {
           element: <ViewGeneralQuestionPage />,
         },
         {
-          path: "edit-general-question",
+          path: "edit-general-questions",
           element: <GeneralQuestionPageEditor />,
         },
         {
@@ -177,7 +173,7 @@ function App() {
           element: <ViewGeneralQuestionPage />,
         },
         {
-          path: "edit-general-question",
+          path: "edit-general-questions",
           element: <GeneralQuestionPageEditor />,
         },
         { path: "exercise", element: <ExercisePage /> },

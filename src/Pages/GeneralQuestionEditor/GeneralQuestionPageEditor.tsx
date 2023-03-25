@@ -104,6 +104,8 @@ export default function GeneralQuestionPageEditor() {
       answer: answerText,
       description: description,
       questionNumber,
+      questionImage,
+      descriptionImage,
     };
     console.log("question image ========================");
     console.log(question);

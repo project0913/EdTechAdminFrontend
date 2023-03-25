@@ -27,7 +27,7 @@
   background-color: #ffffff;
 }
 .tr:nth-of-type(even) {
-  background-color: #d1d5d9;
+  background-color: #003870;
 }
 .adminBody {
   margin-top: 10px;
@@ -96,4 +96,30 @@
 
 .pagination {
   width: 100%;
+}
+.viewBtn {
+  background-color: #088081;
+  padding-left: 30px;
+  margin-left: 50px;
+  border: none;
+  border-radius: 10px;
+  height: 26px;
+}
+.deleteBtn {
+  background-color: #81080e;
+  width: 60px;
+  margin-left: 40px;
+  border: none;
+  height: 26px;
+  align-items: center;
+  text-align: center;
+  border-radius: 8px;
+}
+.editBtn {
+  background-color: #088081;
+  width: 60px;
+  margin-left: 40px;
+  border: none;
+  height: 26px;
+  border-radius: 8px;
 }

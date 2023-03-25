@@ -48,7 +48,7 @@ export default function ViewExerciseQuestionPage() {
   };
 
   const deleteExerciseQuestionFromServer = async (questionId: string) => {
-    let result: any = await deleteExerciseQuestionFromServer(questionId);
+    let result: any = await deleteExerciseQuestion(questionId);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
