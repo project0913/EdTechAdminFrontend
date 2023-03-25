@@ -159,7 +159,7 @@ export default function GeneralQuestionPageEditor() {
         <div className={styles.plainQuestionContainer}>
           <div className={styles.editorContainer}>
             <div>
-              <h6>Question Number</h6>
+              <p className={styles.txt}>Question Number</p>
               <input
                 type="number"
                 value={questionNumber}
@@ -168,7 +168,7 @@ export default function GeneralQuestionPageEditor() {
             </div>
             <div className="">
               <div className="">
-                <p>Paste your question here</p>
+                <p className={styles.txt}>Paste your question here</p>
                 <Editor
                   setValue={setQuestionTextValue}
                   editorId="editor1"
@@ -177,8 +177,8 @@ export default function GeneralQuestionPageEditor() {
                 <ErrorComponent value={questionText} />
               </div>
               <div className="">
-                <p>
-                  <strong>Select Image if the Question has Image</strong>
+                <p className={styles.txt}>
+                  Select Image if the Question has Image
                 </p>
                 <img
                   src={
@@ -196,7 +196,7 @@ export default function GeneralQuestionPageEditor() {
                 />
               </div>
               <div className="">
-                <p>
+                <p className={styles.txt}>
                   Paste your option{"  "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>
                     {" "}
@@ -212,7 +212,7 @@ export default function GeneralQuestionPageEditor() {
                 <ErrorComponent value={option_a} />
               </div>
               <div className="">
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                   Here
@@ -225,7 +225,7 @@ export default function GeneralQuestionPageEditor() {
                 <ErrorComponent value={option_b} />
               </div>
               <div className="">
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                   Here
@@ -238,7 +238,7 @@ export default function GeneralQuestionPageEditor() {
                 <ErrorComponent value={option_c} />
               </div>
               <div className="">
-                <p>
+                <p className={styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                   Here
@@ -251,7 +251,7 @@ export default function GeneralQuestionPageEditor() {
                 <ErrorComponent value={option_d} />
               </div>
               <div className="">
-                <p>Choose Answer here</p>
+                <p className={styles.txt}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
                   items={answerOptions}
@@ -260,7 +260,7 @@ export default function GeneralQuestionPageEditor() {
               </div>
 
               <div className="">
-                <p>Paste your option Description here</p>
+                <p className={styles.txt}>Paste your option Description here</p>
                 <Editor
                   setValue={setDescription_Text}
                   editorId="editor7"
@@ -268,7 +268,9 @@ export default function GeneralQuestionPageEditor() {
                 />
               </div>
               <div className="">
-                <p>Select Image if the description has Image</p>
+                <p className={styles.txt}>
+                  Select Image if the description has Image
+                </p>
                 <img
                   src={
                     resolveImageURL(question?.descriptionImage || "") ||

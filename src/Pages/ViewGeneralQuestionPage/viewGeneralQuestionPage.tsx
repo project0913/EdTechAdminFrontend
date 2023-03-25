@@ -50,7 +50,7 @@ export default function ViewExerciseQuestionPage() {
     setTotalCount(count);
   };
   const deleteGeneralQuestionFromServer = async (questionId: string) => {
-    let result: any = await deletePlainQuestion(questionId);
+    let result: any = await deleteGeneralQuestion(questionId);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
@@ -138,7 +138,10 @@ export default function ViewExerciseQuestionPage() {
                       />
                     </td>
                     <td className={styles.td}>
-                      <Link to={"/edit-general-question"} state={{ question }}>
+                      <Link
+                        to={"/admin-user/edit-general-question"}
+                        state={{ question }}
+                      >
                         <button className={styles.label}>Edit</button>
                       </Link>
                       <button
