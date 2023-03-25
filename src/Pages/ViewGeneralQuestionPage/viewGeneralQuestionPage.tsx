@@ -11,7 +11,10 @@ import {
   showErrorToast,
   showSuccessToast,
 } from "../../utils/helper";
-import { deleteGeneralQuestion } from "../../DataService/editQuestion.service";
+import {
+  deleteGeneralQuestion,
+  deletePlainQuestion,
+} from "../../DataService/editQuestion.service";
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { GeneralQuestion } from "../../models/general.model";
@@ -47,7 +50,7 @@ export default function ViewExerciseQuestionPage() {
     setTotalCount(count);
   };
   const deleteGeneralQuestionFromServer = async (questionId: string) => {
-    let result: any = await deleteGeneralQuestionFromServer(questionId);
+    let result: any = await deletePlainQuestion(questionId);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
@@ -91,7 +94,8 @@ export default function ViewExerciseQuestionPage() {
               ? questions.map((question, index) => (
                   <tr className={styles.row} key={index}>
                     <td
-                      className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}>
+                      className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}
+                    >
                       {question.questionNumber}
                     </td>
 
@@ -134,16 +138,15 @@ export default function ViewExerciseQuestionPage() {
                       />
                     </td>
                     <td className={styles.td}>
-                      <Link
-                        to={"/admin-user/edit-general-question"}
-                        state={{ question }}>
+                      <Link to={"/edit-general-question"} state={{ question }}>
                         <button className={styles.label}>Edit</button>
                       </Link>
                       <button
                         className={styles.label1}
                         onClick={() =>
                           deleteGeneralQuestionFromServer(question._id || "")
-                        }>
+                        }
+                      >
                         Delete
                       </button>
                     </td>
