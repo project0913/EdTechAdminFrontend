@@ -38,24 +38,20 @@ import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
 
 function App() {
   const router = createBrowserRouter([
+    {
+      path: "edit-general-question",
+      element: <GeneralQuestionPageEditor />,
+    },
     { path: "", element: <AdminPublicLogin /> },
 
     { path: "admin-dashboard", element: <AdminDashboard /> },
-    {
-      path: "view-exercise-question",
-      element: <ViewExerciseQuestionPage />,
-    },
 
     {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
     },
     { path: "admin-login", element: <AdminLogin /> },
-    { path: "general-editor", element: <GeneralQuestionPageEditor /> },
-    {
-      path: "edit-exercise-question",
-      element: <ExerciseQuestionEditorPage />,
-    },
+
     {
       path: "admin",
       element: (
@@ -110,7 +106,10 @@ function App() {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
         },
-        { path: "edit-general", element: <GeneralQuestionPageEditor /> },
+        {
+          path: "edit-general-question",
+          element: <GeneralQuestionPageEditor />,
+        },
         {
           path: "exercise-question",
           element: <ExerciseQuestionPage />,
@@ -178,7 +177,7 @@ function App() {
           element: <ViewGeneralQuestionPage />,
         },
         {
-          path: "edit-general",
+          path: "edit-general-question",
           element: <GeneralQuestionPageEditor />,
         },
         { path: "exercise", element: <ExercisePage /> },
