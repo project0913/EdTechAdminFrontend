@@ -13,15 +13,15 @@ import styles from "./exercisePage.module.css";
 export default function ExercisePage() {
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState<SelectOption[]>([]);
+  const [grade, setGrade] = useState<SelectOption[]>([]);
+  const [chapter, setChapter] = useState<SelectOption[]>([]);
   const [selectedCourse, setSelectedCourse] = useState("");
   const [exerciseNumber, setExerciseNumber] = useState(1);
   const [gradeSelected, setGradeSelected] = useState("9");
   const [chapterSelected, setChapterSelected] = useState("1");
   const [errorMessage, setErrorMessage] = useState("");
-  const [chapter, setChapter] = useState(Number);
-  const [courseId, setCourseId] = useState();
+
   const [show, setShow] = useState(false);
-  const [grade, setGrade] = useState();
 
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
@@ -50,13 +50,9 @@ export default function ExercisePage() {
 
   const submitExercise = async () => {
     let exercise: Exercise = {
-      // chapter: parseInt(chapter),
-      // grade: parseInt(gradeSelected),
-      // courseId: selectedCourse,
-      // exerciseNumber: number,
-      chapter,
-      grade,
-      courseId,
+      chapter: chapterSelected,
+      grade: gradeSelected,
+      courseId: "",
       exerciseNumber,
     };
     console.log(exercise);

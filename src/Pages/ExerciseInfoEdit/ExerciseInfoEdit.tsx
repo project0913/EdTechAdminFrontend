@@ -14,7 +14,7 @@ import Styles from "./exerciseInfo.module.css";
 export default function ExerciseInfoEdit() {
   const [grade, setGrade] = useState("");
   const [chapter, setChapter] = useState("");
-  const [exerciseNumber, setExerciseNumber] = useState("");
+  const [exerciseNumber, setExerciseNumber] = useState(Number);
   const [loading, setLoading] = useState(false);
   const [exerciseInfo, setExerciseInfo] = useState<Exercise>();
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export default function ExerciseInfoEdit() {
     setChapter(val);
   };
 
-  const setExercise_Number = (val: string) => {
+  const setExercise_Number = (val: number) => {
     setExerciseNumber(val);
   };
 
@@ -82,7 +82,7 @@ export default function ExerciseInfoEdit() {
         <input
           type="number"
           value={exerciseNumber}
-          onChange={(e) => setExerciseNumber(e.target.value)}
+          onChange={(e) => setExerciseNumber(exerciseNumber)}
         />
       </div>
       <div>
