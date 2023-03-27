@@ -7,6 +7,8 @@ import Editor from "../../quill/Editor";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Exercise } from "../../models/exercise.model";
 import { updateExerciseInfoToServer } from "../../DataService/editExerciseInfo.service";
+import { gradeOptions } from "../../constants";
+import { SelectOption } from "../../components/SelectDropdown";
 
 export default function ExerciseInfoEdit() {
   const [grade, setGrade] = useState("");
@@ -24,9 +26,9 @@ export default function ExerciseInfoEdit() {
 
   const submitExerciseQuestionInfoToBackend = async () => {
     let updateExerciseQuestionInfo: Exercise = {
-      chapter: parseInt(chapter),
-      grade: parseInt(grade),
-      exerciseNumber: parseInt(exerciseNumber),
+      chapter,
+      grade,
+      exerciseNumber,
       courseId: "",
     };
 
@@ -58,9 +60,9 @@ export default function ExerciseInfoEdit() {
   };
 
   const fillForm = (exercise: Exercise) => {
-    // setChapter(exerciseInfo?.chapter);
-    setExerciseNumber(exerciseNumber);
-    setGrade(grade);
+    setChapter(exercise.chapter);
+    setExerciseNumber(exercise.exerciseNumber);
+    setGrade(exercise.grade);
   };
   return (
     <div>

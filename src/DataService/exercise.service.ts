@@ -1,6 +1,6 @@
 import { Exercise } from "../models/exercise.model";
 import axios from "../api/axios";
-import { ExerciseQuestion } from "src/models/exerciseQuestion.model";
+import { ExerciseQuestion } from "../models/exerciseQuestion.model";
 import { SelectOption } from "./service.types";
 
 export async function submitExerciseToServer(exercise: Exercise) {
