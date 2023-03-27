@@ -131,14 +131,12 @@ export default function GeneralQuestionPageEditor() {
 
   const populateForm = (question: GeneralQuestion) => {
     setQuestionId(question._id || "");
-
     setQuestionText(question.questionText);
     setOption_a(question.option_a);
     setOption_b(question.option_b);
     setOption_c(question.option_c);
     setOption_d(question.option_d);
     setQuestionNumber(question.questionNumber);
-
     setDescription(question.description);
     setQuestionImage(question.questionImage || "");
     setDescriptionImage(question.descriptionImage || "");

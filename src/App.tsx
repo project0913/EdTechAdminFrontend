@@ -40,7 +40,10 @@ import ExerciseInfoEdit from "./Pages/ExerciseInfoEdit/ExerciseInfoEdit";
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
-
+    {
+      path: "edit-general-questions",
+      element: <GeneralQuestionPageEditor />,
+    },
     { path: "admin-dashboard", element: <AdminDashboard /> },
 
     {
