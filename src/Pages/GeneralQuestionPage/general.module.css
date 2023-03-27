@@ -28,6 +28,7 @@
   cursor: pointer;
   margin: 10px;
   background-color: #088081;
+  cursor: pointer;
 }
 .clearBtn {
   border: none;
@@ -37,6 +38,7 @@
   justify-content: center;
   border-radius: 10px;
   color: white;
+  cursor: pointer;
   margin: 10px;
   cursor: pointer;
   background-color: rgb(97, 26, 26);

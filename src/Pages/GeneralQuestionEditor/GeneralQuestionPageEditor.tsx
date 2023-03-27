@@ -107,7 +107,7 @@ export default function GeneralQuestionPageEditor() {
       questionImage,
       descriptionImage,
     };
-    console.log("question image ========================");
+    console.log("question image ========================5555555555555");
     console.log(question);
 
     let result = await updateGeneralQuestionToServer(

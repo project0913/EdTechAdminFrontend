@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { Editor } from "../../quill/Editor";
 import { GeneralQuestion } from "../../models/general.model";
-import { override, showErrorToast, showSuccessToast } from "../../utils/helper";
+import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { submitGeneralQuestionToServer } from "../../DataService/submit-questions.service";
 import { AxiosError } from "axios";
-//import styles from "react-loading-overlay-ts/dist/styles";
+
 import ErrorComponent from "../../components/ErrorComponent";
 import styles from "./general.module.css";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
+
+const override: CSSProperties = {
+  margin: "10 auto",
+  borderColor: "red",
+};
 
 export default function GeneralQuestionPage() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -84,7 +89,6 @@ export default function GeneralQuestionPage() {
       descriptionImage,
       questionNumber: parseInt(questionNumber),
     };
-    console.log("before subm");
 
     console.log(JSON.stringify(general));
 
@@ -160,7 +164,7 @@ export default function GeneralQuestionPage() {
           <img
             src={tempQuestionImagePath || "place holder"}
             id="photo"
-            className={styles.img}
+            style={{ width: "150px", height: "80px" }}
           />
           <input type="file" id="file" onChange={handleQuestionImageChange} />
         </div>
@@ -235,7 +239,10 @@ export default function GeneralQuestionPage() {
             <p className={styles.txt}>
               Select Image if the description has Image
             </p>
-            <img src={tempDescriptionImagePath || ""} className={styles.img} />
+            <img
+              src={tempDescriptionImagePath || ""}
+              style={{ width: "150px", height: "80px" }}
+            />
             <input
               type="file"
               id="file"
