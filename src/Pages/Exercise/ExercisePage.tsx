@@ -18,7 +18,10 @@ export default function ExercisePage() {
   const [gradeSelected, setGradeSelected] = useState("9");
   const [chapterSelected, setChapterSelected] = useState("1");
   const [errorMessage, setErrorMessage] = useState("");
+  const [chapter, setChapter] = useState(Number);
+  const [courseId, setCourseId] = useState();
   const [show, setShow] = useState(false);
+  const [grade, setGrade] = useState();
 
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
@@ -47,10 +50,14 @@ export default function ExercisePage() {
 
   const submitExercise = async () => {
     let exercise: Exercise = {
-      chapter: "",
-      grade: "",
-      courseId: selectedCourse,
-      exerciseNumber: "",
+      // chapter: parseInt(chapter),
+      // grade: parseInt(gradeSelected),
+      // courseId: selectedCourse,
+      // exerciseNumber: number,
+      chapter,
+      grade,
+      courseId,
+      exerciseNumber,
     };
     console.log(exercise);
 
