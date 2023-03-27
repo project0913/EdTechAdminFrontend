@@ -1,7 +1,7 @@
 export type Exercise = {
   _id?: string;
   courseId: string;
-  grade: string;
-  chapter: string;
+  grade: number;
+  chapter: number;
   exerciseNumber: number;
 };

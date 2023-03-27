@@ -14,6 +14,12 @@ import Styles from "./exerciseInfo.module.css";
 export default function ExerciseInfoEdit() {
   const [grade, setGrade] = useState("");
   const [chapter, setChapter] = useState("");
+  const [gradeSelected, setGradeSelected] = useState("");
+  const [course, setCourse] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState("");
+
+  const [chapterSelected, setChapterSelected] = useState("");
+
   const [exerciseNumber, setExerciseNumber] = useState(Number);
   const [loading, setLoading] = useState(false);
   const [exerciseInfo, setExerciseInfo] = useState<Exercise>();
@@ -27,10 +33,10 @@ export default function ExerciseInfoEdit() {
 
   const submitExerciseQuestionInfoToBackend = async () => {
     let updateExerciseQuestionInfo: Exercise = {
-      chapter,
-      grade,
-      exerciseNumber,
-      courseId: "",
+      chapter: parseInt(chapterSelected),
+      grade: parseInt(gradeSelected),
+      courseId: selectedCourse,
+      exerciseNumber: exerciseNumber,
     };
 
     console.log(
@@ -61,9 +67,9 @@ export default function ExerciseInfoEdit() {
   };
 
   const fillForm = (exercise: Exercise) => {
-    setChapter(exercise.chapter);
+    setChapter(chapter);
     setExerciseNumber(exercise.exerciseNumber);
-    setGrade(exercise.grade);
+    setGrade(grade);
   };
   return (
     <div className={Styles.exerciseInfoBody}>
