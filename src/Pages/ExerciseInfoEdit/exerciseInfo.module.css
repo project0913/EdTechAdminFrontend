@@ -1,0 +1,29 @@
+.exerciseInfoBody {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.txt {
+  color: #088081;
+}
+.updateBtn {
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin-left: 500px;
+  background-color: #088081;
+}
+.backToMain {
+  border: none;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(97, 26, 26);
+}

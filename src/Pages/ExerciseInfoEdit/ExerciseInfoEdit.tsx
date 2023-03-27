@@ -9,6 +9,7 @@ import { Exercise } from "../../models/exercise.model";
 import { updateExerciseInfoToServer } from "../../DataService/editExerciseInfo.service";
 import { gradeOptions } from "../../constants";
 import { SelectOption } from "../../components/SelectDropdown";
+import Styles from "./exerciseInfo.module.css";
 
 export default function ExerciseInfoEdit() {
   const [grade, setGrade] = useState("");
@@ -65,19 +66,19 @@ export default function ExerciseInfoEdit() {
     setGrade(exercise.grade);
   };
   return (
-    <div>
+    <div className={Styles.exerciseInfoBody}>
       <div className="editor-discrption mt-3">
-        <p>Edit your Exercise number here</p>
+        <p className={Styles.txt}>Edit your Exercise number here</p>
         <Editor setValue={setChapter} value={chapter} editorId="editor1" />
         <ErrorComponent value={chapter} />
       </div>
       <div className="editor-discrption mt-3">
-        <p>Edit your Grade here</p>
+        <p className={Styles.txt}>Edit your Grade here</p>
         <Editor setValue={setGrade_Number} value={grade} editorId="editor2" />
         <ErrorComponent value={grade} />
       </div>
       <div>
-        <p className="">Exercise Number</p>
+        <p className={Styles.txt}>Exercise Number</p>
         <input
           type="number"
           value={exerciseNumber}
@@ -85,12 +86,18 @@ export default function ExerciseInfoEdit() {
         />
       </div>
       <div>
-        <button onClick={submitExerciseQuestionInfoToBackend}>Update</button>
+        <button
+          onClick={submitExerciseQuestionInfoToBackend}
+          className={Styles.updateBtn}
+        >
+          Update
+        </button>
         <button
           style={{ marginLeft: "200px" }}
           onClick={() => {
             navigate(-1);
           }}
+          className={Styles.backToMain}
         >
           Back To View Questions
         </button>
