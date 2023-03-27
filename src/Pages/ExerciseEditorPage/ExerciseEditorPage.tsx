@@ -147,7 +147,7 @@ export default function ExerciseQuestionEditorPage() {
         <div className={Styles.plainQuestionContainer}>
           <div className={Styles.editorContainer}>
             <div>
-              <h6>Question Number</h6>
+              <p className={Styles.txt}>Question Number</p>
               <input
                 type="number"
                 value={questionNumber}
@@ -156,7 +156,7 @@ export default function ExerciseQuestionEditorPage() {
             </div>
             <div className="">
               <div className="">
-                <p>Paste your question here</p>
+                <p className={Styles.txt}>Paste your question here</p>
                 <Editor
                   setValue={setQuestionTextValue}
                   editorId="editor1"
@@ -165,8 +165,8 @@ export default function ExerciseQuestionEditorPage() {
                 <ErrorComponent value={questionText} />
               </div>
               <div className="">
-                <p>
-                  <strong>Select Image if the Question has Image</strong>
+                <p className={Styles.txt}>
+                  Select Image if the Question has Image
                 </p>
                 <img
                   src={
@@ -174,7 +174,7 @@ export default function ExerciseQuestionEditorPage() {
                     tempQuestionImagePath
                   }
                   id="photo"
-                  className={Styles.img}
+                  style={{ width: "150px", height: "80px" }}
                 />
                 <input
                   type="file"
@@ -183,7 +183,7 @@ export default function ExerciseQuestionEditorPage() {
                 />
               </div>
               <div className="">
-                <p>
+                <p className={Styles.txt}>
                   Paste your option{"  "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>
                     {" "}
@@ -199,7 +199,7 @@ export default function ExerciseQuestionEditorPage() {
                 <ErrorComponent value={option_a} />
               </div>
               <div className="">
-                <p>
+                <p className={Styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
                   Here
@@ -212,7 +212,7 @@ export default function ExerciseQuestionEditorPage() {
                 <ErrorComponent value={option_b} />
               </div>
               <div className="">
-                <p>
+                <p className={Styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
                   Here
@@ -225,7 +225,7 @@ export default function ExerciseQuestionEditorPage() {
                 <ErrorComponent value={option_c} />
               </div>
               <div className="">
-                <p>
+                <p className={Styles.txt}>
                   Paste your option{" "}
                   <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
                   Here
@@ -238,7 +238,7 @@ export default function ExerciseQuestionEditorPage() {
                 <ErrorComponent value={option_d} />
               </div>
               <div className="">
-                <p>Choose Answer here</p>
+                <p className={Styles.txt}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
                   items={answerOptions}
@@ -247,7 +247,7 @@ export default function ExerciseQuestionEditorPage() {
               </div>
 
               <div className="">
-                <p>Paste your option Description here</p>
+                <p className={Styles.txt}>Paste your option Description here</p>
                 <Editor
                   setValue={setDescription_Text}
                   editorId="editor7"
@@ -255,13 +255,15 @@ export default function ExerciseQuestionEditorPage() {
                 />
               </div>
               <div className="">
-                <p>Select Image if the description has Image</p>
+                <p className={Styles.txt}>
+                  Select Image if the description has Image
+                </p>
                 <img
                   src={
                     resolveImageURL(exerciseQuestion?.descriptionImage || "") ||
                     tempDescriptionImagePath
                   }
-                  className={Styles.img}
+                  style={{ width: "150px", height: "80px" }}
                 />
                 <input
                   type="file"

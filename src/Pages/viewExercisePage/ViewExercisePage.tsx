@@ -6,6 +6,7 @@ import styles from "./viewExercisePage.module.css";
 import { getAvailableExercise } from "../../DataService/exercise.service";
 import { Exercise } from "../../models/exercise.model";
 import { Link } from "react-router-dom";
+
 export function ViewExercisePage() {
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState<SelectOption[]>([]);
@@ -96,9 +97,15 @@ export function ViewExercisePage() {
               exercises.map((exercise, index) => (
                 <tr key={index}>
                   <td className={`${styles.td} ${styles.tdNo}`}>{index + 1}</td>
-                  <td className={styles.td}>{exercise.grade}</td>
-                  <td className={styles.td}>{exercise.chapter}</td>
-                  <td className={styles.td}>{exercise.exerciseNumber}</td>
+                  <td className={`${styles.td} ${styles.tdNo}`}>
+                    {exercise.grade}
+                  </td>
+                  <td className={`${styles.td} ${styles.tdNo}`}>
+                    {exercise.chapter}
+                  </td>
+                  <td className={`${styles.td} ${styles.tdNo}`}>
+                    {exercise.exerciseNumber}
+                  </td>
                   <td className={styles.td}>
                     <Link
                       to={"/admin-user/view-exercise-question"}
