@@ -47,10 +47,10 @@ export default function ExercisePage() {
 
   const submitExercise = async () => {
     let exercise: Exercise = {
-      chapter: parseInt(chapterSelected),
-      grade: parseInt(gradeSelected),
+      chapter: "",
+      grade: "",
       courseId: selectedCourse,
-      exerciseNumber: exerciseNumber,
+      exerciseNumber: "",
     };
     console.log(exercise);
 
