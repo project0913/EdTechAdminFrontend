@@ -17,7 +17,10 @@
   align-items: center;
   background-color: #088081;
 }
-.label {
+.tdNo {
+  padding: 50px;
+}
+/* .label {
   background-color: #088081;
   width: 70px;
   height: 30px;
@@ -30,9 +33,7 @@
   border-radius: 15px;
   cursor: pointer;
 }
-.tdNo {
-  padding: 50px;
-}
+
 .label1 {
   background-color: rgb(160, 36, 36);
   width: 70px;
@@ -45,4 +46,4 @@
   padding: 5px;
   border: none;
   border-radius: 15px;
-}
+} */

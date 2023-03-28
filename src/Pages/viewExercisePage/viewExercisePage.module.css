@@ -107,7 +107,7 @@
   border-radius: 10px;
   height: 26px;
 }
-.deleteBtn {
+/* .deleteBtn {
   background-color: #81080e;
   width: 60px;
   margin-left: 40px;
@@ -124,4 +124,43 @@
   border: none;
   height: 26px;
   border-radius: 8px;
+} */
+.tdLabel {
+  width: 80px;
+  margin-left: 40px;
+}
+
+.editBtn {
+  background-color: #088081;
+  width: 80px;
+  height: 30px;
+  align-items: center;
+  color: white;
+  top: 5px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.editBtn:hover {
+  background-color: #088081;
+  opacity: 0.8;
+}
+
+.deleteBtn {
+  background-color: rgb(160, 36, 36);
+
+  height: 30px;
+  cursor: pointer;
+  width: 80px;
+
+  align-items: center;
+  color: white;
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+}
+.deleteBtn:hover {
+  background-color: rgb(160, 36, 36, 0.8);
 }

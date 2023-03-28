@@ -8,6 +8,7 @@ import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { submitExerciseToServer } from "../../DataService/exercise.service";
 import { chapterOptions, gradeOptions } from "../../constants";
+import styles from "./exercisePage.module.css";
 
 export default function ExercisePage() {
   const [loading, setLoading] = useState(false);
@@ -71,32 +72,35 @@ export default function ExercisePage() {
 
   return (
     <div>
-      <div>
-        <SelectDropdown
-          title=""
-          items={gradeOptions}
-          handleSelect={handleGradeChange}
-        />
+      <div className={""}>
+        <div className={styles.headerBg}>
+          <SelectDropdown
+            title=""
+            items={gradeOptions}
+            handleSelect={handleGradeChange}
+          />
 
-        <SelectDropdown
-          title=""
-          items={courses}
-          handleSelect={handleSelectedCourse}
-        />
+          <SelectDropdown
+            title=""
+            items={courses}
+            handleSelect={handleSelectedCourse}
+          />
 
-        <SelectDropdown
-          title=""
-          items={chapterOptions}
-          handleSelect={handleSelectChapterChange}
-        />
+          <SelectDropdown
+            title=""
+            items={chapterOptions}
+            handleSelect={handleSelectChapterChange}
+          />
+        </div>
       </div>
 
       <div>
-        <p className="">Exercise Number</p>
+        <p className={styles.txt}>Exercise Number</p>
         <input
           type="number"
           value={exerciseNumber}
           onChange={(e) => setExerciseNumber(parseFloat(e.target.value))}
+          className={styles.editor}
         />
         <br />
         <ErrorComponent value={exerciseNumber.toString()} />
@@ -106,8 +110,9 @@ export default function ExercisePage() {
           onClick={() => {
             submitExercise();
           }}
+          className={styles.submitBtn}
         >
-          Submit{" "}
+          Submit
         </button>
       </div>
     </div>

@@ -12,6 +12,7 @@
 .txt {
   font-size: 24px;
   color: #092258;
+  margin-left: 700px;
 }
 .submitBtn {
   width: 150px;
@@ -25,4 +26,8 @@
   color: white;
   cursor: pointer;
   background-color: #088081;
+}
+.submitBtn:hover {
+  background-color: #088081;
+  opacity: 0.8;
 }
