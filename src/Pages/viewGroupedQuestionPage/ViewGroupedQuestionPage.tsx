@@ -226,7 +226,7 @@ export function ViewGroupedQuestionsPage() {
                 </td>
                 <td className={styles.td}>
                   <img
-                    style={{ maxWidth: "150px", maxHeight: "150px" }}
+                    style={{ width: "130px", height: "60px" }}
                     src={
                       resolveImageURL(question.questionImage || "") ||
                       placeholderImage
@@ -236,7 +236,7 @@ export function ViewGroupedQuestionsPage() {
                 <td className={styles.td}>
                   {" "}
                   <img
-                    style={{ maxWidth: "150px", maxHeight: "150px" }}
+                    style={{ width: "130px", height: "60px" }}
                     src={
                       resolveImageURL(question.descriptionImage || "") ||
                       placeholderImage
@@ -246,14 +246,16 @@ export function ViewGroupedQuestionsPage() {
                 <td className={styles.td}>
                   <Link
                     to={"/admin-user/edit-plain-question"}
-                    state={{ question }}>
+                    state={{ question }}
+                  >
                     <button className={styles.label}>Edit</button>
                   </Link>
                   <button
                     className={styles.label1}
                     onClick={() =>
                       deleteGroupedQuestionFromServer(question._id || "")
-                    }>
+                    }
+                  >
                     Delete
                   </button>
                 </td>

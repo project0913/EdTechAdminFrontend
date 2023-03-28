@@ -209,7 +209,7 @@ export default function ViewPlainQuestionsPage() {
                     </td>
                     <td className={styles.td}>
                       <img
-                        style={{ maxWidth: "150px", maxHeight: "80px" }}
+                        style={{ width: "130px", height: "60px" }}
                         src={
                           resolveImageURL(question.questionImage || "") ||
                           placeholderImage
@@ -219,7 +219,7 @@ export default function ViewPlainQuestionsPage() {
                     <td className={styles.td}>
                       {" "}
                       <img
-                        style={{ maxWidth: "150px", maxHeight: "80px" }}
+                        style={{ width: "130px", height: "60px" }}
                         src={
                           resolveImageURL(question.descriptionImage || "") ||
                           placeholderImage

@@ -130,7 +130,7 @@ export default function ViewExerciseQuestionPage() {
                     </td>
                     <td className={styles.td}>
                       <img
-                        style={{ maxWidth: "150px", maxHeight: "150px" }}
+                        style={{ width: "130px", height: "60px" }}
                         src={
                           resolveImageURL(question.questionImage || "") ||
                           placeholderImage
@@ -140,7 +140,7 @@ export default function ViewExerciseQuestionPage() {
                     <td className={styles.td}>
                       {" "}
                       <img
-                        style={{ maxWidth: "150px", maxHeight: "150px" }}
+                        style={{ width: "130px", height: "60px" }}
                         src={
                           resolveImageURL(question.descriptionImage || "") ||
                           placeholderImage
