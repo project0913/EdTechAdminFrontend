@@ -12,17 +12,7 @@
   border: 1px solid rgb(51, 65, 65);
   border-collapse: collapse;
 }
-.allTable {
-}
-.td {
-  width: 50px;
-}
-.tdNo {
-  text-align: center;
-}
-.tr {
-  width: auto;
-}
+
 .tr:nth-of-type(odd) {
   background-color: #ffffff;
 }
@@ -107,24 +97,7 @@
   border-radius: 10px;
   height: 26px;
 }
-/* .deleteBtn {
-  background-color: #81080e;
-  width: 60px;
-  margin-left: 40px;
-  border: none;
-  height: 26px;
-  align-items: center;
-  text-align: center;
-  border-radius: 8px;
-}
-.editBtn {
-  background-color: #088081;
-  width: 60px;
-  margin-left: 40px;
-  border: none;
-  height: 26px;
-  border-radius: 8px;
-} */
+
 .tdLabel {
   width: 80px;
   margin-left: 40px;

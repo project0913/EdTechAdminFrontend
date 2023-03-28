@@ -9,11 +9,11 @@
   width: 100%;
   word-wrap: break-word;
   font-family: "Times New Roman", Times, serif;
-  text-align: center;
 }
-.tdData {
-  padding: 50px;
+.td {
+  width: 20px;
 }
+
 .tHeader {
   background-color: #b2d8d9;
 }
@@ -47,11 +47,9 @@ tr:nth-child(even):hover {
 
 .label1 {
   background-color: rgb(160, 36, 36);
-
   height: 30px;
   cursor: pointer;
   width: 80px;
-
   align-items: center;
   color: white;
   margin: 5px;

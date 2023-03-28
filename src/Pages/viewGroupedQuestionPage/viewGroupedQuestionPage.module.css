@@ -9,7 +9,6 @@
   width: 100%;
   word-wrap: break-word;
   font-family: "Times New Roman", Times, serif;
-  text-align: center;
 }
 .groupedHeader {
   width: 100%;
@@ -18,12 +17,6 @@
   justify-content: center;
   align-items: center;
   background-color: #088081;
-}
-.tdNo {
-  padding: 50px;
-}
-.tdData {
-  padding: 50px;
 }
 
 tr:nth-child(even) {
