@@ -17,6 +17,8 @@ import ErrorComponent from "../../components/ErrorComponent";
 import { GeneralQuestion } from "../../models/general.model";
 import { updateGeneralQuestionToServer } from "../../DataService/editQuestion.service";
 
+import "react-quill/dist/quill.snow.css";
+
 const override: CSSProperties = {
   margin: "10 auto",
   borderColor: "red",
@@ -25,13 +27,10 @@ const override: CSSProperties = {
 export default function GeneralQuestionPageEditor() {
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
-  const [question, setQuestion] = useState<GeneralQuestion>();
+  const [generalQuestion, setGeneralQuestion] = useState<GeneralQuestion>();
   const [loading, setLoading] = useState(false);
-
   const [questionId, setQuestionId] = useState<string>("");
-
   const [showErrorToast, setShowErrorToast] = useState(false);
-
   const [questionText, setQuestionText] = useState("");
   const [option_a, setOption_a] = useState("");
   const [option_b, setOption_b] = useState("");
@@ -39,11 +38,11 @@ export default function GeneralQuestionPageEditor() {
   const [option_d, setOption_d] = useState("");
   const [description, setDescription] = useState("");
   const [answerText, setAnswerText] = useState("option_a");
-
   const [questionImage, setQuestionImage] = useState("");
   const [descriptionImage, setDescriptionImage] = useState("");
   const [tempQuestionImagePath, setTempQuestionImagePath] = useState("");
   const [tempDescriptionImagePath, setTempDescriptionImagePath] = useState("");
+
   const [questionNumber, setQuestionNumber] = useState<number | any>();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -55,9 +54,10 @@ export default function GeneralQuestionPageEditor() {
   ];
 
   useEffect(() => {
-    let question = location.state.question as GeneralQuestion;
-    populateForm(question);
-    setQuestion(question);
+    let editableQuestion = location.state.question as GeneralQuestion;
+    populateForm(editableQuestion);
+    setGeneralQuestion(editableQuestion);
+    setQuestionId(editableQuestion._id || "");
   }, []);
 
   function handleQuestionImageChange(e: any) {
@@ -95,7 +95,7 @@ export default function GeneralQuestionPageEditor() {
     e.preventDefault();
     setLoading((prev) => true);
     setErrorMessage("");
-    let question: GeneralQuestion = {
+    let editedQuestion: GeneralQuestion = {
       questionText,
       option_a: option_a,
       option_b: option_b,
@@ -103,18 +103,16 @@ export default function GeneralQuestionPageEditor() {
       option_d: option_d,
       answer: answerText,
       description: description,
-      questionNumber,
+      questionNumber: parseInt(questionNumber),
       questionImage,
       descriptionImage,
     };
-    console.log("question image ========================5555555555555");
-    console.log(question);
+
+    console.log(editedQuestion);
 
     let result = await updateGeneralQuestionToServer(
-      questionId || "",
-      question,
-      questionImage,
-      descriptionImage
+      questionId,
+      editedQuestion
     );
     setLoading((prev) => false);
     if (result instanceof AxiosError) {
@@ -182,12 +180,12 @@ export default function GeneralQuestionPageEditor() {
                 </p>
                 <img
                   src={
-                    resolveImageURL(question?.questionImage || "") ||
+                    resolveImageURL(generalQuestion?.questionImage || "") ||
                     tempQuestionImagePath ||
                     placeholderImage
                   }
                   id="photo"
-                  className={styles.img}
+                  style={{ width: "150px", height: "80px" }}
                 />
                 <input
                   type="file"
@@ -273,11 +271,11 @@ export default function GeneralQuestionPageEditor() {
                 </p>
                 <img
                   src={
-                    resolveImageURL(question?.descriptionImage || "") ||
+                    resolveImageURL(generalQuestion?.questionImage || "") ||
                     tempDescriptionImagePath ||
                     placeholderImage
                   }
-                  className={styles.img}
+                  style={{ width: "150px", height: "80px" }}
                 />
                 <input
                   type="file"
@@ -287,16 +285,15 @@ export default function GeneralQuestionPageEditor() {
               </div>
             </div>
           </div>
-          <div className={styles.updateBackMain}>
+          <div className={styles.questionBtn}>
             <button
-              className={styles.updateBtn}
+              className={styles.submitBtn}
               onClick={updateGeneralQuestionToBackend}
             >
               Update
             </button>
             <button
-              style={{ marginLeft: "200px" }}
-              className={styles.backToMain}
+              className={styles.clearBtn}
               onClick={() => {
                 navigate(-1);
               }}

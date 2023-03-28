@@ -17,6 +17,9 @@ import {
   getAvailableExerciseFromServer,
   submitExerciseQuestionToServer,
 } from "../../DataService/exercise.service";
+import placeholderImage from "../../assets/place_holder.jpg";
+
+import "react-quill/dist/quill.snow.css";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -248,10 +251,10 @@ export default function ExerciseQuestionPage() {
             </div>
             <div className="">
               <p className={styles.txt}>
-                <strong>Select Image if the Question has Image</strong>
+                Select Image if the Question has Image
               </p>
               <img
-                src={tempQuestionImagePath || "place holder"}
+                src={tempQuestionImagePath || placeholderImage}
                 id="photo"
                 className={styles.img}
               />
@@ -338,7 +341,7 @@ export default function ExerciseQuestionPage() {
                   <strong>Select Image if the description has Image</strong>
                 </p>
                 <img
-                  src={tempDescriptionImagePath || ""}
+                  src={tempDescriptionImagePath || placeholderImage}
                   className={styles.img}
                 />
                 <input

@@ -80,48 +80,60 @@ export async function updateGroupedQuestionToServer(
     return error;
   }
 }
-
 export async function updateGeneralQuestionToServer(
-  questionId: string,
-  question: GeneralQuestion,
-  questionImage: string,
-  descriptionImage: string
+  id: string,
+  question: GeneralQuestion | any
 ) {
   try {
-    let formData = new FormData();
-    formData.append("questionText", question.questionText);
-    formData.append("answer", question.answer);
-    formData.append("option_a", question.option_a);
-    formData.append("option_b", question.option_b);
-    formData.append("option_c", question.option_c);
-    formData.append("option_d", question.option_d);
-    formData.append(
-      "questionNumber",
-      question?.questionNumber?.toString() || "0"
-    );
-
-    formData.append("description", question.description);
-    formData.append("questionImage", questionImage);
-
-    formData.append("descriptionImage", descriptionImage);
-
-    console.log(questionImage);
-    console.log(formData.get("questionText"));
-
-    let raw = await axios.post(
-      `/general-questions/update/${questionId}`,
-      formData
-    );
-    let data = raw.data as GeneralQuestion;
-    console.log("coming from a server");
-
-    console.log(data);
+    let raw = await axios.put(`/general-questions/${id}`, question);
+    let data = raw.data;
     return data;
   } catch (error) {
-    console.log(error);
     return error;
   }
 }
+
+// export async function updateGeneralQuestionToServer(
+//   questionId: string,
+//   question: GeneralQuestion,
+//   questionImage: string,
+//   descriptionImage: string
+// ) {
+//   try {
+//     let formData = new FormData();
+//     formData.append("questionText", question.questionText);
+//     formData.append("answer", question.answer);
+//     formData.append("option_a", question.option_a);
+//     formData.append("option_b", question.option_b);
+//     formData.append("option_c", question.option_c);
+//     formData.append("option_d", question.option_d);
+//     formData.append(
+//       "questionNumber",
+//       question?.questionNumber?.toString() || "0"
+//     );
+
+//     formData.append("description", question.description);
+//     formData.append("questionImage", questionImage);
+
+//     formData.append("descriptionImage", descriptionImage);
+
+//     console.log(questionImage);
+//     console.log(formData.get("questionText"));
+
+//     let raw = await axios.post(
+//       `/general-questions/update${questionId}`,
+//       formData
+//     );
+//     let data = raw.data as GeneralQuestion;
+//     console.log("coming from a server");
+
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//     return error;
+//   }
+// }
 
 export async function deletePlainQuestion(questionId: string) {
   try {

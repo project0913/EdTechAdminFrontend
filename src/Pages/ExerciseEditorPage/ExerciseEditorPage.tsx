@@ -14,6 +14,10 @@ import { showSuccessToast, resolveImageURL } from "../../utils/helper";
 import { answerOptions } from "../../constants";
 import { updateExerciseQuestionToServer } from "../../DataService/exercise.service";
 
+import placeholderImage from "../../assets/place_holder.jpg";
+
+import "react-quill/dist/quill.snow.css";
+
 const override: CSSProperties = {
   margin: "10 auto",
   borderColor: "red",
@@ -171,7 +175,8 @@ export default function ExerciseQuestionEditorPage() {
                 <img
                   src={
                     resolveImageURL(exerciseQuestion?.questionImage || "") ||
-                    tempQuestionImagePath
+                    tempQuestionImagePath ||
+                    placeholderImage
                   }
                   id="photo"
                   style={{ width: "150px", height: "80px" }}
@@ -261,7 +266,8 @@ export default function ExerciseQuestionEditorPage() {
                 <img
                   src={
                     resolveImageURL(exerciseQuestion?.descriptionImage || "") ||
-                    tempDescriptionImagePath
+                    tempDescriptionImagePath ||
+                    placeholderImage
                   }
                   style={{ width: "150px", height: "80px" }}
                 />
@@ -273,16 +279,15 @@ export default function ExerciseQuestionEditorPage() {
               </div>
             </div>
           </div>
-          <div className={Styles.updateBackMain}>
+          <div className={Styles.questionBtn}>
             <button
-              className={Styles.updateBtn}
+              className={Styles.submitBtn}
               onClick={updateExerciseQuestionToBackend}
             >
               Update
             </button>
             <button
-              style={{ marginLeft: "200px" }}
-              className={Styles.backToMain}
+              className={Styles.clearBtn}
               onClick={() => {
                 navigate(-1);
               }}

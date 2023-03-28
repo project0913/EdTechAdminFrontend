@@ -11,6 +11,10 @@ import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 
+import placeholderImage from "../../assets/place_holder.jpg";
+
+import "react-quill/dist/quill.snow.css";
+
 const override: CSSProperties = {
   margin: "10 auto",
   borderColor: "red",
@@ -162,7 +166,7 @@ export default function GeneralQuestionPage() {
             <strong>Select Image if the Question has Image</strong>
           </p>
           <img
-            src={tempQuestionImagePath || "place holder"}
+            src={tempQuestionImagePath || placeholderImage}
             id="photo"
             style={{ width: "150px", height: "80px" }}
           />
@@ -240,7 +244,7 @@ export default function GeneralQuestionPage() {
               Select Image if the description has Image
             </p>
             <img
-              src={tempDescriptionImagePath || ""}
+              src={tempDescriptionImagePath || placeholderImage}
               style={{ width: "150px", height: "80px" }}
             />
             <input

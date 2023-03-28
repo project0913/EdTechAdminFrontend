@@ -261,10 +261,8 @@ export default function GroupedQuestionPage() {
                 <ErrorComponent value={questionText} />
               </div>
               <div className="editor-container">
-                <p>
-                  <strong className={styles.txt}>
-                    Select Image if the Question has Image
-                  </strong>
+                <p className={styles.txt}>
+                  Select Image if the Question has Image
                 </p>
 
                 <img

@@ -183,7 +183,8 @@ export default function ViewPlainQuestionsPage() {
               ? questions.map((question, index) => (
                   <tr className={styles.row} key={index}>
                     <td
-                      className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}>
+                      className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}
+                    >
                       <span> {question.questionNumber}</span>
                     </td>
                     <td className={styles.td}>{question.year}</td>
@@ -226,18 +227,22 @@ export default function ViewPlainQuestionsPage() {
                       />
                     </td>
                     <td className={styles.td}>
-                      <Link
-                        to={"/admin-user/edit-plain-question"}
-                        state={{ question }}>
-                        <button className={styles.label}>Edit</button>
-                      </Link>
-                      <button
-                        className={styles.label1}
-                        onClick={() =>
-                          deletePlainQuestionFromServer(question._id || "")
-                        }>
-                        Delete
-                      </button>
+                      <div className={styles.tHeader}>
+                        <Link
+                          to={"/admin-user/edit-plain-question"}
+                          state={{ question }}
+                        >
+                          <button className={styles.label}>Edit</button>
+                        </Link>
+                        <button
+                          className={styles.label1}
+                          onClick={() =>
+                            deletePlainQuestionFromServer(question._id || "")
+                          }
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))

@@ -21,8 +21,8 @@
   gap: 3rem;
 }
 .img {
-  max-width: 150px;
-  max-height: 150px;
+  width: 150px;
+  height: 80px;
 }
 .questionBtn {
   display: flex;
@@ -68,61 +68,4 @@
 }
 .txt {
   color: #088081;
-}
-
-@media screen and (max-width: 400px) {
-  .bgDrop {
-    margin: 0;
-    height: 7vh;
-  }
-  .adminBodyQuestion {
-    margin-left: 10px;
-  }
-  .dropdownItemPlain {
-    gap: 0rem;
-    display: flex;
-    margin-left: 0px;
-    margin-top: 0px;
-  }
-  .adminTop {
-  }
-  .adminTopText {
-    font-size: 14px;
-    padding: 5px;
-    margin: 5px;
-  }
-
-  .adminTop {
-    margin: 0;
-  }
-  .dropdownItem1 {
-    margin-left: 0px;
-  }
-  .bgDrop {
-    gap: 1rem;
-  }
-
-  .img {
-    max-width: 100px;
-    max-height: 100px;
-    margin-left: 50px;
-  }
-  .submitBtn {
-    width: 100px;
-    height: 30px;
-    border-radius: 30px;
-    padding: 5px;
-
-    margin: 5px;
-  }
-  .selectDropdown {
-    margin: 0;
-  }
-  .clearBtn {
-    width: 100px;
-    height: 30px;
-    border-radius: 30px;
-    padding: 5px;
-    margin: 5px;
-  }
 }

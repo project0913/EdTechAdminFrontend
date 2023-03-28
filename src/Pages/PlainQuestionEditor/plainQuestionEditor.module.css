@@ -5,15 +5,19 @@
   margin-right: 5%;
 }
 .img {
-  width: 100px;
-  height: 100px;
-  margin-left: 400px;
+  width: 150px;
+  height: 80px;
 }
-.updateBackMain {
+.txt {
+  color: #088081;
+}
+.questionBtn {
   display: flex;
+  margin: 10px;
   align-items: center;
+  justify-content: center;
 }
-.updateBtn {
+.submitBtn {
   width: 150px;
   height: 40px;
   align-items: center;
@@ -21,17 +25,19 @@
   border: none;
   border-radius: 10px;
   color: white;
+  cursor: pointer;
   margin: 10px;
   background-color: #088081;
 }
-.backToMain {
+.clearBtn {
   border: none;
+  width: 150px;
   height: 40px;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   color: white;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 10px;
+  cursor: pointer;
   background-color: rgb(97, 26, 26);
 }

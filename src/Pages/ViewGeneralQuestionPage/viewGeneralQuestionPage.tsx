@@ -19,7 +19,7 @@ import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { GeneralQuestion } from "../../models/general.model";
 import CustomPagination from "../../components/pagination";
-import styles from "./general.module.css";
+import styles from "./viewGeneral.module.css";
 
 import { fetchGeneralQuestions } from "../../DataService/viewGeneralQuestion.service";
 const options: HTMLReactParserOptions = {
@@ -74,7 +74,7 @@ export default function ViewExerciseQuestionPage() {
     <div className="">
       <div className="">
         <table className={styles.table}>
-          <thead>
+          <thead className={styles.tHeader}>
             <tr>
               <th className={styles.th}>No</th>
               <th className={styles.th}>Questions</th>
@@ -93,9 +93,7 @@ export default function ViewExerciseQuestionPage() {
             {questions.length > 0
               ? questions.map((question, index) => (
                   <tr className={styles.row} key={index}>
-                    <td
-                      className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}
-                    >
+                    <td className={`${styles.td}  ${styles.tdData}`}>
                       {question.questionNumber}
                     </td>
 
@@ -138,20 +136,22 @@ export default function ViewExerciseQuestionPage() {
                       />
                     </td>
                     <td className={styles.td}>
-                      <Link
-                        to={"/admin-user/edit-general-questions"}
-                        state={{ question }}
-                      >
-                        <button className={styles.label}>Edit</button>
-                      </Link>
-                      <button
-                        className={styles.label1}
-                        onClick={() =>
-                          deleteGeneralQuestionFromServer(question._id || "")
-                        }
-                      >
-                        Delete
-                      </button>
+                      <div className={styles.tdLabel}>
+                        <Link
+                          to={"/admin-user/edit-general-questions"}
+                          state={{ question }}
+                        >
+                          <button className={styles.label}>Edit</button>
+                        </Link>
+                        <button
+                          className={styles.label1}
+                          onClick={() =>
+                            deleteGeneralQuestionFromServer(question._id || "")
+                          }
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))
