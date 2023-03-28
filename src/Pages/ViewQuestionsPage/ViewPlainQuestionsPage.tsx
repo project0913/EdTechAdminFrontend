@@ -164,7 +164,7 @@ export default function ViewPlainQuestionsPage() {
         <table className={styles.table}>
           <thead>
             <tr className={styles.row}>
-              <th className={` ${styles.th}`}>No</th>
+              <th className={` ${styles.th} ${styles.thNo}`}>No</th>
               <th className={`${styles.th}`}>Year</th>
               <th className={`${styles.th}`}>Questions</th>
               <th className={` ${styles.th}`}>Option 'A'</th>
@@ -209,7 +209,7 @@ export default function ViewPlainQuestionsPage() {
                     </td>
                     <td className={styles.td}>
                       <img
-                        style={{ width: "130px", height: "60px" }}
+                        style={{ maxWidth: "130px", maxHeight: "60px" }}
                         src={
                           resolveImageURL(question.questionImage || "") ||
                           placeholderImage
@@ -219,7 +219,7 @@ export default function ViewPlainQuestionsPage() {
                     <td className={styles.td}>
                       {" "}
                       <img
-                        style={{ width: "130px", height: "60px" }}
+                        style={{ maxWidth: "130px", maxHeight: "60px" }}
                         src={
                           resolveImageURL(question.descriptionImage || "") ||
                           placeholderImage
