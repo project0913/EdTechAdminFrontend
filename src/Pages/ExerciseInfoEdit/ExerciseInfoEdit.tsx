@@ -1,7 +1,11 @@
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
-import { isEmptyForRichText, showSuccessToast } from "../../utils/helper";
+import {
+  isEmptyForRichText,
+  override,
+  showSuccessToast,
+} from "../../utils/helper";
 import ErrorComponent from "../../components/ErrorComponent";
 import Editor from "../../quill/Editor";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,19 +14,21 @@ import { updateExerciseInfoToServer } from "../../DataService/editExerciseInfo.s
 import { gradeOptions } from "../../constants";
 import { SelectOption } from "../../components/SelectDropdown";
 import Styles from "./exerciseInfo.module.css";
+import LoadingOverlayWrapper from "react-loading-overlay-ts";
+import { FadeLoader } from "react-spinners";
 
 export default function ExerciseInfoEdit() {
   const [grade, setGrade] = useState("");
   const [chapter, setChapter] = useState("");
   const [gradeSelected, setGradeSelected] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [course, setCourse] = useState("");
   const [selectedCourse, setSelectedCourse] = useState("");
-
   const [chapterSelected, setChapterSelected] = useState("");
-
   const [exerciseNumber, setExerciseNumber] = useState(Number);
   const [loading, setLoading] = useState(false);
   const [exerciseInfo, setExerciseInfo] = useState<Exercise>();
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
@@ -47,13 +53,23 @@ export default function ExerciseInfoEdit() {
     if (isEmptyForRichText(updateExerciseQuestionInfo, "exerciseInfo")) {
       return "";
     }
-
-    setLoading(true);
     const result = await updateExerciseInfoToServer(
       updateExerciseQuestionInfo,
       exerciseInfo?._id || ""
     );
   };
+
+  //   setLoading((prev) => false);
+  //   if (result instanceof AxiosError) {
+  //     let msgTxt = "";
+  //     const messages = result.response?.data?.message as Array<string>;
+  //     for (const msg of messages) msgTxt += msg + " "; //concatenate array of error messages
+  //     setErrorMessage(msgTxt);
+  //   } else {
+  //     showSuccessToast("updated success");
+  //     // clearForm();
+  //   }
+  // };
 
   const setGrade_Number = (val: string) => {
     setGrade(val);
@@ -72,41 +88,53 @@ export default function ExerciseInfoEdit() {
     setGrade(grade);
   };
   return (
-    <div className={Styles.exerciseInfoBody}>
-      <div className="editor-discrption mt-3">
-        <p className={Styles.txt}>Edit your Exercise number here</p>
-        <Editor setValue={setChapter} value={chapter} editorId="editor1" />
-        <ErrorComponent value={chapter} />
-      </div>
-      <div className="editor-discrption mt-3">
-        <p className={Styles.txt}>Edit your Grade here</p>
-        <Editor setValue={setGrade_Number} value={grade} editorId="editor2" />
-        <ErrorComponent value={grade} />
-      </div>
-      <div>
-        <p className={Styles.txt}>Exercise Number</p>
-        <input
-          type="number"
-          value={exerciseNumber}
-          onChange={(e) => setExerciseNumber(exerciseNumber)}
+    <LoadingOverlayWrapper
+      active={loading}
+      spinner={
+        <FadeLoader
+          loading={loading}
+          cssOverride={override}
+          aria-label="Loading Spinner"
+          data-testid="loader"
         />
+      }
+    >
+      <div className={Styles.exerciseInfoBody}>
+        <div className="editor-discrption mt-3">
+          <p className={Styles.txt}>Edit your Exercise number here</p>
+          <Editor setValue={setChapter} value={chapter} editorId="editor1" />
+          <ErrorComponent value={chapter} />
+        </div>
+        <div className="editor-discrption mt-3">
+          <p className={Styles.txt}>Edit your Grade here</p>
+          <Editor setValue={setGrade_Number} value={grade} editorId="editor2" />
+          <ErrorComponent value={grade} />
+        </div>
+        <div>
+          <p className={Styles.txt}>Exercise Number</p>
+          <input
+            type="number"
+            value={exerciseNumber}
+            onChange={(e) => setExerciseNumber(exerciseNumber)}
+          />
+        </div>
+        <div>
+          <button
+            onClick={submitExerciseQuestionInfoToBackend}
+            className={Styles.updateBtn}
+          >
+            Update
+          </button>
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            className={Styles.backToMain}
+          >
+            Back To View Questions
+          </button>
+        </div>
       </div>
-      <div>
-        <button
-          onClick={submitExerciseQuestionInfoToBackend}
-          className={Styles.updateBtn}
-        >
-          Update
-        </button>
-        <button
-          onClick={() => {
-            navigate(-1);
-          }}
-          className={Styles.backToMain}
-        >
-          Back To View Questions
-        </button>
-      </div>
-    </div>
+    </LoadingOverlayWrapper>
   );
 }
