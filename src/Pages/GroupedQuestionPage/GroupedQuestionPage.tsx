@@ -369,7 +369,6 @@ export default function GroupedQuestionPage() {
                 </button>
                 <button className={styles.clearBtn}>Clear</button>
               </div>
-              {questionText}
             </div>
           </div>
         </div>

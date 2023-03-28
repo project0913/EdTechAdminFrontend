@@ -104,7 +104,7 @@ export default function ViewDirectionsPage() {
   }, [selectedCourse, selectedYear]);
   return (
     <div>
-      <div className={styles.adminBody}>
+      <div className={styles.adminHeader}>
         <span>
           <b style={{ color: "white" }}>Select Course</b>
           <SelectDropdown
@@ -162,7 +162,8 @@ export default function ViewDirectionsPage() {
                     className={styles.label1}
                     onClick={() =>
                       deleteDirectionFromServer(direction._id || "")
-                    }>
+                    }
+                  >
                     Delete
                   </button>
                 </td>

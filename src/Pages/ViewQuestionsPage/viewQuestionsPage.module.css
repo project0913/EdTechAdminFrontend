@@ -8,6 +8,8 @@
   border: solid 1px #666;
   width: 100%;
   word-wrap: break-word;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
 }
 .directionHeader {
   width: 100%;
@@ -17,36 +19,55 @@
   align-items: center;
   background-color: #088081;
 }
+.tdNo {
+  padding: 50px;
+}
+.tdData {
+  padding: 50px;
+}
+
+tr:nth-child(even) {
+  background-color: #dcdcdc;
+}
+tr:nth-child(even):hover {
+  background-color: #a9a9a9;
+}
+.tdLabel {
+  width: 80px;
+  margin-left: 10px;
+}
+
 .label {
   background-color: #088081;
-  width: 60px;
+  width: 80px;
   height: 30px;
-  margin-right: 10px;
   align-items: center;
   color: white;
   top: 5px;
   margin: 5px;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
 }
-.tdNo {
-  padding: 50px;
+.label:hover {
+  background-color: #088081;
+  opacity: 0.8;
 }
-.tHeader {
-  display: block;
-  align-items: center;
-}
+
 .label1 {
-  width: 80px;
   background-color: rgb(160, 36, 36);
+
   height: 30px;
   cursor: pointer;
-  margin-right: 10px;
+  width: 80px;
+
   align-items: center;
   color: white;
   margin: 5px;
   padding: 5px;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
+}
+.label1:hover {
+  background-color: rgb(160, 36, 36, 0.8);
 }
