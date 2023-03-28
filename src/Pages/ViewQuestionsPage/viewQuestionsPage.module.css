@@ -34,7 +34,7 @@
   padding: 50px;
 }
 .tHeader {
-  display: flex;
+  display: block;
   align-items: center;
 }
 .label1 {

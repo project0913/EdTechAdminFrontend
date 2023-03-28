@@ -50,6 +50,10 @@
   cursor: pointer;
   background-color: #088081;
 }
+.submitBtn1:hover {
+  background-color: #088081;
+  opacity: 0.8;
+}
 .clearBtn {
   border: none;
   width: 150px;
@@ -61,6 +65,9 @@
   margin: 10px;
   cursor: pointer;
   background-color: rgb(97, 26, 26);
+}
+.clearBtn:hover {
+  background-color: rgb(97, 26, 26, 0.8);
 }
 
 .questionNumber {

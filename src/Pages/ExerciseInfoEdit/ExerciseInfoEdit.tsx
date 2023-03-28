@@ -99,7 +99,6 @@ export default function ExerciseInfoEdit() {
           Update
         </button>
         <button
-          style={{ marginLeft: "200px" }}
           onClick={() => {
             navigate(-1);
           }}
