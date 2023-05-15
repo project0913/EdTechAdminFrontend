@@ -19,7 +19,10 @@ import {
   showSuccessToast,
 } from "../../utils/helper";
 import ReactPaginate from "react-paginate";
-import { deleteGroupedQuestion } from "../../DataService/editQuestion.service";
+import {
+  deleteGroupedQuestion,
+  deletePlainQuestion,
+} from "../../DataService/editQuestion.service";
 import { AxiosError } from "axios";
 import { Pagination } from "react-bootstrap";
 import CustomPagination from "../../components/pagination";
@@ -62,7 +65,7 @@ export default function ViewPlainQuestionsPage() {
       setSelectedYear((p) => yearsFromServer[0].value || 2010);
   }
   const deletePlainQuestionFromServer = async (questionId: string) => {
-    let result = await deleteGroupedQuestion(questionId);
+    let result = await deletePlainQuestion(questionId);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
