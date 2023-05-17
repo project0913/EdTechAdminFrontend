@@ -64,7 +64,10 @@ export default function GroupedQuestionPage() {
       //if courseId or  year not provided  fetch all from server
       const groupedCourses = await fetchGroupedCourses();
       setCourses(groupedCourses);
-      const defaultCourseId = groupedCourses[0].value;
+
+      const defaultCourseId = groupedCourses[0]
+        ? groupedCourses[0]?.value
+        : courseId || "";
       filteringCourseId = defaultCourseId;
       setSelectedCourse(defaultCourseId);
       const years = await fetchGroupedCoursesDirectionYears(defaultCourseId);
@@ -82,8 +85,10 @@ export default function GroupedQuestionPage() {
       filteringCourseId,
       filteringYear
     );
-    const defaultDirectionId = directionsFromServer[0].value;
-    console.log(directionsFromServer);
+
+    const defaultDirectionId = directionsFromServer[0]
+      ? directionsFromServer[0].value
+      : "";
     setSelectedDirection(defaultDirectionId);
     setDirections(directionsFromServer);
   }

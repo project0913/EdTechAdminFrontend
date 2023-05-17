@@ -41,7 +41,7 @@ export default function DirectionPage() {
   const submitQuestionToBackend = async () => {
     let direction: Direction = {
       course: selectedCourse,
-      courseYear: year,
+      courseYear: parseInt(year.toString()),
       directionNumber,
       sectionName,
       directionText,
