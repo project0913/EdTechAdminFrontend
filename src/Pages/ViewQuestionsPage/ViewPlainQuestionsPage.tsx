@@ -5,8 +5,8 @@ import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import placeholderImage from "../../assets/place_holder.jpg";
 import { PlainQuestion } from "../../models/question.model";
 import styles from "./viewQuestionsPage.module.css";
-import React, { useEffect, useRef, useState } from "react";
-
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { ViewPlainQuestionContext } from "../../context/viewPlainQuestionContext";
 import parse, {
   HTMLReactParserOptions,
   Element,
@@ -44,6 +44,30 @@ export default function ViewPlainQuestionsPage() {
   const [courseOptions, setCourseOptions] = useState<SelectOption[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const isInitialMount = useRef(true);
+  const viewPlainQuestionState = useContext(ViewPlainQuestionContext);
+
+  useEffect(() => {
+    getCourses();
+  }, []);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      // Your useEffect code here to be run on update
+      console.log("called on update only");
+
+      getYears(selectedCourse);
+    }
+  }, [selectedCourse]);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      getQuestions({ course: selectedCourse, year: selectedYear, page: 1 });
+    }
+  }, [selectedYear]);
+
   const getCourses = async () => {
     let examCats = await fetchExamCategories();
     let UEECourses = examCats[0].courses;
@@ -85,29 +109,6 @@ export default function ViewPlainQuestionsPage() {
       showSuccessToast("Request Success");
     }
   };
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      // Your useEffect code here to be run on update
-      console.log("called on update only");
-
-      getYears(selectedCourse);
-    }
-  }, [selectedCourse]);
-
-  useEffect(() => {
-    getCourses();
-  }, []);
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      getQuestions({ course: selectedCourse, year: selectedYear, page: 1 });
-    }
-  }, [selectedYear]);
 
   const handleSelectYear = (e: React.FormEvent<HTMLSelectElement>) => {
     setSelectedYear((e.target as HTMLSelectElement).value);
