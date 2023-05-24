@@ -36,6 +36,7 @@ const options: HTMLReactParserOptions = {
 };
 
 export default function ViewPlainQuestionsPage() {
+  const viewPlainQuestionState = useContext(ViewPlainQuestionContext);
   const [questions, setQuestions] = useState<PlainQuestion[]>([]);
   const [selectedYear, setSelectedYear] = useState<number | string>("2015");
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -43,11 +44,33 @@ export default function ViewPlainQuestionsPage() {
   const [yearOptions, setYearOptions] = useState<SelectOption[]>([]);
   const [courseOptions, setCourseOptions] = useState<SelectOption[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
+  const [activePage, setActivePage] = useState<number>(
+    viewPlainQuestionState.page > 0 ? viewPlainQuestionState.page : 0
+  );
   const isInitialMount = useRef(true);
-  const viewPlainQuestionState = useContext(ViewPlainQuestionContext);
+  const isInitialMount2 = useRef(true);
+  const { setPlainQuestionState, ...clean } = viewPlainQuestionState;
+  console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+  console.log(clean);
 
+  const onPageRestore = async () => {
+    setActivePage(viewPlainQuestionState?.page);
+    setCourseOptions(viewPlainQuestionState.courses);
+    setYearOptions(viewPlainQuestionState.years);
+    setSelectedCourse(viewPlainQuestionState.selectedCourse);
+    setSelectedYear(viewPlainQuestionState.selectedYear);
+    const { count, questions } = await fetchPlainQuestions({
+      course: viewPlainQuestionState.selectedCourse,
+      year: viewPlainQuestionState.selectedYear,
+      page: viewPlainQuestionState.page,
+    });
+    setQuestions(questions);
+    setTotalCount(count);
+  };
   useEffect(() => {
-    getCourses();
+    if (viewPlainQuestionState?.page > 0) {
+      onPageRestore();
+    } else getCourses();
   }, []);
   useEffect(() => {
     if (isInitialMount.current) {
@@ -58,14 +81,16 @@ export default function ViewPlainQuestionsPage() {
 
       getYears(selectedCourse);
     }
+    setActivePage(0);
   }, [selectedCourse]);
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
+    if (isInitialMount2.current) {
+      isInitialMount2.current = false;
     } else {
       getQuestions({ course: selectedCourse, year: selectedYear, page: 1 });
     }
+    setActivePage(0);
   }, [selectedYear]);
 
   const getCourses = async () => {
@@ -126,9 +151,9 @@ export default function ViewPlainQuestionsPage() {
     page: number;
   }) => {
     const { count, questions } = await fetchPlainQuestions({
-      course: selectedCourse,
-      year: selectedYear,
-      page: 1,
+      course,
+      year,
+      page,
     });
     setQuestions(questions);
     setTotalCount(count);
@@ -139,6 +164,7 @@ export default function ViewPlainQuestionsPage() {
       year: selectedYear,
       page: page,
     });
+    setActivePage(page);
     setQuestions(questions);
     setTotalCount(count);
   };
@@ -236,7 +262,20 @@ export default function ViewPlainQuestionsPage() {
                           to={"/admin-user/edit-plain-question"}
                           state={{ question }}
                         >
-                          <button className={styles.label}>Edit</button>
+                          <button
+                            className={styles.label}
+                            onClick={() => {
+                              viewPlainQuestionState.setPlainQuestionState({
+                                courses: courseOptions,
+                                page: activePage > 0 ? activePage : 1,
+                                selectedCourse,
+                                selectedYear,
+                                years: yearOptions,
+                              });
+                            }}
+                          >
+                            Edit
+                          </button>
                         </Link>
                         <button
                           className={styles.label1}
@@ -260,6 +299,7 @@ export default function ViewPlainQuestionsPage() {
           totalItems={totalCount}
           pageSize={10}
           onPageChange={onPageChange}
+          activePage={activePage}
         />
       </div>
     </div>

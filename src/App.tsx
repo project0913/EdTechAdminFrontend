@@ -36,6 +36,9 @@ import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerc
 import ExerciseQuestionEditorPage from "./Pages/ExerciseEditorPage/ExerciseEditorPage";
 import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
 import ExerciseInfoEdit from "./Pages/ExerciseInfoEdit/ExerciseInfoEdit";
+import { ViewPlainQuestionContext } from "./context/viewPlainQuestionContext";
+import { useState } from "react";
+import { ViewPlainQuestionState } from "./types/viewPlainQuestionState";
 
 function App() {
   const router = createBrowserRouter([
@@ -199,11 +202,33 @@ function App() {
       ],
     },
   ]);
-
+  const [viewPlainQuestionDataState, setViewPlainQuestionDataState] =
+    useState<ViewPlainQuestionState>({
+      courses: [],
+      years: [],
+      page: 0,
+      selectedCourse: "",
+      selectedYear: "",
+    });
+  const setViewPlainQuestionState = (
+    viewPlainQuestionState: ViewPlainQuestionState
+  ) => {
+    setViewPlainQuestionDataState((prevState) => ({
+      ...prevState,
+      ...viewPlainQuestionState,
+    }));
+  };
   return (
     <div className="App">
-      <ToastContainer />
-      <RouterProvider router={router} />
+      <ViewPlainQuestionContext.Provider
+        value={{
+          ...viewPlainQuestionDataState,
+          setPlainQuestionState: setViewPlainQuestionState,
+        }}
+      >
+        <ToastContainer />
+        <RouterProvider router={router} />
+      </ViewPlainQuestionContext.Provider>
     </div>
   );
 }

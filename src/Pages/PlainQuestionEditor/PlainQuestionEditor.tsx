@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useContext, useEffect, useState } from "react";
 import placeholderImage from "../../assets/place_holder.jpg";
 import styles from "./plainQuestionEditor.module.css";
 import "react-quill/dist/quill.snow.css";
@@ -16,6 +16,7 @@ import {
 } from "../../DataService/editQuestion.service";
 import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
+import { ViewPlainQuestionContext } from "../../context/viewPlainQuestionContext";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -23,6 +24,8 @@ const override: CSSProperties = {
 };
 
 export default function PlainQuestionEditor() {
+  const viewPlainQuestionState = useContext(ViewPlainQuestionContext);
+  const { setPlainQuestionState, ...pureState } = viewPlainQuestionState;
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
   const [question, setQuestion] = useState<PlainQuestion>();
@@ -56,6 +59,8 @@ export default function PlainQuestionEditor() {
   ];
 
   useEffect(() => {
+    console.log(pureState);
+
     let editableQuestion = location.state.question as PlainQuestion;
     populateForm(editableQuestion);
     setQuestion(editableQuestion);
