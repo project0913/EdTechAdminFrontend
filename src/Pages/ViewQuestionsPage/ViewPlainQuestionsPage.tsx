@@ -75,7 +75,9 @@ export default function ViewPlainQuestionsPage() {
 
       getCourses();
     }
-    onPageChange(activePage);
+    onPageChange(
+      viewPlainQuestionState.page > 0 ? viewPlainQuestionState.page : 1
+    );
   }, []);
   useEffect(() => {
     if (isInitialMount.current) {
