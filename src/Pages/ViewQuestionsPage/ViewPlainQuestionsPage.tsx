@@ -50,10 +50,10 @@ export default function ViewPlainQuestionsPage() {
   const isInitialMount = useRef(true);
   const isInitialMount2 = useRef(true);
   const { setPlainQuestionState, ...clean } = viewPlainQuestionState;
-  console.log("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-  console.log(clean);
 
   const onPageRestore = async () => {
+    console.log("restore called.......................");
+    console.log(clean);
     setActivePage(viewPlainQuestionState?.page);
     setCourseOptions(viewPlainQuestionState.courses);
     setYearOptions(viewPlainQuestionState.years);
@@ -70,18 +70,23 @@ export default function ViewPlainQuestionsPage() {
   useEffect(() => {
     if (viewPlainQuestionState?.page > 0) {
       onPageRestore();
-    } else getCourses();
+    } else {
+      console.log("on init fetching courses change fetching years ");
+
+      getCourses();
+    }
+    onPageChange(activePage);
   }, []);
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
       // Your useEffect code here to be run on update
-      console.log("called on update only");
+      console.log("selected course change fetching years ");
 
       getYears(selectedCourse);
     }
-    setActivePage(0);
+    // setActivePage(0);
   }, [selectedCourse]);
 
   useEffect(() => {
@@ -90,7 +95,7 @@ export default function ViewPlainQuestionsPage() {
     } else {
       getQuestions({ course: selectedCourse, year: selectedYear, page: 1 });
     }
-    setActivePage(0);
+    // setActivePage(0);
   }, [selectedYear]);
 
   const getCourses = async () => {
@@ -102,16 +107,39 @@ export default function ViewPlainQuestionsPage() {
 
       crs.push({ label: course.name, value: course._id });
     }
-    setCourseOptions((p) => crs);
-    setSelectedCourse((p) => UEECourses[0]._id);
+    const privPageCrs =
+      viewPlainQuestionState.courses.length > 0
+        ? viewPlainQuestionState.courses
+        : crs;
+    const privSelectedCourse =
+      viewPlainQuestionState.selectedCourse.length > 0
+        ? viewPlainQuestionState.selectedCourse
+        : UEECourses[0]._id;
+    setCourseOptions((p) => privPageCrs);
+    setSelectedCourse((p) => privSelectedCourse);
     await getYears(UEECourses[0]._id);
-    await getQuestions({ course: selectedCourse, year: selectedYear, page: 1 });
+    const privSelectedPage = activePage > 0 ? activePage : 1;
+    await getQuestions({
+      course: selectedCourse,
+      year: selectedYear,
+      page: privSelectedPage,
+    });
   };
   async function getYears(courseId: string | number) {
     let yearsFromServer: SelectOption[] = await fetchAvailableYears(courseId);
-    setYearOptions((p) => yearsFromServer);
-    if (yearsFromServer.length > 0)
-      setSelectedYear((p) => yearsFromServer[0].value || 2010);
+    const privYears =
+      viewPlainQuestionState.years.length > 0
+        ? viewPlainQuestionState.years
+        : yearsFromServer;
+    setYearOptions((p) => privYears);
+    const privSelectedYear =
+      viewPlainQuestionState.selectedYear.toString().length > 0
+        ? viewPlainQuestionState.selectedYear
+        : yearsFromServer[0].value;
+    console.log("privvvvvvvvvvvvvvvv year " + privSelectedYear);
+
+    setSelectedYear((p) => privSelectedYear);
+    // if (yearsFromServer.length > 0)
   }
   const deletePlainQuestionFromServer = async (questionId: string) => {
     let result = await deletePlainQuestion(questionId);
@@ -150,6 +178,8 @@ export default function ViewPlainQuestionsPage() {
     year: string | number;
     page: number;
   }) => {
+    console.log("the page rrrrrrrrrrrrr " + page);
+
     const { count, questions } = await fetchPlainQuestions({
       course,
       year,

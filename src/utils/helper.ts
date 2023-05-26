@@ -2,8 +2,6 @@ import { CSSProperties } from "react";
 import { toast } from "react-toastify";
 
 export const resolveImageURL = (path: string) => {
-  console.log("this is image url " + path);
-
   if (path.startsWith("http")) return path;
   else if (path.length > 0)
     return `https://coydoe.onrender.com/images/questions/${path}`;
