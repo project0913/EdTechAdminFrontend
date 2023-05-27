@@ -8,7 +8,7 @@ import { PlainQuestion } from "../../models/question.model";
 import { AxiosError } from "axios";
 import { FadeLoader } from "react-spinners";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { resolveImageURL, showSuccessToast } from "../../utils/helper";
 import {
   updateGroupedQuestionToServer,
@@ -326,14 +326,18 @@ export default function PlainQuestionEditor() {
             >
               Update
             </button>
-            <button
-              className={styles.clearBtn}
-              onClick={() => {
-                navigate(-1);
+            <Link
+              to={"/admin-user/view-plain-questions"}
+              state={{
+                course: viewPlainQuestionState.selectedCourse,
+                year: viewPlainQuestionState.selectedYear,
+                page: viewPlainQuestionState.page,
               }}
             >
-              Back To View Questions
-            </button>
+              <button className={styles.clearBtn} onClick={() => {}}>
+                Back To View Questions
+              </button>
+            </Link>
           </div>
         </div>
       </div>

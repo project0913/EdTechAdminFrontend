@@ -39,11 +39,12 @@ import ExerciseInfoEdit from "./Pages/ExerciseInfoEdit/ExerciseInfoEdit";
 import { ViewPlainQuestionContext } from "./context/viewPlainQuestionContext";
 import { useState } from "react";
 import { ViewPlainQuestionState } from "./types/viewPlainQuestionState";
+import { SelectCourse } from "./Pages/select-course/SelectCourse";
 
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
-
+    { path: "select-course", element: <SelectCourse /> },
     { path: "admin-dashboard", element: <AdminDashboard /> },
 
     {
