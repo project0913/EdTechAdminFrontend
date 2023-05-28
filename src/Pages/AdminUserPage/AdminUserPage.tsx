@@ -109,9 +109,6 @@ export default function AdminUserPage() {
         <div>
           <Outlet />
         </div>
-        {/* <div className={styles.rightBar}>
-          <Outlet />
-        </div> */}
       </div>
     </div>
   );

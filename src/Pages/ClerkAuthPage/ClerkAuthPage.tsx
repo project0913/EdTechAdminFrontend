@@ -67,6 +67,7 @@ export default function ClerkAuthPage() {
         "coydoeClerkUser",
         JSON.stringify({ token: result?.token, username: result?.username })
       );
+
       window.location.href = "/admin-user";
     }
   }
