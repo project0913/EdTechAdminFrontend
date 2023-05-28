@@ -66,8 +66,8 @@ function App() {
           element: <AdminDashboard />,
         },
         {
-          path: "plain-question",
-          element: <PlainQuestionData />,
+          path: "select-course",
+          element: <SelectCourse />,
         },
         {
           path: "edit-plain-question",
@@ -136,7 +136,7 @@ function App() {
       children: [
         {
           path: "",
-          element: <PlainQuestionData />,
+          element: <SelectCourse />,
         },
         {
           path: "view-plain-questions",

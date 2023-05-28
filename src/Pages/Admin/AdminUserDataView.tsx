@@ -10,6 +10,8 @@ export default function AdminUserDataView() {
   const routeChange = (e: FormEvent<HTMLSelectElement>) => {
     console.log((e.target as HTMLSelectElement).value);
     const path = (e.target as HTMLSelectElement).value;
+    console.log("bbbbbbbbbbbbbbbb");
+    console.log(path + "mmmmmmioio");
     navigate(path);
   };
   const logout = () => {
@@ -65,11 +67,11 @@ export default function AdminUserDataView() {
             className={styles.dataEditView}
           >
             <option value="">Data Viewing </option>
-            <option value="view-plain-questions">Plain Question</option>
+            <option value="admin-user">Plain Question</option>
 
             <option value="view-directions">View Directions</option>
 
-            <option value="view-grouped-questions">Grouped Question</option>
+            <option value="admin-user">Grouped Question</option>
             <option value="view-general-questions">
               View General Question
             </option>

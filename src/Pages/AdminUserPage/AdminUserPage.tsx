@@ -77,13 +77,9 @@ export default function AdminUserPage() {
                 <option selected disabled>
                   Select View Plain Question
                 </option>
-                <option value="view-plain-questions">
-                  View Plain Question
-                </option>
+                <option value="/admin-user">View Plain Question</option>
                 <option value="view-directions">View Directions</option>
-                <option value="view-grouped-questions">
-                  View Grouped Question
-                </option>
+                <option value="/admin-user">View Grouped Question</option>
                 <option value="view-general-question">
                   View General Question
                 </option>

@@ -326,18 +326,31 @@ export default function PlainQuestionEditor() {
             >
               Update
             </button>
-            <Link
-              to={"/admin-user/view-plain-questions"}
-              state={{
-                course: viewPlainQuestionState.selectedCourse,
-                year: viewPlainQuestionState.selectedYear,
-                page: viewPlainQuestionState.page,
+
+            <button
+              className={styles.clearBtn}
+              onClick={() => {
+                if (isGroupedQuestion) {
+                  navigate("/admin-user/view-grouped-questions", {
+                    state: {
+                      direction: viewPlainQuestionState.selectedCourse,
+                    },
+                    replace: true,
+                  });
+                } else {
+                  navigate("/admin-user/view-plain-questions", {
+                    state: {
+                      course: viewPlainQuestionState.selectedCourse,
+                      year: viewPlainQuestionState.selectedYear,
+                      page: viewPlainQuestionState.page,
+                    },
+                    replace: true,
+                  });
+                }
               }}
             >
-              <button className={styles.clearBtn} onClick={() => {}}>
-                Back To View Questions
-              </button>
-            </Link>
+              Back To View Questions
+            </button>
           </div>
         </div>
       </div>
