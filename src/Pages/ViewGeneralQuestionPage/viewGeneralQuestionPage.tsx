@@ -167,6 +167,14 @@ export default function ViewExerciseQuestionPage() {
           </tbody>
         </table>
       </div>
+      <div className="">
+        <CustomPagination
+          totalItems={totalCount}
+          pageSize={10}
+          onPageChange={onPageChange}
+          activePage={1}
+        />
+      </div>
     </div>
   );
 }
