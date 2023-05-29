@@ -172,6 +172,7 @@ export default function ViewExerciseQuestionPage() {
           totalItems={totalCount}
           pageSize={10}
           onPageChange={onPageChange}
+          activePage={0}
         />
       </div>
     </div>
