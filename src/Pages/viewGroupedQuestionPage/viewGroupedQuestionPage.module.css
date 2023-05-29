@@ -10,13 +10,21 @@
   word-wrap: break-word;
   font-family: "Times New Roman", Times, serif;
 }
+thead .row {
+  background-color: #2469ff;
+  color: #e5e7eb;
+  font-family: "Times New Roman", Times, serif;
+  height: 40px;
+}
 .groupedHeader {
   width: 100%;
-  height: 60px;
+  height: 45px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #088081;
+  background-color: #f9fcfa;
+  color: #252222;
 }
 
 tr:nth-child(even) {
@@ -31,36 +39,65 @@ tr:nth-child(even):hover {
 }
 
 .label {
-  background-color: #088081;
+  background-color: transparent;
+  background: white;
   width: 80px;
   height: 30px;
   align-items: center;
-  color: white;
+  justify-content: center;
+  color: #088081;
   top: 5px;
   margin: 5px;
-  border: none;
   border-radius: 10px;
+  border: 1px solid #666;
   cursor: pointer;
 }
 .label:hover {
   background-color: #088081;
   opacity: 0.8;
+  color: white;
 }
 
 .label1 {
-  background-color: rgb(160, 36, 36);
-
+  background-color: transparent;
+  background: white;
   height: 30px;
   cursor: pointer;
   width: 80px;
-
+  display: flex;
   align-items: center;
-  color: white;
+  justify-content: center;
+  color: red;
   margin: 5px;
   padding: 5px;
-  border: none;
+  border: 1px solid #666;
   border-radius: 10px;
 }
+
 .label1:hover {
-  background-color: rgb(160, 36, 36, 0.8);
+  background-color: rgba(160, 36, 36, 0.8);
+  border-color: grey;
+  color: white;
+}
+
+.noColumn {
+  width: 30px;
+  margin-left: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+.questionColumn {
+  width: 200px;
+}
+
+.yearColumn {
+  width: 35px;
+  text-align: center;
+}
+.answerColumn {
+  width: 48px;
+  text-align: center;
+}
+.descriptionColumn {
+  width: 250px;
 }

@@ -1,33 +1,27 @@
-.groupedQuestionBody {
-  margin-left: 5%;
-  margin-right: 5%;
+.groupedHeader {
+  width: 100%;
+  height: 45px;
+  margin: 10px;
+  background-color: #f9fcfa;
+  color: #252222;
 }
 
-.groupedHeader {
-  background-color: #088081;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-.img {
-  height: 80px;
-  width: 150px;
-}
-.editorContainer {
-  justify-content: center;
-  align-items: center;
-}
-.txt {
-  color: #088081;
-}
 .groupedTop {
   display: flex;
-
   align-items: center;
   gap: 1rem;
 }
+.txtEditor {
+  margin-left: 8%;
+  margin-right: 8%;
+  color: #f9fcfa;
+}
+.groupMargin {
+  background-color: rgb(1, 4, 19);
+  color: white;
+  margin-top: 30px;
+}
+
 .dropdownItem {
   display: flex;
   margin: 10px;
@@ -36,44 +30,70 @@
   justify-content: center;
   color: #ffffff;
 }
-.submitBtn1 {
+.img {
   width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  margin-top: 10px;
-  margin-left: 500px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  background-color: #088081;
+  height: 80px;
 }
-.submitBtn1:hover {
-  background-color: #088081;
-  opacity: 0.8;
-}
-.clearBtn {
-  border: none;
-  width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  color: white;
-  margin: 10px;
-  cursor: pointer;
-  background-color: rgb(97, 26, 26);
-}
-.clearBtn:hover {
-  background-color: rgb(97, 26, 26, 0.8);
-}
-
 .questionNumber {
   margin-left: 80px;
   font-size: 28px;
 }
 .answerContainer {
   margin-left: 80px;
+}
+
+.chooseFileButton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-color: #4caf50;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chooseFileButton:hover {
+  background-color: #3e8e41;
+}
+
+.chooseFileButton input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.submitBtn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 30px;
+  width: 200px;
+  margin: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submitBtn:hover {
+  background-color: #3e8e41;
+}
+.clearBtn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 30px;
+  width: 200px;
+  margin: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.clearBtn:hover {
+  background-color: #e53935;
 }

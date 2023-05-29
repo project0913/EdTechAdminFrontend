@@ -172,22 +172,18 @@ export default function GroupedQuestionPage() {
       descriptionImage
     );
     setLoading((prev) => false);
-
     if (result instanceof AxiosError) {
       let msgTxt = "";
-      const messages =
-        result.response?.data?.message ||
-        (["something is wrong try again Later"] as Array<string>);
+      const messages = result.response?.data?.message as Array<string>;
+
       for (const msg of messages) {
-        msgTxt += msg + " "; //concatenate array of error messages
+        msgTxt += msg + " ";
+      } // concatenate array of error messages
+
+      if (msgTxt !== errorMessage) {
+        setErrorMessage(msgTxt);
+        showErrorToast();
       }
-      setErrorMessage(msgTxt);
-      //Todo handle error
-      showErrorToast();
-    } else {
-      //todo Handle success
-      showSuccessToast("Request Success");
-      clearForm();
     }
   };
   const clearForm = () => {
@@ -219,160 +215,185 @@ export default function GroupedQuestionPage() {
       <div className={styles.groupedQuestionBody}>
         <div>
           <div className={styles.groupedBg}>
-            <div className={styles.groupedHeader}>
-              <div className={styles.dropdownItem}>
-                <div className="">
-                  <SelectDropdown
-                    title="Courses"
-                    items={courses}
-                    handleSelect={handleCourseChange}
-                  />
-                </div>
-                <div className="">
-                  <SelectDropdown
-                    title="Years"
-                    items={years}
-                    handleSelect={handleYearChange}
-                  />
-                </div>
-                <div className="">
-                  <SelectDropdown
-                    title="Directions"
-                    items={directions}
-                    handleSelect={handleDirectionChange}
-                  />
-                </div>
+            <div className={styles.dropdownItem}>
+              <div className="">
+                <SelectDropdown
+                  title="Courses"
+                  items={courses}
+                  handleSelect={handleCourseChange}
+                />
+              </div>
+              <div className="">
+                <SelectDropdown
+                  title="Years"
+                  items={years}
+                  handleSelect={handleYearChange}
+                />
+              </div>
+              <div className="">
+                <SelectDropdown
+                  title="Directions"
+                  items={directions}
+                  handleSelect={handleDirectionChange}
+                />
               </div>
             </div>
           </div>
           <div className={styles.groupMargin}>
-            <div className={styles.editorContainer}>
-              <p className={styles.txt}>Question Number</p>
-              <input
-                type="number"
-                onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
-              />
-              <br />
-              <ErrorComponent value={questionNumber} />
-            </div>
-            <div className={styles.editorContaine}>
-              <div className="editor-container">
-                <p className={styles.questionNumb}>Paste your question here</p>
-                <Editor
-                  setValue={setQuestionTextValue}
-                  editorId="editor1"
-                  value={questionText}
-                />
-                <ErrorComponent value={questionText} />
-              </div>
-              <div className="editor-container">
-                <p className={styles.txt}>
-                  Select Image if the Question has Image
-                </p>
-
-                <img
-                  src={tempQuestionImagePath || placeholderImage}
-                  id="photo"
-                  className={styles.img}
-                />
+            <div className={styles.txtEditor}>
+              <div className={styles.editorContainer}>
+                <p className={styles.txt}>Question Number</p>
                 <input
-                  type="file"
-                  id="file"
-                  onChange={handleQuestionImageChange}
+                  type="number"
+                  onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
                 />
+                <br />
+                <ErrorComponent value={questionNumber} />
               </div>
-              <div>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>A</span>{" "}
-                  here
-                </p>
-                <Editor
-                  setValue={setOption_a_Text}
-                  value={option_a}
-                  editorId="editor2"
-                />
-                <ErrorComponent value={option_a} />
-              </div>
-              <div>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
-                  here
-                </p>
-                <Editor
-                  setValue={setOption_b_Text}
-                  value={option_b}
-                  editorId="editor3"
-                />
-                <ErrorComponent value={option_b} />
-              </div>
-              <div>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
-                  here
-                </p>
-                <Editor
-                  setValue={setOption_c_Text}
-                  value={option_c}
-                  editorId="editor4"
-                />
-                <ErrorComponent value={option_c} />
-              </div>
-              <div>
-                <p className={styles.txt}>
-                  Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
-                  here
-                </p>
-                <Editor
-                  setValue={setOption_d_Text}
-                  value={option_d}
-                  editorId="editor5"
-                />
-                <ErrorComponent value={option_d} />
-              </div>
-              <div className={styles.answerContainer}>
-                <p className={styles.txt}>Choose Answer here</p>
-                <SelectDropdown
-                  title=""
-                  items={answerOptions}
-                  handleSelect={set_answer_Text}
-                />
-              </div>
+              <div className={styles.editorContaine}>
+                <div className="editor-container">
+                  <p className={styles.questionNumb}>
+                    Paste your question here
+                  </p>
+                  <Editor
+                    setValue={setQuestionTextValue}
+                    editorId="editor1"
+                    value={questionText}
+                  />
+                  <ErrorComponent value={questionText} />
+                </div>
+                <div className="editor-container">
+                  <p className={styles.txt}>
+                    Select Image if the Question has Image
+                  </p>
 
-              <div>
-                <p className={styles.txt}>Paste your option Description here</p>
-                <Editor
-                  editorId="editor6"
-                  setValue={setDescription_Text}
-                  value={description}
-                />
-              </div>
-              <div>
-                <p className={styles.txt}>
-                  Select Image if the description has Image
-                </p>
-                <img
-                  src={tempDescriptionImagePath || placeholderImage}
-                  id="photo"
-                  className={styles.img}
-                />
-                <input
-                  type="file"
-                  id="file"
-                  onChange={handleDescriptionImageChange}
-                />
-              </div>
-              <div>
-                <button
-                  className={styles.submitBtn1}
-                  onClick={submitQuestionToBackend}
+                  <img
+                    src={tempQuestionImagePath || placeholderImage}
+                    id="photo"
+                    className={styles.img}
+                  />
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={handleQuestionImageChange}
+                  />
+                </div>
+                <div>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      A
+                    </span>{" "}
+                    here
+                  </p>
+                  <Editor
+                    setValue={setOption_a_Text}
+                    value={option_a}
+                    editorId="editor2"
+                  />
+                  <ErrorComponent value={option_a} />
+                </div>
+                <div>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      B
+                    </span>{" "}
+                    here
+                  </p>
+                  <Editor
+                    setValue={setOption_b_Text}
+                    value={option_b}
+                    editorId="editor3"
+                  />
+                  <ErrorComponent value={option_b} />
+                </div>
+                <div>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      C
+                    </span>{" "}
+                    here
+                  </p>
+                  <Editor
+                    setValue={setOption_c_Text}
+                    value={option_c}
+                    editorId="editor4"
+                  />
+                  <ErrorComponent value={option_c} />
+                </div>
+                <div>
+                  <p className={styles.txt}>
+                    Paste your option{" "}
+                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                      D
+                    </span>{" "}
+                    here
+                  </p>
+                  <Editor
+                    setValue={setOption_d_Text}
+                    value={option_d}
+                    editorId="editor5"
+                  />
+                  <ErrorComponent value={option_d} />
+                </div>
+                <div className={styles.answerContainer}>
+                  <p className={styles.txt}>Choose Answer here</p>
+                  <SelectDropdown
+                    title=""
+                    items={answerOptions}
+                    handleSelect={set_answer_Text}
+                  />
+                </div>
+
+                <div>
+                  <p className={styles.txt}>
+                    Paste your option Description here
+                  </p>
+                  <Editor
+                    editorId="editor6"
+                    setValue={setDescription_Text}
+                    value={description}
+                  />
+                </div>
+                <div className={styles.plainTxt}>
+                  <p className={styles.txt}>
+                    Select Image if the Description has Image
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <img
+                      src={tempDescriptionImagePath || placeholderImage}
+                      className={styles.img}
+                      style={{ marginRight: "10px" }}
+                    />
+                    <label htmlFor="file" className={styles.chooseFileButton}>
+                      <span>Choose File</span>
+                      <input
+                        type="file"
+                        id="file"
+                        onChange={handleDescriptionImageChange}
+                        className={styles.plainTxt}
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                    <span className={styles.txt}>
+                      {tempDescriptionImagePath ? "No file chosen" : ""}
+                    </span>
+                  </div>
+                </div>
+                <div
+                  className={styles.questionBtn}
+                  style={{ display: "flex", justifyContent: "center" }}
                 >
-                  Submit
-                </button>
-                <button className={styles.clearBtn}>Clear</button>
+                  <button
+                    className={styles.submitBtn}
+                    onClick={submitQuestionToBackend}
+                  >
+                    Submit
+                  </button>
+                  <button className={styles.clearBtn}>Clear</button>
+                </div>
               </div>
             </div>
           </div>

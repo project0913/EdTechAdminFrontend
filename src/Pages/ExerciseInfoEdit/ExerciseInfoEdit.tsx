@@ -59,18 +59,6 @@ export default function ExerciseInfoEdit() {
     );
   };
 
-  //   setLoading((prev) => false);
-  //   if (result instanceof AxiosError) {
-  //     let msgTxt = "";
-  //     const messages = result.response?.data?.message as Array<string>;
-  //     for (const msg of messages) msgTxt += msg + " "; //concatenate array of error messages
-  //     setErrorMessage(msgTxt);
-  //   } else {
-  //     showSuccessToast("updated success");
-  //     // clearForm();
-  //   }
-  // };
-
   const setGrade_Number = (val: string) => {
     setGrade(val);
   };

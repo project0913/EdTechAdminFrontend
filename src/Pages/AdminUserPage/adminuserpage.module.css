@@ -1,19 +1,13 @@
-.rightBar {
-  margin-left: 15%;
-  margin-right: 15%;
-}
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #092258;
-  height: 60px;
+  height: 50px;
   z-index: 9999;
 }
 
 .userProfileName {
-  /* display: inline-flex;
-  align-items: center; */
   display: inline-flex;
   align-items: center;
 }
@@ -33,13 +27,9 @@
   margin-left: 15px;
   display: flex;
 }
-.username {
-  font-size: 12px;
-  margin-left: 15px;
-}
+
 .userNameTxt {
-  margin: 20px;
-  margin-top: 40px;
+  margin-left: 15px;
 }
 .selectionOption {
   margin: 20px;
@@ -47,12 +37,12 @@
 }
 .selectDropdown {
   color: #092258;
-  border-radius: 30px;
+  border: solid 1px white;
   padding: 3px;
-  background-color: #b2d8d9;
   margin-left: 30px;
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .topBalance2 {
@@ -63,15 +53,13 @@
   align-items: center;
   margin-left: 40px;
 }
-.topBalance {
-  margin: 15px;
-}
+
 .spanLabel {
-  background-color: #b2d8d9;
   color: #092258;
-  border-radius: 10px;
-  height: 20px;
-  width: 60px;
+  border: solid 1px white;
+  background-color: white;
+  height: 13px;
+  width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,78 +80,26 @@
   font-weight: 500;
   font-family: "Times New Roman", Times, serif;
   cursor: pointer;
-  border: none;
   margin-left: 120px;
-  border-radius: 10px;
   color: #092258;
-  background-color: #b2d8d9;
+  border: solid 1px white;
+  background-color: white;
+  border-radius: 10px;
 }
-
+.logoutBtn:hover {
+  color: white;
+  background-color: #092258;
+}
 .header a {
   float: left;
   color: #ffffff;
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 68px;
   line-height: 25p;
   border-radius: 4px;
 }
 .selectionOption {
   margin-left: 20px;
-}
-
-@media screen and (max-width: 400px) {
-  .rightBar {
-    margin-top: 0px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .header {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .iconContainer {
-    color: #ffffff;
-    margin-left: 35px;
-    display: flex;
-  }
-  .rightHeader {
-    float: none;
-  }
-  .userProfileName {
-    display: block;
-    width: 100%;
-    float: right;
-  }
-  .selectionOption {
-    margin-left: 0px;
-  }
-  .selectDropdown {
-    margin: 10px;
-    margin-left: 30px;
-  }
-  .topBalance2 {
-    display: block;
-    margin-top: 20px;
-
-    margin-bottom: 10px;
-  }
-  .balanceLabel {
-    margin-left: 20px;
-    margin-top: 10px;
-  }
-  .spanLabel {
-    margin-left: 35px;
-    margin-top: 10px;
-  }
-  .logBtn {
-    margin-left: 70px;
-  }
 }

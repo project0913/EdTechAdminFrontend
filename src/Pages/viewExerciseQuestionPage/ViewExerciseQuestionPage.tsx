@@ -73,32 +73,27 @@ export default function ViewExerciseQuestionPage() {
       <div className={styles.allTable}>
         <table className={styles.table}>
           <thead>
-            <tr>
-              <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>Question</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'A'
+            <tr className={styles.row}>
+              <th
+                className={`${styles.tableHeader} ${styles.th} ${styles.noColumn}`}
+              >
+                No
               </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'B'
+
+              <th className={`${styles.th} ${styles.questionColumn}`}>
+                Questions
               </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'C'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Option 'D'
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
+              <th className={`${styles.th}`}>Option 'A'</th>
+              <th className={`${styles.th}`}>Option 'B'</th>
+              <th className={`${styles.th}`}>Option 'C'</th>
+              <th className={`${styles.th}`}>Option 'D'</th>
+              <th className={`${styles.th} ${styles.answerColumn}`}>Ans</th>
+              <th className={`${styles.th} ${styles.descriptionColumn}`}>
                 Description
               </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Question Image{" "}
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>
-                Description Image{" "}
-              </th>
-              <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
+              <th className={`${styles.th}`}>Que Img </th>
+              <th className={` ${styles.th}`}>Des Img </th>
+              <th className={`${styles.th}`}>Manage</th>
             </tr>
           </thead>
           <tbody>
@@ -112,6 +107,7 @@ export default function ViewExerciseQuestionPage() {
                     <td className={styles.td}>
                       {parse(question.questionText, options)}
                     </td>
+
                     <td className={styles.td}>
                       {parse(question.option_a, options)}
                     </td>
@@ -130,7 +126,7 @@ export default function ViewExerciseQuestionPage() {
                     </td>
                     <td className={styles.td}>
                       <img
-                        style={{ width: "130px", height: "60px" }}
+                        style={{ maxWidth: "130px", height: "60px" }}
                         src={
                           resolveImageURL(question.questionImage || "") ||
                           placeholderImage
@@ -140,7 +136,7 @@ export default function ViewExerciseQuestionPage() {
                     <td className={styles.td}>
                       {" "}
                       <img
-                        style={{ width: "130px", height: "60px" }}
+                        style={{ maxWidth: "130px", height: "60px" }}
                         src={
                           resolveImageURL(question.descriptionImage || "") ||
                           placeholderImage

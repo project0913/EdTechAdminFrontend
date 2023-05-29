@@ -117,8 +117,7 @@ export default function PlainQuestionEditor() {
       year: year,
       questionNumber,
     };
-    console.log("question image ========================");
-    console.log(editedQuestion);
+
     let result = null;
     if (!isGroupedQuestion) {
       result = await updatePlainQuestionToServer(
@@ -141,11 +140,15 @@ export default function PlainQuestionEditor() {
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages = result.response?.data?.message as Array<string>;
-      for (const msg of messages) msgTxt += msg + " "; //concatenate array of error messages
+
+      for (const msg of messages) {
+        msgTxt += msg + " ";
+      } // concatenate array of error messages
+
       setErrorMessage(msgTxt);
       setShowErrorToast(true);
     } else {
-      showSuccessToast("updated success");
+      showSuccessToast("Updated successfully");
       // clearForm();
     }
   };

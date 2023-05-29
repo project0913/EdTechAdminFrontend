@@ -116,7 +116,7 @@ export default function ExerciseQuestionEditorPage() {
       for (const msg of messages) msgTxt += msg + " "; //concatenate array of error messages
       setErrorMessage(msgTxt);
     } else {
-      showSuccessToast("updated success");
+      showSuccessToast("Updated Success");
       // clearForm();
     }
   };
@@ -287,12 +287,12 @@ export default function ExerciseQuestionEditorPage() {
               Update
             </button>
             <button
-              className={Styles.clearBtn}
+              className={Styles.backToViewBtn}
               onClick={() => {
                 navigate(-1);
               }}
             >
-              Back To View Questions
+              Back to Home
             </button>
           </div>
         </div>

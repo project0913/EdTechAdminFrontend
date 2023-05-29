@@ -66,7 +66,7 @@ export default function ExercisePage() {
       showErrorToast();
     } else {
       setShow(true);
-      showSuccessToast("request success ");
+      showSuccessToast("Request Success ");
     }
   };
 

@@ -116,18 +116,30 @@ export default function ViewPlainQuestionsPage() {
         <table className={styles.table}>
           <thead>
             <tr className={styles.row}>
-              <th className={` ${styles.th} ${styles.thNo}`}>No</th>
-              <th className={`${styles.th}`}>Year</th>
-              <th className={`${styles.th}`}>Questions</th>
-              <th className={` ${styles.th}`}>Option 'A'</th>
-              <th className={` ${styles.th}`}>Option 'B'</th>
-              <th className={` ${styles.th}`}>Option 'C'</th>
+              <th
+                className={`${styles.tableHeader} ${styles.th} ${styles.noColumn}`}
+              >
+                No
+              </th>
+              <th
+                className={`${styles.tableHeader} ${styles.th} ${styles.yearColumn}`}
+              >
+                Year
+              </th>
+              <th className={`${styles.th} ${styles.questionColumn}`}>
+                Questions
+              </th>
+              <th className={`${styles.th}`}>Option 'A'</th>
+              <th className={`${styles.th}`}>Option 'B'</th>
+              <th className={`${styles.th}`}>Option 'C'</th>
               <th className={`${styles.th}`}>Option 'D'</th>
-              <th className={` ${styles.th}`}>Answer</th>
-              <th className={` ${styles.th}`}>Description</th>
-              <th className={`${styles.th}`}>Question Image </th>
-              <th className={` ${styles.th}`}>Description Image </th>
-              <th className={`${styles.th}`}>Manage</th>
+              <th className={`${styles.th} ${styles.answerColumn}`}>Ans</th>
+              <th className={`${styles.th} ${styles.descriptionColumn}`}>
+                Description
+              </th>
+              <th className={`${styles.th}`}>Que Img </th>
+              <th className={` ${styles.th}`}>Des Img </th>
+              <th className={`${styles.th} ${styles.manageColumn}`}>Manage</th>
             </tr>
           </thead>
           <tbody>

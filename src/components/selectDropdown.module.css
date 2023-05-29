@@ -1,18 +1,11 @@
 .selectDropdown {
   color: #092258;
-  border-radius: 30px;
-  width: 108px;
+  border-color: #d8dbe2;
+  width: 200px;
+  font-size: 15px;
   padding: 4px;
-  background-color: #b2d8d9;
-  margin-top: 10px;
-  margin-left: 20px;
-}
-@media screen and (max-width: 400px) {
-  .selectDropdown {
-    border-radius: 32px;
-    width: 80px;
-    margin-left: 20px;
-
-    margin-top: 5px;
-  }
+  background-color: #ffffff;
+  margin: 10px;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
 }

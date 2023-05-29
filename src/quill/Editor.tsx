@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import EditorToolbar, { modules, formats } from "./EditorToolbar";
 import "react-quill/dist/quill.snow.css";
-//import "./styles.css";
+import "./styles.css";
 export type EditorProp = {
   setValue: (value: string) => void;
   value: string;

@@ -235,29 +235,49 @@ export default function PlainQuestionData() {
                 <div className={styles.inp}></div>
 
                 <div className={styles.txtEditor}>
-                  <div className={styles.dropdownItem}>
-                    <b>Select Year</b>
-                    <SelectDropdown
-                      title=""
-                      items={yearsOptions}
-                      handleSelect={handleYearsChange}
-                    />
-                  </div>
-
-                  <div>
-                    <p className={styles.txt}>Question Number</p>
-                    <input
-                      type="number"
-                      value={questionNumber}
-                      onChange={(e) =>
-                        setQuestionNumber(parseInt(e.target.value))
-                      }
-                    />{" "}
-                    <br />
-                    <ErrorComponent value={questionNumber} />
+                  <div
+                    className={styles.yearQuestion}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div className={styles.dropdownItem}>
+                      <b>Select Year</b>
+                      <SelectDropdown
+                        title=""
+                        items={yearsOptions}
+                        handleSelect={handleYearsChange}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: "20px",
+                      }}
+                    >
+                      <p className={styles.txt} style={{ marginRight: "10px" }}>
+                        Question Number
+                      </p>
+                      <input
+                        type="number"
+                        value={questionNumber}
+                        onChange={(e) =>
+                          setQuestionNumber(parseInt(e.target.value))
+                        }
+                        style={{
+                          marginRight: "10px",
+                          height: "23px",
+                          textAlign: "center",
+                        }}
+                      />
+                      <ErrorComponent value={questionNumber} />
+                    </div>
                   </div>
                   <div className={styles.q}>
-                    <p className={styles.txt}>Paste your question here</p>
+                    <p className={styles.txt}>Paste Your Question Here</p>
                     <Editor
                       setValue={setQuestionTextValue}
                       value={questionText}
@@ -266,25 +286,42 @@ export default function PlainQuestionData() {
                     <ErrorComponent value={questionText} />
                   </div>
 
-                  <div className={styles.plainTxt}>
+                  <div
+                    className={styles.plainImage}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      flexDirection: "column",
+                    }}
+                  >
                     <p className={styles.txt}>
                       Select Image if the Question has Image
                     </p>
-                    <img
-                      src={tempQuestionImagePath || placeholderImage}
-                      id="photo"
-                      className={styles.img}
-                    />
-                    <input
-                      type="file"
-                      id="file"
-                      onChange={handleQuestionImageChange}
-                      className={styles.plainTxt}
-                    />
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={tempQuestionImagePath || placeholderImage}
+                        id="photo"
+                        className={styles.img}
+                        style={{ marginRight: "10px" }}
+                      />
+                      <label htmlFor="file" className={styles.chooseFileButton}>
+                        <span>Choose File</span>
+                        <input
+                          type="file"
+                          id="file"
+                          onChange={handleQuestionImageChange}
+                          className={styles.plainTxt}
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                      <span className={styles.txt}>
+                        {tempQuestionImagePath ? "No file chosen" : ""}
+                      </span>
+                    </div>
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
-                      Paste your option{"  "}
+                      Paste Your Option{"  "}
                       <span style={{ color: "red", fontWeight: "bolder" }}>
                         A{" "}
                       </span>
@@ -299,7 +336,7 @@ export default function PlainQuestionData() {
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
-                      Paste your option{" "}
+                      Paste Your ption{" "}
                       <span style={{ color: "red", fontWeight: "bolder" }}>
                         B
                       </span>{" "}
@@ -314,11 +351,11 @@ export default function PlainQuestionData() {
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
-                      Paste your option{" "}
+                      Paste Your Option{" "}
                       <span style={{ color: "red", fontWeight: "bolder" }}>
                         C
                       </span>{" "}
-                      here
+                      Here
                     </p>
                     <Editor
                       setValue={setOption_c_Text}
@@ -344,7 +381,7 @@ export default function PlainQuestionData() {
                   </div>
                   <div className={styles.answerYear}>
                     <div>
-                      <b className={styles.txt}>Choose Answer here</b>
+                      <b className={styles.txt}>Choose Answer Here</b>
                       <SelectDropdown
                         title=""
                         items={answerOptions}
@@ -355,7 +392,7 @@ export default function PlainQuestionData() {
 
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
-                      Paste your option Description here
+                      Paste Your Option Description Here
                     </p>
                     <Editor
                       setValue={setDescription_Text}
@@ -365,22 +402,34 @@ export default function PlainQuestionData() {
                   </div>
                   <div className={styles.plainTxt}>
                     <p className={styles.txt}>
-                      {" "}
-                      Select Image if the description has Image
+                      Select Image if the Description has Image
                     </p>
-                    <img
-                      src={tempDescriptionImagePath || placeholderImage}
-                      className={styles.img}
-                    />
-                    <input
-                      type="file"
-                      id="file"
-                      onChange={handleDescriptionImageChange}
-                      className={styles.plainTxt}
-                    />
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <img
+                        src={tempDescriptionImagePath || placeholderImage}
+                        className={styles.img}
+                        style={{ marginRight: "10px" }}
+                      />
+                      <label htmlFor="file" className={styles.chooseFileButton}>
+                        <span>Choose File</span>
+                        <input
+                          type="file"
+                          id="file"
+                          onChange={handleDescriptionImageChange}
+                          className={styles.plainTxt}
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                      <span className={styles.txt}>
+                        {tempDescriptionImagePath ? "No file chosen" : ""}
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className={styles.questionBtn}>
+                <div
+                  className={styles.questionBtn}
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <button
                     className={styles.submitBtn}
                     onClick={submitGroupedQuestionToBackend}

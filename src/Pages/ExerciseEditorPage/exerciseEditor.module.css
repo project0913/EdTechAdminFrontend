@@ -42,28 +42,49 @@
   justify-content: center;
 }
 .submitBtn {
-  width: 150px;
+  background-color: transparent;
+  background: white;
+  font-family: "Times New Roman", Times, serif;
+  width: 140px;
   height: 40px;
+  font-size: 20px;
   align-items: center;
   justify-content: center;
-  border: none;
+  color: #088081;
+  top: 5px;
+  margin: 20px;
   border-radius: 10px;
-  color: white;
+  border: 1px solid #666;
   cursor: pointer;
-  margin: 10px;
-  background-color: #088081;
 }
-.clearBtn {
-  border: none;
-  width: 150px;
+.submitBtn:hover {
+  background-color: #088081;
+  opacity: 0.8;
+  color: white;
+}
+
+.backToViewBtn {
+  background-color: transparent;
+  background: white;
   height: 40px;
+  cursor: pointer;
+  width: 140px;
+  font-size: 20px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  color: red;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #666;
   border-radius: 10px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.backToViewBtn:hover {
+  background-color: rgba(160, 36, 36, 0.8);
+  border-color: grey;
   color: white;
-  margin: 10px;
-  cursor: pointer;
-  background-color: rgb(97, 26, 26);
 }
 
 .txt {

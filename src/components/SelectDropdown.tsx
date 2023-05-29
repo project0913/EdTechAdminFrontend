@@ -31,4 +31,3 @@ function SelectDropdown({ title, items, handleSelect, styles }: DropdownProps) {
 }
 
 export default SelectDropdown;
-//style={styles || { width: "7rem" }}

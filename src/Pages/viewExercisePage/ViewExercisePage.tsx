@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
-import { gradeOptions } from "../../constants";
+import { chapterOptions, gradeOptions } from "../../constants";
 import styles from "./viewExercisePage.module.css";
 import { getAvailableExercise } from "../../DataService/exercise.service";
 import { Exercise } from "../../models/exercise.model";
@@ -63,24 +63,33 @@ export function ViewExercisePage() {
 
   return (
     <div>
-      <div className={styles.headerBg}>
-        <SelectDropdown
-          title=""
-          items={gradeOptions}
-          handleSelect={handleGradeChange}
-        />
-
-        <SelectDropdown
-          title=""
-          items={courses}
-          handleSelect={handleSelectedCourse}
-        />
+      <div className={styles.directionHeader}>
+        <span>
+          <b className={styles.selectDropdown}>Select Grade</b>
+          <SelectDropdown
+            title=""
+            items={gradeOptions}
+            handleSelect={handleGradeChange}
+          />
+        </span>
+        <span>
+          <b className={styles.selectDropdown}>Select Subject</b>
+          <SelectDropdown
+            title=""
+            items={chapterOptions}
+            handleSelect={handleGradeChange}
+          />
+        </span>
       </div>
       <div className={styles.allTable}>
         <table className={styles.table}>
           <thead>
-            <tr>
-              <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
+            <tr className={styles.row}>
+              <th
+                className={`${styles.tableHeader} ${styles.th} ${styles.noColumn}`}
+              >
+                No
+              </th>
               <th className={`${styles.tableHeader} ${styles.th}`}>Grade</th>
               <th className={`${styles.tableHeader} ${styles.th}`}>Chapter</th>
               <th className={`${styles.tableHeader} ${styles.th}`}>
@@ -119,9 +128,9 @@ export function ViewExercisePage() {
                       to={"/admin-user/exercise-info-edit"}
                       state={{ exercise }}
                     >
-                      <button className={styles.editBtn}>Edit</button>
+                      <button className={styles.label}>Edit</button>
                     </Link>
-                    <button className={styles.deleteBtn}>Delete</button>
+                    <button className={styles.label1}>Delete</button>
                   </td>
                 </tr>
               ))

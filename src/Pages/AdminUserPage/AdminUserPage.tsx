@@ -36,7 +36,7 @@ export default function AdminUserPage() {
           <div className={styles.userProfileName}>
             <div className={styles.iconContainer}>
               <i className={`fas fa-user  ${styles.userIcon}`}></i>
-              <div>
+              <div className="userName">
                 <span className={styles.userNameTxt}>
                   {username.toUpperCase()}
                 </span>
@@ -87,7 +87,7 @@ export default function AdminUserPage() {
               </select>
             </div>
             <div className={styles.topBalance2}>
-              <label className={styles.balanceLabel}>Your Total Data </label>
+              <label className={styles.balanceLabel}>Tot Data </label>
               <span className={styles.spanLabel}>{totalData}</span>
 
               <label className={styles.balanceLabel}>Your Balance </label>
@@ -98,7 +98,7 @@ export default function AdminUserPage() {
             <div className={styles.logBtn}>
               <span>
                 <button onClick={() => logout()} className={styles.logoutBtn}>
-                  Log out <i className="fas fa-sign-out-alt"></i>
+                  Log out
                 </button>
               </span>
             </div>

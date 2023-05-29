@@ -60,7 +60,7 @@ export default function DirectionPage() {
       showErrorToast();
     } else {
       setLoading(false);
-      showSuccessToast("Request Success");
+      showSuccessToast("Direction Inserted successfully");
     }
   };
 

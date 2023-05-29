@@ -93,26 +93,34 @@ export function ViewGroupedQuestionsPage() {
       <div className={styles.adminBody}></div>
       <div>
         <table className={styles.table}>
-          <tr>
-            <th className={`${styles.tableHeader} ${styles.th}`}>No</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Year</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Questions</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'A'</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'B'</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'C'</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Option 'D'</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Answer</th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>
-              Description
-            </th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>
-              Question Image
-            </th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>
-              DescriptionImage Image
-            </th>
-            <th className={`${styles.tableHeader} ${styles.th}`}>Manage</th>
-          </tr>
+          <thead>
+            <tr className={styles.row}>
+              <th
+                className={`${styles.tableHeader} ${styles.th} ${styles.noColumn}`}
+              >
+                No
+              </th>
+              <th
+                className={`${styles.tableHeader} ${styles.th} ${styles.yearColumn}`}
+              >
+                Year
+              </th>
+              <th className={`${styles.th} ${styles.questionColumn}`}>
+                Questions
+              </th>
+              <th className={` ${styles.th}`}>Option 'A'</th>
+              <th className={` ${styles.th}`}>Option 'B'</th>
+              <th className={` ${styles.th}`}>Option 'C'</th>
+              <th className={`${styles.th}`}>Option 'D'</th>
+              <th className={` ${styles.th} ${styles.answerColumn}`}>Ans</th>
+              <th className={` ${styles.th} ${styles.descriptionColumn}`}>
+                Description
+              </th>
+              <th className={`${styles.th}`}>Que Img </th>
+              <th className={` ${styles.th}`}>Des Img </th>
+              <th className={`${styles.th}`}>Manage</th>
+            </tr>
+          </thead>
           {questions.length > 0 ? (
             questions.map((question, index) => (
               <tr className={styles.tr} key={index}>
@@ -139,7 +147,7 @@ export function ViewGroupedQuestionsPage() {
                 </td>
                 <td className={styles.td}>
                   <img
-                    style={{ width: "130px", height: "60px" }}
+                    style={{ maxWidth: "130px", height: "60px" }}
                     src={
                       resolveImageURL(question.questionImage || "") ||
                       placeholderImage
@@ -149,7 +157,7 @@ export function ViewGroupedQuestionsPage() {
                 <td className={styles.td}>
                   {" "}
                   <img
-                    style={{ width: "130px", height: "60px" }}
+                    style={{ maxWidth: "130px", height: "60px" }}
                     src={
                       resolveImageURL(question.descriptionImage || "") ||
                       placeholderImage

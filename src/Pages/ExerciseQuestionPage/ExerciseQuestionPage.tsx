@@ -161,7 +161,7 @@ export default function ExerciseQuestionPage() {
       showErrorToast();
     } else {
       setShow(true);
-      showSuccessToast("request success ");
+      showSuccessToast("Request Success ");
       clearForm();
     }
   };
