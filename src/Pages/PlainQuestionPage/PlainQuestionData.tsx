@@ -16,7 +16,7 @@ import { yearsOptions } from "../../constants";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
-import { Course } from "src/models/exam-catagory.model";
+import { Course } from "../../models/exam-catagory.model";
 
 //import { showErrorToast, showSuccessToast } from "../../utils/helper";
 const override: CSSProperties = {
@@ -65,7 +65,7 @@ export default function PlainQuestionData() {
     for (const examCat of data) {
       examCatsOption.push({ label: examCat.name, value: examCat._id });
     }
-    setExamCatagories(examCatsOption);
+    setExamCatagories(examCatsOption.reverse());
     let UEECourses = data.find((e) => e._id == "63a2ecdeee469ea43cdacbac");
     let courses: Course[] = [];
     if (UEECourses) courses = UEECourses.courses;
