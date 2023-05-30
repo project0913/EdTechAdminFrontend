@@ -116,3 +116,4 @@
 // export default function EditorMath() {
 //   return <div>EditorMath</div>;
 // }
+export {};
