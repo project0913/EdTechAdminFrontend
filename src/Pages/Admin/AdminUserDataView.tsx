@@ -49,7 +49,7 @@ export default function AdminUserDataView() {
             className={styles.dataEditView}
           >
             <option value="">Data Insertion</option>
-            <option value="plain-question">
+            <option value="/admin-user/plain-question">
               <span className={styles.spanText}>Plain Question</span>
             </option>
 

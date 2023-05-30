@@ -159,12 +159,15 @@ function App() {
         {
           path: "view-directions",
           element: <ViewDirectionsPage />,
-        },
+        }, //
         {
           path: "grouped-question",
           element: <GroupedQuestionPage />,
         },
-
+        {
+          path: "plain-question",
+          element: <PlainQuestionData />,
+        },
         {
           path: "view-grouped-questions",
           element: <ViewGroupedQuestionsPage />,
