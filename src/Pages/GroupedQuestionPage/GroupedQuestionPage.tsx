@@ -93,23 +93,32 @@ export default function GroupedQuestionPage() {
     setDirections(directionsFromServer);
   }
 
+  const fetchYears = async () => {
+    if (selectedCourse.length > 0) {
+      const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
+      setYears(years);
+    }
+  };
+
   useEffect(() => {
     fetchGroupedQuestionDirectionsFromServer();
   }, []);
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      // Your useEffect code here to be run on update only not initial mount
-      fetchGroupedQuestionDirectionsFromServer(
-        selectedCourse,
-        parseInt(selectedYear)
-      );
-    }
-  }, [selectedCourse, selectedYear]);
+    fetchYears();
+  }, [selectedCourse]);
+
+  useEffect(() => {
+    // Your useEffect code here to be run on update only not initial mount
+    fetchGroupedQuestionDirectionsFromServer(
+      selectedCourse,
+      parseInt(selectedYear)
+    );
+  }, [selectedYear]);
 
   const handleCourseChange = (e: any) => {
+    console.log("course change " + e.target.value);
+
     setSelectedCourse(e.target.value);
   };
   const handleDirectionChange = (e: any) => {
