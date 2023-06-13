@@ -68,7 +68,7 @@ export default function ClerkAuthPage() {
         JSON.stringify({ token: result?.token, username: result?.username })
       );
 
-      window.location.href = "/admin-user/plain-question";
+      window.location.href = "/plain-question";
     }
   }
   useEffect(() => {
