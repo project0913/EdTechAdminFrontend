@@ -146,7 +146,7 @@ export default function GeneralQuestionPage() {
         <div className={styles.generalHeader}></div>
         <div className="">
           <div>
-            <p className={styles.txt}>Question Number@</p>
+            <p className={styles.txt}>Question Number</p>
             <input
               type="number"
               value={questionNumber}
