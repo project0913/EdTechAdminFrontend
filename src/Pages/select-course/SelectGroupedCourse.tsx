@@ -49,6 +49,7 @@ export function SelectGroupedCourse() {
     }
     setProgressMessage(""); // clear loading if years are loaded
     setYearOptions(years);
+    setSelectedYear(years[0].value);
   };
   const getGroupedCoursesDirections = async (
     courseId: string,

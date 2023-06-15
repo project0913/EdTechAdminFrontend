@@ -180,7 +180,7 @@ export default function GroupedQuestionPage() {
       questionImage,
       descriptionImage
     );
-    setLoading((prev) => false);
+    setLoading(false);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages = result.response?.data?.message as Array<string>;
@@ -193,6 +193,8 @@ export default function GroupedQuestionPage() {
         setErrorMessage(msgTxt);
         showErrorToast();
       }
+    } else {
+      showSuccessToast("Question Inserted successfully");
     }
   };
   const clearForm = () => {
