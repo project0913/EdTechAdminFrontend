@@ -11,10 +11,17 @@
   align-items: center;
   gap: 1rem;
 }
+
 .txtEditor {
   margin-left: 8%;
   margin-right: 8%;
-  color: #f9fcfa;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+  color: white; /* Set the text color to white or a color that contrasts with the background */
 }
 .groupMargin {
   background-color: rgb(1, 4, 19);

@@ -403,7 +403,10 @@ export default function GroupedQuestionPage() {
                   >
                     Submit
                   </button>
-                  <button className={styles.clearBtn}>Clear</button>
+
+                  <button className={styles.clearBtn} onClick={clearForm}>
+                    Clear
+                  </button>
                 </div>
               </div>
             </div>
