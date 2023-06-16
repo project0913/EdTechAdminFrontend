@@ -16,6 +16,7 @@ import { yearsOptions } from "../../constants";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { Editor } from "../../quill/Editor";
 import ErrorComponent from "../../components/ErrorComponent";
+import { Course } from "../../models/exam-catagory.model";
 
 //import { showErrorToast, showSuccessToast } from "../../utils/helper";
 const override: CSSProperties = {
@@ -64,17 +65,27 @@ export default function PlainQuestionData() {
     for (const examCat of data) {
       examCatsOption.push({ label: examCat.name, value: examCat._id });
     }
-    setExamCatagories(examCatsOption);
-    setSelectedExamCategory(data[0]._id);
+    setExamCatagories(examCatsOption.reverse());
+    let UEECourses = data.find((e) => e._id == "63a2ecdeee469ea43cdacbac");
+    let courses: Course[] = [];
+    if (UEECourses) courses = UEECourses.courses;
+    let crs: SelectOption[] = [];
+
+    for (const course of courses) {
+      if (course.hasDirections) continue;
+
+      crs.push({ label: course.name, value: course._id });
+    }
+    setSelectedExamCategory(UEECourses?._id || "");
 
     let coursesOption = [];
     for (const course of data[0].courses) {
       coursesOption.push({ label: course.name, value: course._id });
     }
-    setCourses(coursesOption);
-    setSelectedCourse(coursesOption[0].value);
+    setCourses(crs);
+    setSelectedCourse(crs[0].value.toString());
 
-    const subExamCats = await fetchExamSubCategories(data[0]._id);
+    const subExamCats = await fetchExamSubCategories(UEECourses?._id || "");
     setSubExamCategory(subExamCats);
     setSelectedSubExamCategory(subExamCats[0].value);
   }

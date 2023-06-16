@@ -53,7 +53,7 @@ export default function AdminUserPage() {
                 <option selected disabled>
                   Select Plain Question
                 </option>
-                <option value="">Insert Plain Question</option>
+                <option value="plain-question">Insert Plain Question</option>
 
                 <option value="grouped-question">Insert Group Question</option>
                 <option value="direction">Insert Directions</option>

@@ -84,10 +84,24 @@ export default function ViewDirectionsPage() {
       showSuccessToast("Request Success");
     }
   };
+  const fetchYears = async () => {
+    const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
+    setYearOptions(years);
 
+    if (years.length == 0) {
+      setProgressMessage("it looks like you don't have data yet");
+      return;
+    }
+    const defaultYear = years[0].value;
+    setSelectedYear(defaultYear);
+  };
   useEffect(() => {
     LoadInit();
   }, []);
+
+  useEffect(() => {
+    fetchYears();
+  }, [selectedCourse]);
 
   useEffect(() => {
     if (isInitialMount.current) {
@@ -101,7 +115,8 @@ export default function ViewDirectionsPage() {
         setDirections(directionsFromServer);
       })();
     }
-  }, [selectedCourse, selectedYear]);
+  }, [selectedYear]);
+
   return (
     <div>
       <div className={styles.adminHeader}>
