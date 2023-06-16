@@ -253,7 +253,9 @@ export default function GroupedQuestionPage() {
           <div className={styles.groupMargin}>
             <div className={styles.txtEditor}>
               <div className={styles.editorContainer}>
-                <p className={styles.txt}>Question Number</p>
+                <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  Question Number
+                </p>
                 <input
                   type="number"
                   onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
@@ -263,7 +265,10 @@ export default function GroupedQuestionPage() {
               </div>
               <div className={styles.editorContaine}>
                 <div className="editor-container">
-                  <p className={styles.questionNumb}>
+                  <p
+                    className={styles.questionNumb}
+                    style={{ fontWeight: "bold" }}
+                  >
                     Paste your question here
                   </p>
                   <Editor
@@ -273,24 +278,28 @@ export default function GroupedQuestionPage() {
                   />
                   <ErrorComponent value={questionText} />
                 </div>
-                <div className="editor-container">
-                  <p className={styles.txt}>
-                    Select Image if the Question has Image
-                  </p>
-
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={tempQuestionImagePath || placeholderImage}
-                    id="photo"
+                    src={tempDescriptionImagePath || placeholderImage}
                     className={styles.img}
+                    style={{ marginRight: "10px" }}
                   />
-                  <input
-                    type="file"
-                    id="file"
-                    onChange={handleQuestionImageChange}
-                  />
+                  <label htmlFor="file" className={styles.chooseFileButton}>
+                    <span>Choose File</span>
+                    <input
+                      type="file"
+                      id="file"
+                      onChange={handleDescriptionImageChange}
+                      className={styles.plainTxt}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                  <span className={styles.txt}>
+                    {tempDescriptionImagePath ? "No file chosen" : ""}
+                  </span>
                 </div>
                 <div>
-                  <p className={styles.txt}>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       A
@@ -305,7 +314,7 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_a} />
                 </div>
                 <div>
-                  <p className={styles.txt}>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       B
@@ -320,7 +329,7 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_b} />
                 </div>
                 <div>
-                  <p className={styles.txt}>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       C
@@ -335,7 +344,7 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_c} />
                 </div>
                 <div>
-                  <p className={styles.txt}>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
                     Paste your option{" "}
                     <span style={{ color: "red", fontWeight: "bolder" }}>
                       D
@@ -350,16 +359,22 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_d} />
                 </div>
                 <div className={styles.answerContainer}>
-                  <p className={styles.txt}>Choose Answer here</p>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                    Choose Answer here
+                  </p>
                   <SelectDropdown
                     title=""
                     items={answerOptions}
                     handleSelect={set_answer_Text}
+                    styles={{
+                      backgroundColor: "green",
+                      color: "white",
+                    }}
                   />
                 </div>
 
                 <div>
-                  <p className={styles.txt}>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
                     Paste your option Description here
                   </p>
                   <Editor
@@ -369,7 +384,7 @@ export default function GroupedQuestionPage() {
                   />
                 </div>
                 <div className={styles.plainTxt}>
-                  <p className={styles.txt}>
+                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
                     Select Image if the Description has Image
                   </p>
                   <div style={{ display: "flex", alignItems: "center" }}>
