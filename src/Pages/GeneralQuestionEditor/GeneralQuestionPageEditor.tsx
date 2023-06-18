@@ -295,7 +295,12 @@ export default function GeneralQuestionPageEditor() {
             <button
               className={styles.clearBtn}
               onClick={() => {
-                navigate(-1);
+                navigate("/admin-user/view-general-question", {
+                  state: {
+                    initialPage: location.state?.initialPage,
+                  },
+                  replace: true,
+                });
               }}
             >
               Back To View Questions

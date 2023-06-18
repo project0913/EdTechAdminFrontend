@@ -21,8 +21,8 @@ export const showSuccessToast = (message: string) => {
   });
 };
 
-export const showErrorToast = () => {
-  toast.error("Something is wrong!", {
+export const showErrorToast = (message: string = "Something is wrong!") => {
+  toast.error(message, {
     position: "bottom-right",
     autoClose: 3000,
     hideProgressBar: false,

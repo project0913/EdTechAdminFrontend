@@ -1,7 +1,7 @@
 import styles from "./groupedquestionpage.module.css";
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import placeholderImage from "../../assets/place_holder.jpg";
-
+// hello
 import { AxiosError } from "axios";
 import { SelectOption } from "../../DataService/service.types";
 import { PlainQuestion as GroupedQuestion } from "../../models/question.model";
@@ -191,10 +191,11 @@ export default function GroupedQuestionPage() {
 
       if (msgTxt !== errorMessage) {
         setErrorMessage(msgTxt);
-        showErrorToast();
+        showErrorToast(msgTxt);
       }
     } else {
       showSuccessToast("Question Inserted successfully");
+      clearForm();
     }
   };
   const clearForm = () => {
@@ -203,8 +204,10 @@ export default function GroupedQuestionPage() {
     setOption_b("");
     setOption_c("");
     setOption_d("");
-    const quesNum = parseInt(questionNumber || 0);
-    setQuestionNumber(quesNum + 1);
+    const quesNum = parseInt(questionNumber || 0) + 1;
+    console.log(`qqqqqqqqqqqqqqqqqqqqqq ${quesNum.toString()}`);
+
+    setQuestionNumber(quesNum.toString());
     setDescription("");
     setQuestionImage("");
     setDescriptionImage("");
@@ -266,6 +269,7 @@ export default function GroupedQuestionPage() {
                 <input
                   type="number"
                   onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
+                  value={questionNumber}
                 />
                 <br />
                 <ErrorComponent value={questionNumber} />

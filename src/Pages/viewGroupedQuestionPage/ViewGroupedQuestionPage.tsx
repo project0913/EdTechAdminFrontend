@@ -19,7 +19,10 @@ import {
 } from "../../utils/helper";
 
 import { fetchGroupedQuestions } from "../../DataService/viewGroupedQuestion.service";
-import { deletePlainQuestion } from "../../DataService/editQuestion.service";
+import {
+  deleteGroupedQuestion,
+  deletePlainQuestion,
+} from "../../DataService/editQuestion.service";
 import { AxiosError } from "axios";
 
 const options: HTMLReactParserOptions = {
@@ -54,7 +57,7 @@ export function ViewGroupedQuestionsPage() {
   }, []);
 
   const deleteGroupedQuestionFromServer = async (questionId: string) => {
-    let result = await deletePlainQuestion(questionId);
+    let result = await deleteGroupedQuestion(questionId);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
