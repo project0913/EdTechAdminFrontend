@@ -1,69 +1,18 @@
-/* .generalBackground {
-  margin-left: 5%;
-  margin-right: 5%;
+.directionPageStyle {
 }
-.generalHeader {
-  background-color: #088081;
-  height: 60px;
-  width: 100%;
-}
-.img {
-  max-width: 150px;
-  max-height: 150px;
-}
-.questionBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.submitBtn {
-  width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  margin: 10px;
-  background-color: #088081;
-  cursor: pointer;
-}
-.submitBtn:hover {
-  background-color: #088081;
-  opacity: 0.8;
-}
-.clearBtn {
-  border: none;
-  width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  margin: 10px;
-  cursor: pointer;
-  background-color: rgb(97, 26, 26);
-}
-.clearBtn:hover {
-  background-color: rgb(97, 26, 26, 0.8);
+.generalBackground {
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: -16px;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: whitesmoke;
+  padding: 0px 30px;
 }
 
-.answerYear {
-  margin-top: 5px;
-  margin-left: 40px;
+.img {
+  width: 150px;
+  height: 80px;
 }
-.plainTxt {
-  font-size: 18px;
-}
-.dropdownItem {
-  width: 120px;
-  color: #088081;
-}
-.txt {
-  color: #088081;
-} */
 
 .chooseFileButton {
   display: inline-block;
@@ -92,11 +41,12 @@
 }
 .submitBtn {
   background-color: transparent;
-  color: black;
-  border: 1px solid white;
+  color: rgb(42, 91, 119);
+  border: 1px solid #3e8e41;
   border-radius: 30px;
   width: 200px;
-  margin: 20px;
+  margin-right: 10px;
+  margin-bottom: 100px;
   padding: 12px 24px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -104,14 +54,17 @@
 
 .submitBtn:hover {
   background-color: #3e8e41;
+  color: white;
 }
 .clearBtn {
   background-color: transparent;
-  color: white;
-  border: 1px solid white;
+  color: red;
+  border: 1px solid red;
   border-radius: 30px;
   width: 200px;
-  margin: 20px;
+
+  margin-bottom: 100px;
+
   padding: 12px 24px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -119,4 +72,5 @@
 
 .clearBtn:hover {
   background-color: #e53935;
+  color: #f9fcfa;
 }

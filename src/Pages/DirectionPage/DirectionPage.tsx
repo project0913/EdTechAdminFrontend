@@ -79,6 +79,7 @@ export default function DirectionPage() {
   const handleYearsChange = (e: any) => {
     setYear(e.target.value);
   };
+
   return (
     <LoadingOverlayWrapper
       active={loading}
@@ -111,7 +112,11 @@ export default function DirectionPage() {
               />
             </div>
           </div>
-          <div className={styles.editor}>
+        </div>
+      </div>
+      <div className="directionPageStyle" style={{ backgroundColor: "black" }}>
+        <div className="directionBody">
+          <div className={styles.txtEditor}>
             <div>
               <p className={styles.txt}>Fill Section Number Here</p>
               <input
@@ -129,6 +134,7 @@ export default function DirectionPage() {
 
             <div>
               <p className={styles.txt}>Paste your Direction Text Here</p>
+
               <Editor
                 setValue={setDirection_text}
                 value={directionText}
@@ -145,7 +151,10 @@ export default function DirectionPage() {
                 editorId="editor2"
               />
             </div>
-            <div>
+            <div
+              className={styles.submitButton}
+              style={{ textAlign: "center" }}
+            >
               <button
                 onClick={submitQuestionToBackend}
                 className={styles.submitBtn}

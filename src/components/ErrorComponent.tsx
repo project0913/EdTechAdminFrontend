@@ -9,9 +9,10 @@ export default function ErrorComponent({ value }: ErrorProps) {
       value === "<p><br></p>" ||
       !value ||
       (value && value.length < 1) ? (
-        <span style={{ color: "red" }}>Field Must be Filled</span>
+        <span style={{ color: "red", fontSize: "12px", marginLeft: "15px" }}>
+          field must be filled
+        </span>
       ) : null}
     </span>
   );
 }
-//<p><br></p>

@@ -5,9 +5,16 @@
 }
 
 .txtEditor {
-  margin-left: 8%;
-  margin-right: 8%;
-  color: #f9fcfa;
+  margin-left: 7%;
+  margin-right: 7%;
+  color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+  background-color: whitesmoke;
+  padding: 0px 30px; /* Set the text color to white or a color that contrasts with the background */
 }
 .plainImage {
   text-align: center;
@@ -76,14 +83,14 @@
   opacity: 0;
   cursor: pointer;
 }
-
 .submitBtn {
   background-color: transparent;
-  color: white;
-  border: 1px solid white;
+  color: rgb(42, 91, 119);
+  border: 1px solid #3e8e41;
   border-radius: 30px;
   width: 200px;
-  margin: 20px;
+  margin-right: 10px;
+  margin-bottom: 100px;
   padding: 12px 24px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -91,14 +98,17 @@
 
 .submitBtn:hover {
   background-color: #3e8e41;
+  color: white;
 }
 .clearBtn {
   background-color: transparent;
-  color: white;
-  border: 1px solid white;
+  color: red;
+  border: 1px solid red;
   border-radius: 30px;
   width: 200px;
-  margin: 20px;
+
+  margin-bottom: 100px;
+
   padding: 12px 24px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -106,4 +116,5 @@
 
 .clearBtn:hover {
   background-color: #e53935;
+  color: #f9fcfa;
 }

@@ -253,7 +253,14 @@ export default function GroupedQuestionPage() {
           <div className={styles.groupMargin}>
             <div className={styles.txtEditor}>
               <div className={styles.editorContainer}>
-                <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                <p
+                  className={styles.txt}
+                  style={{
+                    fontWeight: "bold",
+                    color: "green",
+                    paddingTop: "20px",
+                  }}
+                >
                   Question Number
                 </p>
                 <input
@@ -266,8 +273,8 @@ export default function GroupedQuestionPage() {
               <div className={styles.editorContaine}>
                 <div className="editor-container">
                   <p
-                    className={styles.questionNumb}
-                    style={{ fontWeight: "bold" }}
+                    className={styles.questionNumber}
+                    style={{ fontWeight: "bold", color: "green" }}
                   >
                     Paste your question here
                   </p>
@@ -299,9 +306,12 @@ export default function GroupedQuestionPage() {
                   </span>
                 </div>
                 <div>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "green" }}
+                  >
                     Paste your option{" "}
-                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                    <span style={{ color: "blue", fontWeight: "bolder" }}>
                       A
                     </span>{" "}
                     here
@@ -314,9 +324,12 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_a} />
                 </div>
                 <div>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "green" }}
+                  >
                     Paste your option{" "}
-                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                    <span style={{ color: "blue", fontWeight: "bolder" }}>
                       B
                     </span>{" "}
                     here
@@ -329,9 +342,12 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_b} />
                 </div>
                 <div>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "green" }}
+                  >
                     Paste your option{" "}
-                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                    <span style={{ color: "blue", fontWeight: "bolder" }}>
                       C
                     </span>{" "}
                     here
@@ -344,9 +360,12 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_c} />
                 </div>
                 <div>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "green" }}
+                  >
                     Paste your option{" "}
-                    <span style={{ color: "red", fontWeight: "bolder" }}>
+                    <span style={{ color: "blue", fontWeight: "bolder" }}>
                       D
                     </span>{" "}
                     here
@@ -359,22 +378,24 @@ export default function GroupedQuestionPage() {
                   <ErrorComponent value={option_d} />
                 </div>
                 <div className={styles.answerContainer}>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "blue" }}
+                  >
                     Choose Answer here
                   </p>
                   <SelectDropdown
                     title=""
                     items={answerOptions}
                     handleSelect={set_answer_Text}
-                    styles={{
-                      backgroundColor: "green",
-                      color: "white",
-                    }}
                   />
                 </div>
 
                 <div>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "green" }}
+                  >
                     Paste your option Description here
                   </p>
                   <Editor
@@ -384,7 +405,10 @@ export default function GroupedQuestionPage() {
                   />
                 </div>
                 <div className={styles.plainTxt}>
-                  <p className={styles.txt} style={{ fontWeight: "bold" }}>
+                  <p
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "green" }}
+                  >
                     Select Image if the Description has Image
                   </p>
                   <div style={{ display: "flex", alignItems: "center" }}>

@@ -20,7 +20,10 @@ export const Editor = ({ setValue, editorId, value }: EditorProp) => {
   };
 
   return (
-    <div className="text-editor">
+    <div
+      className="text-editor"
+      style={{ backgroundColor: "white", color: "black" }}
+    >
       <EditorToolbar toolbarId={editorId} />
       <ReactQuill
         theme="snow"

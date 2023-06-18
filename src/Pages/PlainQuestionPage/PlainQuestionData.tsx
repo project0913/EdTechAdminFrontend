@@ -252,6 +252,11 @@ export default function PlainQuestionData() {
                       display: "flex",
                       flexDirection: "row",
                       alignItems: "center",
+
+                      fontWeight: "bold",
+                      color: "green",
+                      paddingTop: "20px",
+                      marginLeft: "30px",
                     }}
                   >
                     <div className={styles.dropdownItem}>
@@ -269,7 +274,14 @@ export default function PlainQuestionData() {
                         marginLeft: "20px",
                       }}
                     >
-                      <p className={styles.txt} style={{ marginRight: "10px" }}>
+                      <p
+                        className={styles.txt}
+                        style={{
+                          marginRight: "10px",
+                          fontWeight: "bold",
+                          color: "green",
+                        }}
+                      >
                         Question Number
                       </p>
                       <input
@@ -288,7 +300,15 @@ export default function PlainQuestionData() {
                     </div>
                   </div>
                   <div className={styles.q}>
-                    <p className={styles.txt}>Paste Your Question Here</p>
+                    <p
+                      className={styles.txt}
+                      style={{
+                        fontWeight: "bold",
+                        color: "green",
+                      }}
+                    >
+                      Paste Your Question Here
+                    </p>
                     <Editor
                       setValue={setQuestionTextValue}
                       value={questionText}
@@ -297,15 +317,14 @@ export default function PlainQuestionData() {
                     <ErrorComponent value={questionText} />
                   </div>
 
-                  <div
-                    className={styles.plainImage}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <p className={styles.txt}>
+                  <div>
+                    <p
+                      className={styles.txt}
+                      style={{
+                        fontWeight: "bold",
+                        color: "green",
+                      }}
+                    >
                       Select Image if the Question has Image
                     </p>
                     <div style={{ display: "flex", alignItems: "center" }}>
@@ -331,9 +350,12 @@ export default function PlainQuestionData() {
                     </div>
                   </div>
                   <div className={styles.plainTxt}>
-                    <p className={styles.txt}>
+                    <p
+                      className={styles.txt}
+                      style={{ fontWeight: "bold", color: "green" }}
+                    >
                       Paste Your Option{"  "}
-                      <span style={{ color: "red", fontWeight: "bolder" }}>
+                      <span style={{ color: "blue", fontWeight: "bolder" }}>
                         A{" "}
                       </span>
                       here
@@ -346,9 +368,12 @@ export default function PlainQuestionData() {
                     <ErrorComponent value={option_a} />
                   </div>
                   <div className={styles.plainTxt}>
-                    <p className={styles.txt}>
-                      Paste Your ption{" "}
-                      <span style={{ color: "red", fontWeight: "bolder" }}>
+                    <p
+                      className={styles.txt}
+                      style={{ fontWeight: "bold", color: "green" }}
+                    >
+                      Paste Your option{" "}
+                      <span style={{ color: "blue", fontWeight: "bolder" }}>
                         B
                       </span>{" "}
                       here
@@ -361,9 +386,12 @@ export default function PlainQuestionData() {
                     <ErrorComponent value={option_b} />
                   </div>
                   <div className={styles.plainTxt}>
-                    <p className={styles.txt}>
+                    <p
+                      className={styles.txt}
+                      style={{ fontWeight: "bold", color: "green" }}
+                    >
                       Paste Your Option{" "}
-                      <span style={{ color: "red", fontWeight: "bolder" }}>
+                      <span style={{ color: "blue", fontWeight: "bolder" }}>
                         C
                       </span>{" "}
                       Here
@@ -376,9 +404,12 @@ export default function PlainQuestionData() {
                     <ErrorComponent value={option_c} />
                   </div>
                   <div className={styles.plainTxt}>
-                    <p className={styles.txt}>
+                    <p
+                      className={styles.txt}
+                      style={{ fontWeight: "bold", color: "green" }}
+                    >
                       Paste your option{" "}
-                      <span style={{ color: "red", fontWeight: "bolder" }}>
+                      <span style={{ color: "blue", fontWeight: "bolder" }}>
                         D
                       </span>{" "}
                       here
@@ -392,7 +423,13 @@ export default function PlainQuestionData() {
                   </div>
                   <div className={styles.answerYear}>
                     <div>
-                      <b className={styles.txt}>Choose Answer Here</b>
+                      <b
+                        className={styles.txt}
+                        style={{ fontWeight: "bold", color: "blue" }}
+                      >
+                        Choose Answer Here
+                      </b>
+
                       <SelectDropdown
                         title=""
                         items={answerOptions}
@@ -436,20 +473,20 @@ export default function PlainQuestionData() {
                       </span>
                     </div>
                   </div>
-                </div>
-                <div
-                  className={styles.questionBtn}
-                  style={{ display: "flex", justifyContent: "center" }}
-                >
-                  <button
-                    className={styles.submitBtn}
-                    onClick={submitGroupedQuestionToBackend}
+                  <div
+                    className={styles.questionBtn}
+                    style={{ display: "flex", justifyContent: "center" }}
                   >
-                    Submit
-                  </button>
-                  <button className={styles.clearBtn} onClick={clearForm}>
-                    Clear
-                  </button>
+                    <button
+                      className={styles.submitBtn}
+                      onClick={submitGroupedQuestionToBackend}
+                    >
+                      Submit
+                    </button>
+                    <button className={styles.clearBtn} onClick={clearForm}>
+                      Clear
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

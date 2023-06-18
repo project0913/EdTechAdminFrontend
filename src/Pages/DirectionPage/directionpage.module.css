@@ -1,36 +1,76 @@
 .directionQuestionBg {
-  margin-left: 5%;
-  margin-right: 5%;
-  background-color: #ffffff4b;
-}
-.directionHeader {
   background-color: #088081;
-  display: flex;
-  height: 60px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  color: #ffffff;
 }
-.txt {
-  color: #088081;
+.directionBody {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .submitBtn {
-  width: 150px;
-  height: 40px;
+  margin-top: 20px;
+  align-items: center;
+}
+.directionHeader {
+  width: 100%;
+  height: 45px;
+  background-color: #f9fcfa;
+  color: #252222;
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 500px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  margin-top: 10px;
-  cursor: pointer;
-  background-color: #088081;
 }
+.directionQuestionBg {
+  background-color: black;
+}
+.txtEditor {
+  margin-left: 7%;
+  margin-right: 7%;
+  background-color: whitesmoke;
+  padding: 0px 30px;
+}
+.txt {
+  color: green;
+  font-style: bold;
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+.submitBtn {
+  background-color: transparent;
+  color: rgb(42, 91, 119);
+  border: 1px solid #3e8e41;
+  border-radius: 30px;
+  width: 200px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
 .submitBtn:hover {
-  background-color: #0c7a7a;
-  opacity: 0.8;
+  background-color: #3e8e41;
+  color: white;
+}
+.clearBtn {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  border-radius: 30px;
+  width: 200px;
+
+  margin-bottom: 100px;
+
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.clearBtn:hover {
+  background-color: #e53935;
+  color: #f9fcfa;
 }

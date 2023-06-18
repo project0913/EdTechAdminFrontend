@@ -142,129 +142,185 @@ export default function GeneralQuestionPage() {
         />
       }
     >
-      <div className={styles.generalBackground}>
-        <div className={styles.generalHeader}></div>
-        <div className="">
-          <div>
-            <p className={styles.txt}>Question Number</p>
-            <input
-              type="number"
-              value={questionNumber}
-              onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
-            />
-          </div>
-          <p className={styles.txt}>Paste your question here</p>
-          <Editor
-            setValue={setQuestionTextValue}
-            editorId="editor1"
-            value={questionText}
-          />
-          <ErrorComponent value={questionText} />
-        </div>
-        <div className="">
-          <p className={styles.txt}>
-            <strong>Select Image if the Question has Image</strong>
-          </p>
-          <img
-            src={tempQuestionImagePath || placeholderImage}
-            id="photo"
-            style={{ width: "150px", height: "80px" }}
-          />
-          <input type="file" id="file" onChange={handleQuestionImageChange} />
-        </div>
-        <div className="">
-          <p className={styles.txt}>
-            Paste your option
-            <span style={{ color: "red", fontWeight: "bolder" }}> A </span>
-            Here
-          </p>
-          <Editor
-            setValue={setOption_a_Text}
-            value={option_a}
-            editorId="editor2"
-          />
-          <ErrorComponent value={option_a} />
-        </div>
-        <div className="">
-          <p className={styles.txt}>
-            Paste your option
-            <span style={{ color: "red", fontWeight: "bolder" }}>B</span> Here
-          </p>
-          <Editor
-            setValue={setOption_b_Text}
-            value={option_b}
-            editorId="editor3"
-          />
-          <ErrorComponent value={option_b} />
-        </div>
-        <div className="">
-          <p className={styles.txt}>
-            Paste your option{" "}
-            <span style={{ color: "red", fontWeight: "bolder" }}>C</span> Here
-          </p>
-          <Editor
-            setValue={setOption_c_Text}
-            value={option_c}
-            editorId="editor4"
-          />
-          <ErrorComponent value={option_c} />
-        </div>
-        <div className="">
-          <p className={styles.txt}>
-            Paste your option{" "}
-            <span style={{ color: "red", fontWeight: "bolder" }}>D</span> Here
-          </p>
-          <Editor
-            setValue={setOption_d_Text}
-            value={option_d}
-            editorId="editor5"
-          />
-          <ErrorComponent value={option_d} />
-          <div className={styles.answerYear}>
+      <div className="directionPageStyle" style={{ backgroundColor: "black" }}>
+        <div className={styles.generalBackground}>
+          <div className={styles.generalHeader}></div>
+          <div className="">
             <div>
-              <b className={styles.txt}>Choose Answer here</b>
-              <SelectDropdown
-                title=""
-                items={answerOptions}
-                handleSelect={setOption_answer_Text}
+              <p
+                className={styles.txt}
+                style={{
+                  fontWeight: "bold",
+                  color: "green",
+                  paddingTop: "10 px",
+                }}
+              >
+                Question Number
+              </p>
+              <input
+                type="number"
+                value={questionNumber}
+                onChange={(e) => setQuestionNumber(parseInt(e.target.value))}
               />
             </div>
-          </div>
-
-          <div className={styles.plainTxt}>
-            <p className={styles.txt}>Paste your option Description here</p>
-            <Editor
-              setValue={setDescription_Text}
-              editorId="editor6"
-              value={description}
-            />
-          </div>
-          <div className={styles.plainTxt}>
-            <p className={styles.txt}>
-              Select Image if the description has Image
+            <p
+              className={styles.txt}
+              style={{ fontWeight: "bold", color: "green" }}
+            >
+              Paste your question here
             </p>
+            <Editor
+              setValue={setQuestionTextValue}
+              editorId="editor1"
+              value={questionText}
+            />
+            <ErrorComponent value={questionText} />
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <img
               src={tempDescriptionImagePath || placeholderImage}
-              style={{ width: "150px", height: "80px" }}
+              className={styles.img}
+              style={{ marginRight: "10px" }}
             />
-            <input
-              type="file"
-              id="file"
-              onChange={handleDescriptionImageChange}
-              className={styles.plainTxt}
-            />
+            <label htmlFor="file" className={styles.chooseFileButton}>
+              <span>Choose File</span>
+              <input
+                type="file"
+                id="file"
+                onChange={handleQuestionImageChange}
+                className={styles.plainTxt}
+                style={{ display: "none" }}
+              />
+            </label>
+            <span className={styles.txt}>
+              {tempDescriptionImagePath ? "No file chosen" : ""}
+            </span>
           </div>
-        </div>
-        <div className={styles.questionBtn}>
-          <button
-            className={styles.submitBtn}
-            onClick={submitGeneralQuestionPageToBackend}
-          >
-            Submit
-          </button>
-          <button className={styles.clearBtn} onClick={clearForm}>
-            Clear
-          </button>
+
+          <div className="">
+            <p
+              className={styles.txt}
+              style={{ fontWeight: "bold", color: "green" }}
+            >
+              Paste your option{" "}
+              <span style={{ color: "blue", fontWeight: "bolder" }}>A</span>{" "}
+              here
+            </p>
+            <Editor
+              setValue={setOption_a_Text}
+              value={option_a}
+              editorId="editor2"
+            />
+            <ErrorComponent value={option_a} />
+          </div>
+          <div className="">
+            <p
+              className={styles.txt}
+              style={{ fontWeight: "bold", color: "green" }}
+            >
+              Paste your option{" "}
+              <span style={{ color: "blue", fontWeight: "bolder" }}>B</span>{" "}
+              here
+            </p>
+            <Editor
+              setValue={setOption_b_Text}
+              value={option_b}
+              editorId="editor3"
+            />
+            <ErrorComponent value={option_b} />
+          </div>
+          <div className="">
+            <p
+              className={styles.txt}
+              style={{ fontWeight: "bold", color: "green" }}
+            >
+              Paste your option{" "}
+              <span style={{ color: "blue", fontWeight: "bolder" }}>C</span>{" "}
+              here
+            </p>
+            <Editor
+              setValue={setOption_c_Text}
+              value={option_c}
+              editorId="editor4"
+            />
+            <ErrorComponent value={option_c} />
+          </div>
+          <div className="">
+            <p
+              className={styles.txt}
+              style={{ fontWeight: "bold", color: "green" }}
+            >
+              Paste your option{" "}
+              <span style={{ color: "blue", fontWeight: "bolder" }}>D</span>{" "}
+              here
+            </p>
+            <Editor
+              setValue={setOption_d_Text}
+              value={option_d}
+              editorId="editor5"
+            />
+            <ErrorComponent value={option_d} />
+            <div className={styles.answerYear}>
+              <div>
+                <b
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "blue" }}
+                >
+                  Choose Answer here
+                </b>
+                <SelectDropdown
+                  title=""
+                  items={answerOptions}
+                  handleSelect={setOption_answer_Text}
+                />
+              </div>
+            </div>
+
+            <div className={styles.plainTxt}>
+              <p
+                className={styles.txt}
+                style={{ fontWeight: "bold", color: "green" }}
+              >
+                Paste your option Description here
+              </p>
+              <Editor
+                setValue={setDescription_Text}
+                editorId="editor6"
+                value={description}
+              />
+            </div>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src={tempDescriptionImagePath || placeholderImage}
+                className={styles.img}
+                style={{ marginRight: "10px" }}
+              />
+              <label htmlFor="file" className={styles.chooseFileButton}>
+                <span>Choose File</span>
+                <input
+                  type="file"
+                  id="file"
+                  onChange={handleQuestionImageChange}
+                  className={styles.plainTxt}
+                  style={{ display: "none" }}
+                />
+              </label>
+              <span className={styles.txt}>
+                {tempDescriptionImagePath ? "No file chosen" : ""}
+              </span>
+            </div>
+          </div>
+          <div className={styles.questionBtn} style={{ textAlign: "center" }}>
+            <button
+              className={styles.submitBtn}
+              onClick={submitGeneralQuestionPageToBackend}
+            >
+              Submit
+            </button>
+            <button className={styles.clearBtn} onClick={clearForm}>
+              Clear
+            </button>
+          </div>
         </div>
       </div>
     </LoadingOverlayWrapper>
