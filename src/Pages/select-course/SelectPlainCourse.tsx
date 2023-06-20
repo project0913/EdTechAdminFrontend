@@ -79,12 +79,34 @@ export function SelectPlainCourse() {
           to={"/admin-user/view-plain-questions"}
           state={{ course: selectedCourse, year: selectedYear, page: 1 }}
         >
-          <button
-            style={{ marginLeft: "30%", marginTop: "3%", cursor: "pointer" }}
+          <div
+            className="btn-link"
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+            }}
           >
-            {" "}
-            View Questions for the Selected Course
-          </button>
+            <button
+              style={{
+                marginLeft: "30%",
+                marginTop: "3%",
+                cursor: "pointer",
+                border: "none",
+                color: "white",
+                backgroundColor: "#4CAF50",
+                padding: "10px 20px",
+                fontSize: "16px",
+
+                margin: "4px 2px",
+                borderRadius: "5px",
+                transition: "background-color 0.3s ease",
+                fontFamily: "newtimes",
+              }}
+            >
+              {" "}
+              View Questions for the Selected Course
+            </button>
+          </div>
         </Link>
       )}
     </div>

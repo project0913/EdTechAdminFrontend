@@ -80,7 +80,10 @@ export function SelectGroupedCourse() {
     <div>
       <div>{progressMessage && progressMessage}</div>
       <div className={styles.adminBody}>
-        <div className={styles.groupedHeader}>
+        <div
+          className={styles.groupedHeader}
+          style={{ backgroundColor: "black" }}
+        >
           <span className="list-course mt-3">
             <b style={{ color: "white" }}>Courses</b>
             <SelectDropdown
@@ -110,21 +113,41 @@ export function SelectGroupedCourse() {
           </span>
         </div>
       </div>
-      <div>
-        {selectedDirection.length > 0 && (
-          <Link
-            to={"/admin-user/view-grouped-questions"}
-            state={{ direction: selectedDirection }}
+
+      {selectedDirection.length > 0 && (
+        <Link
+          to={"/admin-user/view-grouped-questions"}
+          state={{ direction: selectedDirection }}
+        >
+          <div
+            className="btn-link"
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+            }}
           >
+            {" "}
             <button
-              style={{ marginLeft: "30%", marginTop: "3%", cursor: "pointer" }}
+              style={{
+                cursor: "pointer",
+                border: "none",
+                color: "white",
+                backgroundColor: "#4CAF50",
+                padding: "10px 20px",
+                fontSize: "16px",
+
+                margin: "4px 2px",
+                borderRadius: "5px",
+                transition: "background-color 0.3s ease",
+                fontFamily: "newtimes",
+              }}
             >
               {" "}
               View Questions for the Selected Direction
             </button>
-          </Link>
-        )}
-      </div>
+          </div>
+        </Link>
+      )}
     </div>
   );
 }

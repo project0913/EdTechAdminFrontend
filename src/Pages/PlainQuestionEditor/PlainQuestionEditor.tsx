@@ -181,11 +181,20 @@ export default function PlainQuestionEditor() {
         />
       }
     >
-      <div className={styles.bodyPlainQuestion}>
-        <div className={styles.plainQuestionContainer}>
+      <div className="directionPageStyle" style={{ backgroundColor: "black" }}>
+        <div className={styles.generalBackground}>
           <div className={styles.editorContainer}>
             <div>
-              <p className={styles.txt}>Question Number</p>
+              <p
+                className={styles.txt}
+                style={{
+                  fontWeight: "bold",
+                  color: "green",
+                  paddingTop: "30px",
+                }}
+              >
+                Question Number
+              </p>
               <input
                 type="number"
                 value={questionNumber}
@@ -194,7 +203,12 @@ export default function PlainQuestionEditor() {
             </div>
             <div className="">
               <div className="">
-                <p className={styles.txt}>Paste your question here</p>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
+                  Paste your question here
+                </p>
                 <Editor
                   setValue={setQuestionTextValue}
                   editorId="editor1"
@@ -202,29 +216,33 @@ export default function PlainQuestionEditor() {
                 />
                 <ErrorComponent value={questionText} />
               </div>
-              <div className="">
-                <p className={styles.txt}>
-                  Select Image if the Question has Image
-                </p>
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <img
-                  src={
-                    resolveImageURL(question?.questionImage || "") ||
-                    tempQuestionImagePath ||
-                    placeholderImage
-                  }
-                  id="photo"
+                  src={tempDescriptionImagePath || placeholderImage}
                   className={styles.img}
+                  style={{ marginRight: "10px" }}
                 />
-                <input
-                  type="file"
-                  id="file"
-                  onChange={handleQuestionImageChange}
-                />
+                <label htmlFor="file" className={styles.chooseFileButton}>
+                  <span>Choose File</span>
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={handleQuestionImageChange}
+                    className={styles.plainTxt}
+                    style={{ display: "none" }}
+                  />
+                </label>
+                <span className={styles.txt}>
+                  {tempDescriptionImagePath ? "No file chosen" : ""}
+                </span>
               </div>
               <div className="">
-                <p className={styles.txt}>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
                   Paste your option{"  "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>
+                  <span style={{ color: "blue", fontWeight: "bolder" }}>
                     {" "}
                     A{" "}
                   </span>
@@ -238,9 +256,12 @@ export default function PlainQuestionEditor() {
                 <ErrorComponent value={option_a} />
               </div>
               <div className="">
-                <p className={styles.txt}>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
                   Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>B</span>{" "}
+                  <span style={{ color: "blue", fontWeight: "bolder" }}>B</span>{" "}
                   Here
                 </p>
                 <Editor
@@ -251,9 +272,12 @@ export default function PlainQuestionEditor() {
                 <ErrorComponent value={option_b} />
               </div>
               <div className="">
-                <p className={styles.txt}>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
                   Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>C</span>{" "}
+                  <span style={{ color: "blue", fontWeight: "bolder" }}>C</span>{" "}
                   Here
                 </p>
                 <Editor
@@ -264,9 +288,12 @@ export default function PlainQuestionEditor() {
                 <ErrorComponent value={option_c} />
               </div>
               <div className="">
-                <p className={styles.txt}>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
                   Paste your option{" "}
-                  <span style={{ color: "red", fontWeight: "bolder" }}>D</span>{" "}
+                  <span style={{ color: "blue", fontWeight: "bolder" }}>D</span>{" "}
                   Here
                 </p>
                 <Editor
@@ -277,7 +304,12 @@ export default function PlainQuestionEditor() {
                 <ErrorComponent value={option_d} />
               </div>
               <div className="">
-                <p className={styles.txt}>Choose Answer here</p>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "blue" }}
+                >
+                  Choose Answer here
+                </p>
                 <SelectDropdown
                   title=""
                   items={answerOptions}
@@ -286,7 +318,12 @@ export default function PlainQuestionEditor() {
               </div>
 
               <div className="">
-                <p className={styles.txt}>Edit Year</p>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
+                  Edit Year
+                </p>
                 <input
                   type="number"
                   value={year}
@@ -295,30 +332,37 @@ export default function PlainQuestionEditor() {
               </div>
 
               <div className="">
-                <p className={styles.txt}>Paste your option Description here</p>
+                <p
+                  className={styles.txt}
+                  style={{ fontWeight: "bold", color: "green" }}
+                >
+                  Paste your option Description here
+                </p>
                 <Editor
                   setValue={setDescription_Text}
                   editorId="editor7"
                   value={description}
                 />
               </div>
-              <div className="">
-                <p className={styles.txt}>
-                  Select Image if the description has Image
-                </p>
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <img
-                  src={
-                    resolveImageURL(question?.descriptionImage || "") ||
-                    tempDescriptionImagePath ||
-                    placeholderImage
-                  }
+                  src={tempDescriptionImagePath || placeholderImage}
                   className={styles.img}
+                  style={{ marginRight: "10px" }}
                 />
-                <input
-                  type="file"
-                  id="file"
-                  onChange={handleDescriptionImageChange}
-                />
+                <label htmlFor="file" className={styles.chooseFileButton}>
+                  <span>Choose File</span>
+                  <input
+                    type="file"
+                    id="file"
+                    onChange={handleQuestionImageChange}
+                    className={styles.plainTxt}
+                    style={{ display: "none" }}
+                  />
+                </label>
+                <span className={styles.txt}>
+                  {tempDescriptionImagePath ? "No file chosen" : ""}
+                </span>
               </div>
             </div>
           </div>
@@ -352,7 +396,7 @@ export default function PlainQuestionEditor() {
                 }
               }}
             >
-              Back To View Questions
+              Back to View
             </button>
           </div>
         </div>

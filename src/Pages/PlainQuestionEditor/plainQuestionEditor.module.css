@@ -1,10 +1,39 @@
-.editorContainer {
-}
-.bodyPlainQuestion {
+.generalBackground {
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: -16px;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: whitesmoke;
+  padding: 0px 30px;
 }
 .img {
   width: 150px;
   height: 80px;
+}
+.chooseFileButton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-color: #4caf50;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chooseFileButton:hover {
+  background-color: #3e8e41;
+}
+
+.chooseFileButton input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 .txt {
   color: #088081;
@@ -16,26 +45,41 @@
   justify-content: center;
 }
 .submitBtn {
-  width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 10px;
-  color: white;
+  background-color: transparent;
+  color: #3e8e41;
+  border: 1px solid #3e8e41;
+  border-radius: 30px;
+  width: 200px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 100px;
+  padding: 12px 24px;
   cursor: pointer;
-  margin: 10px;
-  background-color: #088081;
+  transition: background-color 0.2s ease-in-out;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.submitBtn:hover {
+  background-color: #3e8e41;
+  color: white;
 }
 .clearBtn {
-  border: none;
-  width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  color: white;
-  margin: 10px;
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 200px;
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 100px;
+  padding: 12px 24px;
   cursor: pointer;
-  background-color: rgb(97, 26, 26);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.clearBtn:hover {
+  background-color: #e53935;
+  color: #f9fcfa;
 }

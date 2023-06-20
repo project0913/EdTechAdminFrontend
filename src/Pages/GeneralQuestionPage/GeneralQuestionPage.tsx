@@ -144,7 +144,6 @@ export default function GeneralQuestionPage() {
     >
       <div className="directionPageStyle" style={{ backgroundColor: "black" }}>
         <div className={styles.generalBackground}>
-          <div className={styles.generalHeader}></div>
           <div className="">
             <div>
               <p
@@ -152,7 +151,7 @@ export default function GeneralQuestionPage() {
                 style={{
                   fontWeight: "bold",
                   color: "green",
-                  paddingTop: "10 px",
+                  paddingTop: "30px",
                 }}
               >
                 Question Number
