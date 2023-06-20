@@ -49,7 +49,11 @@ export function ViewGroupedQuestionsPage() {
   ) {
     //fetch grouped questions from server by direction id
     let questionsFromServer = await fetchGroupedQuestions(selectedDirection);
-    setQuestions(questionsFromServer);
+    if (questionsFromServer.length == 0) {
+      setProgressMessage(
+        "                      No questions inserted for this Direction"
+      );
+    } else setQuestions(questionsFromServer);
   }
 
   useEffect(() => {
@@ -200,7 +204,9 @@ export function ViewGroupedQuestionsPage() {
             ))
           ) : (
             <tr>
-              <td colSpan={8}>{progressMessage}</td>
+              <td colSpan={8}>
+                {"                         " + progressMessage}
+              </td>
             </tr>
           )}
         </table>

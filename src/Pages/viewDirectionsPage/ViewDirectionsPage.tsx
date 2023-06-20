@@ -63,6 +63,7 @@ export default function ViewDirectionsPage() {
     );
     setDirections(directionsFromServer);
   };
+
   const deleteDirectionFromServer = async (directionId: string) => {
     let result = await deleteDirections(directionId);
     if (result instanceof AxiosError) {

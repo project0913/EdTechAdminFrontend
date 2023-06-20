@@ -19,6 +19,10 @@ export async function deleteDirections(directionId: string) {
   try {
     let raw = await axios.delete(`/directions/${directionId}`);
     let data = raw.data;
+    directionId;
+    console.log(directionId + " +++++++ +++++ ++++++ ++++ +++++++");
+    console.log(data);
+
     return data;
   } catch (error) {
     return error;
