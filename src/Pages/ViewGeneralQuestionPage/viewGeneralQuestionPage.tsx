@@ -5,7 +5,7 @@ import parse, {
   Element,
   domToReact,
 } from "html-react-parser";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   resolveImageURL,
   showErrorToast,
@@ -30,12 +30,16 @@ const options: HTMLReactParserOptions = {
   },
 };
 export default function ViewExerciseQuestionPage() {
+  const location = useLocation();
+  let [initialPage, setInitialPage] = useState(
+    location.state?.initialPage || 1
+  );
   const [errorMessage, setErrorMessage] = useState("");
   const [questions, setQuestions] = useState<GeneralQuestion[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
 
   useEffect(() => {
-    getQuestion(1);
+    getQuestion(initialPage);
   }, []);
 
   const getQuestion = async (page: number) => {
@@ -45,7 +49,7 @@ export default function ViewExerciseQuestionPage() {
   };
   const onPageChange = async (page: number) => {
     const { count, questions } = await fetchGeneralQuestions(page);
-
+    setInitialPage(page);
     setQuestions(questions);
     setTotalCount(count);
   };
@@ -147,9 +151,16 @@ export default function ViewExerciseQuestionPage() {
                       <div className={styles.tdLabel}>
                         <Link
                           to={"/admin-user/edit-general-questions"}
-                          state={{ question }}
+                          state={{ question, initialPage }}
                         >
-                          <button className={styles.label}>Edit</button>
+                          <button
+                            className={styles.label}
+                            onClick={() => {
+                              console.log("init---- " + initialPage);
+                            }}
+                          >
+                            Edit
+                          </button>
                         </Link>
                         <button
                           className={styles.label1}
@@ -172,7 +183,7 @@ export default function ViewExerciseQuestionPage() {
           totalItems={totalCount}
           pageSize={10}
           onPageChange={onPageChange}
-          activePage={1}
+          activePage={initialPage}
         />
       </div>
     </div>
