@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 
 export function SelectGroupedCourse() {
-  const [selectedYear, setSelectedYear] = useState<number | string>("2015");
+  const [selectedYear, setSelectedYear] = useState<number | string>("2040");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedDirection, setSelectedDirection] = useState("");
   const [yearOptions, setYearOptions] = useState<SelectOption[]>([]);
@@ -30,19 +30,24 @@ export function SelectGroupedCourse() {
         parseInt(selectedYear.toString())
       );
   }, [selectedYear]);
+
   const getGroupedCourses = async () => {
     const groupedCourses = await fetchGroupedCourses();
     setCourseOptions(groupedCourses);
     const defaultCourseId = groupedCourses[0].value;
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    console.log(groupedCourses);
     setSelectedCourse(defaultCourseId);
     const years = await fetchGroupedCoursesDirectionYears(defaultCourseId);
     setYearOptions(years);
   };
+
   const getGroupedCoursesYear = async () => {
     //listen for course change to be called
     setProgressMessage("Loading....");
     const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
-
+    console.log("@@@@@@years@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    console.log(years);
     if (years.length == 0) {
       setProgressMessage("it looks like you don't have data yet");
       return;

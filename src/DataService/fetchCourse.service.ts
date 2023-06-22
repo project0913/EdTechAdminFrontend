@@ -5,7 +5,7 @@ import { SelectOption } from "./service.types";
 export async function fetchGroupedCourses() {
   let raw = await axios.get(`/courses/get/all?type=grouped`);
   let data = raw.data as { _id: string; name: string }[];
-  console.log("fetch grouped ------------------courses");
+  console.log("fetch grouped ------------------$$$$$$$$$$$$$$$$$$$ courses");
 
   console.log(data);
 
