@@ -33,6 +33,8 @@ export const chapterOptions: SelectOption[] = [
   { label: "Chapter 12", value: "12" },
   { label: "Chapter 13", value: "13" },
   { label: "Chapter 14", value: "14" },
+  { label: "Chapter 15", value: "15" },
+  { label: "Chapter 16", value: "16" },
 ];
 export const answerOptions: SelectOption[] = [
   { label: "A", value: "option_a" },

@@ -12,7 +12,11 @@ import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 import { ExerciseQuestion } from "../../models/exerciseQuestion.model";
-import { answerOptions, gradeOptions } from "../../constants";
+import {
+  answerOptions,
+  gradeOptions,
+  chapterOptions as co,
+} from "../../constants";
 import {
   getAvailableExerciseFromServer,
   submitExerciseQuestionToServer,
@@ -28,9 +32,9 @@ const override: CSSProperties = {
 
 export default function ExerciseQuestionPage() {
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedGrade, setSelectedGrade] = useState("");
+  const [selectedGrade, setSelectedGrade] = useState("9");
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [selectedExercise, setSelectedExercise] = useState("");
+  const [selectedChapter, setSelectedChapter] = useState("1");
   const [courses, setCourses] = useState<SelectOption[]>([]);
 
   let [loading, setLoading] = useState(false);
@@ -49,7 +53,7 @@ export default function ExerciseQuestionPage() {
   const [tempQuestionImagePath, setTempQuestionImagePath] = useState("");
   const [tempDescriptionImagePath, setTempDescriptionImagePath] = useState("");
   const [questionNumber, setQuestionNumber] = useState<string | any>("");
-  const [exerciseOptions, setExerciseOptions] = useState<SelectOption[]>([]);
+  const [chapterOptions] = useState<SelectOption[]>(co);
 
   const [show, setShow] = useState(false);
 
@@ -61,38 +65,13 @@ export default function ExerciseQuestionPage() {
     }
     setCourses(coursesOption);
     setSelectedCourse(coursesOption[0].value);
-    fetchExercise(coursesOption[0].value, parseInt(gradeOptions[0].value));
+    setSelectedGrade(gradeOptions[0].value);
+    setSelectedChapter(chapterOptions[0].value.toString());
   }
-  const fetchExercise = async (courseId: string, grade: number) => {
-    const exercises = (await getAvailableExerciseFromServer(
-      grade,
-      courseId
-    )) as SelectOption[];
 
-    if (exercises instanceof Error) {
-      console.log("there is no available Exercise ");
-      setErrorMessage(
-        "There is No Available Exercise for this Grade and Course. First insert Exercise"
-      );
-    } else {
-      setErrorMessage("");
-      setExerciseOptions((prev) => exercises);
-      if (exercises.length > 0) {
-        setSelectedExercise(exercises[0].value.toString());
-      } else {
-        setErrorMessage(
-          "There is No Available Exercise for this Grade and Course. First insert Exercise"
-        );
-      }
-    }
-  };
   useEffect(() => {
     fetchInitialFromServer();
   }, []);
-
-  useEffect(() => {
-    fetchExercise(selectedCourse, parseInt(selectedGrade));
-  }, [selectedCourse, selectedGrade]);
 
   function handleQuestionImageChange(e: any) {
     console.log(e.target.files);
@@ -143,11 +122,13 @@ export default function ExerciseQuestionPage() {
       option_d: option_d,
       answer: answerText,
       description: description,
-      exerciseId: selectedExercise,
       questionNumber: questionNumber,
+      courseId: selectedCourse,
+      grade: parseInt(selectedGrade),
+      chapter: parseInt(selectedChapter),
     };
-    console.log("question image 00");
-    console.log(questionImage);
+    console.log("question image 0yyy0");
+    console.log(exercise);
 
     let result = await submitExerciseQuestionToServer(exercise);
     setLoading((prev) => false);
@@ -186,7 +167,7 @@ export default function ExerciseQuestionPage() {
     setSelectedGrade(e.target.value);
   };
   const handleExerciseChange = (e: any) => {
-    setSelectedExercise(e.target.value);
+    setSelectedChapter(e.target.value);
   };
 
   return (
@@ -216,7 +197,7 @@ export default function ExerciseQuestionPage() {
             />
             <SelectDropdown
               title=""
-              items={exerciseOptions}
+              items={chapterOptions}
               handleSelect={handleExerciseChange}
             />
           </div>

@@ -16,7 +16,32 @@ export async function submitExerciseQuestionToServer(
   question: ExerciseQuestion
 ) {
   try {
-    let raw = await axios.post("/exercise-questions", question);
+    let raw = await axios.post("/exercise-questions/create", question);
+    let data = raw.data;
+    return data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getExerciseQuestionFromServer({
+  courseId = "",
+  grade = 9,
+  page = 1,
+  size = 10,
+}: {
+  grade: number;
+  courseId: string;
+  page: number;
+  size: number;
+}) {
+  try {
+    let raw = await axios.post("/exercise-questions/get", {
+      courseId,
+      grade,
+      page,
+      size,
+    });
     let data = raw.data;
     return data;
   } catch (error) {
