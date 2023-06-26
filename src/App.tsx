@@ -193,7 +193,7 @@ function App() {
 
         {
           path: "view-exercise",
-          element: <ViewExercisePage />,
+          element: <ViewExerciseQuestionPage />,
         },
         {
           path: "view-exercise-question",

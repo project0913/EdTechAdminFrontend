@@ -12,6 +12,7 @@ export async function submitExerciseToServer(exercise: Exercise) {
     return error;
   }
 }
+
 export async function submitExerciseQuestionToServer(
   question: ExerciseQuestion
 ) {
@@ -42,7 +43,8 @@ export async function getExerciseQuestionFromServer({
       page,
       size,
     });
-    let data = raw.data;
+    let data = raw.data as ExerciseQuestion[];
+    console.log(data);
     return data;
   } catch (error) {
     return error;
