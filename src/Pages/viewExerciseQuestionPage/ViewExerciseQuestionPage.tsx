@@ -29,6 +29,10 @@ const options: HTMLReactParserOptions = {
   },
 };
 export default function ViewExerciseQuestionPage() {
+  const location = useLocation();
+  let [initialPage, setInitialPage] = useState(
+    location.state?.initialPage || 1
+  );
   const [selectedGrade, setSelectedGrade] = useState("9");
   const [selectedCourse, setSelectedCourse] = useState(coursesOptions[0].value);
   const [errorMessage, setErrorMessage] = useState("");
@@ -44,18 +48,34 @@ export default function ViewExerciseQuestionPage() {
     getQuestion();
   }, [selectedCourse, selectedGrade]);
 
-  const getQuestion = async (page: number = 1) => {
-    const questions = await getExerciseQuestionFromServer({
+  const onPageChange = async (page: number) => {
+    const { questions, total } = await getExerciseQuestionFromServer({
       courseId: selectedCourse,
       grade: parseInt(selectedGrade),
       page: page,
       size: 10,
     });
+
+    setInitialPage(page);
+    setQuestions(questions);
+    setTotalCount(total);
+  };
+
+  const getQuestion = async (page: number = 1) => {
+    const { questions, total } = await getExerciseQuestionFromServer({
+      courseId: selectedCourse,
+      grade: parseInt(selectedGrade),
+      page: page,
+      size: 10,
+    });
+
     if (Array.isArray(questions) && questions.length == 0) {
       setMessage("No Questions inserted Yet For this Grade and ");
       return;
     }
+
     setQuestions(Array.isArray(questions) ? questions : []);
+    setTotalCount(total || 0);
   };
 
   const handleCourseChange = (e: any) => {
@@ -199,7 +219,16 @@ export default function ViewExerciseQuestionPage() {
           </tbody>
         </table>
       </div>
-      <div className={styles.pagination}></div>
+      <div className={styles.pagination}>
+        <div className="">
+          <CustomPagination
+            totalItems={totalCount}
+            pageSize={10}
+            onPageChange={onPageChange}
+            activePage={initialPage}
+          />
+        </div>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Exercise } from "../models/exercise.model";
 import axios from "../api/axios";
 import { ExerciseQuestion } from "../models/exerciseQuestion.model";
 import { SelectOption } from "./service.types";
+import { AxiosError } from "axios";
 
 export async function submitExerciseToServer(exercise: Exercise) {
   try {
@@ -35,19 +36,19 @@ export async function getExerciseQuestionFromServer({
   courseId: string;
   page: number;
   size: number;
-}) {
+}): Promise<any> {
   try {
-    let raw = await axios.post("/exercise-questions/get", {
+    const raw = await axios.post("/exercise-questions/get", {
       courseId,
       grade,
       page,
       size,
     });
-    let data = raw.data as ExerciseQuestion[];
+    const data = raw.data as { questions: ExerciseQuestion[]; total: number };
     console.log(data);
     return data;
   } catch (error) {
-    return error;
+    return error as AxiosError;
   }
 }
 export async function updateExerciseQuestionToServer(
