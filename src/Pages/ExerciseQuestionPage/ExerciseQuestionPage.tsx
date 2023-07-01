@@ -113,7 +113,6 @@ export default function ExerciseQuestionPage() {
     e.preventDefault();
     setLoading((prev) => true);
     setErrorMessage("");
-    showErrorToast();
     let exercise: ExerciseQuestion = {
       questionText,
       option_a: option_a,
@@ -127,8 +126,6 @@ export default function ExerciseQuestionPage() {
       grade: parseInt(selectedGrade),
       chapter: parseInt(selectedChapter),
     };
-    console.log("question image 0yyy0");
-    console.log(exercise);
 
     let result = await submitExerciseQuestionToServer(exercise);
     setLoading((prev) => false);
