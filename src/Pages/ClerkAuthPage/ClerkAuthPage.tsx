@@ -42,7 +42,7 @@ export default function ClerkAuthPage() {
       );
       console.log(result?.token);
 
-      window.location.href = "/admin-user";
+      window.location.href = "/data";
     }
   }
   async function handleSignupSubmit(e: any) {

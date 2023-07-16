@@ -18,7 +18,7 @@ export function AdminDashboard() {
   return (
     <div className={styles.body}>
       <div className={styles.table}>
-        <h1>Data Encoders</h1>
+        <h1>Data Encoders and Data Statistics</h1>
         <div className={styles.clerkTableHeader}>
           <thead className={styles.tableHeaderTitle}>
             <tr className={styles.tr}>
