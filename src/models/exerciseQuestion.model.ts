@@ -12,4 +12,7 @@ export type ExerciseQuestion = {
   direction?: string;
   questionImage?: string;
   descriptionImage?: string;
+  courseId?: string;
+  grade?: number;
+  chapter?: number;
 };

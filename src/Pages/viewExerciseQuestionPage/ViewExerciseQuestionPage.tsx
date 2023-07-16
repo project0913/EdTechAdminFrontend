@@ -16,8 +16,11 @@ import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { ExerciseQuestion } from "../../models/exerciseQuestion.model";
 import CustomPagination from "../../components/pagination";
+import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import styles from "./viewExercise.module.css";
 import { fetchExerciseQuestions } from "../../DataService/viewExerciseQuestion.service";
+import { coursesOptions, gradeOptions } from "../../constants";
+import { getExerciseQuestionFromServer } from "../../DataService/exercise.service";
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
     if (domNode instanceof Element && domNode.attribs) {
@@ -26,25 +29,60 @@ const options: HTMLReactParserOptions = {
   },
 };
 export default function ViewExerciseQuestionPage() {
+  const location = useLocation();
+  let [initialPage, setInitialPage] = useState(
+    location.state?.initialPage || 1
+  );
+  const [selectedGrade, setSelectedGrade] = useState("9");
+  const [selectedCourse, setSelectedCourse] = useState(coursesOptions[0].value);
   const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState("Loading...");
   const [questions, setQuestions] = useState<ExerciseQuestion[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
-  const location = useLocation();
-  useEffect(() => {
-    const exerciseId = location.state.exerciseId;
-    console.log("Exercise id is   ----" + exerciseId);
 
-    if (exerciseId) getQuestion(exerciseId);
+  useEffect(() => {
+    getQuestion();
   }, []);
 
-  const getQuestion = async (exerciseId: number) => {
-    const questions = await fetchExerciseQuestions(exerciseId);
-    if (questions.length == 0) {
-      setMessage("No Questions inserted Yet For this Exercise");
+  useEffect(() => {
+    getQuestion();
+  }, [selectedCourse, selectedGrade]);
+
+  const onPageChange = async (page: number) => {
+    const { questions, total } = await getExerciseQuestionFromServer({
+      courseId: selectedCourse,
+      grade: parseInt(selectedGrade),
+      page: page,
+      size: 10,
+    });
+
+    setInitialPage(page);
+    setQuestions(questions);
+    setTotalCount(total);
+  };
+
+  const getQuestion = async (page: number = 1) => {
+    const { questions, total } = await getExerciseQuestionFromServer({
+      courseId: selectedCourse,
+      grade: parseInt(selectedGrade),
+      page: page,
+      size: 10,
+    });
+
+    if (Array.isArray(questions) && questions.length == 0) {
+      setMessage("No Questions inserted Yet For this Grade and ");
       return;
     }
-    setQuestions(questions);
+
+    setQuestions(Array.isArray(questions) ? questions : []);
+    setTotalCount(total || 0);
+  };
+
+  const handleCourseChange = (e: any) => {
+    setSelectedCourse(e.target.value);
+  };
+  const handleGradeChange = (e: any) => {
+    setSelectedGrade(e.target.value);
   };
 
   const deleteExerciseQuestionFromServer = async (questionId: string) => {
@@ -70,6 +108,18 @@ export default function ViewExerciseQuestionPage() {
   };
   return (
     <div>
+      <div className={styles.dropDown}>
+        <SelectDropdown
+          title=""
+          items={coursesOptions}
+          handleSelect={handleCourseChange}
+        />
+        <SelectDropdown
+          title=""
+          items={gradeOptions}
+          handleSelect={handleGradeChange}
+        />
+      </div>
       <div className={styles.allTable}>
         <table className={styles.table}>
           <thead>
@@ -79,7 +129,7 @@ export default function ViewExerciseQuestionPage() {
               >
                 No
               </th>
-
+              <th className={`${styles.th}`}>Chapter </th>
               <th className={`${styles.th} ${styles.questionColumn}`}>
                 Questions
               </th>
@@ -102,6 +152,10 @@ export default function ViewExerciseQuestionPage() {
                   <tr className={styles.tr} key={index}>
                     <td className={`${styles.td} ${styles.tdNo}`}>
                       {question?.questionNumber}
+                    </td>
+
+                    <td className={`${styles.td} ${styles.tdNo}`}>
+                      {question?.chapter}
                     </td>
 
                     <td className={styles.td}>
@@ -165,7 +219,16 @@ export default function ViewExerciseQuestionPage() {
           </tbody>
         </table>
       </div>
-      <div className={styles.pagination}></div>
+      <div className={styles.pagination}>
+        <div className="">
+          <CustomPagination
+            totalItems={totalCount}
+            pageSize={10}
+            onPageChange={onPageChange}
+            activePage={initialPage}
+          />
+        </div>
+      </div>
     </div>
   );
 }
