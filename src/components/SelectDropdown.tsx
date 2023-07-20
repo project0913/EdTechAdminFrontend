@@ -9,15 +9,17 @@ type DropdownProps = {
   items: SelectOption[];
   handleSelect: (e: FormEvent<HTMLSelectElement>) => void;
   styles?: any;
+  value?: string| number
 };
 
-function SelectDropdown({ title, items, handleSelect, styles }: DropdownProps) {
+function SelectDropdown({ title, items, handleSelect, styles,value }: DropdownProps) {
   return (
     <span className="select-container">
       <label htmlFor="select">{title}</label> {}
       <select
         onChange={handleSelect}
         id="select"
+        value={value ? value : items[0].value}
         className={style.selectDropdown}
       >
         {items.map((option, index) => (

@@ -162,6 +162,7 @@ export default function PlainQuestionEditor() {
     setOption_c(question.option_c);
     setOption_d(question.option_d);
     setQuestionNumber(question.questionNumber);
+    setAnswerText(question.answer);
     setYear(question.year.toString());
     setDescription(question.description);
     setQuestionImage(question.questionImage || "");
@@ -280,6 +281,7 @@ export default function PlainQuestionEditor() {
                 <p className={styles.txt}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
+                  value={answerText}
                   items={answerOptions}
                   handleSelect={setOption_answer_Text}
                 />
