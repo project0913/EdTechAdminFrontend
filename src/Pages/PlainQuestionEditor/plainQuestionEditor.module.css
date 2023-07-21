@@ -1,13 +1,31 @@
-.editorContainer {
-}
 .bodyPlainQuestion {
+  background-color: rgb(1, 4, 19);
+  color: white;
+  margin-top: 10px;
+}
+.plainQuestionContainer {
+  margin-left: 7%;
+  margin-right: 7%;
+  color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+  background-color: whitesmoke;
+  padding: 0px 30px; /* Set the text color to white or a color that contrasts with the background */
 }
 .img {
   width: 150px;
   height: 80px;
 }
 .txt {
-  color: #088081;
+  color: green;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.answerOption {
+  margin-right: 10%;
 }
 .questionBtn {
   display: flex;
@@ -27,15 +45,62 @@
   margin: 10px;
   background-color: #088081;
 }
-.clearBtn {
-  border: none;
-  width: 150px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
+
+.chooseFileButton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
   color: white;
-  margin: 10px;
+  background-color: #4caf50;
+  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
-  background-color: rgb(97, 26, 26);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chooseFileButton:hover {
+  background-color: #3e8e41;
+}
+
+.chooseFileButton input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.submitBtn {
+  background-color: transparent;
+  color: rgb(42, 91, 119);
+  border: 1px solid #3e8e41;
+  border-radius: 30px;
+  width: 200px;
+  margin-right: 10px;
+  margin-bottom: 100px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submitBtn:hover {
+  background-color: #3e8e41;
+  color: white;
+}
+.clearBtn {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  border-radius: 30px;
+  width: 200px;
+  margin-bottom: 100px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.clearBtn:hover {
+  background-color: #e53935;
+  color: #f9fcfa;
 }
