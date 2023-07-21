@@ -234,6 +234,7 @@ export default function GroupedQuestionPage() {
                 <SelectDropdown
                   title="Courses"
                   items={courses}
+                  value={selectedCourse}
                   handleSelect={handleCourseChange}
                 />
               </div>
@@ -241,6 +242,7 @@ export default function GroupedQuestionPage() {
                 <SelectDropdown
                   title="Years"
                   items={years}
+                  value={selectedYear}
                   handleSelect={handleYearChange}
                 />
               </div>
@@ -248,6 +250,7 @@ export default function GroupedQuestionPage() {
                 <SelectDropdown
                   title="Directions"
                   items={directions}
+                  value={selectedDirection}
                   handleSelect={handleDirectionChange}
                 />
               </div>

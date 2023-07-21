@@ -218,6 +218,7 @@ export default function PlainQuestionData() {
                 <SelectDropdown
                   title=""
                   items={examCatagories}
+                  value={selectedExamCategory}
                   handleSelect={handleExamCategoryChange}
                 />
               </div>
@@ -226,6 +227,7 @@ export default function PlainQuestionData() {
                 <SelectDropdown
                   title=""
                   items={courses}
+                  value={selectedCourse}
                   handleSelect={handleCourseChange}
                 />
               </div>
@@ -234,6 +236,7 @@ export default function PlainQuestionData() {
                 <SelectDropdown
                   title=""
                   items={subExamCategory}
+                  value={selectedSubExamCategory}
                   handleSelect={handleSubExamCategoryChange}
                 />
               </div>
