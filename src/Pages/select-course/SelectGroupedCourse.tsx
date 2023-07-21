@@ -92,6 +92,7 @@ export function SelectGroupedCourse() {
               title=""
               items={courseOptions}
               handleSelect={handleSelectCourse}
+              value={selectedCourse}
               styles={{ display: "inline", width: "3rem" }}
             />
           </span>
@@ -100,6 +101,7 @@ export function SelectGroupedCourse() {
             <SelectDropdown
               title=""
               items={yearOptions}
+              value={selectedYear}
               handleSelect={handleSelectYear}
               styles={{ display: "inline", width: "3rem" }}
             />

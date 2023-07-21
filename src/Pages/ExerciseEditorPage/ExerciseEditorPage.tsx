@@ -128,6 +128,7 @@ export default function ExerciseQuestionEditorPage() {
     setOption_b(question.option_b);
     setOption_c(question.option_c);
     setOption_d(question.option_d);
+    setAnswerText(question.answer);
     setQuestionNumber(question.questionNumber);
     setDescription(question.description);
     setQuestionImage(question.questionImage || "");
@@ -246,6 +247,7 @@ export default function ExerciseQuestionEditorPage() {
                 <p className={Styles.txt}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
+                  value={answerText}
                   items={answerOptions}
                   handleSelect={setOption_answer_Text}
                 />

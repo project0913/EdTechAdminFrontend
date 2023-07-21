@@ -134,6 +134,7 @@ export default function GeneralQuestionPageEditor() {
     setOption_b(question.option_b);
     setOption_c(question.option_c);
     setOption_d(question.option_d);
+    setAnswerText(question.answer);
     setQuestionNumber(question.questionNumber);
     setDescription(question.description);
     setQuestionImage(question.questionImage || "");
@@ -252,6 +253,7 @@ export default function GeneralQuestionPageEditor() {
                 <p className={styles.txt}>Choose Answer here</p>
                 <SelectDropdown
                   title=""
+                  value={answerText}
                   items={answerOptions}
                   handleSelect={setOption_answer_Text}
                 />

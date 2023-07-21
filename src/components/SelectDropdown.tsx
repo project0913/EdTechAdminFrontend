@@ -19,7 +19,7 @@ function SelectDropdown({ title, items, handleSelect, styles,value }: DropdownPr
       <select
         onChange={handleSelect}
         id="select"
-        value={value ? value : items[0].value}
+        value={value ? value : items[0]?.value || ''}
         className={style.selectDropdown}
       >
         {items.map((option, index) => (

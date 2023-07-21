@@ -60,6 +60,7 @@ export function SelectPlainCourse() {
           <SelectDropdown
             title=""
             items={courseOptions}
+            value={selectedCourse}
             handleSelect={handleSelectCourse}
             // styles={{ display: "inline", width: "4rem" }}
           />
@@ -69,6 +70,7 @@ export function SelectPlainCourse() {
           <SelectDropdown
             title=""
             items={yearOptions}
+            value={selectedYear}
             handleSelect={handleSelectYear}
           />
         </span>
