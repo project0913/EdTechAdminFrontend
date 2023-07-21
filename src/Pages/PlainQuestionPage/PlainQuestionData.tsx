@@ -93,18 +93,34 @@ export default function PlainQuestionData() {
   useEffect(() => {
     fetchInitialFromServer();
   }, []);
+
+
+
   const handleExamCategoryChange = (e: any) => {
-    //TODO:
+   
+    setSelectedExamCategory(e.target.value);
+    
   };
+
+
   const handleCourseChange = (e: any) => {
+   
     setSelectedCourse(e.target.value);
   };
+
+
   const handleSubExamCategoryChange = (e: any) => {
     setSelectedSubExamCategory(e.target.value);
   };
+
+
   const handleYearsChange = (e: any) => {
     setYear(e.target.value);
+  
+    
   };
+
+
   function handleQuestionImageChange(e: any) {
     console.log(e.target.files);
     setTempQuestionImagePath(URL.createObjectURL(e.target.files[0]));
@@ -209,6 +225,7 @@ export default function PlainQuestionData() {
       }
     >
       <div>
+       
         <div className={styles.plainQuestion}></div>
         <div className={styles.all}>
           <div className={styles.bgDrop}>
@@ -218,7 +235,7 @@ export default function PlainQuestionData() {
                 <SelectDropdown
                   title=""
                   items={examCatagories}
-                  value={selectedExamCategory}
+                  value={selectedExamCategory.toString()}
                   handleSelect={handleExamCategoryChange}
                 />
               </div>
@@ -267,6 +284,7 @@ export default function PlainQuestionData() {
                       <SelectDropdown
                         title=""
                         items={yearsOptions}
+                        value={year.toString()}
                         handleSelect={handleYearsChange}
                       />
                     </div>
