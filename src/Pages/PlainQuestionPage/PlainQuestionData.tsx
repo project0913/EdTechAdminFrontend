@@ -433,6 +433,7 @@ export default function PlainQuestionData() {
                       <SelectDropdown
                         title=""
                         items={answerOptions}
+                        value={answerText}
                         handleSelect={setOption_answer_Text}
                       />
                     </div>
