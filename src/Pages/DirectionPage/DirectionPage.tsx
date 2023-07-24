@@ -99,6 +99,7 @@ export default function DirectionPage() {
               <SelectDropdown
                 title="Courses"
                 items={courses}
+                value={selectedCourse}
                 handleSelect={handleCourseChange}
               />
             </div>
@@ -108,6 +109,7 @@ export default function DirectionPage() {
               <SelectDropdown
                 title=""
                 items={yearsOptions}
+                value={year}
                 handleSelect={handleYearsChange}
               />
             </div>

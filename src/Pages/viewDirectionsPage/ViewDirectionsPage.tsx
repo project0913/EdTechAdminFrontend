@@ -31,7 +31,6 @@ export default function ViewDirectionsPage() {
   const [directions, setDirections] = useState<Direction[]>([]);
   const [progressMessage, setProgressMessage] = useState("Loading ...");
   const [errorMessage, setErrorMessage] = useState("");
-
   const [selectedYear, setSelectedYear] = useState<number | string>("2015");
   const [selectedCourse, setSelectedCourse] = useState("");
   const [yearOptions, setYearOptions] = useState<SelectOption[]>([]);
@@ -126,6 +125,7 @@ export default function ViewDirectionsPage() {
           <SelectDropdown
             title=""
             items={courseOptions}
+            value={selectedCourse}
             handleSelect={handleSelectCourse}
             styles={{ display: "inline", width: "3rem" }}
           />
@@ -135,6 +135,7 @@ export default function ViewDirectionsPage() {
           <SelectDropdown
             title=""
             items={yearOptions}
+            value={selectedYear}
             handleSelect={handleSelectYear}
             styles={{ display: "inline", width: "3rem" }}
           />

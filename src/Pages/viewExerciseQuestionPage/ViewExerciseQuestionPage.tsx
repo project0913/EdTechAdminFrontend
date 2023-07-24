@@ -111,12 +111,14 @@ export default function ViewExerciseQuestionPage() {
       <div className={styles.dropDown}>
         <SelectDropdown
           title=""
+          value={selectedCourse}
           items={coursesOptions}
           handleSelect={handleCourseChange}
         />
         <SelectDropdown
           title=""
           items={gradeOptions}
+          value={selectedGrade}
           handleSelect={handleGradeChange}
         />
       </div>

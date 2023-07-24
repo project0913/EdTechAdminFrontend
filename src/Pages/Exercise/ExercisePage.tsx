@@ -43,6 +43,8 @@ export default function ExercisePage() {
   };
   const handleSelectChapterChange = (e: any) => {
     setChapterSelected(e.target.value);
+    console.log("chapter selected "+chapterSelected);
+    
   };
 
   const submitExercise = async () => {
@@ -77,23 +79,26 @@ export default function ExercisePage() {
           <SelectDropdown
             title=""
             items={gradeOptions}
+            value={gradeSelected}
             handleSelect={handleGradeChange}
           />
 
           <SelectDropdown
             title=""
             items={courses}
+            value={selectedCourse}
             handleSelect={handleSelectedCourse}
           />
 
           <SelectDropdown
             title=""
             items={chapterOptions}
+            value={chapterSelected}
             handleSelect={handleSelectChapterChange}
           />
         </div>
       </div>
-
+   
       <div>
         <p className={styles.txt}>Exercise Number</p>
         <input

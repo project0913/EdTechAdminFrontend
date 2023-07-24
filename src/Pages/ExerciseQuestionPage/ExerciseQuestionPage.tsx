@@ -165,6 +165,8 @@ export default function ExerciseQuestionPage() {
   };
   const handleExerciseChange = (e: any) => {
     setSelectedChapter(e.target.value);
+   
+    
   };
 
   return (
@@ -185,16 +187,19 @@ export default function ExerciseQuestionPage() {
             <SelectDropdown
               title=""
               items={courses}
+              value={selectedCourse}
               handleSelect={handleCourseChange}
             />
             <SelectDropdown
               title=""
               items={gradeOptions}
+              value={selectedGrade}
               handleSelect={handleGradeChange}
             />
             <SelectDropdown
               title=""
               items={chapterOptions}
+              value={selectedChapter}
               handleSelect={handleExerciseChange}
             />
           </div>
