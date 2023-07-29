@@ -111,6 +111,7 @@ export function SelectGroupedCourse() {
             <SelectDropdown
               title=""
               items={directionsOption}
+              value={selectedDirection}
               handleSelect={handleDirectionChange}
               styles={{ display: "inline", width: "3rem" }}
             />
