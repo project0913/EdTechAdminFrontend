@@ -25,6 +25,7 @@ const override: CSSProperties = {
 
 export default function GroupedQuestionPage() {
   const [errorMessage, setErrorMessage] = useState("");
+  const [progressMessage, setProgressMessage] = useState("");
   let [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState<SelectOption[]>([]);
   const [directions, setDirections] = useState<SelectOption[]>([]);
@@ -54,68 +55,56 @@ export default function GroupedQuestionPage() {
     { label: "D", value: "option_d" },
   ];
 
-  async function fetchGroupedQuestionDirectionsFromServer(
-    courseId?: string,
-    year?: number
-  ) {
-    let filteringCourseId = "",
-      filteringYear = 2015;
-    if (!(courseId && year)) {
-      //if courseId or  year not provided  fetch all from server
-      const groupedCourses = await fetchGroupedCourses();
-      setCourses(groupedCourses);
-
-      const defaultCourseId = groupedCourses[0]
-        ? groupedCourses[0]?.value
-        : courseId || "";
-      filteringCourseId = defaultCourseId;
-      setSelectedCourse(defaultCourseId);
-      const years = await fetchGroupedCoursesDirectionYears(defaultCourseId);
-      setYears(years);
-      const defaultYear = years[0].value;
-      filteringYear = parseInt(defaultYear);
-      setSelectedYear(defaultYear);
-    } else {
-      filteringCourseId = courseId;
-      filteringYear = year;
-    }
-
-    //getDirections and populate
-    const directionsFromServer = await fetchDirectionOfCourseByYear(
-      filteringCourseId,
-      filteringYear
-    );
-
-    const defaultDirectionId = directionsFromServer[0]
-      ? directionsFromServer[0].value
-      : "";
-    setSelectedDirection(defaultDirectionId);
-    setDirections(directionsFromServer);
-  }
-
-  const fetchYears = async () => {
-    if (selectedCourse.length > 0) {
-      const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
-      setYears(years);
-    }
-  };
-
   useEffect(() => {
-    fetchGroupedQuestionDirectionsFromServer();
+    getGroupedCourses();
   }, []);
-
   useEffect(() => {
-    fetchYears();
+    if (selectedCourse.length > 0) getGroupedCoursesYear();
   }, [selectedCourse]);
-
   useEffect(() => {
-    // Your useEffect code here to be run on update only not initial mount
-    fetchGroupedQuestionDirectionsFromServer(
-      selectedCourse,
-      parseInt(selectedYear)
-    );
+    if (selectedYear)
+      getGroupedCoursesDirections(
+        selectedCourse,
+        parseInt(selectedYear.toString())
+      );
   }, [selectedYear]);
 
+  const getGroupedCourses = async () => {
+    const groupedCourses = await fetchGroupedCourses();
+    setCourses(groupedCourses);
+    const defaultCourseId = groupedCourses[0].value;
+    setSelectedCourse(defaultCourseId);
+    const years = await fetchGroupedCoursesDirectionYears(defaultCourseId);
+    setYears(years);
+  };
+
+  const getGroupedCoursesYear = async () => {
+    //listen for course change to be called
+    setProgressMessage("Loading....");
+    const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
+    if (years.length == 0) {
+      setProgressMessage("it looks like you don't have data yet");
+      return;
+    }
+    setProgressMessage(""); // clear loading if years are loaded
+    setYears(years);
+    setSelectedYear(years[0].value);
+  };
+  const getGroupedCoursesDirections = async (
+    courseId: string,
+    year: number
+  ) => {
+    //  listen for course change to be called
+    setSelectedDirection("");
+    const directionsFromServer = await fetchDirectionOfCourseByYear(
+      courseId,
+      year
+    );
+    const defaultDirectionId = directionsFromServer[0].value;
+    console.log(directionsFromServer);
+    setSelectedDirection(defaultDirectionId);
+    setDirections(directionsFromServer);
+  };
   const handleCourseChange = (e: any) => {
     console.log("course change " + e.target.value);
 
@@ -393,6 +382,7 @@ export default function GroupedQuestionPage() {
                   </p>
                   <SelectDropdown
                     title=""
+                    value={answerText}
                     items={answerOptions}
                     handleSelect={set_answer_Text}
                   />

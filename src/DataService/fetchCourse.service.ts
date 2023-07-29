@@ -30,10 +30,15 @@ export async function fetchDirectionOfCourseByYear(
 ) {
   let raw = await axios.post(`/directions`, { courseId, year });
   let data = raw.data as Direction[];
-  return data.map((d) => ({
+  const result= data.map((d) => ({
     label: d.sectionName,
     value: d._id,
   })) as SelectOption[];
+  console.log("helllo "+courseId+" year--"+year);
+  
+  console.log(result);
+  
+  return result;
 }
 
 export async function fetchDirectionOfCourseByYearAsArray(

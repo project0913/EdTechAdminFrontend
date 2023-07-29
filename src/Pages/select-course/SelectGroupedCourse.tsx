@@ -35,8 +35,6 @@ export function SelectGroupedCourse() {
     const groupedCourses = await fetchGroupedCourses();
     setCourseOptions(groupedCourses);
     const defaultCourseId = groupedCourses[0].value;
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    console.log(groupedCourses);
     setSelectedCourse(defaultCourseId);
     const years = await fetchGroupedCoursesDirectionYears(defaultCourseId);
     setYearOptions(years);
@@ -46,8 +44,6 @@ export function SelectGroupedCourse() {
     //listen for course change to be called
     setProgressMessage("Loading....");
     const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
-    console.log("@@@@@@years@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    console.log(years);
     if (years.length == 0) {
       setProgressMessage("it looks like you don't have data yet");
       return;
