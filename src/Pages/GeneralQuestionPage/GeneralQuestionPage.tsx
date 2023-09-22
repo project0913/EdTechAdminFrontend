@@ -23,6 +23,8 @@ const override: CSSProperties = {
 export default function GeneralQuestionPage() {
   const [errorMessage, setErrorMessage] = useState("");
   let [loading, setLoading] = useState(false);
+  const [examCatagories, setExamCatagories] = useState<SelectOption[]>([]);
+  const [selectedExamCategory, setSelectedExamCategory] = useState("");
   const [questionText, setQuestionText] = useState("");
   const [option_a, setOption_a] = useState("");
   const [option_b, setOption_b] = useState("");
@@ -76,6 +78,9 @@ export default function GeneralQuestionPage() {
     setDescription(val);
   };
 
+  const handleExamCategoryChange = (e: any) => {
+    setSelectedExamCategory(e.target.value);
+  };
   const submitGeneralQuestionPageToBackend = async (e: any) => {
     e.preventDefault();
     setLoading((prev) => true);
@@ -146,6 +151,25 @@ export default function GeneralQuestionPage() {
         <div className={styles.generalBackground}>
           <div className={styles.generalHeader}></div>
           <div className="">
+            <div>
+              <p
+                className={styles.txt}
+                style={{
+                  fontWeight: "bold",
+                  color: "green",
+                  paddingTop: "10 px",
+                  marginTop: "10 px",
+                }}
+              >
+                Select Category
+              </p>
+              <SelectDropdown
+                title=""
+                items={examCatagories}
+                value={selectedExamCategory.toString()}
+                handleSelect={handleExamCategoryChange}
+              />
+            </div>
             <div>
               <p
                 className={styles.txt}
