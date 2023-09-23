@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { Editor } from "../../quill/Editor";
 import { GeneralQuestion } from "../../models/general.model";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
@@ -14,6 +14,7 @@ import { FadeLoader } from "react-spinners";
 import placeholderImage from "../../assets/place_holder.jpg";
 
 import "react-quill/dist/quill.snow.css";
+import { fetchExamCategories } from "../../DataService/fetchExamCatagories.service";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -44,6 +45,23 @@ export default function GeneralQuestionPage() {
     { label: "C", value: "option_c" },
     { label: "D", value: "option_d" },
   ];
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    let data = await fetchExamCategories();
+    let examCatsOption = [];
+    for (const examCat of data) {
+      if (examCat?.category && examCat?.category === "generalQuestion")
+        examCatsOption.push({ label: examCat.name, value: examCat._id });
+    }
+    if (examCatsOption.length == 0) return;
+    setExamCatagories(examCatsOption);
+    setSelectedExamCategory(examCatsOption[0].value);
+  };
+
   function handleQuestionImageChange(e: any) {
     console.log(e.target.files);
     setTempQuestionImagePath(URL.createObjectURL(e.target.files[0]));
@@ -85,7 +103,7 @@ export default function GeneralQuestionPage() {
     e.preventDefault();
     setLoading((prev) => true);
     setErrorMessage("");
-    showErrorToast();
+
     let general: GeneralQuestion = {
       questionText,
       option_a: option_a,
@@ -96,6 +114,7 @@ export default function GeneralQuestionPage() {
       description: description,
       questionImage,
       descriptionImage,
+      examCategory: selectedExamCategory,
       questionNumber: parseInt(questionNumber),
     };
 

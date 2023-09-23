@@ -41,13 +41,14 @@ import { useState } from "react";
 import { ViewPlainQuestionState } from "./types/viewPlainQuestionState";
 import { SelectCourse } from "./Pages/select-course/SelectCourse";
 import DataHubApp from "./Pages/DataEnterCountry/DataCountry";
+import { ExamCategoryPage } from "./Pages/ExamCategories/ExamCategoryPage";
 
 function App() {
   const router = createBrowserRouter([
     { path: "", element: <AdminPublicLogin /> },
     { path: "select-course", element: <SelectCourse /> },
     { path: "admin-dashboard", element: <AdminDashboard /> },
-    {path:"data", element:<DataHubApp/>},
+    { path: "data", element: <DataHubApp /> },
 
     {
       path: "clerk-auth",
@@ -104,7 +105,10 @@ function App() {
           path: "general-question",
           element: <GeneralQuestionPage />,
         },
-
+        {
+          path: "exam-category",
+          element: <ExamCategoryPage />,
+        },
         {
           path: "view-general-question",
           element: <ViewGeneralQuestionPage />,
@@ -157,7 +161,11 @@ function App() {
           path: "edit-direction",
           element: <DirectionEditorPage />,
         },
-
+        {
+          path: "exam-category",
+          element: <ExamCategoryPage />,
+        },
+        //
         {
           path: "view-directions",
           element: <ViewDirectionsPage />,

@@ -6,3 +6,10 @@ export async function fetchExamCategories() {
   let data = raw.data;
   return data as ExamCategory[];
 }
+// exam-categories
+
+export async function createExamCategories(examCategory: any) {
+  let raw = await axios.post(`/exam-categories`, examCategory);
+  let data = raw.data;
+  return data as ExamCategory[];
+}
