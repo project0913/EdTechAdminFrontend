@@ -42,6 +42,7 @@ import { ViewPlainQuestionState } from "./types/viewPlainQuestionState";
 import { SelectCourse } from "./Pages/select-course/SelectCourse";
 import DataHubApp from "./Pages/DataEnterCountry/DataCountry";
 import { ExamCategoryPage } from "./Pages/ExamCategories/ExamCategoryPage";
+import { MaterialResourcePage } from "./Pages/MaterialResourcePage/MaterialResourcePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -107,7 +108,11 @@ function App() {
         },
         {
           path: "exam-category",
-          element: <ExamCategoryPage />,
+          element: <ExamCategoryPage />, //
+        },
+        {
+          path: "material-resource",
+          element: <MaterialResourcePage />, // MaterialResourcePage
         },
         {
           path: "view-general-question",
@@ -165,7 +170,10 @@ function App() {
           path: "exam-category",
           element: <ExamCategoryPage />,
         },
-        //
+        {
+          path: "material-resource",
+          element: <MaterialResourcePage />, // MaterialResourcePage
+        },
         {
           path: "view-directions",
           element: <ViewDirectionsPage />,

@@ -1,6 +1,6 @@
 export type GeneralQuestion = {
   _id?: string;
-  examCategory: string;
+  examCategory?: string;
   questionText: string;
   option_a: string;
   option_b: string;
