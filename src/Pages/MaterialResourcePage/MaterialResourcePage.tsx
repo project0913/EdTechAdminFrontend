@@ -42,17 +42,6 @@ export const MaterialResourcePage = () => {
 
   useEffect(() => {
     fetchInitialFromServer();
-    let editableMaterialResourceState =
-      (location.state?.materialResource as IMaterialResource) ?? null;
-
-    if (editableMaterialResourceState) {
-      setIsEditMode(true);
-      setEditableMaterialResource(editableMaterialResourceState ?? null);
-      setCourseId(editableMaterialResourceState?.courseId ?? "");
-      setGrade(editableMaterialResourceState?.grade ?? "9");
-      setChapter(editableMaterialResourceState?.grade ?? "1");
-      setSelectedFilePath(editableMaterialResourceState.url ?? "");
-    }
   }, []);
 
   async function fetchInitialFromServer() {
@@ -79,6 +68,21 @@ export const MaterialResourcePage = () => {
 
     setCourses(crs);
     setCourseId(crs[0].value.toString());
+
+    //if navigated from edit route
+    const editableMaterialResourceState = location.state
+      ?.materialResource as IMaterialResource;
+
+    if (editableMaterialResourceState) {
+      console.log("eddit mode a");
+
+      setIsEditMode(true);
+      setEditableMaterialResource(editableMaterialResourceState ?? null);
+      setCourseId(editableMaterialResourceState?.courseId ?? "");
+      setGrade(editableMaterialResourceState?.grade ?? "9");
+      setChapter(editableMaterialResourceState?.chapter ?? "1");
+      setSelectedFilePath("");
+    }
   }
 
   function handleMaterialResourceChange(e: any) {
@@ -89,9 +93,16 @@ export const MaterialResourcePage = () => {
   }
 
   const submitMaterialResource = async () => {
-    setLoading((prev) => true);
+    if (!grade || !chapter || !courseId) {
+      showErrorToast("fill all requires fields");
+      return;
+    }
+    if (!isEditMode && !selectedFilePath) {
+      showErrorToast("fill all requires fields");
+      return;
+    }
 
-    if (!selectedFilePath || !grade || !chapter || !courseId) return;
+    setLoading((prev) => true);
 
     let materialResourceSchema: any = {
       grade: parseInt(grade.toString()),

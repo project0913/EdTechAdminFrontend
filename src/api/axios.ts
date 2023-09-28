@@ -1,6 +1,9 @@
 import axios from "axios";
 
+export const baseURL = "http://localhost:3000"; // "https://coydoe.onrender.com",
+
 console.log("axios token loaded");
+
 const getClerkToken = () => {
   let clerkOrAdmin: string | null = null;
   clerkOrAdmin = localStorage.getItem("coydoeClerkUser");
@@ -13,10 +16,13 @@ const getClerkToken = () => {
   };
   return parsedClerk?.token ? parsedClerk?.token : "";
 };
+
 export default axios.create({
-  baseURL: "https://coydoe.onrender.com/api",
+  baseURL: `${baseURL}/api`,
   headers: {
     Authorization: `Bearer ${getClerkToken()}`,
   },
 });
+
+// http://localhost:3000/api/
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmYwYmY2YzVlNTEwYjBjMWFmY2VjZCIsInBob25lIjoiKzI1MTIyMjIyMjIyMiIsImlhdCI6MTY3NTY3NDU5Mn0.4IF3BYlOTcZT9o0X8skhTYc1I2ID3uxoZnjA7NL-kUI

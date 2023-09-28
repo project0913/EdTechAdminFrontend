@@ -1,23 +1,18 @@
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
-import styles from "./viewDirectionsPage.module.css";
+import styles from "./ViewMaterialResourcePage.module.css";
 import React, { useEffect, useRef, useState } from "react";
-
-import parse, {
-  HTMLReactParserOptions,
-  Element,
-  domToReact,
-} from "html-react-parser";
-
+import { courseIdToName, coursesOptions, gradeOptions } from "../../constants";
+import { HTMLReactParserOptions, Element, domToReact } from "html-react-parser";
 import { Link } from "react-router-dom";
-import { Direction } from "../../models/direction.model";
-import {
-  fetchDirectionOfCourseByYearAsArray,
-  fetchGroupedCourses,
-  fetchGroupedCoursesDirectionYears,
-} from "../../DataService/fetchCourse.service";
-import { deleteDirections } from "../../DataService/editDirections.service";
+import { fetchDirectionOfCourseByYearAsArray } from "../../DataService/fetchCourse.service";
 import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
+import { IMaterialResource } from "../../models/materialResource.model";
+import {
+  deleteMaterialResources,
+  fetchMaterialResources,
+} from "../../DataService/materialResource.service";
+import { baseURL } from "../../api/axios";
 
 const options: HTMLReactParserOptions = {
   replace: (domNode) => {
@@ -28,43 +23,31 @@ const options: HTMLReactParserOptions = {
 };
 
 export default function ViewMaterialResourcePage() {
-  const [materialResources, setMaterialResources] = useState<Direction[]>([]);
+  const [materialResources, setMaterialResources] = useState<
+    IMaterialResource[]
+  >([]);
   const [progressMessage, setProgressMessage] = useState("Loading ...");
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedYear, setSelectedYear] = useState<number | string>("2015");
+  const [selectedGrade, setSelectedGrade] = useState<number | string>("9");
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [yearOptions, setYearOptions] = useState<SelectOption[]>([]);
-  const [courseOptions, setCourseOptions] = useState<SelectOption[]>([]);
+  const [gradesOption] = useState<SelectOption[]>(gradeOptions);
+  const [courseOptions] = useState<SelectOption[]>(coursesOptions);
   const isInitialMount = useRef(true);
 
   const handleSelectYear = (e: React.FormEvent<HTMLSelectElement>) => {
-    setSelectedYear((e.target as HTMLSelectElement).value);
+    setSelectedGrade((e.target as HTMLSelectElement).value);
   };
   const handleSelectCourse = (e: React.FormEvent<HTMLSelectElement>) => {
     setSelectedCourse((e.target as HTMLSelectElement).value);
   };
   const LoadInit = async () => {
-    const groupedCourses = await fetchGroupedCourses();
-    setCourseOptions(groupedCourses);
-    const defaultCourseId = groupedCourses[0].value;
-    setSelectedCourse(defaultCourseId);
-    const years = await fetchGroupedCoursesDirectionYears(defaultCourseId);
-    setYearOptions(years);
-    if (years.length == 0) {
-      setProgressMessage("it looks like you don't have data yet");
-      return;
-    }
-    const defaultYear = years[0].value;
-    setSelectedYear(defaultYear);
-    const directionsFromServer = await fetchDirectionOfCourseByYearAsArray(
-      defaultCourseId,
-      parseInt(defaultYear.toString())
-    );
-    setMaterialResources(directionsFromServer);
+    setSelectedCourse(coursesOptions[0].value);
+    setSelectedGrade(gradeOptions[0].value);
+    await fetchMaterials();
   };
 
-  const deleteMaterialResourceFromServer = async (directionId: string) => {
-    let result = await deleteDirections(directionId);
+  const deleteMaterialResourceFromServer = async (materialId: string) => {
+    let result = await deleteMaterialResources(materialId);
     if (result instanceof AxiosError) {
       let msgTxt = "";
       const messages =
@@ -77,31 +60,35 @@ export default function ViewMaterialResourcePage() {
       showErrorToast();
     } else {
       setMaterialResources((prev) => {
-        let newDir = prev.filter((dir) => dir._id !== directionId);
+        let newDir = prev.filter((dir) => dir._id !== materialId);
         return [...newDir];
       });
 
       showSuccessToast("Request Success");
     }
   };
-  const fetchYears = async () => {
-    const years = await fetchGroupedCoursesDirectionYears(selectedCourse);
-    setYearOptions(years);
 
-    if (years.length == 0) {
+  const fetchMaterials = async () => {
+    const fetchedMaterials = await fetchMaterialResources({
+      courseId: selectedCourse,
+      grade: selectedGrade,
+    });
+    console.log(fetchedMaterials);
+
+    setMaterialResources(fetchedMaterials);
+
+    if (fetchedMaterials.length == 0) {
       setProgressMessage("it looks like you don't have data yet");
       return;
     }
-    const defaultYear = years[0].value;
-    setSelectedYear(defaultYear);
   };
   useEffect(() => {
     LoadInit();
   }, []);
 
   useEffect(() => {
-    fetchYears();
-  }, [selectedCourse]);
+    fetchMaterials();
+  }, [selectedCourse, selectedGrade]);
 
   useEffect(() => {
     if (isInitialMount.current) {
@@ -110,12 +97,12 @@ export default function ViewMaterialResourcePage() {
       (async () => {
         const directionsFromServer = await fetchDirectionOfCourseByYearAsArray(
           selectedCourse,
-          parseInt(selectedYear.toString())
+          parseInt(selectedGrade.toString())
         );
         setMaterialResources(directionsFromServer);
       })();
     }
-  }, [selectedYear]);
+  }, [selectedGrade]);
 
   return (
     <div>
@@ -134,8 +121,8 @@ export default function ViewMaterialResourcePage() {
           <b>Select Year</b>
           <SelectDropdown
             title=""
-            items={yearOptions}
-            value={selectedYear}
+            items={gradesOption}
+            value={selectedGrade}
             handleSelect={handleSelectYear}
             styles={{ display: "inline", width: "3rem" }}
           />
@@ -147,50 +134,43 @@ export default function ViewMaterialResourcePage() {
             <tr className={styles.row}>
               <th className={`${styles.th} ${styles.noColumn}`}>No</th>
               <th className={`${styles.th} ${styles.yearColumn}`}>Grade</th>
-              <th className={`${styles.th} ${styles.directionColumn}`}>
-                chapter
-              </th>
-              <th className={`${styles.th} ${styles.sectionColumn}`}>
-                Preview
-              </th>
-              <th className={styles.th}>Passage</th>
+              <th className={`${styles.th} ${styles.sectionColumn}`}>course</th>
+              <th className={`${styles.th} ${styles.yearColumn}`}>chapter</th>
+              <th className={`${styles.th} ${styles.directionColumn}`}>URL</th>
 
               <th className={`${styles.th} ${styles.manageColumn}`}>Manage</th>
             </tr>
           </thead>
           <tbody>
             {materialResources.length > 0 ? (
-              materialResources.map((direction, index) => (
+              materialResources.map((material, index) => (
                 <tr className={styles.tr} key={index}>
                   <td
                     className={`${styles.td} ${styles.tdNo} ${styles.tdData}`}
                   >
-                    {direction.directionNumber}
+                    {index + 1}
                   </td>
                   <td className={`${styles.td} &{styles.tdY}`}>
-                    {direction.courseYear}
+                    {material.grade}
                   </td>
                   <td className={styles.td}>
-                    {parse(direction.directionText, options)}
+                    {courseIdToName(material.courseId ?? "")}
                   </td>
+                  <td className={styles.td}>{material.chapter}</td>
                   <td className={styles.td}>
-                    {parse(direction.sectionName, options)}
+                    {baseURL + "/material-resources/" + material.url}
                   </td>
-                  <td className={styles.td}>
-                    {parse(direction.passage || "", options)}
-                  </td>
-
                   <td className={`${styles.td} ${styles.tdManage}`}>
                     <Link
-                      to={"/admin-user/edit-direction"}
-                      state={{ direction }}
+                      to={"/admin-user/edit-material-resources"}
+                      state={{ materialResource: material }}
                     >
                       <button className={styles.label}>Edit</button>
                     </Link>
                     <button
                       className={styles.label1}
                       onClick={() =>
-                        deleteMaterialResourceFromServer(direction._id || "")
+                        deleteMaterialResourceFromServer(material._id || "")
                       }
                     >
                       Delete

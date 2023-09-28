@@ -43,6 +43,7 @@ import { SelectCourse } from "./Pages/select-course/SelectCourse";
 import DataHubApp from "./Pages/DataEnterCountry/DataCountry";
 import { ExamCategoryPage } from "./Pages/ExamCategories/ExamCategoryPage";
 import { MaterialResourcePage } from "./Pages/MaterialResourcePage/MaterialResourcePage";
+import ViewMaterialResourcePage from "./Pages/ViewMaterialResourcePage/ViewMaterialResourcePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -50,7 +51,6 @@ function App() {
     { path: "select-course", element: <SelectCourse /> },
     { path: "admin-dashboard", element: <AdminDashboard /> },
     { path: "data", element: <DataHubApp /> },
-
     {
       path: "clerk-auth",
       element: <ClerkRouteGuard children={<ClerkAuthPage />} />,
@@ -82,14 +82,21 @@ function App() {
           element: <ViewPlainQuestionsPage />,
         },
         {
-          path: "grouped-question",
+          path: "grouped-question", //
           element: <GroupedQuestionPage />,
         },
         {
           path: "view-grouped-questions",
           element: <GroupedQuestionPage />,
         },
-
+        {
+          path: "view-material-resources",
+          element: <ViewMaterialResourcePage />,
+        },
+        {
+          path: "edit-material-resources",
+          element: <MaterialResourcePage />,
+        },
         {
           path: "edit-direction",
           element: <DirectionEditorPage />,
@@ -173,6 +180,14 @@ function App() {
         {
           path: "material-resource",
           element: <MaterialResourcePage />, // MaterialResourcePage
+        },
+        {
+          path: "view-material-resources",
+          element: <ViewMaterialResourcePage />,
+        },
+        {
+          path: "edit-material-resources",
+          element: <MaterialResourcePage />,
         },
         {
           path: "view-directions",

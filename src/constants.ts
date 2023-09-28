@@ -59,3 +59,11 @@ export const coursesOptions: SelectOption[] = [
   { label: "Aptitude", value: "63e496c9acbfccb4849b65b4" },
   { label: "Civics", value: "63e496d9acbfccb4849b65b7" },
 ];
+
+export const courseIdToName = (id: string) => {
+  const course = coursesOptions.find((course) => course.value === id);
+
+  if (course) return course.label;
+
+  return "Unknown";
+};
