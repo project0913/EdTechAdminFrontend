@@ -1,5 +1,5 @@
 import { CSSProperties, useEffect, useState } from "react";
-import styles from "./exercisePage.module.css";
+import styles from "./examcategoryPage.module.css";
 import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
 import { createExamCategories } from "../../DataService/fetchExamCatagories.service";
@@ -56,9 +56,9 @@ export const ExamCategoryPage = () => {
         />
       }
     >
-      <div className={styles.headerBg} style={{ marginLeft: "50px" }}>
+      <div className={styles.headerBg}>
         <div>
-          <p className={styles.txt}>name</p>
+          <p className={styles.txt}>Name:</p>
           <input
             value={name}
             placeholder="
@@ -71,10 +71,10 @@ export const ExamCategoryPage = () => {
         </div>
 
         <div>
-          <p className={styles.txt}>Category</p>
+          <p className={styles.txt}>Category:</p>
           <input
             value={category}
-            placeholder="generalQuestion"
+            placeholder="General_Question"
             onChange={(e) => setCategory(e.target.value)}
             className={styles.editor}
           />

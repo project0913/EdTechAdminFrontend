@@ -157,7 +157,7 @@ export const MaterialResourcePage = () => {
     >
       <div className={styles.headerBg} style={{ marginLeft: "50px" }}>
         <div className="course-selection">
-          <b className={styles.adminTopText}>Courses</b>
+          <p className={styles.txt}>Courses:</p>
           <SelectDropdown
             title=""
             items={courses}
@@ -167,7 +167,7 @@ export const MaterialResourcePage = () => {
         </div>
 
         <div>
-          <p className={styles.txt}>Grade</p>
+          <p className={styles.txt}>Grade:</p>
           <input
             value={grade}
             type="number"
@@ -175,14 +175,14 @@ export const MaterialResourcePage = () => {
             max={12}
             placeholder="9"
             onChange={(e) => setGrade(e.target.value)}
-            className={styles.editor}
+            className={`${styles.editor} ${styles.grade}`}
           />
           <br />
           <ErrorComponent value={grade.toString()} />
         </div>
 
         <div>
-          <p className={styles.txt}>Chapter</p>
+          <p className={styles.txt}>Chapter:</p>
           <input
             value={chapter}
             type="number"
@@ -190,7 +190,7 @@ export const MaterialResourcePage = () => {
             max={20}
             placeholder="1"
             onChange={(e) => setChapter(e.target.value)}
-            className={styles.editor}
+            className={`${styles.editor} ${styles.chapter}`}
           />
           <br />
           <ErrorComponent value={chapter.toString()} />
@@ -207,7 +207,7 @@ export const MaterialResourcePage = () => {
               />
             </div>
           ) : null}
-          <p className={styles.txt}>Select Material resource</p>
+          <p className={styles.txt}>Select Material Resource</p>
           <div style={{ display: "flex", alignItems: "center" }}>
             <label htmlFor="file" className={styles.chooseFileButton}>
               <span>Choose File</span>
