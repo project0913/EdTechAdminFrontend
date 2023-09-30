@@ -91,6 +91,7 @@ export default function AdminUserPage() {
                 <option value="view-material-resources">
                   View material Resources
                 </option>
+                <option value="view-exam-category">View Exam Categories</option>
               </select>
             </div>
             <div className={styles.topBalance2}>

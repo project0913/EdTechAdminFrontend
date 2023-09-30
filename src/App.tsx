@@ -44,6 +44,7 @@ import DataHubApp from "./Pages/DataEnterCountry/DataCountry";
 import { ExamCategoryPage } from "./Pages/ExamCategories/ExamCategoryPage";
 import { MaterialResourcePage } from "./Pages/MaterialResourcePage/MaterialResourcePage";
 import ViewMaterialResourcePage from "./Pages/ViewMaterialResourcePage/ViewMaterialResourcePage";
+import ViewExamCategory from "./Pages/ViewExamCategory/ViewExamCategory";
 
 function App() {
   const router = createBrowserRouter([
@@ -177,9 +178,18 @@ function App() {
           path: "exam-category",
           element: <ExamCategoryPage />,
         },
+
+        {
+          path: "edit-exam-category",
+          element: <ExamCategoryPage />,
+        },
+        {
+          path: "view-exam-category",
+          element: <ViewExamCategory />,
+        },
         {
           path: "material-resource",
-          element: <MaterialResourcePage />, // MaterialResourcePage
+          element: <MaterialResourcePage />, //
         },
         {
           path: "view-material-resources",

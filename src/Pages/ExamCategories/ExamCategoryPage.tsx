@@ -2,10 +2,14 @@ import { CSSProperties, useEffect, useState } from "react";
 import styles from "./examcategoryPage.module.css";
 import { AxiosError } from "axios";
 import { showErrorToast, showSuccessToast } from "../../utils/helper";
-import { createExamCategories } from "../../DataService/fetchExamCatagories.service";
+import {
+  createExamCategories,
+  updateExamCategories,
+} from "../../DataService/fetchExamCatagories.service";
 import ErrorComponent from "../../components/ErrorComponent";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
+import { useLocation } from "react-router-dom";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -15,8 +19,22 @@ const override: CSSProperties = {
 export const ExamCategoryPage = () => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("generalQuestion");
   const [message, setErrorMessage] = useState("");
+  const location = useLocation();
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editableExamCategory, setEditableExamCategory] = useState<any>(null);
+
+  useEffect(() => {
+    const editableExamCategoryState = location.state?.examCategory;
+
+    if (editableExamCategoryState) {
+      setIsEditMode(true);
+      setEditableExamCategory(editableExamCategoryState);
+      setName(editableExamCategoryState.name);
+      setCategory(editableExamCategoryState.category);
+    }
+  }, []);
 
   const submitCategory = async () => {
     setLoading((prev) => true);
@@ -29,7 +47,15 @@ export const ExamCategoryPage = () => {
     };
     console.log(examCategory);
 
-    let result = await createExamCategories(examCategory);
+    let result;
+    if (!isEditMode) {
+      result = await createExamCategories(examCategory);
+    } else {
+      result = await updateExamCategories(
+        editableExamCategory?._id ?? "",
+        examCategory
+      );
+    }
     setLoading((prev) => false);
     if (result instanceof AxiosError) {
       let msgTxt = "";

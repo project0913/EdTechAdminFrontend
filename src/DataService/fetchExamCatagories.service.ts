@@ -11,5 +11,16 @@ export async function fetchExamCategories() {
 export async function createExamCategories(examCategory: any) {
   let raw = await axios.post(`/exam-categories`, examCategory);
   let data = raw.data;
-  return data as ExamCategory[];
+  return data as ExamCategory;
+}
+
+export async function updateExamCategories(id: string, examCategory: any) {
+  let raw = await axios.put(`/exam-categories/${id}`, examCategory);
+  let data = raw.data;
+  return data as ExamCategory;
+}
+export async function deleteExamCategory(id: string) {
+  let raw = await axios.delete(`/exam-categories/${id}`);
+  let data = raw.data;
+  return data as ExamCategory;
 }

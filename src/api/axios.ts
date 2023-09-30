@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "https://coydoe.onrender.com"; // "http://localhost:3000"; // ,
+export const baseURL = "https://coydoe.onrender.com"; // "http://localhost:3000";
 
 console.log("axios token loaded");
 

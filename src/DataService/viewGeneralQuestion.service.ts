@@ -5,8 +5,11 @@ type GetQuestionDto = {
   count: number;
 };
 
-export async function fetchGeneralQuestions(page: number) {
-  let raw = await axios.get(`/general-questions?page=${page}`);
+export async function fetchGeneralQuestions(
+  page: number,
+  examCategory: string
+) {
+  let raw = await axios.get(`/general-questions/${examCategory}?page=${page}`);
   let data = raw.data;
   return data as GetQuestionDto;
 }
