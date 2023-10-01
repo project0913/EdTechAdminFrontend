@@ -9,7 +9,7 @@ import {
 import ErrorComponent from "../../components/ErrorComponent";
 import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const override: CSSProperties = {
   margin: "10 auto",
@@ -117,6 +117,12 @@ export const ExamCategoryPage = () => {
           >
             Submit
           </button>
+
+          <Link to={"/admin-user/view-exam-category"} state={{}}>
+            <button className={styles.backBtn} style={{ marginLeft: "20px" }}>
+              Back To view Exam Category{" "}
+            </button>
+          </Link>
         </div>
       </div>
     </LoadingOverlayWrapper>

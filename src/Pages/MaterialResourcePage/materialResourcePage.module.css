@@ -101,6 +101,28 @@
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
+.backBtn {
+  margin-top: 20px;
+  width: 230px;
+  padding: 10px 20px;
+  background-color: #4982cc;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.backBtn:hover {
+  background-color: #354fe2;
+  transform: translateY(-2px);
+}
+
+.backBtn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 119, 175, 0.5);
+}
+
 .submitBtn:active {
   transform: translateY(1px);
 }

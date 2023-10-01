@@ -11,7 +11,7 @@ import LoadingOverlayWrapper from "react-loading-overlay-ts";
 import { FadeLoader } from "react-spinners";
 import SelectDropdown, { SelectOption } from "../../components/SelectDropdown";
 import { Course } from "../../models/exam-catagory.model";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IMaterialResource } from "../../models/materialResource.model";
 import {
   createMaterialResources,
@@ -234,6 +234,12 @@ export const MaterialResourcePage = () => {
           >
             Submit
           </button>
+
+          <Link to={"/admin-user/view-material-resources"} state={{}}>
+            <button className={styles.backBtn} style={{ marginLeft: "20px" }}>
+              Back To view Material Resources{" "}
+            </button>
+          </Link>
         </div>
       </div>
     </LoadingOverlayWrapper>
