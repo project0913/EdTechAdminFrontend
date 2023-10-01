@@ -62,8 +62,10 @@ export default function PlainQuestionData() {
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
     let examCatsOption = [];
+
     for (const examCat of data) {
-      examCatsOption.push({ label: examCat.name, value: examCat._id });
+      if (examCat?.category === "")
+        examCatsOption.push({ label: examCat.name, value: examCat._id });
     }
     setExamCatagories(examCatsOption.reverse());
     let UEECourses = data.find((e) => e._id == "63a2ecdeee469ea43cdacbac");
@@ -94,32 +96,21 @@ export default function PlainQuestionData() {
     fetchInitialFromServer();
   }, []);
 
-
-
   const handleExamCategoryChange = (e: any) => {
-   
     setSelectedExamCategory(e.target.value);
-    
   };
-
 
   const handleCourseChange = (e: any) => {
-   
     setSelectedCourse(e.target.value);
   };
-
 
   const handleSubExamCategoryChange = (e: any) => {
     setSelectedSubExamCategory(e.target.value);
   };
 
-
   const handleYearsChange = (e: any) => {
     setYear(e.target.value);
-  
-    
   };
-
 
   function handleQuestionImageChange(e: any) {
     console.log(e.target.files);
@@ -225,7 +216,6 @@ export default function PlainQuestionData() {
       }
     >
       <div>
-       
         <div className={styles.plainQuestion}></div>
         <div className={styles.all}>
           <div className={styles.bgDrop}>

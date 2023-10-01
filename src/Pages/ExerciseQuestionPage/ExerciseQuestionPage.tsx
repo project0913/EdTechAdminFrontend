@@ -60,7 +60,9 @@ export default function ExerciseQuestionPage() {
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
     let coursesOption = [];
-    for (const course of data[0].courses) {
+    console.log("hello ", data);
+    const UEECourses = data.find((c) => c._id === "63a2ecdeee469ea43cdacbac");
+    for (const course of UEECourses?.courses ?? []) {
       coursesOption.push({ label: course.name, value: course._id });
     }
     setCourses(coursesOption);
@@ -165,8 +167,6 @@ export default function ExerciseQuestionPage() {
   };
   const handleExerciseChange = (e: any) => {
     setSelectedChapter(e.target.value);
-   
-    
   };
 
   return (

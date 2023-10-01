@@ -99,6 +99,7 @@ export const ExamCategoryPage = () => {
         <div>
           <p className={styles.txt}>Category:</p>
           <input
+            readOnly
             value={category}
             placeholder="General_Question"
             onChange={(e) => setCategory(e.target.value)}
