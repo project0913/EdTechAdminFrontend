@@ -65,9 +65,11 @@ export default function AdminUserPage() {
                 <option value="exercise-question">
                   Insert Exercise Question
                 </option>
-                <option value="exam-category">Insert Category</option>
+                <option value="exam-category">
+                  Insert General Question Category
+                </option>
                 <option value="material-resource">
-                  Insert Material resource
+                  Insert Material Resource
                 </option>
               </select>
 
@@ -89,13 +91,13 @@ export default function AdminUserPage() {
                 </option>
                 <option value="view-exercise">View Exercise Question</option>
                 <option value="view-material-resources">
-                  View material Resources
+                  View Material Resources
                 </option>
                 <option value="view-exam-category">View Exam Categories</option>
               </select>
             </div>
             <div className={styles.topBalance2}>
-              <label className={styles.balanceLabel}>Tot Data </label>
+              <label className={styles.balanceLabel}>Total Data </label>
               <span className={styles.spanLabel}>{totalData}</span>
 
               <label className={styles.balanceLabel}>Your Balance </label>
