@@ -69,6 +69,7 @@ export default function AdminUserPage() {
                 <option value="material-resource">
                   Insert Material resource
                 </option>
+                <option value="create-admin-challenge">Create Challenge</option>
               </select>
 
               <select

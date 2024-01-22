@@ -34,7 +34,6 @@ import ExerciseQuestionPage from "./Pages/ExerciseQuestionPage/ExerciseQuestionP
 import GeneralQuestionPageEditor from "./Pages/GeneralQuestionEditor/GeneralQuestionPageEditor";
 import ViewExerciseQuestionPage from "./Pages/viewExerciseQuestionPage/ViewExerciseQuestionPage";
 import ExerciseQuestionEditorPage from "./Pages/ExerciseEditorPage/ExerciseEditorPage";
-import { ViewExercisePage } from "./Pages/viewExercisePage/ViewExercisePage";
 import ExerciseInfoEdit from "./Pages/ExerciseInfoEdit/ExerciseInfoEdit";
 import { ViewPlainQuestionContext } from "./context/viewPlainQuestionContext";
 import { useState } from "react";
@@ -45,6 +44,7 @@ import { ExamCategoryPage } from "./Pages/ExamCategories/ExamCategoryPage";
 import { MaterialResourcePage } from "./Pages/MaterialResourcePage/MaterialResourcePage";
 import ViewMaterialResourcePage from "./Pages/ViewMaterialResourcePage/ViewMaterialResourcePage";
 import ViewExamCategory from "./Pages/ViewExamCategory/ViewExamCategory";
+import { AdminChallenge } from "./Pages/AdminChallenge/AdminChallenge";
 
 function App() {
   const router = createBrowserRouter([
@@ -245,6 +245,11 @@ function App() {
         {
           path: "exercise-info-edit",
           element: <ExerciseInfoEdit />,
+        },
+
+        {
+          path: "create-admin-challenge",
+          element: <AdminChallenge />,
         },
       ],
     },
