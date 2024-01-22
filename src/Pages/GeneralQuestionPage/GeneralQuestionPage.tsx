@@ -176,8 +176,8 @@ export default function GeneralQuestionPage() {
                 style={{
                   fontWeight: "bold",
                   color: "green",
-                  paddingTop: "10 px",
-                  marginTop: "10 px",
+                  paddingTop: "30 px",
+                  marginTop: "40 px",
                 }}
               >
                 Select Category
