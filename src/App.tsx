@@ -45,6 +45,7 @@ import { MaterialResourcePage } from "./Pages/MaterialResourcePage/MaterialResou
 import ViewMaterialResourcePage from "./Pages/ViewMaterialResourcePage/ViewMaterialResourcePage";
 import ViewExamCategory from "./Pages/ViewExamCategory/ViewExamCategory";
 import { AdminChallenge } from "./Pages/AdminChallenge/AdminChallenge";
+import { ViewAdminChallengePage } from "./Pages/ViewAdminChallenge/ViewAdminChallenge";
 
 function App() {
   const router = createBrowserRouter([
@@ -250,6 +251,11 @@ function App() {
         {
           path: "create-admin-challenge",
           element: <AdminChallenge />,
+        },
+
+        {
+          path: "view-admin-challenge",
+          element: <ViewAdminChallengePage />,
         },
       ],
     },

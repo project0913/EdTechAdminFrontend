@@ -67,3 +67,17 @@ export const courseIdToName = (id: string) => {
 
   return "Unknown";
 };
+
+export const levelsOptions: SelectOption[] = [
+  { label: "", value: "" },
+  { label: "Level 7 ", value: "7" },
+  { label: "Level 8 ", value: "8" },
+  { label: "Level 9 ", value: "10" },
+  { label: "Level 10 ", value: "10" },
+];
+
+export const isActiveOption: SelectOption[] = [
+  { label: " ", value: "" },
+  { label: "Active", value: "active" },
+  { label: "Inactive ", value: "inactive" },
+];

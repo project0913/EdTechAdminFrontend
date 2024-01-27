@@ -35,7 +35,9 @@ export const getAdminChallenge = async (query: {
 
   const result = await axios.get("/admin-challenge" + queryBuilder);
   const data = result.data;
-  return data.data as AdminChallenge[];
+  const adminChallenges = data.data as AdminChallenge[];
+  const total = data.total;
+  return { data: adminChallenges, total };
 };
 
 export type AdminChallenge = {
