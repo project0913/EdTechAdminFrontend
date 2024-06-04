@@ -56,6 +56,12 @@ export default function ExerciseQuestionPage() {
   const [chapterOptions] = useState<SelectOption[]>(co);
 
   const [show, setShow] = useState(false);
+  const answerOptions: SelectOption[] = [
+    { label: "A", value: "option_a" },
+    { label: "B", value: "option_b" },
+    { label: "C", value: "option_c" },
+    { label: "D", value: "option_d" },
+  ];
 
   async function fetchInitialFromServer() {
     let data = await fetchExamCategories();
@@ -300,12 +306,29 @@ export default function ExerciseQuestionPage() {
                 editorId="editor5"
               />
               <ErrorComponent value={option_d} />
-              <div className={styles.answerYear}>
+              {/* <div className={styles.answerYear}>
                 <div>
                   <b className={styles.txt}>Choose Answer here</b>
                   <SelectDropdown
                     title=""
                     items={answerOptions}
+                    handleSelect={setOption_answer_Text}
+                  />
+                </div>
+              </div> */}
+              <div className={styles.answerYear}>
+                <div>
+                  <b
+                    className={styles.txt}
+                    style={{ fontWeight: "bold", color: "blue" }}
+                  >
+                    Choose Answer Here
+                  </b>
+
+                  <SelectDropdown
+                    title=""
+                    items={answerOptions}
+                    value={answerText}
                     handleSelect={setOption_answer_Text}
                   />
                 </div>
